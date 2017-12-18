@@ -1,9 +1,11 @@
 
 // Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+//@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
 
 // Variables
-@import "variables";
+//@import "variables";
+@import "fontstyle.css";
+// mixin
+@import "mixin";
 
-// Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "base";
