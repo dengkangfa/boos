@@ -12176,7 +12176,8 @@ window.Vue = __webpack_require__(13);
 
 
 
-var app = new Vue({
+/* eslint-disable no-new */
+new Vue({
   el: '#app',
   render: function render(h) {
     return h(__WEBPACK_IMPORTED_MODULE_0__App_vue___default.a);
@@ -33301,13 +33302,13 @@ var content = __webpack_require__(46);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("95fa31a4", content, false);
+var update = __webpack_require__(3)("00674f92", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33325,7 +33326,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-bg[data-v-4f151ab3] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-4f151ab3] {\n  position: absolute;\n  top: 13%;\n  left: 50%;\n  -webkit-transform: translateX(-50%);\n          transform: translateX(-50%);\n  width: 90%;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-4f151ab3] {\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(47) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1),\n.info-login li[data-v-4f151ab3]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-4f151ab3]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-4f151ab3]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-4f151ab3] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-4f151ab3] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-4f151ab3] {\n    font-size: 0.4rem;\n    color: #fff;\n    background-image: none;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-4f151ab3], .info-login li input[type=number][data-v-4f151ab3] {\n    width: 100%;\n    padding: 0.3rem 1rem 0.3rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-webkit-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::placeholder, .info-login li input[type=number][data-v-4f151ab3]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:focus, .info-login li input[type=number][data-v-4f151ab3]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-4f151ab3], .info-login li input[type=button][data-v-4f151ab3] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-4f151ab3]:hover, .info-login li input[type=button][data-v-4f151ab3]:hover {\n    background-color: #42AA83;\n}\n.info-login li:nth-child(1) b[data-v-4f151ab3] {\n  position: absolute;\n  display: block;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem;*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1):before,\n.info-login li[data-v-4f151ab3]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n  transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n  transform-origin: 0 0;\n}\n.info-login li:nth-child(2) span[data-v-4f151ab3] {\n  display: block;\n  width: .6rem;\n  height: .6rem;\n  background: url(" + __webpack_require__(48) + ") no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  left: .4rem;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.info-login li:nth-child(2) button[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n.login-footer[data-v-4f151ab3] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-4f151ab3] {\n    flex-wrap: wrap;\n    -webkit-flex-wrap: wrap;\n    -moz-flex-wrap: wrap;\n    -ms-flex-wrap: wrap;\n    -o-flex-wrap: wrap;\n}\n.login-footer .or[data-v-4f151ab3] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-4f151ab3] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      position: relative;\n}\n.login-footer .or .line[data-v-4f151ab3]:after {\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        border-top: 1px solid #42b983;\n        content: ' ';\n}\n.login-footer .or .text[data-v-4f151ab3] {\n      padding: 0 12px;\n      font-weight: 700;\n      font-size: 14px;\n}\n.login-footer a[data-v-4f151ab3] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(49) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-4f151ab3] {\n    top: 1%;\n}\n}\n", ""]);
+exports.push([module.i, "\n.login-bg[data-v-4f151ab3] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-4f151ab3] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-4f151ab3] {\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(47) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1),\n.info-login li[data-v-4f151ab3]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-4f151ab3]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-4f151ab3]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-4f151ab3] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-4f151ab3] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-4f151ab3] {\n    font-size: 0.4rem;\n    color: #fff;\n    background-image: none;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-4f151ab3], .info-login li input[type=number][data-v-4f151ab3] {\n    width: 100%;\n    padding: 0.3rem 1rem 0.3rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-webkit-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::placeholder, .info-login li input[type=number][data-v-4f151ab3]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:focus, .info-login li input[type=number][data-v-4f151ab3]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-4f151ab3], .info-login li input[type=button][data-v-4f151ab3] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-4f151ab3]:hover, .info-login li input[type=button][data-v-4f151ab3]:hover {\n    background-color: #42AA83;\n}\n.info-login li:nth-child(1) b[data-v-4f151ab3] {\n  position: absolute;\n  display: block;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1):before,\n.info-login li[data-v-4f151ab3]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n  transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n  transform-origin: 0 0;\n}\n.info-login li:nth-child(2) span[data-v-4f151ab3] {\n  display: block;\n  width: .6rem;\n  height: .6rem;\n  background: url(" + __webpack_require__(48) + ") no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  left: .4rem;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.info-login li:nth-child(2) button[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n.login-footer[data-v-4f151ab3] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-4f151ab3] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-4f151ab3] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-4f151ab3] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      position: relative;\n}\n.login-footer .or .line[data-v-4f151ab3]:after {\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        border-top: 1px solid #42b983;\n        content: ' ';\n}\n.login-footer .or .text[data-v-4f151ab3] {\n      padding: 0 12px;\n      font-weight: 700;\n      font-size: 14px;\n}\n.login-footer a[data-v-4f151ab3] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(49) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-4f151ab3] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-4f151ab3] {\n    margin-top: 0;\n}\n}\n", ""]);
 
 // exports
 
@@ -33436,15 +33437,26 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
     return {
       // 用户信息
       userules: {
-        mobile: "",
-        verifyCode: ""
+        mobile: '',
+        verifyCode: ''
       },
       iconShow: false,
       spinning: false,
       disabledVoiceVerify: false,
       message: '',
-      lable: "+86"
+      lable: '+86'
     };
+  },
+  mounted: function mounted() {
+    var clientHeight = window.innerHeight;
+    window.addEventListener('resize', function () {
+      var nowClientHeight = window.innerHeight;
+      if (clientHeight > nowClientHeight) {
+        document.querySelector('.login-footer').style.position = 'static';
+      } else {
+        document.querySelector('.login-footer').style.position = 'fixed';
+      }
+    });
   },
 
   methods: {
@@ -33452,7 +33464,7 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       this.userules.mobile = '';
     },
     checkMobileRegex: function checkMobileRegex() {
-      if (this.userules.mobile == '') {
+      if (this.userules.mobile === '') {
         this.message = '请填写手机号';
       } else if (!phoneRegex.test(this.userules.mobile)) {
         this.message = '输入号码与归属地不匹配';
@@ -33518,7 +33530,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-472dea7e"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -33561,13 +33573,13 @@ var content = __webpack_require__(54);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("50a4431a", content, false);
+var update = __webpack_require__(3)("2b6c6531", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-472dea7e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-472dea7e\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-472dea7e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-472dea7e\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33585,7 +33597,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.message {\n  position: absolute;\n  z-index: 190;\n  top: 42%;\n  left: 50%;\n  padding: 0.4rem 0;\n  width: 60%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: rgba(0,0,0,0.7);\n  border-radius: 0.8rem;\n  color: #fff;\n  font-size: 0.4rem;\n}\n.message p {\n  text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.message[data-v-472dea7e] {\n  position: absolute;\n  z-index: 190;\n  top: 42%;\n  left: 50%;\n  padding: 0.4rem 0;\n  width: 60%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.7);\n  border-radius: .8rem;\n  color: #ffffff;\n  font-size: 0.4rem;\n}\n.message p[data-v-472dea7e] {\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -33737,13 +33749,13 @@ var content = __webpack_require__(59);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("2a5b3794", content, false);
+var update = __webpack_require__(3)("397ecd0a", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7b20632d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./fading-circle.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7b20632d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./fading-circle.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7b20632d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./fading-circle.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7b20632d\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./fading-circle.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33761,7 +33773,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.spinner-wrapper[data-v-7b20632d] {\n  position: absolute;\n  z-index: 200;\n  top: 45%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  width: 100px;\n  height: 100px;\n  border-radius: 0.2rem;\n  background: rgba(40, 47, 52, 0.7);\n}\n.spinner-fading-circle[data-v-7b20632d] {\n  position: relative;\n  width: 1rem;\n  height: 1rem;\n  margin: 20% auto;\n}\n.circle-color > div[data-v-7b20632d]::before {\n  background-color: #42b983;\n}\n.fading-circle-circle[data-v-7b20632d] {\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  position: absolute;\n}\n.fading-circle-circle[data-v-7b20632d]::before {\n  content: \" \";\n  display: block;\n  margin: 0 auto;\n  width: 15%;\n  height: 15%;\n  border-radius: 100%;\n  -webkit-animation: mint-fading-circle-data-v-7b20632d 1.2s infinite ease-in-out both;\n  animation: mint-fading-circle-data-v-7b20632d 1.2s infinite ease-in-out both;\n}\n.fading-circle-circle.is-circle2[data-v-7b20632d] {\n  -webkit-transform: rotate(30deg);\n  transform: rotate(30deg);\n}\n.fading-circle-circle.is-circle2[data-v-7b20632d]::before {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n.fading-circle-circle.is-circle3[data-v-7b20632d] {\n  -webkit-transform: rotate(60deg);\n  transform: rotate(60deg);\n}\n.fading-circle-circle.is-circle3[data-v-7b20632d]::before {\n  -webkit-animation-delay: -1s;\n  animation-delay: -1s;\n}\n.fading-circle-circle.is-circle4[data-v-7b20632d] {\n  -webkit-transform: rotate(90deg);\n  transform: rotate(90deg);\n}\n.fading-circle-circle.is-circle4[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n.fading-circle-circle.is-circle5[data-v-7b20632d] {\n  -webkit-transform: rotate(120deg);\n  transform: rotate(120deg);\n}\n.fading-circle-circle.is-circle5[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.8s;\n  animation-delay: -0.8s;\n}\n.fading-circle-circle.is-circle6[data-v-7b20632d] {\n  -webkit-transform: rotate(150deg);\n  transform: rotate(150deg);\n}\n.fading-circle-circle.is-circle6[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.7s;\n  animation-delay: -0.7s;\n}\n.fading-circle-circle.is-circle7[data-v-7b20632d] {\n  -webkit-transform: rotate(180deg);\n  transform: rotate(180deg);\n}\n.fading-circle-circle.is-circle7[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.6s;\n  animation-delay: -0.6s;\n}\n.fading-circle-circle.is-circle8[data-v-7b20632d] {\n  -webkit-transform: rotate(210deg);\n  transform: rotate(210deg);\n}\n.fading-circle-circle.is-circle8[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.5s;\n  animation-delay: -0.5s;\n}\n.fading-circle-circle.is-circle9[data-v-7b20632d] {\n  -webkit-transform: rotate(240deg);\n  transform: rotate(240deg);\n}\n.fading-circle-circle.is-circle9[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.4s;\n  animation-delay: -0.4s;\n}\n.fading-circle-circle.is-circle10[data-v-7b20632d] {\n  -webkit-transform: rotate(270deg);\n  transform: rotate(270deg);\n}\n.fading-circle-circle.is-circle10[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.3s;\n  animation-delay: -0.3s;\n}\n.fading-circle-circle.is-circle11[data-v-7b20632d] {\n  -webkit-transform: rotate(300deg);\n  transform: rotate(300deg);\n}\n.fading-circle-circle.is-circle11[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.2s;\n  animation-delay: -0.2s;\n}\n.fading-circle-circle.is-circle12[data-v-7b20632d] {\n  -webkit-transform: rotate(330deg);\n  transform: rotate(330deg);\n}\n.fading-circle-circle.is-circle12[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.1s;\n  animation-delay: -0.1s;\n}\n.spinner-fading-circle-span[data-v-7b20632d] {\n  display: inline-block;\n  width: 100%;\n  color: #fff;\n  text-align: center;\n}\n@-webkit-keyframes mint-fading-circle-data-v-7b20632d {\n0%, 39%, 100% {\n    opacity: 0;\n}\n40% {\n    opacity: 1;\n}\n}\n@keyframes mint-fading-circle-data-v-7b20632d {\n0%, 39%, 100% {\n    opacity: 0;\n}\n40% {\n    opacity: 1;\n}\n}\n", ""]);
+exports.push([module.i, "\n.spinner-wrapper[data-v-7b20632d] {\n  position: absolute;\n  z-index: 200;\n  top: 45%;\n  left: 50%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  width: 100px;\n  height: 100px;\n  border-radius: 0.2rem;\n  background: rgba(40, 47, 52, 0.7);\n}\n.spinner-fading-circle[data-v-7b20632d] {\n  position: relative;\n  width: 1rem;\n  height: 1rem;\n  margin: 20% auto;\n}\n.circle-color > div[data-v-7b20632d]::before {\n  background-color: #42b983;\n}\n.fading-circle-circle[data-v-7b20632d] {\n  width: 100%;\n  height: 100%;\n  top: 0;\n  left: 0;\n  position: absolute;\n}\n.fading-circle-circle[data-v-7b20632d]::before {\n  content: \" \";\n  display: block;\n  margin: 0 auto;\n  width: 15%;\n  height: 15%;\n  border-radius: 100%;\n  -webkit-animation: mint-fading-circle-data-v-7b20632d 1.2s infinite ease-in-out both;\n  animation: mint-fading-circle-data-v-7b20632d 1.2s infinite ease-in-out both;\n}\n.fading-circle-circle.is-circle2[data-v-7b20632d] {\n  -webkit-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.fading-circle-circle.is-circle2[data-v-7b20632d]::before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.fading-circle-circle.is-circle3[data-v-7b20632d] {\n  -webkit-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.fading-circle-circle.is-circle3[data-v-7b20632d]::before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.fading-circle-circle.is-circle4[data-v-7b20632d] {\n  -webkit-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.fading-circle-circle.is-circle4[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.fading-circle-circle.is-circle5[data-v-7b20632d] {\n  -webkit-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.fading-circle-circle.is-circle5[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.fading-circle-circle.is-circle6[data-v-7b20632d] {\n  -webkit-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.fading-circle-circle.is-circle6[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.fading-circle-circle.is-circle7[data-v-7b20632d] {\n  -webkit-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.fading-circle-circle.is-circle7[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n.fading-circle-circle.is-circle8[data-v-7b20632d] {\n  -webkit-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.fading-circle-circle.is-circle8[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n.fading-circle-circle.is-circle9[data-v-7b20632d] {\n  -webkit-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.fading-circle-circle.is-circle9[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.fading-circle-circle.is-circle10[data-v-7b20632d] {\n  -webkit-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.fading-circle-circle.is-circle10[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.fading-circle-circle.is-circle11[data-v-7b20632d] {\n  -webkit-transform: rotate(300deg);\n          transform: rotate(300deg);\n}\n.fading-circle-circle.is-circle11[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.fading-circle-circle.is-circle12[data-v-7b20632d] {\n  -webkit-transform: rotate(330deg);\n          transform: rotate(330deg);\n}\n.fading-circle-circle.is-circle12[data-v-7b20632d]::before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n.spinner-fading-circle-span[data-v-7b20632d] {\n  display: inline-block;\n  width: 100%;\n  color: #fff;\n  text-align: center;\n}\n@-webkit-keyframes mint-fading-circle-data-v-7b20632d {\n0%, 39%, 100% {\n    opacity: 0;\n}\n40% {\n    opacity: 1;\n}\n}\n@keyframes mint-fading-circle-data-v-7b20632d {\n0%, 39%, 100% {\n    opacity: 0;\n}\n40% {\n    opacity: 1;\n}\n}\n", ""]);
 
 // exports
 
@@ -33798,7 +33810,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   props: {
     text: {
       type: String,
-      default: "正在加载中"
+      default: '正在加载中'
     }
   }
 });
@@ -33879,7 +33891,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-698c1ae3"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -33922,13 +33934,13 @@ var content = __webpack_require__(64);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("b28d9c22", content, false);
+var update = __webpack_require__(3)("5ac1c472", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-698c1ae3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TimerBtn.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-698c1ae3\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TimerBtn.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-698c1ae3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TimerBtn.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-698c1ae3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./TimerBtn.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33946,7 +33958,7 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.btn-link {\n  display: block;\n  width: 2.3rem;\n  height: 0.6rem;\n  padding: 0 0.3rem;\n  line-height: 0.6rem;\n  border: 1px solid #fff;\n  border-radius: 0.3rem;\n  color: #fff;\n  font-weight: 100;\n  font-size: 0.3rem;\n  background: rgba(0,0,0,0);\n}\n", ""]);
+exports.push([module.i, "\n.btn-link[data-v-698c1ae3] {\n  display: block;\n  width: 2.3rem;\n  height: .6rem;\n  padding: 0 .3rem;\n  line-height: .6rem;\n  border: 1px solid #fff;\n  border-radius: .3rem;\n  color: #fff;\n  font-weight: 100;\n  font-size: .3rem;\n  background: transparent;\n}\n", ""]);
 
 // exports
 
@@ -34212,8 +34224,7 @@ var render = function() {
                   "a",
                   {
                     staticStyle: {
-                      "text-decoration": "underline",
-                      color: "#42b983"
+                      "text-decoration": "underlinecolor: #42b983"
                     },
                     on: {
                       click: function($event) {

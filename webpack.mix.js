@@ -14,7 +14,7 @@ mix.webpackConfig({
   resolve: {
     alias: {
       Api: path.resolve(__dirname, 'resources/assets/js/api'),
-      Base: path.resolve(__dirname, 'resources/assets/js/components/base'),
+      Base: path.resolve(__dirname, 'resources/assets/js/components/base')
     }
   }
 });

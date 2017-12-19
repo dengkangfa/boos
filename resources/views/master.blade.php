@@ -9,6 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <!-- uc强制竖屏 -->
     <meta name="screen-orientation" content="portrait">
+    <meta name="browsermode" content="application">
     <!-- QQ强制竖屏 -->
     <meta name="x5-orientation" content="portrait">
     <meta name="msapplication-tap-highlight" content="no">

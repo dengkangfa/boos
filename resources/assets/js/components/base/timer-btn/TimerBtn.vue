@@ -18,7 +18,7 @@
     },
     data() {
       return {
-        time: 0
+        time: 0,
       }
     },
     methods: {
@@ -46,17 +46,17 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="sass" rel="stylesheet/sass" scoped>
     .btn-link
-        display: block;
-        width: 2.3rem;
-        height: .6rem;
-        padding: 0 .3rem;
-        line-height: .6rem;
-        border: 1px solid #fff;
-        border-radius: .3rem;
-        color: #fff;
-        font-weight: 100;
-        font-size: .3rem;
+        display: block
+        width: 2.3rem
+        height: .6rem
+        padding: 0 .3rem
+        line-height: .6rem
+        border: 1px solid #fff
+        border-radius: .3rem
+        color: #fff
+        font-weight: 100
+        font-size: .3rem
         background: rgba(0,0,0,0)
 </style>

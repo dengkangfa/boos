@@ -21,10 +21,10 @@
     },
     methods: {
       show() {
-        this.showFlag = true;
+        this.showFlag = true
         clearTimeout(this.timer)
         this.timer = setTimeout(() => {
-            this.hide();
+          this.hide()
         }, 2000)
       },
       hide() {
@@ -34,10 +34,10 @@
   }
 </script>
 
-<style lang="stylus" rel="stylesheet/stylus">
+<style lang="sass" rel="stylesheet/sass" scoped>
     .message
         position: absolute
-        z-index: 190;
+        z-index: 190
         top: 42%
         left: 50%
         padding: 0.4rem 0
