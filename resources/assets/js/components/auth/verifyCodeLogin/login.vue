@@ -5,14 +5,14 @@
           <h3>BOSS直聘<span></span></h3>
           <ul class="info-login">
             <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="iconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="iconShow && userules.mobile"></i></li>
-            <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="iconShow = false"><b @click.prevent="">获取验证码</b></li>
-            <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983;">语音接听验证码</a></p></li>
+            <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="iconShow = false"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
+            <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983;" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
             <li><input @click.prevent="" type="submit" value="进入"></li>
           </ul>
         </form>
       </div>
       <!--底部-->
-      <div class="login-footer flex_parent">
+      <div class="login-footer flex_parent clearHistory">
         <div class="or">
           <div class="line"></div>
           <div class="text">OR</div>
@@ -21,28 +21,82 @@
         <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
         <router-link to="" ><span>密码登录</span></router-link>
       </div>
+      <message :message="message" ref="message"></message>
+      <fading-circle text="正在发送中" v-show="spinning"></fading-circle>
     </div>
 </template>
 
-<script>
-    export default {
-        data () {
-            return {
-                // 用户信息
-                userules:{
-                  mobile: "",
-                  verifyCode: ""
-                },
-                iconShow: false,
-                lable:"+86"
-            }
-        },
-        methods: {
-          close() {
-            this.userules.mobile = '';
-          }
+<script type="text/ecmascript-6">
+  import message from 'Base/message/message.vue'
+  import fadingCircle from 'Base/spinner/fading-circle.vue'
+  import timerBtn from 'Base/timer-btn/TimerBtn.vue'
+  import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
+
+  // 手机正则表达式
+  const phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/
+
+  export default {
+    data () {
+        return {
+          // 用户信息
+          userules:{
+            mobile: "",
+            verifyCode: ""
+          },
+          iconShow: false,
+          spinning: false,
+          disabledVoiceVerify: false,
+          message: '',
+          lable:"+86",
         }
+    },
+    methods: {
+      close() {
+        this.userules.mobile = '';
+      },
+      checkMobileRegex() {
+        if (this.userules.mobile == '') {
+          this.message = '请填写手机号';
+        } else if (!phoneRegex.test(this.userules.mobile)) {
+          this.message = '输入号码与归属地不匹配';
+        } else {
+          return true;
+        }
+        this.$refs.message.show();
+        return false;
+      },
+      sendVerifyCode() {
+        this.disabledVoiceVerify = true;
+        if (this.checkMobileRegex()) {
+          this.spinning = true;
+          sendVerifyCode(this.userules.mobile).then(response => {
+            this.spinning = false;
+            this.$refs.timer.start();
+            console.log(response);
+          })
+        }
+      },
+      sendVoiceVerify() {
+        if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
+          this.disabledVoiceVerify = true;
+          this.spinning = true;
+          sendVoiceVerify(this.userules.mobile).then(response => {
+            this.spinning = false;
+            this.$refs.timer.start();
+            console.log(response);
+          })
+        }
+      },
+      end() {
+        this.disabledVoiceVerify = false;
+      }
+    },
+    components: {
+      message,
+      fadingCircle,
+      timerBtn
     }
+  }
 
 </script>
 
@@ -72,7 +126,7 @@
         background: url('./Introduction.png') no-repeat;
         background-size: 4rem;
         display: block;
-        height: 0.5rem;
+        height: 0.6rem;
         margin: auto;
         width: 150px;
       }
@@ -129,10 +183,10 @@
     }
   }
   .info-login li:nth-child(1) b{
+    position: absolute;
     display: block;
     top: 50%;
     transform: translateY(-50%);
-    position: absolute;
     color: #fff;
     font-weight: 100;
     /*left: .4rem;*/
@@ -173,20 +227,11 @@
     top: 50%;
     transform: translateY(-50%);
   }
-  .info-login li:nth-child(2) b{
-    display: block;
-    height: .6rem;
-    padding: 0 .3rem;
-    line-height: .6rem;
+  .info-login li:nth-child(2) button{
     position: absolute;
-    border: 1px solid #fff;
-    border-radius: .3rem;
     top: 50%;
     transform: translateY(-50%);
     right: .4rem;
-    color: #fff;
-    font-weight: 100;
-    font-size: .3rem;
     z-index: 10;
   }
   .login-footer{
@@ -231,6 +276,12 @@
         background-size: .40rem;
         padding-left: 20px;
       }
+    }
+  }
+
+  @media screen and (max-height: 505px) {
+    #login {
+      top: 1%;
     }
   }
 </style>
