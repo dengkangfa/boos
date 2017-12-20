@@ -14,10 +14,11 @@ mix.webpackConfig({
   resolve: {
     alias: {
       Api: path.resolve(__dirname, 'resources/assets/js/api'),
+      Mixin: path.resolve(__dirname, 'resources/assets/js/mixin'),
       Base: path.resolve(__dirname, 'resources/assets/js/components/base')
     }
   }
 });
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.sass', 'public/css');

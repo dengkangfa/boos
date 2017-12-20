@@ -4,9 +4,9 @@
         <form action="">
           <h3>BOSS直聘<span></span></h3>
           <ul class="info-login">
-            <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="iconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="iconShow && userules.mobile"></i></li>
-            <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="iconShow = false"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
-            <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underlinecolor: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
+            <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
+            <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="closeIconShow = false" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
+            <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
             <li><input @click.prevent="" type="submit" value="进入"></li>
           </ul>
         </form>
@@ -19,10 +19,11 @@
           <div class="line"></div>
         </div>
         <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
-        <router-link to="" ><span>密码登录</span></router-link>
+        <router-link to="/login/password"><span>密码登录</span></router-link>
       </div>
       <message :message="message" ref="message"></message>
       <fading-circle text="正在发送中" v-show="spinning"></fading-circle>
+      <router-view></router-view>
     </div>
 </template>
 
@@ -31,77 +32,50 @@
   import fadingCircle from 'Base/spinner/fading-circle.vue'
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
   import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
-
-  // 手机正则表达式
-  const phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/
+  import {loginMixin} from 'Mixin/mixin.js'
 
   export default {
+    mixins: [loginMixin],
     data () {
       return {
         // 用户信息
         userules: {
-          mobile: '',
           verifyCode: ''
         },
-        iconShow: false,
-        spinning: false,
-        disabledVoiceVerify: false,
-        message: '',
+        spinning: false, // 是否显示loading
+        disabledVoiceVerify: false, // 语音验证码服务是否可用
+        message: '', // 提示消息
         lable: '+86'
       }
     },
-    mounted() {
-      var clientHeight = window.innerHeight
-      window.addEventListener('resize', () => {
-        var nowClientHeight = window.innerHeight
-        if (clientHeight > nowClientHeight) {
-          document.querySelector('.login-footer').style.position = 'static'
-        }
-        else {
-          document.querySelector('.login-footer').style.position = 'fixed'
-        }
-      })
-    },
     methods: {
-      close() {
-        this.userules.mobile = ''
-      },
-      checkMobileRegex() {
-        if (this.userules.mobile === '') {
-          this.message = '请填写手机号'
-        } else if (!phoneRegex.test(this.userules.mobile)) {
-          this.message = '输入号码与归属地不匹配'
-        } else {
-          return true
-        }
-        this.$refs.message.show()
-        return false
-      },
       sendVerifyCode() {
-        this.disabledVoiceVerify = true
+        this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
         if (this.checkMobileRegex()) {
-          this.spinning = true
+          this.spinning = true // 显示正在发送的loading
           sendVerifyCode(this.userules.mobile).then(response => {
-            this.spinning = false
-            this.$refs.timer.start()
+            this.spinning = false // 隐藏正在发送的loading
+            this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+            this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
             console.log(response)
           })
         }
       },
       sendVoiceVerify() {
         if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
-          this.disabledVoiceVerify = true
-          this.spinning = true
+          this.disabledVoiceVerify = true // 禁止重复获取语音验证码发送服务
+          this.spinning = true // 显示正在发送的loading
           sendVoiceVerify(this.userules.mobile).then(response => {
-            this.spinning = false
-            this.$refs.timer.start()
+            this.spinning = false  // 隐藏正在发送的loading
+            this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+            this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
             console.log(response)
           })
         }
       },
       end() {
         this.disabledVoiceVerify = false
-      }
+      },
     },
     components: {
       message,
@@ -114,6 +88,7 @@
 
 <style lang="sass" rel="stylesheet/sass" scoped>
   @import "../../../../sass/mixin"
+  @import "../../../../sass/login-footer"
 
   .login-bg
     position: fixed
@@ -131,6 +106,8 @@
     margin-top: 1.5rem
     box-sizing: border-box
     & h3
+      height: 2.2rem
+      font-weight: bold
       text-align: center
       margin-bottom: 1.2rem
       @include sc(1.2rem,#fff)
@@ -156,13 +133,12 @@
     & label
       @include sc(.3rem,#999)
     & input
-      @include sc(.4rem,#fff)
-      background-image: none
+      @include sc(.35rem,#fff)
       transition: all .3s
       background: rgba(154,165,181,.3)
-    & input[type=text],input[type=number]
+    & input[type=text],input[type=number],input[type=password]
       width: 100%
-      padding: 0.3rem 1rem 0.3rem 2rem
+      padding: 0.4rem 1rem 0.4rem 2rem
       border-radius: .8rem
       &::placeholder
         color: #fff
@@ -206,9 +182,7 @@
     height: 100%
     top: 50%
     left: 1.6rem
-    -webkit-transform: scaleY(0.3) translateY(-50%)
     transform: scaleY(0.3) translateY(-50%)
-    -webkit-transform-origin: 0 0
     transform-origin: 0 0
   .info-login li:nth-child(2) span
     display: block
@@ -226,44 +200,13 @@
     transform: translateY(-50%)
     right: .4rem
     z-index: 10
-  .login-footer
-    position: fixed
-    width: 100%
-    left: 0
-    bottom: 0
-    &.flex_parent
-      flex-wrap: wrap
-    & .or
-      display: flex
-      width: 100%
-      align-items: center
-      color: #42b983
-      transform: translateY(50%)
-      opacity: 0.5
-      & .line
-        position: relative
-        flex: 1
-        @include border-1px(#42b983)
-      & .text
-        padding: 0 12px
-        font-weight: 700
-        font-size: 14px
-    & a
-      line-height: 1.8rem
-      color: #fff
-      display: block
-      text-align: center
-      font-size: .35rem
-      width: 50%
-      &.protocol span
-        background: url('select.png') no-repeat
-        background-size: .40rem
-        padding-left: 20px
 
   @media screen and (max-height: 505px)
     #login
       margin-top: 1rem
   @media screen and (max-height: 480px)
     #login
-      margin-top: 0
+        margin-top: .5rem
+        .info-login li:nth-child(4)
+          margin-top: .5rem
 </style>

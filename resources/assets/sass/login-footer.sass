@@ -1,0 +1,35 @@
+@import "mixin"
+
+.login-footer
+  position: fixed
+  width: 100%
+  left: 0
+  bottom: 0
+  &.flex_parent
+    flex-wrap: wrap
+  & .or
+    display: flex
+    width: 100%
+    align-items: center
+    color: #42b983
+    transform: translateY(50%)
+    opacity: 0.5
+    & .line
+      position: relative
+      flex: 1
+      @include border-1px(#42b983)
+    & .text
+      padding: 0 12px
+      font-weight: bold
+      font-size: 14px
+  & a
+    line-height: 1.8rem
+    color: #fff
+    display: block
+    text-align: center
+    font-size: .35rem
+    width: 50%
+    &.protocol span
+      background: url('select.png') no-repeat
+      background-size: .40rem
+      padding-left: 20px

@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url(/fonts/icomoon.eot?d179222714397f35056eb1594d66dac5);
-  src:  url(/fonts/icomoon.eot?d179222714397f35056eb1594d66dac5#iefix) format('embedded-opentype'),
-    url(/fonts/icomoon.ttf?7b1462fd92d185fa7bbfd84875c97b62) format('truetype'),
-    url(/fonts/icomoon.woff?8d27c73a40c99cc1cd1e7e0146008ad1) format('woff'),
-    url(/fonts/icomoon.svg?5b7aa849bc1f437e1645b58381c30a39#icomoon) format('svg');
+  src:  url(/fonts/icomoon.eot?926285310c751ac5c508b42eda0df522);
+  src:  url(/fonts/icomoon.eot?926285310c751ac5c508b42eda0df522#iefix) format('embedded-opentype'),
+    url(/fonts/icomoon.ttf?5e7f6edccab75d70681ca167a85fa6de) format('truetype'),
+    url(/fonts/icomoon.woff?1b137b99826e05261ebfe6b8bada7d3d) format('woff'),
+    url(/fonts/icomoon.svg?dcbcac57eb40dfe1ef9c29037bea448d#icomoon) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,127 +24,230 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-circle-with-cross:before {
-  content: "\E90D";
+.icon-lock:before {
+  content: "\E90F";
 }
-.icon-close:before {
+.icon-eye-view:before {
   content: "\E900";
 }
-.icon-company:before {
+.icon-x:before {
+  content: "x";
+}
+.icon-qiwanggongzuo:before {
+  content: "\E65C";
+}
+.icon-fenxiang:before {
+  content: "\E64B";
+}
+.icon-shangcheng:before {
+  content: "\E77C";
+}
+.icon-gongzuojingli:before {
+  content: "\E61A";
+}
+.icon-liwuhe:before {
+  content: "\E619";
+}
+.icon-qian:before {
+  content: "\E605";
+}
+.icon-jiahao:before {
+  content: "\E665";
+}
+.icon-tongzhi:before {
+  content: "\E60E";
+}
+.icon-fenxiang1:before {
+  content: "\E65A";
+}
+.icon-correct:before {
+  content: "\E6A1";
+}
+.icon-shangquanguimo:before {
+  content: "\E6FE";
+}
+.icon-correct1:before {
+  content: "\E604";
+}
+.icon-loading:before {
+  content: "\E648";
+}
+.icon-ditie:before {
+  content: "\E606";
+}
+.icon-jianli:before {
+  content: "\E707";
+}
+.icon-xiaoxi:before {
+  content: "\E6AD";
+}
+.icon-hot:before {
+  content: "\E701";
+}
+.icon-v:before {
+  content: "\E681";
+}
+.icon-weixiao:before {
+  content: "\E603";
+}
+.icon-saomiao:before {
+  content: "\E699";
+}
+.icon-sousuo:before {
+  content: "\E641";
+}
+.icon-shezhi:before {
+  content: "\E661";
+}
+.icon-qianbao:before {
+  content: "\E614";
+}
+.icon-aixin:before {
+  content: "\E6A2";
+}
+.icon-gongsi:before {
+  content: "\E744";
+}
+.icon-yinsi1:before {
+  content: "\E626";
+}
+.icon-close:before {
   content: "\E901";
 }
-.icon-down:before {
+.icon-company:before {
   content: "\E902";
 }
-.icon-earth:before {
+.icon-down:before {
   content: "\E903";
 }
-.icon-education:before {
+.icon-earth:before {
   content: "\E904";
+}
+.icon-education:before {
+  content: "\E906";
 }
 .icon-left:before {
   content: "\E905";
 }
 .icon-love:before {
-  content: "\E906";
-}
-.icon-me:before {
   content: "\E907";
 }
-.icon-message:before {
+.icon-me:before {
   content: "\E908";
 }
-.icon-position:before {
+.icon-message:before {
   content: "\E909";
 }
-.icon-right:before {
+.icon-position:before {
   content: "\E90A";
 }
-.icon-seniority:before {
+.icon-right:before {
   content: "\E90B";
 }
-.icon-top:before {
+.icon-seniority:before {
   content: "\E90C";
 }
-
-@font-face {font-family: "iconfont";
-  src: url(/fonts/iconfont.eot?033c02b438eecf47923d2e7edac0b466); /* IE9*/
-  src: url(/fonts/iconfont.eot?033c02b438eecf47923d2e7edac0b466#iefix) format('embedded-opentype'), 
-  url(/fonts/iconfont.woff?c8e30881215a602729800513daf2d95a) format('woff'), 
-  url(/fonts/iconfont.ttf?5e6b2320d2941733e2854db5d64cafbe) format('truetype'), 
-  url(/fonts/iconfont.svg?de5d13201e36b25f3ef002230eb8084d#iconfont) format('svg'); /* iOS 4.1- */
+.icon-top:before {
+  content: "\E90D";
 }
-
-.iconfont {
-  font-family:"iconfont" !important;
-  speak: none;
-  font-style: normal;
+.icon-circle-with-cross:before {
+  content: "\E90E";
+}
+.icon-eye-blocked:before {
+  content: "\E9D1";
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video,
+input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
   font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  vertical-align: baseline;
 }
 
-.icon-qiwanggongzuo:before { content: "\E65C"; }
-
-.icon-fenxiang:before { content: "\E64B"; }
-
-.icon-shangcheng:before { content: "\E77C"; }
-
-.icon-gongzuojingli:before { content: "\E61A"; }
-
-.icon-liwuhe:before { content: "\E619"; }
-
-.icon-qian:before { content: "\E605"; }
-
-.icon-jiahao:before { content: "\E665"; }
-
-.icon-yinsi:before { content: "\E62A"; }
-
-.icon-tongzhi:before { content: "\E60E"; }
-
-.icon-fenxiang1:before { content: "\E65A"; }
-
-.icon-correct:before { content: "\E6A1"; }
-
-.icon-shangquanguimo:before { content: "\E6FE"; }
-
-.icon-correct1:before { content: "\E604"; }
-
-.icon-loading:before { content: "\E648"; }
-
-.icon-ditie:before { content: "\E606"; }
-
-.icon-jianli:before { content: "\E707"; }
-
-.icon-xiaoxi:before { content: "\E6AD"; }
-
-.icon-hot:before { content: "\E701"; }
-
-.icon-v:before { content: "\E681"; }
-
-.icon-weixiao:before { content: "\E603"; }
-
-.icon-saomiao:before { content: "\E699"; }
-
-.icon-sousuo:before { content: "\E641"; }
-
-.icon-shezhi:before { content: "\E661"; }
-
-.icon-qianbao:before { content: "\E614"; }
-
-.icon-aixin:before { content: "\E6A2"; }
-
-.icon-gongsi:before { content: "\E744"; }
-
-.icon-yinsi1:before { content: "\E626"; }
 body {
   width: 100%;
   height: 100%;
-  margin: 0;
-  padding: 0;
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -152,15 +255,63 @@ body {
   position: relative;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  text-decoration: none;
-  border: 0;
+input {
   outline: none;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* custom */
+
+a {
+  color: #7e8c8d;
+  -webkit-backface-visibility: hidden;
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .flex_parent {

@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Login from '../components/auth/verifyCodeLogin/login.vue'
+import verifycodeLogin from '../components/auth/verifyCodeLogin/verifycode-login.vue'
+import passwordLogin from '../components/auth/passwordLogin/password-login.vue'
 
 Vue.use(Router)
 
@@ -12,7 +13,18 @@ let routes = [
   },
   {
     path: '/login',
-    component: Login
+    component: verifycodeLogin,
+    children: [
+      {
+        path: 'password',
+        component: passwordLogin
+      }
+    ]
+
+  },
+  {
+    path: '/pswlogin',
+    component: passwordLogin
   }
 ]
 

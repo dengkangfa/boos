@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -71,7 +71,7 @@
 
 
 var bind = __webpack_require__(7);
-var isBuffer = __webpack_require__(20);
+var isBuffer = __webpack_require__(21);
 
 /*global toString:true*/
 
@@ -820,7 +820,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(22);
+var normalizeHeaderName = __webpack_require__(23);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -916,7 +916,7 @@ module.exports = defaults;
 /* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(19);
+module.exports = __webpack_require__(20);
 
 /***/ }),
 /* 7 */
@@ -1134,12 +1134,12 @@ process.umask = function() { return 0; };
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(23);
-var buildURL = __webpack_require__(25);
-var parseHeaders = __webpack_require__(26);
-var isURLSameOrigin = __webpack_require__(27);
+var settle = __webpack_require__(24);
+var buildURL = __webpack_require__(26);
+var parseHeaders = __webpack_require__(27);
+var isURLSameOrigin = __webpack_require__(28);
 var createError = __webpack_require__(10);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(28);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(29);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -1236,7 +1236,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(29);
+      var cookies = __webpack_require__(30);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -1320,7 +1320,7 @@ module.exports = function xhrAdapter(config) {
 "use strict";
 
 
-var enhanceError = __webpack_require__(24);
+var enhanceError = __webpack_require__(25);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -12150,47 +12150,103 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(37).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(38).setImmediate))
 
 /***/ }),
 /* 14 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-__webpack_require__(15);
-module.exports = __webpack_require__(69);
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return loginMixin; });
+// 手机正则表达式
+var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
 
+var loginMixin = {
+  data: function data() {
+    return {
+      userules: {
+        mobile: ''
+      },
+      closeIconShow: false
+    };
+  },
+  mounted: function mounted() {
+    var clientHeight = window.innerHeight;
+    window.addEventListener('resize', function () {
+      var nowClientHeight = window.innerHeight;
+      if (clientHeight > nowClientHeight) {
+        document.querySelectorAll('.login-footer')[0].style.position = 'static';
+        document.querySelectorAll('.login-footer')[1].style.position = 'static';
+      } else {
+        document.querySelectorAll('.login-footer')[0].style.position = 'fixed';
+        document.querySelectorAll('.login-footer')[1].style.position = 'fixed';
+      }
+    });
+  },
+
+  methods: {
+    close: function close() {
+      this.userules.mobile = '';
+    },
+    checkMobileRegex: function checkMobileRegex() {
+      if (!this.userules.mobile) {
+        this.message = '请填写手机号';
+      } else if (!phoneRegex.test(this.userules.mobile)) {
+        this.message = '输入号码与归属地不匹配';
+      } else {
+        return true;
+      }
+      this.$refs.message.show();
+      return false;
+    }
+  }
+};
 
 /***/ }),
 /* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(16);
+module.exports = __webpack_require__(80);
+
+
+/***/ }),
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue__ = __webpack_require__(39);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__router__ = __webpack_require__(42);
-__webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__App_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__router__ = __webpack_require__(43);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_fastclick__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_fastclick__);
+__webpack_require__(17);
 
-window.Vue = __webpack_require__(13);
 
 
 
+
+
+__WEBPACK_IMPORTED_MODULE_3_fastclick___default.a.attach(document.body);
 
 /* eslint-disable no-new */
-new Vue({
+new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
   el: '#app',
   render: function render(h) {
-    return h(__WEBPACK_IMPORTED_MODULE_0__App_vue___default.a);
+    return h(__WEBPACK_IMPORTED_MODULE_1__App_vue___default.a);
   },
-  router: __WEBPACK_IMPORTED_MODULE_1__router__["a" /* default */]
+  router: __WEBPACK_IMPORTED_MODULE_2__router__["a" /* default */]
 });
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(17);
+window._ = __webpack_require__(18);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12244,7 +12300,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -29333,10 +29389,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(18)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(19)(module)))
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -29364,7 +29420,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29372,7 +29428,7 @@ module.exports = function(module) {
 
 var utils = __webpack_require__(0);
 var bind = __webpack_require__(7);
-var Axios = __webpack_require__(21);
+var Axios = __webpack_require__(22);
 var defaults = __webpack_require__(5);
 
 /**
@@ -29407,14 +29463,14 @@ axios.create = function create(instanceConfig) {
 
 // Expose Cancel & CancelToken
 axios.Cancel = __webpack_require__(12);
-axios.CancelToken = __webpack_require__(35);
+axios.CancelToken = __webpack_require__(36);
 axios.isCancel = __webpack_require__(11);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(36);
+axios.spread = __webpack_require__(37);
 
 module.exports = axios;
 
@@ -29423,7 +29479,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports) {
 
 /*!
@@ -29450,7 +29506,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29458,8 +29514,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(5);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(30);
-var dispatchRequest = __webpack_require__(31);
+var InterceptorManager = __webpack_require__(31);
+var dispatchRequest = __webpack_require__(32);
 
 /**
  * Create a new instance of Axios
@@ -29536,7 +29592,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29555,7 +29611,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29588,7 +29644,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29616,7 +29672,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29691,7 +29747,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29751,7 +29807,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29826,7 +29882,7 @@ module.exports = (
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29869,7 +29925,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29929,7 +29985,7 @@ module.exports = (
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29988,18 +30044,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(32);
+var transformData = __webpack_require__(33);
 var isCancel = __webpack_require__(11);
 var defaults = __webpack_require__(5);
-var isAbsoluteURL = __webpack_require__(33);
-var combineURLs = __webpack_require__(34);
+var isAbsoluteURL = __webpack_require__(34);
+var combineURLs = __webpack_require__(35);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -30081,7 +30137,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30108,7 +30164,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30129,7 +30185,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30150,7 +30206,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30214,7 +30270,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30248,7 +30304,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -30301,13 +30357,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(38);
+__webpack_require__(39);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -30500,15 +30556,15 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(8)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(40)
+var __vue_script__ = __webpack_require__(41)
 /* template */
-var __vue_template__ = __webpack_require__(41)
+var __vue_template__ = __webpack_require__(42)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -30547,7 +30603,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -30562,7 +30618,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -30582,15 +30638,18 @@ if (false) {
 }
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_login_vue__ = __webpack_require__(44);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_login_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_verifycode_login_vue__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_verifycode_login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_verifycode_login_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_passwordLogin_password_login_vue__ = __webpack_require__(69);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_auth_passwordLogin_password_login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_auth_passwordLogin_password_login_vue__);
+
 
 
 
@@ -30603,7 +30662,15 @@ var routes = [{
   redirect: '/login'
 }, {
   path: '/login',
-  component: __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_login_vue___default.a
+  component: __WEBPACK_IMPORTED_MODULE_2__components_auth_verifyCodeLogin_verifycode_login_vue___default.a,
+  children: [{
+    path: 'password',
+    component: __WEBPACK_IMPORTED_MODULE_3__components_auth_passwordLogin_password_login_vue___default.a
+  }]
+
+}, {
+  path: '/pswlogin',
+  component: __WEBPACK_IMPORTED_MODULE_3__components_auth_passwordLogin_password_login_vue___default.a
 }];
 
 /* harmony default export */ __webpack_exports__["a"] = (new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -30611,7 +30678,7 @@ var routes = [{
 }));
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33241,13 +33308,13 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(45)
+  __webpack_require__(46)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
@@ -33259,7 +33326,7 @@ var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-4f151ab3"
+var __vue_scopeId__ = "data-v-1e57ac30"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -33270,7 +33337,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\auth\\verifyCodeLogin\\login.vue"
+Component.options.__file = "resources\\assets\\js\\components\\auth\\verifyCodeLogin\\verifycode-login.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -33279,9 +33346,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4f151ab3", Component.options)
+    hotAPI.createRecord("data-v-1e57ac30", Component.options)
   } else {
-    hotAPI.reload("data-v-4f151ab3", Component.options)
+    hotAPI.reload("data-v-1e57ac30", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -33292,23 +33359,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(46);
+var content = __webpack_require__(47);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("00674f92", content, false);
+var update = __webpack_require__(3)("dd859be0", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4f151ab3\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./login.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1e57ac30\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./verifycode-login.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1e57ac30\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./verifycode-login.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -33318,7 +33385,7 @@ if(false) {
 }
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(2)(undefined);
@@ -33326,28 +33393,22 @@ exports = module.exports = __webpack_require__(2)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-bg[data-v-4f151ab3] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-4f151ab3] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-4f151ab3] {\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(47) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1),\n.info-login li[data-v-4f151ab3]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-4f151ab3]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-4f151ab3]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-4f151ab3] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-4f151ab3] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-4f151ab3] {\n    font-size: 0.4rem;\n    color: #fff;\n    background-image: none;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-4f151ab3], .info-login li input[type=number][data-v-4f151ab3] {\n    width: 100%;\n    padding: 0.3rem 1rem 0.3rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-webkit-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::-ms-input-placeholder, .info-login li input[type=number][data-v-4f151ab3]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]::placeholder, .info-login li input[type=number][data-v-4f151ab3]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-4f151ab3]:focus, .info-login li input[type=number][data-v-4f151ab3]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-4f151ab3], .info-login li input[type=button][data-v-4f151ab3] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-4f151ab3]:hover, .info-login li input[type=button][data-v-4f151ab3]:hover {\n    background-color: #42AA83;\n}\n.info-login li:nth-child(1) b[data-v-4f151ab3] {\n  position: absolute;\n  display: block;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-4f151ab3]:nth-child(1):before,\n.info-login li[data-v-4f151ab3]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n  transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n  transform-origin: 0 0;\n}\n.info-login li:nth-child(2) span[data-v-4f151ab3] {\n  display: block;\n  width: .6rem;\n  height: .6rem;\n  background: url(" + __webpack_require__(48) + ") no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  left: .4rem;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.info-login li:nth-child(2) button[data-v-4f151ab3] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n.login-footer[data-v-4f151ab3] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-4f151ab3] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-4f151ab3] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-4f151ab3] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      position: relative;\n}\n.login-footer .or .line[data-v-4f151ab3]:after {\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        border-top: 1px solid #42b983;\n        content: ' ';\n}\n.login-footer .or .text[data-v-4f151ab3] {\n      padding: 0 12px;\n      font-weight: 700;\n      font-size: 14px;\n}\n.login-footer a[data-v-4f151ab3] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-4f151ab3] {\n      background: url(" + __webpack_require__(49) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-4f151ab3] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-4f151ab3] {\n    margin-top: 0;\n}\n}\n", ""]);
+exports.push([module.i, "\n.login-footer[data-v-1e57ac30] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-1e57ac30] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-1e57ac30] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-1e57ac30] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      position: relative;\n}\n.login-footer .or .line[data-v-1e57ac30]:after {\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        border-top: 1px solid #42b983;\n        content: ' ';\n}\n.login-footer .or .text[data-v-1e57ac30] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-1e57ac30] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(90) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.login-bg[data-v-1e57ac30] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-1e57ac30] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-1e57ac30] {\n    height: 2.2rem;\n    font-weight: bold;\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(48) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1),\n.info-login li[data-v-1e57ac30]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-1e57ac30]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-1e57ac30]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-1e57ac30] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-1e57ac30] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-1e57ac30] {\n    font-size: 0.35rem;\n    color: #fff;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-1e57ac30], .info-login li input[type=number][data-v-1e57ac30], .info-login li input[type=password][data-v-1e57ac30] {\n    width: 100%;\n    padding: 0.4rem 1rem 0.4rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::placeholder, .info-login li input[type=number][data-v-1e57ac30]::placeholder, .info-login li input[type=password][data-v-1e57ac30]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:focus, .info-login li input[type=number][data-v-1e57ac30]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-1e57ac30], .info-login li input[type=button][data-v-1e57ac30] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-1e57ac30]:hover, .info-login li input[type=button][data-v-1e57ac30]:hover {\n    background-color: #42AA83;\n}\n.info-login li:nth-child(1) b[data-v-1e57ac30] {\n  position: absolute;\n  display: block;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1):before,\n.info-login li[data-v-1e57ac30]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n          transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n          transform-origin: 0 0;\n}\n.info-login li:nth-child(2) span[data-v-1e57ac30] {\n  display: block;\n  width: .6rem;\n  height: .6rem;\n  background: url(" + __webpack_require__(49) + ") no-repeat;\n  background-size: 100% 100%;\n  position: absolute;\n  left: .4rem;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n}\n.info-login li:nth-child(2) button[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-1e57ac30] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-1e57ac30] {\n    margin-top: .5rem;\n}\n#login .info-login li[data-v-1e57ac30]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports) {
 
 module.exports = "/images/Introduction.png?454b362056fdbeb4653ef44a9910d26f";
 
 /***/ }),
-/* 48 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/icon_phone.png?9f9fd9f29f4c81a5af78ef6818694a60";
-
-/***/ }),
 /* 49 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/select.png?2a249dc8c12f415af07368682ccc6557";
+module.exports = "/images/icon_phone.png?9f9fd9f29f4c81a5af78ef6818694a60";
 
 /***/ }),
 /* 50 */
@@ -33395,6 +33456,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Api_sms_js__ = __webpack_require__(67);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Mixin_mixin_js__ = __webpack_require__(14);
+//
 //
 //
 //
@@ -33429,60 +33492,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-// 手机正则表达式
-var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_4_Mixin_mixin_js__["a" /* loginMixin */]],
   data: function data() {
     return {
       // 用户信息
       userules: {
-        mobile: '',
         verifyCode: ''
       },
-      iconShow: false,
-      spinning: false,
-      disabledVoiceVerify: false,
-      message: '',
+      spinning: false, // 是否显示loading
+      disabledVoiceVerify: false, // 语音验证码服务是否可用
+      message: '', // 提示消息
       lable: '+86'
     };
   },
-  mounted: function mounted() {
-    var clientHeight = window.innerHeight;
-    window.addEventListener('resize', function () {
-      var nowClientHeight = window.innerHeight;
-      if (clientHeight > nowClientHeight) {
-        document.querySelector('.login-footer').style.position = 'static';
-      } else {
-        document.querySelector('.login-footer').style.position = 'fixed';
-      }
-    });
-  },
 
   methods: {
-    close: function close() {
-      this.userules.mobile = '';
-    },
-    checkMobileRegex: function checkMobileRegex() {
-      if (this.userules.mobile === '') {
-        this.message = '请填写手机号';
-      } else if (!phoneRegex.test(this.userules.mobile)) {
-        this.message = '输入号码与归属地不匹配';
-      } else {
-        return true;
-      }
-      this.$refs.message.show();
-      return false;
-    },
     sendVerifyCode: function sendVerifyCode() {
       var _this = this;
 
-      this.disabledVoiceVerify = true;
+      this.disabledVoiceVerify = true; // 禁止获取语音验证码发送服务
       if (this.checkMobileRegex()) {
-        this.spinning = true;
+        this.spinning = true; // 显示正在发送的loading
         Object(__WEBPACK_IMPORTED_MODULE_3_Api_sms_js__["a" /* sendVerifyCode */])(this.userules.mobile).then(function (response) {
-          _this.spinning = false;
-          _this.$refs.timer.start();
+          _this.spinning = false; // 隐藏正在发送的loading
+          _this.$refs.timer.start(); // 可重复获取验证码按钮进入倒计时
+          _this.$refs.verifyCodeInput.focus(); // 让验证码输入框获取焦点(提高用户体验)
           console.log(response);
         });
       }
@@ -33491,11 +33527,12 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       var _this2 = this;
 
       if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
-        this.disabledVoiceVerify = true;
-        this.spinning = true;
+        this.disabledVoiceVerify = true; // 禁止重复获取语音验证码发送服务
+        this.spinning = true; // 显示正在发送的loading
         Object(__WEBPACK_IMPORTED_MODULE_3_Api_sms_js__["b" /* sendVoiceVerify */])(this.userules.mobile).then(function (response) {
-          _this2.spinning = false;
-          _this2.$refs.timer.start();
+          _this2.spinning = false; // 隐藏正在发送的loading
+          _this2.$refs.timer.start(); // 可重复获取验证码按钮进入倒计时
+          _this2.$refs.verifyCodeInput.focus(); // 让验证码输入框获取焦点(提高用户体验)
           console.log(response);
         });
       }
@@ -34148,7 +34185,7 @@ var render = function() {
                 domProps: { value: _vm.userules.mobile },
                 on: {
                   focus: function($event) {
-                    _vm.iconShow = true
+                    _vm.closeIconShow = true
                   },
                   input: function($event) {
                     if ($event.target.composing) {
@@ -34163,8 +34200,8 @@ var render = function() {
                   {
                     name: "show",
                     rawName: "v-show",
-                    value: _vm.iconShow && _vm.userules.mobile,
-                    expression: "iconShow && userules.mobile"
+                    value: _vm.closeIconShow && _vm.userules.mobile,
+                    expression: "closeIconShow && userules.mobile"
                   }
                 ],
                 staticClass: "icon-circle-with-cross",
@@ -34190,6 +34227,7 @@ var render = function() {
                       expression: "userules.verifyCode"
                     }
                   ],
+                  ref: "verifyCodeInput",
                   attrs: {
                     type: "number",
                     pattern: "[0-9]*",
@@ -34199,7 +34237,7 @@ var render = function() {
                   domProps: { value: _vm.userules.verifyCode },
                   on: {
                     focus: function($event) {
-                      _vm.iconShow = false
+                      _vm.closeIconShow = false
                     },
                     input: function($event) {
                       if ($event.target.composing) {
@@ -34224,7 +34262,8 @@ var render = function() {
                   "a",
                   {
                     staticStyle: {
-                      "text-decoration": "underlinecolor: #42b983"
+                      "text-decoration": "underline",
+                      color: "#42b983"
                     },
                     on: {
                       click: function($event) {
@@ -34262,7 +34301,7 @@ var render = function() {
             _c("span", [_vm._v("用户协议及隐私策略")])
           ]),
           _vm._v(" "),
-          _c("router-link", { attrs: { to: "" } }, [
+          _c("router-link", { attrs: { to: "/login/password" } }, [
             _c("span", [_vm._v("密码登录")])
           ])
         ],
@@ -34281,7 +34320,9 @@ var render = function() {
           }
         ],
         attrs: { text: "正在发送中" }
-      })
+      }),
+      _vm._v(" "),
+      _c("router-view")
     ],
     1
   )
@@ -34311,15 +34352,1554 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4f151ab3", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-1e57ac30", module.exports)
   }
 }
 
 /***/ }),
 /* 69 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(70)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(72)
+/* template */
+var __vue_template__ = __webpack_require__(78)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-a5a9b29c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\auth\\passwordLogin\\password-login.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a5a9b29c", Component.options)
+  } else {
+    hotAPI.reload("data-v-a5a9b29c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(71);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("db43bd68", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a5a9b29c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./password-login.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a5a9b29c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./password-login.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.login-footer[data-v-a5a9b29c] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-a5a9b29c] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-a5a9b29c] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-a5a9b29c] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      position: relative;\n}\n.login-footer .or .line[data-v-a5a9b29c]:after {\n        display: block;\n        position: absolute;\n        left: 0;\n        bottom: 0;\n        width: 100%;\n        border-top: 1px solid #42b983;\n        content: ' ';\n}\n.login-footer .or .text[data-v-a5a9b29c] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-a5a9b29c] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-a5a9b29c] {\n      background: url(" + __webpack_require__(89) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.password-login-wrapper[data-v-a5a9b29c] {\n  position: fixed;\n  z-index: 100;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n.password-login-wrapper .back[data-v-a5a9b29c] {\n    position: absolute;\n    top: 14px;\n    left: 6px;\n    z-index: 50;\n}\n.password-login-wrapper .back .icon-left[data-v-a5a9b29c] {\n      display: block;\n      padding: 10px;\n      font-size: 0.5rem;\n      color: #fff;\n}\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    width: 90%;\n    height: 10rem;\n    margin-top: 1.5rem;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.password-login-wrapper .password-login h3[data-v-a5a9b29c] {\n      height: 2.2rem;\n      text-align: center;\n      margin-bottom: 1.2rem;\n}\n.password-login-wrapper .password-login .avatar[data-v-a5a9b29c] {\n      border: 1px solid #fff;\n      border-radius: 100%;\n      width: 75px;\n      height: 75px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1), .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2) {\n      margin-top: .6rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(3) {\n      text-align: center;\n      color: #fff;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: 1rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c] {\n      height: 1.2rem;\n      line-height: 1.2rem;\n      position: relative;\n}\n.password-login-wrapper .password-login .info-login input[data-v-a5a9b29c] {\n      font-size: 0.35rem;\n      color: #fff;\n      -webkit-transition: all .3s;\n      transition: all .3s;\n      background: rgba(154, 165, 181, 0.3);\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c] {\n      width: 100%;\n      padding: 0.4rem 1rem 0.4rem 2rem;\n      border-radius: .8rem;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-webkit-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-webkit-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:focus, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:focus {\n      border-color: #53CAC3;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c] {\n      width: 100%;\n      height: 100%;\n      cursor: pointer;\n      background-color: #53CAC3;\n      border: 1px solid #53CAC3;\n      border-radius: .8rem;\n      -webkit-appearance: none;\n      white-space: nowrap;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c]:hover, .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c]:hover {\n      background-color: #42AA83;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) b[data-v-a5a9b29c] {\n      position: absolute;\n      display: block;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      color: #fff;\n      font-weight: 100;\n      padding-left: .4rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) .icon-circle-with-cross[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #605e5e;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1):before,\n    .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2):before {\n      display: table;\n      content: \"\";\n      position: absolute;\n      background: #fff;\n      width: 1px;\n      height: 100%;\n      top: 50%;\n      left: 1.6rem;\n      -webkit-transform: scaleY(0.3) translateY(-50%);\n              transform: scaleY(0.3) translateY(-50%);\n      -webkit-transform-origin: 0 0;\n              transform-origin: 0 0;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) .icon-lock[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #fff;\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) i.password-show-icon[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #fff;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(3) .reset[data-v-a5a9b29c] {\n      text-decoration: underline;\n      color: #42b983;\n      padding: 0.3rem;\n}\n.slide-enter-active[data-v-a5a9b29c], .slide-leave-active[data-v-a5a9b29c] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.slide-enter[data-v-a5a9b29c], .slide-leave-to[data-v-a5a9b29c] {\n  -webkit-transform: translate3d(100%, 0, 0);\n  transform: translate3d(100%, 0, 0);\n}\n@media screen and (max-height: 505px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: .5rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 72 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__ = __webpack_require__(73);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Mixin_mixin_js__ = __webpack_require__(14);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [__WEBPACK_IMPORTED_MODULE_1_Mixin_mixin_js__["a" /* loginMixin */]],
+  data: function data() {
+    return {
+      // 用户信息
+      userules: {
+        password: ''
+      },
+      passwordShow: false,
+      message: '',
+      lable: '+86'
+    };
+  },
+
+  methods: {
+    back: function back() {
+      this.$router.back();
+    },
+    close: function close() {
+      this.userules.mobile = '';
+    },
+    passwordShowLogger: function passwordShowLogger() {
+      this.passwordShow = !this.passwordShow;
+    },
+    submit: function submit() {
+      if (this.checkMobileRegex() && !this.userules.password) {
+        this.message = '密码不能为空';
+        this.$refs.message.show();
+      }
+    }
+  },
+  components: {
+    messageBox: __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue___default.a
+  }
+});
+
+/***/ }),
+/* 73 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(74)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3e200afc"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\message\\message-box.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3e200afc", Component.options)
+  } else {
+    hotAPI.reload("data-v-3e200afc", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 74 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(75);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(3)("5115cd18", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e200afc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message-box.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3e200afc\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./message-box.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 75 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(2)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.confirm[data-v-3e200afc] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: 998;\n}\n.confirm.confirm-fade-enter-active[data-v-3e200afc] {\n    -webkit-animation: confirm-fadein-data-v-3e200afc 0.3s;\n            animation: confirm-fadein-data-v-3e200afc 0.3s;\n}\n.confirm.confirm-fade-enter-active .confirm-content[data-v-3e200afc] {\n      -webkit-animation: confirm-zoom-data-v-3e200afc 0.3s;\n              animation: confirm-zoom-data-v-3e200afc 0.3s;\n}\n.confirm .confirm-wrapper[data-v-3e200afc] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    z-index: 999;\n}\n.confirm .confirm-wrapper .confirm-content[data-v-3e200afc] {\n      width: 270px;\n      border-radius: 13px;\n      background: #fff;\n}\n.confirm .confirm-wrapper .confirm-content .text[data-v-3e200afc] {\n        padding: 19px 15px;\n        line-height: 22px;\n        text-align: center;\n        font-size: .45rem;\n        font-weight: 700;\n        color: #000000;\n}\n.confirm .confirm-wrapper .confirm-content .operate[data-v-3e200afc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        text-align: center;\n        font-size: .45rem;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn[data-v-3e200afc] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          line-height: 22px;\n          padding: 10px 0;\n          border-top: 1px solid rgba(52, 159, 217, 0.5);\n          color: #59A6FA;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.left[data-v-3e200afc] {\n            border-right: 1px solid rgba(52, 159, 217, 0.5);\n}\n@-webkit-keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@-webkit-keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n@keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 76 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      showFlag: false
+    };
+  },
+
+  props: {
+    message: {
+      type: String,
+      default: ''
+    },
+    confirmButtonText: {
+      type: String,
+      default: '确定'
+    },
+    cancelButtonText: {
+      type: String,
+      default: '取消'
+    },
+    showCancelButton: {
+      type: Boolean,
+      default: false
+    },
+    showConfirmButton: {
+      type: Boolean,
+      default: true
+    }
+  },
+  methods: {
+    show: function show() {
+      this.showFlag = true;
+    },
+    hide: function hide() {
+      this.showFlag = false;
+    },
+    cancel: function cancel() {
+      this.hide();
+      this.$emit('cancel');
+    },
+    confirm: function confirm() {
+      this.hide();
+      this.$emit('confirm');
+    }
+  }
+});
+
+/***/ }),
+/* 77 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "confirm-fade" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showFlag,
+            expression: "showFlag"
+          }
+        ],
+        staticClass: "confirm",
+        on: {
+          click: function($event) {
+            $event.stopPropagation()
+          }
+        }
+      },
+      [
+        _c("div", { staticClass: "confirm-wrapper" }, [
+          _c("div", { staticClass: "confirm-content" }, [
+            _c("p", { staticClass: "text" }, [_vm._v(_vm._s(_vm.message))]),
+            _vm._v(" "),
+            _c("div", { staticClass: "operate" }, [
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showCancelButton,
+                      expression: "showCancelButton"
+                    }
+                  ],
+                  staticClass: "operate-btn left",
+                  on: { click: _vm.cancel }
+                },
+                [_vm._v(_vm._s(_vm.cancelButtonText))]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.showConfirmButton,
+                      expression: "showConfirmButton"
+                    }
+                  ],
+                  staticClass: "operate-btn",
+                  on: { click: _vm.confirm }
+                },
+                [_vm._v(_vm._s(_vm.confirmButtonText))]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3e200afc", module.exports)
+  }
+}
+
+/***/ }),
+/* 78 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide" } }, [
+    _c(
+      "div",
+      { staticClass: "password-login-wrapper" },
+      [
+        _c("div", { staticClass: "back", on: { click: _vm.back } }, [
+          _c("i", { staticClass: "icon-left" })
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "password-login" }, [
+          _c("form", { attrs: { action: "" } }, [
+            _c("h3", [
+              _c("img", {
+                staticClass: "avatar",
+                attrs: {
+                  src: "https://img2.bosszhipin.com/boss/avatar/avatar_15.png"
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("ul", { staticClass: "info-login" }, [
+              _c("li", [
+                _c("b", [
+                  _vm._v(_vm._s(_vm.lable)),
+                  _c("i", { staticClass: "icon-down" })
+                ]),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.userules.mobile,
+                      expression: "userules.mobile"
+                    }
+                  ],
+                  ref: "mobile",
+                  attrs: {
+                    type: "text",
+                    pattern: "[0-9]*",
+                    placeholder: "请输入您的手机号"
+                  },
+                  domProps: { value: _vm.userules.mobile },
+                  on: {
+                    focus: function($event) {
+                      _vm.closeIconShow = true
+                    },
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(_vm.userules, "mobile", $event.target.value)
+                    }
+                  }
+                }),
+                _c("i", {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.closeIconShow && _vm.userules.mobile,
+                      expression: "closeIconShow && userules.mobile"
+                    }
+                  ],
+                  staticClass: "icon-circle-with-cross",
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.close($event)
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("i", { staticClass: "icon-lock" }),
+                (_vm.passwordShow ? "text" : "password") === "checkbox"
+                  ? _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.userules.password,
+                          expression: "userules.password"
+                        }
+                      ],
+                      attrs: {
+                        placeholder: "6-25位字母、数字或下划线",
+                        type: "checkbox"
+                      },
+                      domProps: {
+                        checked: Array.isArray(_vm.userules.password)
+                          ? _vm._i(_vm.userules.password, null) > -1
+                          : _vm.userules.password
+                      },
+                      on: {
+                        focus: function($event) {
+                          _vm.closeIconShow = false
+                        },
+                        change: function($event) {
+                          var $$a = _vm.userules.password,
+                            $$el = $event.target,
+                            $$c = $$el.checked ? true : false
+                          if (Array.isArray($$a)) {
+                            var $$v = null,
+                              $$i = _vm._i($$a, $$v)
+                            if ($$el.checked) {
+                              $$i < 0 &&
+                                (_vm.userules.password = $$a.concat([$$v]))
+                            } else {
+                              $$i > -1 &&
+                                (_vm.userules.password = $$a
+                                  .slice(0, $$i)
+                                  .concat($$a.slice($$i + 1)))
+                            }
+                          } else {
+                            _vm.$set(_vm.userules, "password", $$c)
+                          }
+                        }
+                      }
+                    })
+                  : (_vm.passwordShow ? "text" : "password") === "radio"
+                    ? _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userules.password,
+                            expression: "userules.password"
+                          }
+                        ],
+                        attrs: {
+                          placeholder: "6-25位字母、数字或下划线",
+                          type: "radio"
+                        },
+                        domProps: {
+                          checked: _vm._q(_vm.userules.password, null)
+                        },
+                        on: {
+                          focus: function($event) {
+                            _vm.closeIconShow = false
+                          },
+                          change: function($event) {
+                            _vm.$set(_vm.userules, "password", null)
+                          }
+                        }
+                      })
+                    : _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.userules.password,
+                            expression: "userules.password"
+                          }
+                        ],
+                        attrs: {
+                          placeholder: "6-25位字母、数字或下划线",
+                          type: _vm.passwordShow ? "text" : "password"
+                        },
+                        domProps: { value: _vm.userules.password },
+                        on: {
+                          focus: function($event) {
+                            _vm.closeIconShow = false
+                          },
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.userules,
+                              "password",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      }),
+                _c("i", {
+                  staticClass: "password-show-icon",
+                  class: _vm.passwordShow
+                    ? "icon-eye-view"
+                    : "icon-eye-blocked",
+                  on: { click: _vm.passwordShowLogger }
+                })
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("p", [
+                  _c("a", { staticClass: "reset" }, [_vm._v("忘记密码")])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c("input", {
+                  attrs: { type: "submit", value: "登录" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.submit($event)
+                    }
+                  }
+                })
+              ])
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          { staticClass: "login-footer flex_parent clearHistory" },
+          [
+            _c("div", { staticClass: "or" }, [
+              _c("div", { staticClass: "line" }),
+              _vm._v(" "),
+              _c("div", { staticClass: "text" }, [_vm._v("OR")]),
+              _vm._v(" "),
+              _c("div", { staticClass: "line" })
+            ]),
+            _vm._v(" "),
+            _c("router-link", { staticClass: "protocol", attrs: { to: "" } }, [
+              _c("span", [_vm._v("用户协议及隐私策略")])
+            ]),
+            _vm._v(" "),
+            _c("router-link", { attrs: { to: "" } }, [
+              _c("span", [_vm._v("登录遇到问题")])
+            ])
+          ],
+          1
+        ),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "message",
+          attrs: { message: _vm.message, confirmButtonText: "好" }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a5a9b29c", module.exports)
+  }
+}
+
+/***/ }),
+/* 79 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
+	'use strict';
+
+	/**
+	 * @preserve FastClick: polyfill to remove click delays on browsers with touch UIs.
+	 *
+	 * @codingstandard ftlabs-jsv2
+	 * @copyright The Financial Times Limited [All Rights Reserved]
+	 * @license MIT License (see LICENSE.txt)
+	 */
+
+	/*jslint browser:true, node:true*/
+	/*global define, Event, Node*/
+
+
+	/**
+	 * Instantiate fast-clicking listeners on the specified layer.
+	 *
+	 * @constructor
+	 * @param {Element} layer The layer to listen on
+	 * @param {Object} [options={}] The options to override the defaults
+	 */
+	function FastClick(layer, options) {
+		var oldOnClick;
+
+		options = options || {};
+
+		/**
+		 * Whether a click is currently being tracked.
+		 *
+		 * @type boolean
+		 */
+		this.trackingClick = false;
+
+
+		/**
+		 * Timestamp for when click tracking started.
+		 *
+		 * @type number
+		 */
+		this.trackingClickStart = 0;
+
+
+		/**
+		 * The element being tracked for a click.
+		 *
+		 * @type EventTarget
+		 */
+		this.targetElement = null;
+
+
+		/**
+		 * X-coordinate of touch start event.
+		 *
+		 * @type number
+		 */
+		this.touchStartX = 0;
+
+
+		/**
+		 * Y-coordinate of touch start event.
+		 *
+		 * @type number
+		 */
+		this.touchStartY = 0;
+
+
+		/**
+		 * ID of the last touch, retrieved from Touch.identifier.
+		 *
+		 * @type number
+		 */
+		this.lastTouchIdentifier = 0;
+
+
+		/**
+		 * Touchmove boundary, beyond which a click will be cancelled.
+		 *
+		 * @type number
+		 */
+		this.touchBoundary = options.touchBoundary || 10;
+
+
+		/**
+		 * The FastClick layer.
+		 *
+		 * @type Element
+		 */
+		this.layer = layer;
+
+		/**
+		 * The minimum time between tap(touchstart and touchend) events
+		 *
+		 * @type number
+		 */
+		this.tapDelay = options.tapDelay || 200;
+
+		/**
+		 * The maximum time for a tap
+		 *
+		 * @type number
+		 */
+		this.tapTimeout = options.tapTimeout || 700;
+
+		if (FastClick.notNeeded(layer)) {
+			return;
+		}
+
+		// Some old versions of Android don't have Function.prototype.bind
+		function bind(method, context) {
+			return function() { return method.apply(context, arguments); };
+		}
+
+
+		var methods = ['onMouse', 'onClick', 'onTouchStart', 'onTouchMove', 'onTouchEnd', 'onTouchCancel'];
+		var context = this;
+		for (var i = 0, l = methods.length; i < l; i++) {
+			context[methods[i]] = bind(context[methods[i]], context);
+		}
+
+		// Set up event handlers as required
+		if (deviceIsAndroid) {
+			layer.addEventListener('mouseover', this.onMouse, true);
+			layer.addEventListener('mousedown', this.onMouse, true);
+			layer.addEventListener('mouseup', this.onMouse, true);
+		}
+
+		layer.addEventListener('click', this.onClick, true);
+		layer.addEventListener('touchstart', this.onTouchStart, false);
+		layer.addEventListener('touchmove', this.onTouchMove, false);
+		layer.addEventListener('touchend', this.onTouchEnd, false);
+		layer.addEventListener('touchcancel', this.onTouchCancel, false);
+
+		// Hack is required for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+		// which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick
+		// layer when they are cancelled.
+		if (!Event.prototype.stopImmediatePropagation) {
+			layer.removeEventListener = function(type, callback, capture) {
+				var rmv = Node.prototype.removeEventListener;
+				if (type === 'click') {
+					rmv.call(layer, type, callback.hijacked || callback, capture);
+				} else {
+					rmv.call(layer, type, callback, capture);
+				}
+			};
+
+			layer.addEventListener = function(type, callback, capture) {
+				var adv = Node.prototype.addEventListener;
+				if (type === 'click') {
+					adv.call(layer, type, callback.hijacked || (callback.hijacked = function(event) {
+						if (!event.propagationStopped) {
+							callback(event);
+						}
+					}), capture);
+				} else {
+					adv.call(layer, type, callback, capture);
+				}
+			};
+		}
+
+		// If a handler is already declared in the element's onclick attribute, it will be fired before
+		// FastClick's onClick handler. Fix this by pulling out the user-defined handler function and
+		// adding it as listener.
+		if (typeof layer.onclick === 'function') {
+
+			// Android browser on at least 3.2 requires a new reference to the function in layer.onclick
+			// - the old one won't work if passed to addEventListener directly.
+			oldOnClick = layer.onclick;
+			layer.addEventListener('click', function(event) {
+				oldOnClick(event);
+			}, false);
+			layer.onclick = null;
+		}
+	}
+
+	/**
+	* Windows Phone 8.1 fakes user agent string to look like Android and iPhone.
+	*
+	* @type boolean
+	*/
+	var deviceIsWindowsPhone = navigator.userAgent.indexOf("Windows Phone") >= 0;
+
+	/**
+	 * Android requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsAndroid = navigator.userAgent.indexOf('Android') > 0 && !deviceIsWindowsPhone;
+
+
+	/**
+	 * iOS requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOS = /iP(ad|hone|od)/.test(navigator.userAgent) && !deviceIsWindowsPhone;
+
+
+	/**
+	 * iOS 4 requires an exception for select elements.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOS4 = deviceIsIOS && (/OS 4_\d(_\d)?/).test(navigator.userAgent);
+
+
+	/**
+	 * iOS 6.0-7.* requires the target element to be manually derived
+	 *
+	 * @type boolean
+	 */
+	var deviceIsIOSWithBadTarget = deviceIsIOS && (/OS [6-7]_\d/).test(navigator.userAgent);
+
+	/**
+	 * BlackBerry requires exceptions.
+	 *
+	 * @type boolean
+	 */
+	var deviceIsBlackBerry10 = navigator.userAgent.indexOf('BB10') > 0;
+
+	/**
+	 * Determine whether a given element requires a native click.
+	 *
+	 * @param {EventTarget|Element} target Target DOM element
+	 * @returns {boolean} Returns true if the element needs a native click
+	 */
+	FastClick.prototype.needsClick = function(target) {
+		switch (target.nodeName.toLowerCase()) {
+
+		// Don't send a synthetic click to disabled inputs (issue #62)
+		case 'button':
+		case 'select':
+		case 'textarea':
+			if (target.disabled) {
+				return true;
+			}
+
+			break;
+		case 'input':
+
+			// File inputs need real clicks on iOS 6 due to a browser bug (issue #68)
+			if ((deviceIsIOS && target.type === 'file') || target.disabled) {
+				return true;
+			}
+
+			break;
+		case 'label':
+		case 'iframe': // iOS8 homescreen apps can prevent events bubbling into frames
+		case 'video':
+			return true;
+		}
+
+		return (/\bneedsclick\b/).test(target.className);
+	};
+
+
+	/**
+	 * Determine whether a given element requires a call to focus to simulate click into element.
+	 *
+	 * @param {EventTarget|Element} target Target DOM element
+	 * @returns {boolean} Returns true if the element requires a call to focus to simulate native click.
+	 */
+	FastClick.prototype.needsFocus = function(target) {
+		switch (target.nodeName.toLowerCase()) {
+		case 'textarea':
+			return true;
+		case 'select':
+			return !deviceIsAndroid;
+		case 'input':
+			switch (target.type) {
+			case 'button':
+			case 'checkbox':
+			case 'file':
+			case 'image':
+			case 'radio':
+			case 'submit':
+				return false;
+			}
+
+			// No point in attempting to focus disabled inputs
+			return !target.disabled && !target.readOnly;
+		default:
+			return (/\bneedsfocus\b/).test(target.className);
+		}
+	};
+
+
+	/**
+	 * Send a click event to the specified element.
+	 *
+	 * @param {EventTarget|Element} targetElement
+	 * @param {Event} event
+	 */
+	FastClick.prototype.sendClick = function(targetElement, event) {
+		var clickEvent, touch;
+
+		// On some Android devices activeElement needs to be blurred otherwise the synthetic click will have no effect (#24)
+		if (document.activeElement && document.activeElement !== targetElement) {
+			document.activeElement.blur();
+		}
+
+		touch = event.changedTouches[0];
+
+		// Synthesise a click event, with an extra attribute so it can be tracked
+		clickEvent = document.createEvent('MouseEvents');
+		clickEvent.initMouseEvent(this.determineEventType(targetElement), true, true, window, 1, touch.screenX, touch.screenY, touch.clientX, touch.clientY, false, false, false, false, 0, null);
+		clickEvent.forwardedTouchEvent = true;
+		targetElement.dispatchEvent(clickEvent);
+	};
+
+	FastClick.prototype.determineEventType = function(targetElement) {
+
+		//Issue #159: Android Chrome Select Box does not open with a synthetic click event
+		if (deviceIsAndroid && targetElement.tagName.toLowerCase() === 'select') {
+			return 'mousedown';
+		}
+
+		return 'click';
+	};
+
+
+	/**
+	 * @param {EventTarget|Element} targetElement
+	 */
+	FastClick.prototype.focus = function(targetElement) {
+		var length;
+
+		// Issue #160: on iOS 7, some input elements (e.g. date datetime month) throw a vague TypeError on setSelectionRange. These elements don't have an integer value for the selectionStart and selectionEnd properties, but unfortunately that can't be used for detection because accessing the properties also throws a TypeError. Just check the type instead. Filed as Apple bug #15122724.
+		if (deviceIsIOS && targetElement.setSelectionRange && targetElement.type.indexOf('date') !== 0 && targetElement.type !== 'time' && targetElement.type !== 'month') {
+			length = targetElement.value.length;
+			targetElement.setSelectionRange(length, length);
+		} else {
+			targetElement.focus();
+		}
+	};
+
+
+	/**
+	 * Check whether the given target element is a child of a scrollable layer and if so, set a flag on it.
+	 *
+	 * @param {EventTarget|Element} targetElement
+	 */
+	FastClick.prototype.updateScrollParent = function(targetElement) {
+		var scrollParent, parentElement;
+
+		scrollParent = targetElement.fastClickScrollParent;
+
+		// Attempt to discover whether the target element is contained within a scrollable layer. Re-check if the
+		// target element was moved to another parent.
+		if (!scrollParent || !scrollParent.contains(targetElement)) {
+			parentElement = targetElement;
+			do {
+				if (parentElement.scrollHeight > parentElement.offsetHeight) {
+					scrollParent = parentElement;
+					targetElement.fastClickScrollParent = parentElement;
+					break;
+				}
+
+				parentElement = parentElement.parentElement;
+			} while (parentElement);
+		}
+
+		// Always update the scroll top tracker if possible.
+		if (scrollParent) {
+			scrollParent.fastClickLastScrollTop = scrollParent.scrollTop;
+		}
+	};
+
+
+	/**
+	 * @param {EventTarget} targetElement
+	 * @returns {Element|EventTarget}
+	 */
+	FastClick.prototype.getTargetElementFromEventTarget = function(eventTarget) {
+
+		// On some older browsers (notably Safari on iOS 4.1 - see issue #56) the event target may be a text node.
+		if (eventTarget.nodeType === Node.TEXT_NODE) {
+			return eventTarget.parentNode;
+		}
+
+		return eventTarget;
+	};
+
+
+	/**
+	 * On touch start, record the position and scroll offset.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchStart = function(event) {
+		var targetElement, touch, selection;
+
+		// Ignore multiple touches, otherwise pinch-to-zoom is prevented if both fingers are on the FastClick element (issue #111).
+		if (event.targetTouches.length > 1) {
+			return true;
+		}
+
+		targetElement = this.getTargetElementFromEventTarget(event.target);
+		touch = event.targetTouches[0];
+
+		if (deviceIsIOS) {
+
+			// Only trusted events will deselect text on iOS (issue #49)
+			selection = window.getSelection();
+			if (selection.rangeCount && !selection.isCollapsed) {
+				return true;
+			}
+
+			if (!deviceIsIOS4) {
+
+				// Weird things happen on iOS when an alert or confirm dialog is opened from a click event callback (issue #23):
+				// when the user next taps anywhere else on the page, new touchstart and touchend events are dispatched
+				// with the same identifier as the touch event that previously triggered the click that triggered the alert.
+				// Sadly, there is an issue on iOS 4 that causes some normal touch events to have the same identifier as an
+				// immediately preceeding touch event (issue #52), so this fix is unavailable on that platform.
+				// Issue 120: touch.identifier is 0 when Chrome dev tools 'Emulate touch events' is set with an iOS device UA string,
+				// which causes all touch events to be ignored. As this block only applies to iOS, and iOS identifiers are always long,
+				// random integers, it's safe to to continue if the identifier is 0 here.
+				if (touch.identifier && touch.identifier === this.lastTouchIdentifier) {
+					event.preventDefault();
+					return false;
+				}
+
+				this.lastTouchIdentifier = touch.identifier;
+
+				// If the target element is a child of a scrollable layer (using -webkit-overflow-scrolling: touch) and:
+				// 1) the user does a fling scroll on the scrollable layer
+				// 2) the user stops the fling scroll with another tap
+				// then the event.target of the last 'touchend' event will be the element that was under the user's finger
+				// when the fling scroll was started, causing FastClick to send a click event to that layer - unless a check
+				// is made to ensure that a parent layer was not scrolled before sending a synthetic click (issue #42).
+				this.updateScrollParent(targetElement);
+			}
+		}
+
+		this.trackingClick = true;
+		this.trackingClickStart = event.timeStamp;
+		this.targetElement = targetElement;
+
+		this.touchStartX = touch.pageX;
+		this.touchStartY = touch.pageY;
+
+		// Prevent phantom clicks on fast double-tap (issue #36)
+		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
+			event.preventDefault();
+		}
+
+		return true;
+	};
+
+
+	/**
+	 * Based on a touchmove event object, check whether the touch has moved past a boundary since it started.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.touchHasMoved = function(event) {
+		var touch = event.changedTouches[0], boundary = this.touchBoundary;
+
+		if (Math.abs(touch.pageX - this.touchStartX) > boundary || Math.abs(touch.pageY - this.touchStartY) > boundary) {
+			return true;
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * Update the last position.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchMove = function(event) {
+		if (!this.trackingClick) {
+			return true;
+		}
+
+		// If the touch has moved, cancel the click tracking
+		if (this.targetElement !== this.getTargetElementFromEventTarget(event.target) || this.touchHasMoved(event)) {
+			this.trackingClick = false;
+			this.targetElement = null;
+		}
+
+		return true;
+	};
+
+
+	/**
+	 * Attempt to find the labelled control for the given label element.
+	 *
+	 * @param {EventTarget|HTMLLabelElement} labelElement
+	 * @returns {Element|null}
+	 */
+	FastClick.prototype.findControl = function(labelElement) {
+
+		// Fast path for newer browsers supporting the HTML5 control attribute
+		if (labelElement.control !== undefined) {
+			return labelElement.control;
+		}
+
+		// All browsers under test that support touch events also support the HTML5 htmlFor attribute
+		if (labelElement.htmlFor) {
+			return document.getElementById(labelElement.htmlFor);
+		}
+
+		// If no for attribute exists, attempt to retrieve the first labellable descendant element
+		// the list of which is defined here: http://www.w3.org/TR/html5/forms.html#category-label
+		return labelElement.querySelector('button, input:not([type=hidden]), keygen, meter, output, progress, select, textarea');
+	};
+
+
+	/**
+	 * On touch end, determine whether to send a click event at once.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onTouchEnd = function(event) {
+		var forElement, trackingClickStart, targetTagName, scrollParent, touch, targetElement = this.targetElement;
+
+		if (!this.trackingClick) {
+			return true;
+		}
+
+		// Prevent phantom clicks on fast double-tap (issue #36)
+		if ((event.timeStamp - this.lastClickTime) < this.tapDelay) {
+			this.cancelNextClick = true;
+			return true;
+		}
+
+		if ((event.timeStamp - this.trackingClickStart) > this.tapTimeout) {
+			return true;
+		}
+
+		// Reset to prevent wrong click cancel on input (issue #156).
+		this.cancelNextClick = false;
+
+		this.lastClickTime = event.timeStamp;
+
+		trackingClickStart = this.trackingClickStart;
+		this.trackingClick = false;
+		this.trackingClickStart = 0;
+
+		// On some iOS devices, the targetElement supplied with the event is invalid if the layer
+		// is performing a transition or scroll, and has to be re-detected manually. Note that
+		// for this to function correctly, it must be called *after* the event target is checked!
+		// See issue #57; also filed as rdar://13048589 .
+		if (deviceIsIOSWithBadTarget) {
+			touch = event.changedTouches[0];
+
+			// In certain cases arguments of elementFromPoint can be negative, so prevent setting targetElement to null
+			targetElement = document.elementFromPoint(touch.pageX - window.pageXOffset, touch.pageY - window.pageYOffset) || targetElement;
+			targetElement.fastClickScrollParent = this.targetElement.fastClickScrollParent;
+		}
+
+		targetTagName = targetElement.tagName.toLowerCase();
+		if (targetTagName === 'label') {
+			forElement = this.findControl(targetElement);
+			if (forElement) {
+				this.focus(targetElement);
+				if (deviceIsAndroid) {
+					return false;
+				}
+
+				targetElement = forElement;
+			}
+		} else if (this.needsFocus(targetElement)) {
+
+			// Case 1: If the touch started a while ago (best guess is 100ms based on tests for issue #36) then focus will be triggered anyway. Return early and unset the target element reference so that the subsequent click will be allowed through.
+			// Case 2: Without this exception for input elements tapped when the document is contained in an iframe, then any inputted text won't be visible even though the value attribute is updated as the user types (issue #37).
+			if ((event.timeStamp - trackingClickStart) > 100 || (deviceIsIOS && window.top !== window && targetTagName === 'input')) {
+				this.targetElement = null;
+				return false;
+			}
+
+			this.focus(targetElement);
+			this.sendClick(targetElement, event);
+
+			// Select elements need the event to go through on iOS 4, otherwise the selector menu won't open.
+			// Also this breaks opening selects when VoiceOver is active on iOS6, iOS7 (and possibly others)
+			if (!deviceIsIOS || targetTagName !== 'select') {
+				this.targetElement = null;
+				event.preventDefault();
+			}
+
+			return false;
+		}
+
+		if (deviceIsIOS && !deviceIsIOS4) {
+
+			// Don't send a synthetic click event if the target element is contained within a parent layer that was scrolled
+			// and this tap is being used to stop the scrolling (usually initiated by a fling - issue #42).
+			scrollParent = targetElement.fastClickScrollParent;
+			if (scrollParent && scrollParent.fastClickLastScrollTop !== scrollParent.scrollTop) {
+				return true;
+			}
+		}
+
+		// Prevent the actual click from going though - unless the target node is marked as requiring
+		// real clicks or if it is in the whitelist in which case only non-programmatic clicks are permitted.
+		if (!this.needsClick(targetElement)) {
+			event.preventDefault();
+			this.sendClick(targetElement, event);
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * On touch cancel, stop tracking the click.
+	 *
+	 * @returns {void}
+	 */
+	FastClick.prototype.onTouchCancel = function() {
+		this.trackingClick = false;
+		this.targetElement = null;
+	};
+
+
+	/**
+	 * Determine mouse events which should be permitted.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onMouse = function(event) {
+
+		// If a target element was never set (because a touch event was never fired) allow the event
+		if (!this.targetElement) {
+			return true;
+		}
+
+		if (event.forwardedTouchEvent) {
+			return true;
+		}
+
+		// Programmatically generated events targeting a specific element should be permitted
+		if (!event.cancelable) {
+			return true;
+		}
+
+		// Derive and check the target element to see whether the mouse event needs to be permitted;
+		// unless explicitly enabled, prevent non-touch click events from triggering actions,
+		// to prevent ghost/doubleclicks.
+		if (!this.needsClick(this.targetElement) || this.cancelNextClick) {
+
+			// Prevent any user-added listeners declared on FastClick element from being fired.
+			if (event.stopImmediatePropagation) {
+				event.stopImmediatePropagation();
+			} else {
+
+				// Part of the hack for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
+				event.propagationStopped = true;
+			}
+
+			// Cancel the event
+			event.stopPropagation();
+			event.preventDefault();
+
+			return false;
+		}
+
+		// If the mouse event is permitted, return true for the action to go through.
+		return true;
+	};
+
+
+	/**
+	 * On actual clicks, determine whether this is a touch-generated click, a click action occurring
+	 * naturally after a delay after a touch (which needs to be cancelled to avoid duplication), or
+	 * an actual click which should be permitted.
+	 *
+	 * @param {Event} event
+	 * @returns {boolean}
+	 */
+	FastClick.prototype.onClick = function(event) {
+		var permitted;
+
+		// It's possible for another FastClick-like library delivered with third-party code to fire a click event before FastClick does (issue #44). In that case, set the click-tracking flag back to false and return early. This will cause onTouchEnd to return early.
+		if (this.trackingClick) {
+			this.targetElement = null;
+			this.trackingClick = false;
+			return true;
+		}
+
+		// Very odd behaviour on iOS (issue #18): if a submit element is present inside a form and the user hits enter in the iOS simulator or clicks the Go button on the pop-up OS keyboard the a kind of 'fake' click event will be triggered with the submit-type input element as the target.
+		if (event.target.type === 'submit' && event.detail === 0) {
+			return true;
+		}
+
+		permitted = this.onMouse(event);
+
+		// Only unset targetElement if the click is not permitted. This will ensure that the check for !targetElement in onMouse fails and the browser's click doesn't go through.
+		if (!permitted) {
+			this.targetElement = null;
+		}
+
+		// If clicks are permitted, return true for the action to go through.
+		return permitted;
+	};
+
+
+	/**
+	 * Remove all FastClick's event listeners.
+	 *
+	 * @returns {void}
+	 */
+	FastClick.prototype.destroy = function() {
+		var layer = this.layer;
+
+		if (deviceIsAndroid) {
+			layer.removeEventListener('mouseover', this.onMouse, true);
+			layer.removeEventListener('mousedown', this.onMouse, true);
+			layer.removeEventListener('mouseup', this.onMouse, true);
+		}
+
+		layer.removeEventListener('click', this.onClick, true);
+		layer.removeEventListener('touchstart', this.onTouchStart, false);
+		layer.removeEventListener('touchmove', this.onTouchMove, false);
+		layer.removeEventListener('touchend', this.onTouchEnd, false);
+		layer.removeEventListener('touchcancel', this.onTouchCancel, false);
+	};
+
+
+	/**
+	 * Check whether FastClick is needed.
+	 *
+	 * @param {Element} layer The layer to listen on
+	 */
+	FastClick.notNeeded = function(layer) {
+		var metaViewport;
+		var chromeVersion;
+		var blackberryVersion;
+		var firefoxVersion;
+
+		// Devices that don't support touch don't need FastClick
+		if (typeof window.ontouchstart === 'undefined') {
+			return true;
+		}
+
+		// Chrome version - zero for other browsers
+		chromeVersion = +(/Chrome\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
+
+		if (chromeVersion) {
+
+			if (deviceIsAndroid) {
+				metaViewport = document.querySelector('meta[name=viewport]');
+
+				if (metaViewport) {
+					// Chrome on Android with user-scalable="no" doesn't need FastClick (issue #89)
+					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
+						return true;
+					}
+					// Chrome 32 and above with width=device-width or less don't need FastClick
+					if (chromeVersion > 31 && document.documentElement.scrollWidth <= window.outerWidth) {
+						return true;
+					}
+				}
+
+			// Chrome desktop doesn't need FastClick (issue #15)
+			} else {
+				return true;
+			}
+		}
+
+		if (deviceIsBlackBerry10) {
+			blackberryVersion = navigator.userAgent.match(/Version\/([0-9]*)\.([0-9]*)/);
+
+			// BlackBerry 10.3+ does not require Fastclick library.
+			// https://github.com/ftlabs/fastclick/issues/251
+			if (blackberryVersion[1] >= 10 && blackberryVersion[2] >= 3) {
+				metaViewport = document.querySelector('meta[name=viewport]');
+
+				if (metaViewport) {
+					// user-scalable=no eliminates click delay.
+					if (metaViewport.content.indexOf('user-scalable=no') !== -1) {
+						return true;
+					}
+					// width=device-width (or less than device-width) eliminates click delay.
+					if (document.documentElement.scrollWidth <= window.outerWidth) {
+						return true;
+					}
+				}
+			}
+		}
+
+		// IE10 with -ms-touch-action: none or manipulation, which disables double-tap-to-zoom (issue #97)
+		if (layer.style.msTouchAction === 'none' || layer.style.touchAction === 'manipulation') {
+			return true;
+		}
+
+		// Firefox version - zero for other browsers
+		firefoxVersion = +(/Firefox\/([0-9]+)/.exec(navigator.userAgent) || [,0])[1];
+
+		if (firefoxVersion >= 27) {
+			// Firefox 27+ does not have tap delay if the content is not zoomable - https://bugzilla.mozilla.org/show_bug.cgi?id=922896
+
+			metaViewport = document.querySelector('meta[name=viewport]');
+			if (metaViewport && (metaViewport.content.indexOf('user-scalable=no') !== -1 || document.documentElement.scrollWidth <= window.outerWidth)) {
+				return true;
+			}
+		}
+
+		// IE11: prefixed -ms-touch-action is no longer supported and it's recomended to use non-prefixed version
+		// http://msdn.microsoft.com/en-us/library/windows/apps/Hh767313.aspx
+		if (layer.style.touchAction === 'none' || layer.style.touchAction === 'manipulation') {
+			return true;
+		}
+
+		return false;
+	};
+
+
+	/**
+	 * Factory method for creating a FastClick object
+	 *
+	 * @param {Element} layer The layer to listen on
+	 * @param {Object} [options={}] The options to override the defaults
+	 */
+	FastClick.attach = function(layer, options) {
+		return new FastClick(layer, options);
+	};
+
+
+	if (true) {
+
+		// AMD. Register as an anonymous module.
+		!(__WEBPACK_AMD_DEFINE_RESULT__ = (function() {
+			return FastClick;
+		}).call(exports, __webpack_require__, exports, module),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else if (typeof module !== 'undefined' && module.exports) {
+		module.exports = FastClick.attach;
+		module.exports.FastClick = FastClick;
+	} else {
+		window.FastClick = FastClick;
+	}
+}());
+
+
+/***/ }),
+/* 80 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 81 */,
+/* 82 */,
+/* 83 */,
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
+/* 88 */,
+/* 89 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/select.png?2a249dc8c12f415af07368682ccc6557";
+
+/***/ }),
+/* 90 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/select.png?2a249dc8c12f415af07368682ccc6557";
 
 /***/ })
 /******/ ]);
