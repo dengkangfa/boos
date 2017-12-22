@@ -7,7 +7,7 @@
             <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
             <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="closeIconShow = false" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
             <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
-            <li><input @click.prevent="" type="submit" value="进入"></li>
+            <li><input @click.prevent="submit" type="submit" value="进入"></li>
           </ul>
         </form>
       </div>
@@ -22,7 +22,8 @@
         <router-link to="/login/password"><span>密码登录</span></router-link>
       </div>
       <message :message="message" ref="message"></message>
-      <fading-circle text="正在发送中" v-show="spinning"></fading-circle>
+      <message-box :message="message" confirmButtonText="好" ref="messageBox"></message-box>
+      <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
       <router-view></router-view>
     </div>
 </template>
@@ -31,7 +32,10 @@
   import message from 'Base/message/message.vue'
   import fadingCircle from 'Base/spinner/fading-circle.vue'
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
+  import messageBox from 'Base/message/message-box.vue'
   import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
+  import {verifycodeLogin} from 'Api/login.js'
+  import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config.js'
   import {loginMixin} from 'Mixin/mixin.js'
 
   export default {
@@ -45,17 +49,20 @@
         spinning: false, // 是否显示loading
         disabledVoiceVerify: false, // 语音验证码服务是否可用
         message: '', // 提示消息
-        lable: '+86'
+        lable: '+86',
+        loadingText: ''
       }
     },
     methods: {
       sendVerifyCode() {
         this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
         if (this.checkMobileRegex()) {
+          this.loadingText = '正在发送中'
           this.spinning = true // 显示正在发送的loading
           sendVerifyCode(this.userules.mobile).then(response => {
             this.spinning = false // 隐藏正在发送的loading
             this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+            this.userules.verifyCode = ''
             this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
             console.log(response)
           })
@@ -64,10 +71,12 @@
       sendVoiceVerify() {
         if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
           this.disabledVoiceVerify = true // 禁止重复获取语音验证码发送服务
+          this.loadingText = '正在发送中'
           this.spinning = true // 显示正在发送的loading
           sendVoiceVerify(this.userules.mobile).then(response => {
             this.spinning = false  // 隐藏正在发送的loading
             this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+            this.userules.verifyCode = '' // 清空验证码输入框内容
             this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
             console.log(response)
           })
@@ -76,11 +85,43 @@
       end() {
         this.disabledVoiceVerify = false
       },
+      submit() {
+        if (this.checkMobileRegex() && this.checkVerifyCode()) {
+          this.loadingText = '正在登录中'
+          this.spinning = true
+          verifycodeLogin(this.userules).then(res => {
+            this.spinning = false
+            if (res.code === ERR_OK) {
+              this.message = '成功登录'
+              this.$refs.messageBox.show()
+            }
+          }).catch(error => {
+            this.spinning = false
+            if (!error.success && error.code === ERR_UNPROCESSABLE_ENTITY) {
+              this.message = error.message
+              if (error.message === '验证码不正确') {
+                this.$refs.messageBox.show()
+              } else {
+                this.$refs.message.show()
+              }
+            }
+          })
+        }
+      },
+      checkVerifyCode() {
+        if (!this.userules.verifyCode) {
+          this.message = '验证码不能为空'
+          this.$refs.message.show()
+          return false
+        }
+        return true
+      }
     },
     components: {
       message,
       fadingCircle,
-      timerBtn
+      timerBtn,
+      messageBox
     }
   }
 

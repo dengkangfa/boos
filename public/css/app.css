@@ -261,6 +261,10 @@ input {
           box-sizing: border-box;
 }
 
+button:focus {
+  outline: none;
+}
+
 /* HTML5 display-role reset for older browsers */
 
 article,

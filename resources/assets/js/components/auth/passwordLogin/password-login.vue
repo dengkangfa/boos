@@ -24,7 +24,7 @@
                 <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
                 <router-link to=""><span>登录遇到问题</span></router-link>
             </div>
-            <message-box :message="message" confirmButtonText="好" ref="message"></message-box>
+            <message-box :message="message" confirmButtonText="好" ref="messageBox"></message-box>
         </div>
     </transition>
 </template>
@@ -59,7 +59,7 @@
       submit() {
         if (this.checkMobileRegex() && !this.userules.password) {
           this.message = '密码不能为空'
-          this.$refs.message.show()
+          this.$refs.messageBox.show()
         }
       }
     },

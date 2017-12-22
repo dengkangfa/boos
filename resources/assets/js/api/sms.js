@@ -5,8 +5,8 @@ export function sendVerifyCode(mobile) {
   const url = '/laravel-sms/verify-code'
 
   return axios.post(url, {
-    mobile,
-  },{
+    mobile
+  }, {
     headers: {
       'access-token': mobile
     }
