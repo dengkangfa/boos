@@ -45,7 +45,10 @@ class LoginController extends Controller
     }
 
     public function login(Request $request, $driver) {
-        $functionMap = ['verifycode' => 'verifyCodeLogin'];
+        $functionMap = [
+            'verifycode' => 'verifyCodeLogin',
+            'password' => 'passwordLogin'
+        ];
 
         $function = $functionMap[$driver];
         if (!$function) {
@@ -76,14 +79,33 @@ class LoginController extends Controller
         }
 
         $user = User::where('mobile', $request->mobile)->first();
+        $code = 0;
         if (is_null($user)) {
             $user = User::create([
                 'mobile' => $request->mobile,
                 'password' => bcrypt(str_random(12).time())
             ]);
+            $code = 10201;
         }
 
-        return $this->proxy->login($request->mobile, $user->getAuthPassword());
+        $response = $this->proxy->login($request->mobile, $user->getAuthPassword());
+        $response = $response->setData(array_merge($response->getData(true), ['code' => $code]));
+        return $response;
+    }
+
+    public function passwordLogin(Request $request)
+    {
+        $validator = $this->validateLogin($request);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'message' => $validator->errors()->first(),
+                'code' => 10422
+            ], 422);
+        }
+
+        return $this->proxy->login($request->mobile, $request->password);
     }
 
     /**
@@ -94,13 +116,15 @@ class LoginController extends Controller
     protected function validateLogin(Request $request)
     {
         return Validator::make($request->all(), [
-            'mobile' => 'required|confirm_mobile_not_change|confirm_rule:mobile_required',
-            'verifyCode' => 'required|verify_code',
+            'mobile' => 'required|zh_mobile',
+            'verifyCode' => 'sometimes|required|verify_code',
+            'password' => 'sometimes|required|min:6'
         ],[
             'mobile.required' => '请填写手机号',
-            'mobile.confirm_mobile_not_change' => '手机号码错误',
+            'mobile.zh_mobile' => '输入号码与归属地不匹配',
             'verifyCode.required' => '验证码不能为空',
-            'verifyCode.verify_code' => '验证码不正确'
+            'verifyCode.verify_code' => '验证码不正确',
+            'password.min' => '该账号不存在或者密码错误'
         ]);
     }
 }

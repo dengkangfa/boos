@@ -25,8 +25,9 @@ class TokenProxy
             ]);
         }
         return response()->json([
-            'status' => false,
-            'message' => 'Credentials not match'
+            'success' => false,
+            'message' => '该账号不存在或者密码错误',
+            'code' => 10421
         ], 421);
     }
 
@@ -78,7 +79,7 @@ class TokenProxy
 
         $response = $this->http->post(env('APP_URL') . '/oauth/token', [
            'form_params' => $data,
-           'timeout' => 10
+           'timeout' => 20
         ]);
 
         $token = json_decode((string) $response->getBody(), true);

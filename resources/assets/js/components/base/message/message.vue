@@ -37,7 +37,7 @@
 <style lang="sass" rel="stylesheet/sass" scoped>
     .message
         position: absolute
-        z-index: 190
+        z-index: 998
         top: 42%
         left: 50%
         padding: 0.4rem 0

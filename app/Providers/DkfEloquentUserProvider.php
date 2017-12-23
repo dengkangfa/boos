@@ -14,7 +14,6 @@ class DkfEloquentUserProvider extends EloquentUserProvider
         if (strlen($plain) === 60) {
             return $plain === $user->getAuthPassword();
         }
-
         return $this->hasher->check($plain, $user->getAuthPassword());
     }
 }

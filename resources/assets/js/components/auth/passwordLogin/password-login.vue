@@ -24,13 +24,15 @@
                 <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
                 <router-link to=""><span>登录遇到问题</span></router-link>
             </div>
-            <message-box :message="message" confirmButtonText="好" ref="messageBox"></message-box>
+            <message-box :message="message" confirmButtonText="好" ref="message"></message-box>
+            <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
         </div>
     </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import messageBox from 'Base/message/message-box.vue'
+  import fadingCircle from 'Base/spinner/fading-circle.vue'
   import {loginMixin} from 'Mixin/mixin.js'
 
   export default {
@@ -43,8 +45,13 @@
         },
         passwordShow: false,
         message: '',
-        lable: '+86'
+        lable: '+86',
+        loadingText: '',
+        spinning: false
       }
+    },
+    created() {
+      this.userules.mobile = sessionStorage.getItem('mobile')
     },
     methods: {
       back() {
@@ -57,14 +64,38 @@
         this.passwordShow = !this.passwordShow
       },
       submit() {
-        if (this.checkMobileRegex() && !this.userules.password) {
+        // 验证手机号码格式
+        if (!this.checkMobileRegex()) {
+          return
+        } else if (this.checkMobileRegex() && !this.userules.password) {
           this.message = '密码不能为空'
-          this.$refs.messageBox.show()
+          this.$refs.message.show()
+          return
         }
+        this.loadingText = '正在登录中'
+        this.spinning = true
+        let data = {
+          'driver': 'password', // 登录的方式
+          'formData': this.userules
+        }
+        this.$store.dispatch('loginRequest', data).then(res => {
+          this.spinning = false
+        }).catch(error => {
+          this.spinning = false
+          if (error.response.data.success === false) {
+            this.message = error.response.data.message
+            this.$refs.message.show()
+          } else {
+            // 不可预知的错误
+            this.message = '服务繁忙请稍后再试'
+            this.$refs.message.show()
+          }
+        })
       }
     },
     components: {
-      messageBox
+      messageBox,
+      fadingCircle
     }
   }
 </script>

@@ -3,6 +3,7 @@ require('./bootstrap')
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import store from './store/index'
 import fastclick from 'fastclick'
 
 fastclick.attach(document.body)
@@ -11,5 +12,6 @@ fastclick.attach(document.body)
 new Vue({
   el: '#app',
   render: h => h(App),
-  router
+  router,
+  store
 })

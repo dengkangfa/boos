@@ -34,7 +34,7 @@
 
     .spinner-wrapper
         position: absolute
-        z-index: 200
+        z-index: 998
         top: 45%
         left: 50%
         transform: translate(-50%, -50%)

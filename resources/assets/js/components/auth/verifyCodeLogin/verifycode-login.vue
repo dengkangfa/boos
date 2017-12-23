@@ -19,7 +19,7 @@
           <div class="line"></div>
         </div>
         <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
-        <router-link to="/login/password"><span>密码登录</span></router-link>
+        <router-link to="/login/password" @click.native="selectPasswordLogin"><span>密码登录</span></router-link>
       </div>
       <message :message="message" ref="message"></message>
       <message-box :message="message" confirmButtonText="好" ref="messageBox"></message-box>
@@ -34,8 +34,7 @@
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
   import messageBox from 'Base/message/message-box.vue'
   import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
-  import {verifycodeLogin} from 'Api/login.js'
-  import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config.js'
+  import {ERR_OK, ERR_REGISTER_CODE, ERR_UNPROCESSABLE_ENTITY} from 'Api/config.js'
   import {loginMixin} from 'Mixin/mixin.js'
 
   export default {
@@ -54,6 +53,7 @@
       }
     },
     methods: {
+      // 发送短信验证
       sendVerifyCode() {
         this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
         if (this.checkMobileRegex()) {
@@ -64,10 +64,10 @@
             this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
             this.userules.verifyCode = ''
             this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
-            console.log(response)
           })
         }
       },
+      // 发送语音验证
       sendVoiceVerify() {
         if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
           this.disabledVoiceVerify = true // 禁止重复获取语音验证码发送服务
@@ -78,7 +78,6 @@
             this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
             this.userules.verifyCode = '' // 清空验证码输入框内容
             this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
-            console.log(response)
           })
         }
       },
@@ -89,21 +88,34 @@
         if (this.checkMobileRegex() && this.checkVerifyCode()) {
           this.loadingText = '正在登录中'
           this.spinning = true
-          verifycodeLogin(this.userules).then(res => {
+          let data = {
+            'driver': 'verifycode',
+            'formData': this.userules
+          }
+          this.$store.dispatch('loginRequest', data).then(res => {
             this.spinning = false
             if (res.code === ERR_OK) {
               this.message = '成功登录'
               this.$refs.messageBox.show()
+            } else if (res.code === ERR_REGISTER_CODE) {
+              // 该用户为新用户注册
+              this.message = '成功注册'
+              this.$refs.messageBox.show()
             }
           }).catch(error => {
+            let response = error.response.data
             this.spinning = false
-            if (!error.success && error.code === ERR_UNPROCESSABLE_ENTITY) {
-              this.message = error.message
-              if (error.message === '验证码不正确') {
+            if (response.success === false && response.code === ERR_UNPROCESSABLE_ENTITY) {
+              this.message = response.message
+              if (response.message === '验证码不正确') {
                 this.$refs.messageBox.show()
               } else {
                 this.$refs.message.show()
               }
+            } else {
+              // 不可预知的错误
+              this.message = '服务繁忙请稍后再试'
+              this.$refs.messageBox.show()
             }
           })
         }
@@ -115,6 +127,9 @@
           return false
         }
         return true
+      },
+      selectPasswordLogin() {
+        sessionStorage.setItem('mobile', this.userules.mobile)
       }
     },
     components: {
