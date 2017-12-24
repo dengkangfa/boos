@@ -4,8 +4,8 @@
         <form action="">
           <h3>BOSS直聘<span></span></h3>
           <ul class="info-login">
-            <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
-            <li><span></span><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" @focus="closeIconShow = false" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
+            <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
+            <li><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
             <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
             <li><input @click.prevent="submit" type="submit" value="进入"></li>
           </ul>
@@ -33,57 +33,20 @@
   import fadingCircle from 'Base/spinner/fading-circle.vue'
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
   import messageBox from 'Base/message/message-box.vue'
-  import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
   import {ERR_OK, ERR_REGISTER_CODE, ERR_UNPROCESSABLE_ENTITY} from 'Api/config.js'
-  import {loginMixin} from 'Mixin/mixin.js'
+  import {loginFooterMixin, checkMobileRegex, verifycodeMixin} from 'Mixin/mixin.js'
 
   export default {
-    mixins: [loginMixin],
+    mixins: [loginFooterMixin, checkMobileRegex, verifycodeMixin],
     data () {
       return {
-        // 用户信息
-        userules: {
-          verifyCode: ''
-        },
         spinning: false, // 是否显示loading
-        disabledVoiceVerify: false, // 语音验证码服务是否可用
         message: '', // 提示消息
         lable: '+86',
         loadingText: ''
       }
     },
     methods: {
-      // 发送短信验证
-      sendVerifyCode() {
-        this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
-        if (this.checkMobileRegex()) {
-          this.loadingText = '正在发送中'
-          this.spinning = true // 显示正在发送的loading
-          sendVerifyCode(this.userules.mobile).then(response => {
-            this.spinning = false // 隐藏正在发送的loading
-            this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
-            this.userules.verifyCode = ''
-            this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
-          })
-        }
-      },
-      // 发送语音验证
-      sendVoiceVerify() {
-        if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
-          this.disabledVoiceVerify = true // 禁止重复获取语音验证码发送服务
-          this.loadingText = '正在发送中'
-          this.spinning = true // 显示正在发送的loading
-          sendVoiceVerify(this.userules.mobile).then(response => {
-            this.spinning = false  // 隐藏正在发送的loading
-            this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
-            this.userules.verifyCode = '' // 清空验证码输入框内容
-            this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
-          })
-        }
-      },
-      end() {
-        this.disabledVoiceVerify = false
-      },
       submit() {
         if (this.checkMobileRegex() && this.checkVerifyCode()) {
           this.loadingText = '正在登录中'
@@ -120,14 +83,6 @@
           })
         }
       },
-      checkVerifyCode() {
-        if (!this.userules.verifyCode) {
-          this.message = '验证码不能为空'
-          this.$refs.message.show()
-          return false
-        }
-        return true
-      },
       selectPasswordLogin() {
         sessionStorage.setItem('mobile', this.userules.mobile)
       }
@@ -143,6 +98,7 @@
 </script>
 
 <style lang="sass" rel="stylesheet/sass" scoped>
+  @import "../../../../sass/variables"
   @import "../../../../sass/mixin"
   @import "../../../../sass/login-footer"
 
@@ -199,31 +155,27 @@
       &::placeholder
         color: #fff
     & input[type=text]:focus,input[type=number]:focus
-      border-color: $vuecolor
+      border-color: $color-theme
     & input[type=submit],input[type=button]
       width: 100%
       height: 100%
       cursor: pointer
-      background-color: $vuecolor
-      border: 1px solid $vuecolor
+      background-color: $color-theme
+      border: 1px solid $color-theme
       border-radius: .8rem
       -webkit-appearance: none
       white-space: nowrap
     & input[type=submit]:hover,input[type=button]:hover
-      background-color: #42AA83
+      background-color: $color-theme
   .info-login li:nth-child(1) b
-    position: absolute
+    @include ct() // 垂直局中
     display: block
-    top: 50%
-    transform: translateY(-50%)
     color: #fff
     font-weight: 100
     /*left: .4rem*/
     padding-left: .4rem
   .info-login li:nth-child(1) .icon-circle-with-cross
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
+    @include ct() // 垂直局中
     font-size: .45rem
     right: .1rem
     color: #605e5e
@@ -240,20 +192,16 @@
     left: 1.6rem
     transform: scaleY(0.3) translateY(-50%)
     transform-origin: 0 0
-  .info-login li:nth-child(2) span
+  .info-login li:nth-child(2) .icon-smartphone
+    @include ct() // 垂直局中
     display: block
-    width: .6rem
-    height: .6rem
-    background: url(./icon_phone.png) no-repeat
-    background-size: 100% 100%
-    position: absolute
+    color: $color-text
+    font-weight: 100
     left: .4rem
-    top: 50%
-    transform: translateY(-50%)
+    padding-left: .1rem
+    font-size: .5rem
   .info-login li:nth-child(2) button
-    position: absolute
-    top: 50%
-    transform: translateY(-50%)
+    @include ct() // 垂直局中
     right: .4rem
     z-index: 10
 

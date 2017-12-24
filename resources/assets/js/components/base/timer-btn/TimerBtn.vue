@@ -1,5 +1,5 @@
 <template>
-    <button @click.prevent="run" :disabled="disabled || time > 0" class="btn-link">
+    <button @click.prevent="run" :disabled="disabled || time > 0" class="btn-link" :class="theme">
         {{ text }}
     </button>
 </template>
@@ -7,6 +7,10 @@
 <script type="text/ecmascript-6">
   export default {
     props: {
+      theme: {
+        type: String,
+        default: 'white'
+      },
       second: {
         type: Number,
         default: 60
@@ -18,7 +22,7 @@
     },
     data() {
       return {
-        time: 0,
+        time: 0
       }
     },
     methods: {
@@ -28,6 +32,9 @@
       start() {
         this.time = this.second
         this.timer()
+      },
+      reset() {
+        this.time = 0
       },
       timer() {
         if (this.time > 0) {
@@ -53,10 +60,14 @@
         height: .6rem
         padding: 0 .3rem
         line-height: .6rem
-        border: 1px solid #fff
         border-radius: .3rem
-        color: #fff
         font-weight: 100
         font-size: .3rem
         background: rgba(0,0,0,0)
+    .white
+        color: #FFFFFF
+        border: 1px solid #FFFFFF
+    .vue
+        color: #53CAC3
+        border: 1px solid #53CAC3
 </style>

@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import verifycodeLogin from '../components/auth/verifyCodeLogin/verifycode-login.vue'
 import passwordLogin from '../components/auth/passwordLogin/password-login.vue'
+import resetPassword from '../components/auth/resetPassword/resetPassword.vue'
 
 Vue.use(Router)
 
@@ -17,14 +18,16 @@ let routes = [
     children: [
       {
         path: 'password',
-        component: passwordLogin
+        component: passwordLogin,
+        children: [
+          {
+            path: 'reset',
+            component: resetPassword
+          }
+        ]
       }
     ]
 
-  },
-  {
-    path: '/pswlogin',
-    component: passwordLogin
   }
 ]
 

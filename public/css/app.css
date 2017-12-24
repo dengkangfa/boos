@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url(/fonts/icomoon.eot?926285310c751ac5c508b42eda0df522);
-  src:  url(/fonts/icomoon.eot?926285310c751ac5c508b42eda0df522#iefix) format('embedded-opentype'),
-    url(/fonts/icomoon.ttf?5e7f6edccab75d70681ca167a85fa6de) format('truetype'),
-    url(/fonts/icomoon.woff?1b137b99826e05261ebfe6b8bada7d3d) format('woff'),
-    url(/fonts/icomoon.svg?dcbcac57eb40dfe1ef9c29037bea448d#icomoon) format('svg');
+  src:  url(/fonts/icomoon.eot?0d38d237f1148c36a488e95de5d7611a);
+  src:  url(/fonts/icomoon.eot?0d38d237f1148c36a488e95de5d7611a#iefix) format('embedded-opentype'),
+    url(/fonts/icomoon.ttf?123d6bcb8eba73ad46bdd88b08e87a63) format('truetype'),
+    url(/fonts/icomoon.woff?420d8363c459bb5a21168a70f16d1c2a) format('woff'),
+    url(/fonts/icomoon.svg?43113828d1080800be935654e7ffa8b2#icomoon) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,21 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-smartphone:before {
+  content: "\E910";
+}
+.icon-phone:before {
+  content: "\E911";
+}
+.icon-mobile:before {
+  content: "\E911";
+}
+.icon-contact:before {
+  content: "\E911";
+}
+.icon-telephone:before {
+  content: "\E911";
+}
 .icon-lock:before {
   content: "\E90F";
 }

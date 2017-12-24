@@ -1,14 +1,11 @@
 import axios from 'axios'
 
-export function sendVerifyCode(mobile) {
-
+export function sendVerifyCode(requestData) {
   const url = '/laravel-sms/verify-code'
 
-  return axios.post(url, {
-    mobile
-  }, {
+  return axios.post(url, requestData, {
     headers: {
-      'access-token': mobile
+      'access-token': requestData.mobile
     }
   }).then(res => {
     return Promise.resolve(res.data)
@@ -17,15 +14,13 @@ export function sendVerifyCode(mobile) {
   })
 }
 
-export function sendVoiceVerify(mobile) {
+export function sendVoiceVerify(requestData) {
 
   const url = '/laravel-sms/voice-verify'
 
-  return axios.post(url, {
-    mobile,
-  },{
+  return axios.post(url, requestData,{
     headers: {
-      'access-token': mobile
+      'access-token': requestData.mobile
     }
   }).then(res => {
     return Promise.resolve(res.data)

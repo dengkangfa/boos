@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Toplan\Sms\SmsManager;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,9 +12,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(SmsManager $smsManager)
     {
-
+        $smsManager->storeRule('mobile', 'mobile_exists', 'required|zh_mobile|exists:users,mobile');
     }
 
     /**

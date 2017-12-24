@@ -1,15 +1,6 @@
-// 手机正则表达式
-const phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/
+import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
 
-export const loginMixin = {
-  data() {
-    return {
-      userules: {
-        mobile: ''
-      },
-      closeIconShow: false
-    }
-  },
+export const loginFooterMixin = {
   mounted() {
     var clientHeight = window.innerHeight
     window.addEventListener('resize', () => {
@@ -22,11 +13,22 @@ export const loginMixin = {
         document.querySelectorAll('.login-footer')[1].style.position = 'fixed'
       }
     })
+  }
+}
+
+// 手机正则表达式
+const phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/
+
+export const checkMobileRegex = {
+  data() {
+    return {
+      userules: {
+        mobile: ''
+      },
+      closeIconShow: false
+    }
   },
   methods: {
-    close() {
-      this.userules.mobile = ''
-    },
     checkMobileRegex() {
       if (!this.userules.mobile) {
         this.message = '请填写手机号'
@@ -37,6 +39,88 @@ export const loginMixin = {
       }
       this.$refs.message.show()
       return false
+    },
+    close() {
+      this.userules.mobile = ''
+    }
+  }
+}
+
+export const verifycodeMixin = {
+  data() {
+    return {
+      // 用户信息
+      userules: {
+        verifyCode: ''
+      },
+      disabledVoiceVerify: false // 语音验证码服务是否可用
+    }
+  },
+  methods: {
+    checkVerifyCode() {
+      if (!this.userules.verifyCode) {
+        this.message = '验证码不能为空'
+        this.$refs.message.show()
+        return false
+      }
+      return true
+    },
+    // 发送短信验证
+    sendVerifyCode() {
+      if (this.checkMobileRegex()) {
+        this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
+        this.loadingText = '正在发送中'
+        this.spinning = true // 显示正在发送的loading
+        sendVerifyCode({'mobile': this.userules.mobile, 'mobile_rule': this.mobileRule}).then(response => {
+          this.spinning = false // 隐藏正在发送的loading
+          // 数据格式有误
+          if (response.success === false) {
+            this.disabledVoiceVerify = false
+            this.message = response.message
+            this.$refs.message.show()
+            return
+          }
+          this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+          this.userules.verifyCode = ''
+          this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
+        }).catch(() => {
+          this.spinning = false // 隐藏正在发送的loading
+          this.disabledVoiceVerify = false
+          // 不可预知的错误
+          this.message = '服务繁忙请稍后再试~'
+          this.$refs.message.show()
+        })
+      }
+    },
+    // 发送语音验证
+    sendVoiceVerify() {
+      if (!this.disabledVoiceVerify && this.checkMobileRegex()) {
+        this.disabledVoiceVerify = true // 禁止重复获取语音验证码发送服务
+        this.loadingText = '正在发送中'
+        this.spinning = true // 显示正在发送的loading
+        sendVoiceVerify({'mobile': this.userules.mobile, 'mobile_rule': this.mobileRule}).then(response => {
+          this.spinning = false  // 隐藏正在发送的loading
+          // 数据格式有误
+          if (response.success === false) {
+            this.disabledVoiceVerify = false
+            this.message = response.message
+            this.$refs.message.show()
+            return
+          }
+          this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
+          this.userules.verifyCode = '' // 清空验证码输入框内容
+          this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
+        }).catch(() => {
+          this.spinning = false // 隐藏正在发送的loading
+          this.disabledVoiceVerify = false // 禁止重复获取语音验证码发送服务
+          // 不可预知的错误
+          this.message = '服务繁忙请稍后再试~'
+          this.$refs.message.show()
+        })
+      }
+    },
+    end() {
+      this.disabledVoiceVerify = false
     }
   }
 }

@@ -8,9 +8,9 @@
                 <form action="">
                     <h3><img src="https://img2.bosszhipin.com/boss/avatar/avatar_15.png" class="avatar"></h3>
                     <ul class="info-login">
-                        <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
-                        <li><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'" v-model="userules.password" placeholder="6-25位字母、数字或下划线" @focus="closeIconShow = false"><i class="password-show-icon" :class="passwordShow ? 'icon-eye-view' : 'icon-eye-blocked'" @click="passwordShowLogger"></i></li>
-                        <li><p><a class="reset">忘记密码</a></p></li>
+                        <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
+                        <li><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'" v-model="userules.password" placeholder="6-25位字母、数字或下划线"><i class="password-show-icon" :class="passwordShow ? 'icon-eye-view' : 'icon-eye-blocked'" @click="passwordShowLogger"></i></li>
+                        <li><p><router-link to="/login/password/reset" class="reset">忘记密码</router-link></p></li>
                         <li><input @click.prevent="submit" type="submit" value="登录"></li>
                     </ul>
                 </form>
@@ -26,6 +26,7 @@
             </div>
             <message-box :message="message" confirmButtonText="好" ref="message"></message-box>
             <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
+            <router-view></router-view>
         </div>
     </transition>
 </template>
@@ -33,10 +34,10 @@
 <script type="text/ecmascript-6">
   import messageBox from 'Base/message/message-box.vue'
   import fadingCircle from 'Base/spinner/fading-circle.vue'
-  import {loginMixin} from 'Mixin/mixin.js'
+  import {loginFooterMixin, checkMobileRegex} from 'Mixin/mixin.js'
 
   export default {
-    mixins: [loginMixin],
+    mixins: [loginFooterMixin, checkMobileRegex],
     data() {
       return {
         // 用户信息
@@ -87,7 +88,7 @@
             this.$refs.message.show()
           } else {
             // 不可预知的错误
-            this.message = '服务繁忙请稍后再试'
+            this.message = '服务繁忙请稍后再试~'
             this.$refs.message.show()
           }
         })
@@ -101,16 +102,13 @@
 </script>
 
 <style lang="sass" rel="stylesheet/sass" scoped>
+    @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
     @import "../../../../sass/login-footer"
 
     .password-login-wrapper
-        position: fixed
+        @include allCover()
         z-index: 100
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
         display: flex
         justify-content: center
         flex-wrap: wrap
@@ -119,7 +117,7 @@
             position: absolute
             top: 14px
             left: 6px
-            z-index: 50
+            z-index: 100
             .icon-left
                 display: block
                 padding: 10px
@@ -162,30 +160,26 @@
                     &::placeholder
                         color: #fff
                 & input[type=text]:focus,input[type=password]:focus
-                    border-color: $vuecolor
+                    border-color: $color-theme
                 & input[type=submit],input[type=button]
                     width: 100%
                     height: 100%
                     cursor: pointer
-                    background-color: $vuecolor
-                    border: 1px solid $vuecolor
+                    background-color: $color-theme
+                    border: 1px solid $color-theme
                     border-radius: .8rem
                     -webkit-appearance: none
                     white-space: nowrap
                 & input[type=submit]:hover,input[type=button]:hover
-                    background-color: #42AA83
+                    background-color: $color-theme
                 li:nth-child(1) b
-                    position: absolute
+                    @include ct() // 垂直局中
                     display: block
-                    top: 50%
-                    transform: translateY(-50%)
                     color: #fff
                     font-weight: 100
                     padding-left: .4rem
                 li:nth-child(1) .icon-circle-with-cross
-                    position: absolute
-                    top: 50%
-                    transform: translateY(-50%)
+                    @include ct() // 垂直局中
                     font-size: .45rem
                     right: .1rem
                     color: #605e5e
@@ -226,7 +220,6 @@
         transition: all 0.3s
 
     .slide-enter, .slide-leave-to
-        -webkit-transform: translate3d(100%, 0, 0)
         transform: translate3d(100%, 0, 0)
 
     @media screen and (max-height: 505px)
