@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Http\Request;
+use Toplan\PhpSms\Sms;
+use Toplan\Sms\SmsManager;
 use Validator;
 use Hash;
 
@@ -42,7 +44,7 @@ class ResetPasswordController extends Controller
         $this->middleware('guest');
     }
 
-    public function reset(Request $request)
+    public function reset(Request $request, SmsManager $smsManager)
     {
         $validator = $this->validateReset($request, $this->rules(), $this->validationErrorMessages());
 
@@ -58,6 +60,9 @@ class ResetPasswordController extends Controller
         $user = User::where('mobile', $request->mobile)->first();
 
         $this->resetPassword($user, $request->password);
+
+        // 删除验证码缓存
+        $smsManager->forgetState();
 
         return response()->json([
             'success' => true,

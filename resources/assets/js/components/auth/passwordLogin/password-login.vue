@@ -81,6 +81,7 @@
         }
         this.$store.dispatch('loginRequest', data).then(res => {
           this.spinning = false
+          this.$router.push({'name': 'index'})
         }).catch(error => {
           this.spinning = false
           if (error.response.data.success === false) {

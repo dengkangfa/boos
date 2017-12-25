@@ -46,6 +46,13 @@
         loadingText: ''
       }
     },
+    mounted() {
+      if (sessionStorage.getItem('logout-message')) {
+        this.message = sessionStorage.getItem('logout-message')
+        this.$refs.message.show()
+        sessionStorage.removeItem('logout-message')
+      }
+    },
     methods: {
       submit() {
         if (this.checkMobileRegex() && this.checkVerifyCode()) {
@@ -58,12 +65,10 @@
           this.$store.dispatch('loginRequest', data).then(res => {
             this.spinning = false
             if (res.code === ERR_OK) {
-              this.message = '成功登录'
-              this.$refs.messageBox.show()
+              this.$router.push({'name': 'index'})
             } else if (res.code === ERR_REGISTER_CODE) {
               // 该用户为新用户注册
-              this.message = '成功注册'
-              this.$refs.messageBox.show()
+              this.$router.push({'name': 'select-identity'})
             }
           }).catch(error => {
             let response = error.response.data

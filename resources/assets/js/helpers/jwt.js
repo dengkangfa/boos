@@ -5,5 +5,9 @@ export default {
 
   getToken() {
     return window.localStorage.getItem('jwt_token')
+  },
+
+  removeToken() {
+    window.localStorage.removeItem('jwt_token')
   }
 }

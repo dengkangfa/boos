@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::post('login/{driver}', 'Auth\LoginController@login');
+Route::post('logout', 'Auth\LoginController@logout');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');

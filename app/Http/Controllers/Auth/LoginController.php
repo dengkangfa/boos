@@ -44,7 +44,8 @@ class LoginController extends Controller
         $this->proxy = $proxy;
     }
 
-    public function login(Request $request, $driver) {
+    public function login(Request $request, $driver)
+    {
         $functionMap = [
             'verifycode' => 'verifyCodeLogin',
             'password' => 'passwordLogin'
@@ -59,6 +60,11 @@ class LoginController extends Controller
             ], 406);;
         }
         return $this->{$function}($request);
+    }
+
+    public function logout()
+    {
+        $this->proxy->logout();
     }
 
     /**
