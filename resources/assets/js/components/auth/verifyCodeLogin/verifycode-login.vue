@@ -22,7 +22,7 @@
         <router-link to="/login/password" @click.native="selectPasswordLogin"><span>密码登录</span></router-link>
       </div>
       <message :message="message" ref="message"></message>
-      <message-box :message="message" confirmButtonText="好" ref="messageBox"></message-box>
+      <message-box :message="message" cancelButtonText="好" ref="messageBox"></message-box>
       <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
       <router-view></router-view>
     </div>

@@ -5,8 +5,8 @@
                 <div class="confirm-content">
                     <p class="text">{{ message }}</p>
                     <div class="operate">
-                        <div @click="cancel" class="operate-btn left" v-show="showCancelButton">{{ cancelButtonText }}</div>
-                        <div @click="confirm" class="operate-btn" v-show="showConfirmButton">{{ confirmButtonText }}</div>
+                        <div @click="cancel" class="operate-btn" :class="{'border-radius-left': showConfirmButton}" v-show="showCancelButton">{{ cancelButtonText ? cancelButtonText : '取消' }}</div>
+                        <div @click="confirm" class="operate-btn left" :class="{'border-radius-right': showConfirmButton}" v-show="showConfirmButton">{{ confirmButtonText }}</div>
                     </div>
                 </div>
             </div>
@@ -36,11 +36,11 @@
         },
         showCancelButton: {
           type: Boolean,
-          default: false
+          default: true
         },
         showConfirmButton: {
           type: Boolean,
-          default: true
+          default: false
         }
       },
       methods: {
@@ -62,7 +62,9 @@
     }
 </script>
 
-<style scoped lang="sass" rel="stylesheet/sass">
+<style scoped lang="sass" rel="stylesheet/sass" scoped>
+    @import "../../../../sass/mixin"
+
     .confirm
         position: fixed
         left: 0
@@ -97,14 +99,22 @@
                     align-items: center
                     text-align: center
                     font-size: .45rem
+                    border-radius: 0 0 13px 13px
+                    .operate-btn:active
+                        background: #d9d9d9
                     .operate-btn
                         flex: 1
                         line-height: 22px
                         padding: 10px 0
-                        border-top: 1px solid rgba(52, 159, 217, 0.5)
+                        border-top: 1px solid #cccccc
                         color: #59A6FA
+                        border-radius: 0 0 13px 13px
+                        &.border-radius-left
+                            border-radius: 0 0 0 13px
+                        &.border-radius-right
+                            border-radius: 0 0 13px 0
                         &.left
-                            border-right: 1px solid rgba(52, 159, 217, 0.5)
+                            border-left: 1px solid #cccccc
     @keyframes confirm-fadein
         0%
             opacity: 0

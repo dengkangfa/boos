@@ -20,7 +20,7 @@
             <div class="back" @click="back">
                 <i class="icon-left"></i>
             </div>
-            <message-box :message="message" confirmButtonText="好" @confirm="confirm" ref="message"></message-box>
+            <message-box :message="message" cancelButtonText="好" @confirm="confirm" ref="message"></message-box>
             <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
         </div>
     </transition>

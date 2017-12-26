@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url(/fonts/icomoon.eot?0d38d237f1148c36a488e95de5d7611a);
-  src:  url(/fonts/icomoon.eot?0d38d237f1148c36a488e95de5d7611a#iefix) format('embedded-opentype'),
-    url(/fonts/icomoon.ttf?123d6bcb8eba73ad46bdd88b08e87a63) format('truetype'),
-    url(/fonts/icomoon.woff?420d8363c459bb5a21168a70f16d1c2a) format('woff'),
-    url(/fonts/icomoon.svg?43113828d1080800be935654e7ffa8b2#icomoon) format('svg');
+  src:  url(/fonts/icomoon.eot?14b202f6c66bcda3c60b923a563103b5);
+  src:  url(/fonts/icomoon.eot?14b202f6c66bcda3c60b923a563103b5#iefix) format('embedded-opentype'),
+    url(/fonts/icomoon.ttf?68faf8fca6b4933f2ad1557e6fec5037) format('truetype'),
+    url(/fonts/icomoon.woff?73c0d2bd414970f49c2534d8ac86c164) format('woff'),
+    url(/fonts/icomoon.svg?f1ad814fb81c0c5f0507332d10c1c48e#icomoon) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,6 +24,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-portrait:before {
+  content: "\E915";
+}
+.icon-camera-outline:before {
+  content: "\E912";
+}
+.icon-image:before {
+  content: "\E913";
+}
+.icon-camera:before {
+  content: "\E914";
+}
 .icon-smartphone:before {
   content: "\E910";
 }

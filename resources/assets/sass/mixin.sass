@@ -70,16 +70,32 @@
   justify-content: $type
 
 
-@mixin border-1px($color) 
-  position: relative
-  &:after 
-    display: block
-    position: absolute
-    left: 0
-    bottom: 0
-    width: 100%
-    border-top: 1px solid $color
-    content: ' '
-  
+@mixin border-top-1px($color)
+  border-top: 1px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 2)
+    border-top: 0.5px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 3)
+    border-top: 0.333333px solid $color
+
+@mixin border-left-1px($color)
+  border-left: 1px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 2)
+    border-left: 0.5px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 3)
+    border-left: 0.333333px solid $color
+
+@mixin border-right-1px($color)
+  border-right: 1px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 2)
+    border-right: 0.5px solid $color
+  @media screen and (-webkit-min-device-pixel-ratio: 3)
+    border-right: 0.333333px solid $color
+
+@mixin border-1px($color)
+    border: 1px solid $color
+    @media screen and (-webkit-min-device-pixel-ratio: 2)
+      border: 0.5px solid $color
+    @media screen and (-webkit-min-device-pixel-ratio: 3)
+      border: 0.333333px solid $color
 
 

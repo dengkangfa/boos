@@ -2,7 +2,7 @@
     <div class="identity-wrapper">
         <div class="job-wrapper">
             <div class="identity-img job-img"></div>
-            <button class="identity-button job-btn">我要找工作</button>
+            <button class="identity-button job-btn" @click.prevnet="selectJob">我要找工作</button>
         </div>
         <div class="or">
             <div class="line"></div>
@@ -16,7 +16,8 @@
         <div class="logout">
             <a @click.prevent="logout">退出登录</a>
         </div>
-        <message-box message="确定退出登录？" :showCancelButton="true" @confirm="confirm" ref="messageBox"></message-box>
+        <message-box message="确定退出登录？" :showConfirmButton="true" @confirm="confirm" ref="messageBox"></message-box>
+        <router-view></router-view>
     </div>
 </template>
 
@@ -33,6 +34,9 @@
           sessionStorage.setItem('logout-message', '已退出登录')
           this.$router.push({'name': 'login'})
         })
+      },
+      selectJob() {
+        this.$router.push({'name': 'job-basic-info'})
       }
     },
     components: {
@@ -41,7 +45,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 
@@ -76,7 +80,7 @@
             & .line
                 position: relative
                 flex: 1
-                @include border-1px($color-text-d)
+                @include border-top-1px($color-text-d)
             & .text
                 padding: 0 12px
                 font-weight: bold

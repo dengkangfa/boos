@@ -7,6 +7,7 @@ import verifycodeLogin from '../components/auth/verifyCodeLogin/verifycode-login
 import passwordLogin from '../components/auth/passwordLogin/password-login.vue'
 import resetPassword from '../components/auth/resetPassword/resetPassword.vue'
 import identitySelect from '../components/info/identity/identity-select.vue'
+import basicInfo from '../components/info/job/basic-info.vue'
 
 Vue.use(VueRouter)
 
@@ -38,10 +39,18 @@ let routes = [
     meta: {requiresGuest: true}
   },
   {
-    path: '/info/identity',
+    path: '/identity',
     name: 'select-identity',
     component: identitySelect,
-    meta: {requiresAuth: true}
+    meta: {requiresAuth: true},
+    children: [
+      {
+        path: 'job/basicinfo',
+        name: 'job-basic-info',
+        component: basicInfo,
+        meta: {requiresAuth: true}
+      }
+    ]
   },
   {
     path: '*',

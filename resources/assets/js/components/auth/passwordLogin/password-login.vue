@@ -24,7 +24,7 @@
                 <router-link to="" class="protocol"><span>用户协议及隐私策略</span></router-link>
                 <router-link to=""><span>登录遇到问题</span></router-link>
             </div>
-            <message-box :message="message" confirmButtonText="好" ref="message"></message-box>
+            <message-box :message="message" cancelButtonText="好" ref="message"></message-box>
             <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
             <router-view></router-view>
         </div>
