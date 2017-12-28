@@ -11,10 +11,11 @@
   },
   "dependencies": {
     "axios": "^0.17",
-    "vue": "^2.5.7",
-    "vue-router": "^2.7.0",
     "fastclick": "^1.0.6",
     "jquery": "^3.1.1",
+    "mint-ui": "^2.2.13",
+    "vue": "^2.5.7",
+    "vue-router": "^2.7.0",
     "vuex": "^2.3.1"
   },
   "devDependencies": {

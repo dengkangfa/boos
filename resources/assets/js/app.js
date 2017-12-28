@@ -8,6 +8,10 @@ import store from './store/index'
 import fastclick from 'fastclick'
 import jwtToken from './helpers/jwt'
 
+import { Picker } from 'mint-ui'
+import 'mint-ui/lib/style.css'
+Vue.component('mint-picker', Picker)
+
 fastclick.attach(document.body)
 
 axios.interceptors.request.use(config => {
