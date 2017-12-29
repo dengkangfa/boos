@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 23);
+/******/ 	return __webpack_require__(__webpack_require__.s = 24);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -274,7 +274,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(62)
+var listToStyles = __webpack_require__(63)
 
 /*
 type StyleObject = {
@@ -482,8 +482,8 @@ function applyToTag (styleElement, obj) {
 "use strict";
 
 
-var bind = __webpack_require__(13);
-var isBuffer = __webpack_require__(29);
+var bind = __webpack_require__(14);
+var isBuffer = __webpack_require__(30);
 
 /*global toString:true*/
 
@@ -789,7 +789,7 @@ module.exports = {
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(28);
+module.exports = __webpack_require__(29);
 
 /***/ }),
 /* 5 */
@@ -798,13 +798,13 @@ module.exports = __webpack_require__(28);
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(76)
+  __webpack_require__(77)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(78)
+var __vue_script__ = __webpack_require__(79)
 /* template */
-var __vue_template__ = __webpack_require__(79)
+var __vue_template__ = __webpack_require__(80)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11616,7 +11616,7 @@ Vue$3.compile = compileToFunctions;
 
 module.exports = Vue$3;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(46).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(47).setImmediate))
 
 /***/ }),
 /* 7 */
@@ -11653,7 +11653,7 @@ module.exports = g;
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(3);
-var normalizeHeaderName = __webpack_require__(31);
+var normalizeHeaderName = __webpack_require__(32);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -11669,10 +11669,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(15);
+    adapter = __webpack_require__(16);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(15);
+    adapter = __webpack_require__(16);
   }
   return adapter;
 }
@@ -11743,7 +11743,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(15)))
 
 /***/ }),
 /* 9 */
@@ -11769,13 +11769,64 @@ module.exports = defaults;
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(68)
+  __webpack_require__(65)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(70)
+var __vue_script__ = __webpack_require__(67)
 /* template */
-var __vue_template__ = __webpack_require__(71)
+var __vue_template__ = __webpack_require__(68)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-472dea7e"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\message\\message.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-472dea7e", Component.options)
+  } else {
+    hotAPI.reload("data-v-472dea7e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(69)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(71)
+/* template */
+var __vue_template__ = __webpack_require__(72)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -11814,14 +11865,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return loginFooterMixin; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return checkMobileRegex; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return verifycodeMixin; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Api_sms_js__ = __webpack_require__(80);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Api_sms_js__ = __webpack_require__(81);
 
 
 var loginFooterMixin = {
@@ -11958,19 +12009,19 @@ var verifycodeMixin = {
 };
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(105)
+  __webpack_require__(106)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(107)
+var __vue_script__ = __webpack_require__(108)
 /* template */
-var __vue_template__ = __webpack_require__(108)
+var __vue_template__ = __webpack_require__(109)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -12009,7 +12060,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12027,7 +12078,7 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -12217,19 +12268,19 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(3);
-var settle = __webpack_require__(32);
-var buildURL = __webpack_require__(34);
-var parseHeaders = __webpack_require__(35);
-var isURLSameOrigin = __webpack_require__(36);
-var createError = __webpack_require__(16);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(37);
+var settle = __webpack_require__(33);
+var buildURL = __webpack_require__(35);
+var parseHeaders = __webpack_require__(36);
+var isURLSameOrigin = __webpack_require__(37);
+var createError = __webpack_require__(17);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(38);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -12326,7 +12377,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(38);
+      var cookies = __webpack_require__(39);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -12404,13 +12455,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(33);
+var enhanceError = __webpack_require__(34);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -12429,7 +12480,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12441,7 +12492,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12467,15 +12518,15 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(53);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_login__ = __webpack_require__(54);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_auth_user__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(54);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_login__ = __webpack_require__(55);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__modules_auth_user__ = __webpack_require__(56);
 
 
 
@@ -12492,70 +12543,19 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vuex
 }));
 
 /***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(64)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(66)
-/* template */
-var __vue_template__ = __webpack_require__(67)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-472dea7e"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\base\\message\\message.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-472dea7e", Component.options)
-  } else {
-    hotAPI.reload("data-v-472dea7e", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
 /* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(72)
+  __webpack_require__(73)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(74)
+var __vue_script__ = __webpack_require__(75)
 /* template */
-var __vue_template__ = __webpack_require__(75)
+var __vue_template__ = __webpack_require__(76)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -12609,12 +12609,63 @@ var ERR_UNPROCESSABLE_ENTITY = 10422;
 /* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(24);
-module.exports = __webpack_require__(142);
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(132)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(134)
+/* template */
+var __vue_template__ = __webpack_require__(135)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-281d08e8"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\picker\\picker.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-281d08e8", Component.options)
+  } else {
+    hotAPI.reload("data-v-281d08e8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
 
 
 /***/ }),
 /* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(25);
+module.exports = __webpack_require__(152);
+
+
+/***/ }),
+/* 25 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -12623,18 +12674,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue__ = __webpack_require__(49);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(19);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(133);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(143);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(134);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(144);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(138);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(148);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
-__webpack_require__(25);
+__webpack_require__(26);
 
 
 
@@ -12679,11 +12730,11 @@ new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({
 // })
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-window._ = __webpack_require__(26);
+window._ = __webpack_require__(27);
 
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
@@ -12737,7 +12788,7 @@ if (token) {
 // });
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -29826,10 +29877,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(27)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(28)(module)))
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -29857,15 +29908,15 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(3);
-var bind = __webpack_require__(13);
-var Axios = __webpack_require__(30);
+var bind = __webpack_require__(14);
+var Axios = __webpack_require__(31);
 var defaults = __webpack_require__(8);
 
 /**
@@ -29899,15 +29950,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(18);
-axios.CancelToken = __webpack_require__(44);
-axios.isCancel = __webpack_require__(17);
+axios.Cancel = __webpack_require__(19);
+axios.CancelToken = __webpack_require__(45);
+axios.isCancel = __webpack_require__(18);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(45);
+axios.spread = __webpack_require__(46);
 
 module.exports = axios;
 
@@ -29916,7 +29967,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 /*!
@@ -29943,7 +29994,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -29951,8 +30002,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(8);
 var utils = __webpack_require__(3);
-var InterceptorManager = __webpack_require__(39);
-var dispatchRequest = __webpack_require__(40);
+var InterceptorManager = __webpack_require__(40);
+var dispatchRequest = __webpack_require__(41);
 
 /**
  * Create a new instance of Axios
@@ -30029,7 +30080,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30048,13 +30099,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(16);
+var createError = __webpack_require__(17);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -30081,7 +30132,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30109,7 +30160,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30184,7 +30235,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30244,7 +30295,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30319,7 +30370,7 @@ module.exports = (
 
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30362,7 +30413,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30422,7 +30473,7 @@ module.exports = (
 
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30481,18 +30532,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(3);
-var transformData = __webpack_require__(41);
-var isCancel = __webpack_require__(17);
+var transformData = __webpack_require__(42);
+var isCancel = __webpack_require__(18);
 var defaults = __webpack_require__(8);
-var isAbsoluteURL = __webpack_require__(42);
-var combineURLs = __webpack_require__(43);
+var isAbsoluteURL = __webpack_require__(43);
+var combineURLs = __webpack_require__(44);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -30574,7 +30625,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30601,7 +30652,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30622,7 +30673,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30643,13 +30694,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 44 */
+/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(18);
+var Cancel = __webpack_require__(19);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -30707,7 +30758,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 45 */
+/* 46 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -30741,7 +30792,7 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 46 */
+/* 47 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -30794,13 +30845,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(47);
+__webpack_require__(48);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 47 */
+/* 48 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -30990,18 +31041,18 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(14)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(7), __webpack_require__(15)))
 
 /***/ }),
-/* 48 */
+/* 49 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(49)
+var __vue_script__ = __webpack_require__(50)
 /* template */
-var __vue_template__ = __webpack_require__(50)
+var __vue_template__ = __webpack_require__(51)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -31040,7 +31091,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 49 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -31055,7 +31106,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({});
 
 /***/ }),
-/* 50 */
+/* 51 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -31075,24 +31126,24 @@ if (false) {
 }
 
 /***/ }),
-/* 51 */
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(52);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_index__ = __webpack_require__(19);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(53);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_index__ = __webpack_require__(20);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__helpers_jwt__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_auth_verifyCodeLogin_verifycode_login_vue__ = __webpack_require__(57);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_auth_verifyCodeLogin_verifycode_login_vue__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_auth_verifyCodeLogin_verifycode_login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_auth_verifyCodeLogin_verifycode_login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_auth_passwordLogin_password_login_vue__ = __webpack_require__(82);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_auth_passwordLogin_password_login_vue__ = __webpack_require__(83);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_auth_passwordLogin_password_login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_auth_passwordLogin_password_login_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_auth_resetPassword_resetPassword_vue__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_auth_resetPassword_resetPassword_vue__ = __webpack_require__(89);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_auth_resetPassword_resetPassword_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__components_auth_resetPassword_resetPassword_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_info_identity_identity_select_vue__ = __webpack_require__(94);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_info_identity_identity_select_vue__ = __webpack_require__(95);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_info_identity_identity_select_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__components_info_identity_identity_select_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue__ = __webpack_require__(101);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue__ = __webpack_require__(102);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue__);
 
 
@@ -31168,7 +31219,7 @@ router.beforeEach(function (to, from, next) {
 /* harmony default export */ __webpack_exports__["a"] = (router);
 
 /***/ }),
-/* 52 */
+/* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -33798,13 +33849,13 @@ if (inBrowser && window.Vue) {
 
 
 /***/ }),
-/* 53 */
+/* 54 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* unused harmony export Store */
 /* unused harmony export install */
-/* unused harmony export mapState */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return mapState; });
 /* unused harmony export mapMutations */
 /* unused harmony export mapGetters */
 /* unused harmony export mapActions */
@@ -34743,7 +34794,7 @@ var index_esm = {
 
 
 /***/ }),
-/* 54 */
+/* 55 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -34780,19 +34831,22 @@ var index_esm = {
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/logout').then(function (response) {
         __WEBPACK_IMPORTED_MODULE_1__helpers_jwt__["a" /* default */].removeToken();
         dispatch('unsetAuthUser');
+      }).catch(function (error) {
+        __WEBPACK_IMPORTED_MODULE_1__helpers_jwt__["a" /* default */].removeToken();
+        dispatch('unsetAuthUser');
       });
     }
   }
 });
 
 /***/ }),
-/* 55 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutation_types__ = __webpack_require__(56);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mutation_types__ = __webpack_require__(57);
 var _mutations;
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -34802,12 +34856,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /* harmony default export */ __webpack_exports__["a"] = ({
   state: {
-    authenticated: false
+    authenticated: false,
+    avatar: ''
   },
-  mutations: (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["a" /* SET_AUTH_USER */], function (state, paylpad) {
+  mutations: (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["a" /* SET_AUTH_USER */], function (state, payload) {
     state.authenticated = true;
-  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* UNSET_AUTH_USER */], function (state) {
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* UNSET_AUTH_USER */], function (state) {
     state.authenticated = false;
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_AVATAR */], function (state, payload) {
+    state.avatar = payload.avatar;
   }), _mutations),
   actions: {
     setAuthUser: function setAuthUser(_ref) {
@@ -34823,16 +34880,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         dispatch('refreshToken');
       });
     },
-    unsetAuthUser: function unsetAuthUser(_ref2) {
+    uploadAvatar: function uploadAvatar(_ref2, data) {
       var commit = _ref2.commit;
 
-      commit({
-        type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* UNSET_AUTH_USER */]
+      return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/user/crop/avatar', data).then(function (response) {
+        commit({
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_AVATAR */],
+          avatar: response.data.url
+        });
       });
     },
-    refreshToken: function refreshToken(_ref3) {
-      var commit = _ref3.commit,
-          dispatch = _ref3.dispatch;
+    unsetAuthUser: function unsetAuthUser(_ref3) {
+      var commit = _ref3.commit;
+
+      commit({
+        type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* UNSET_AUTH_USER */]
+      });
+    },
+    refreshToken: function refreshToken(_ref4) {
+      var commit = _ref4.commit,
+          dispatch = _ref4.dispatch;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/token/refresh').then(function (response) {
         dispatch('loginSuccess', response.data);
@@ -34844,29 +34911,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 });
 
 /***/ }),
-/* 56 */
+/* 57 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_AUTH_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return UNSET_AUTH_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return UNSET_AUTH_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_USER_AVATAR; });
 var SET_AUTH_USER = 'SET_AUTH_USER';
 var UNSET_AUTH_USER = 'UNSET_AUTH_USER';
+var SET_USER_AVATAR = 'SET_USER_AVATAR';
 
 /***/ }),
-/* 57 */
+/* 58 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(58)
+  __webpack_require__(59)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(63)
+var __vue_script__ = __webpack_require__(64)
 /* template */
-var __vue_template__ = __webpack_require__(81)
+var __vue_template__ = __webpack_require__(82)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -34905,13 +34974,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 58 */
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(59);
+var content = __webpack_require__(60);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -34931,7 +35000,7 @@ if(false) {
 }
 
 /***/ }),
-/* 59 */
+/* 60 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -34939,25 +35008,25 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-footer[data-v-1e57ac30] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-1e57ac30] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-1e57ac30] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-1e57ac30] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-1e57ac30] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-1e57ac30] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-1e57ac30] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-1e57ac30] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(60) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.login-bg[data-v-1e57ac30] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-1e57ac30] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-1e57ac30] {\n    height: 2.2rem;\n    font-weight: bold;\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(61) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1),\n.info-login li[data-v-1e57ac30]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-1e57ac30]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-1e57ac30]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-1e57ac30] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-1e57ac30] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-1e57ac30] {\n    font-size: 0.35rem;\n    color: #fff;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-1e57ac30], .info-login li input[type=number][data-v-1e57ac30], .info-login li input[type=password][data-v-1e57ac30] {\n    width: 100%;\n    padding: 0.4rem 1rem 0.4rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::placeholder, .info-login li input[type=number][data-v-1e57ac30]::placeholder, .info-login li input[type=password][data-v-1e57ac30]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:focus, .info-login li input[type=number][data-v-1e57ac30]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-1e57ac30], .info-login li input[type=button][data-v-1e57ac30] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-1e57ac30]:hover, .info-login li input[type=button][data-v-1e57ac30]:hover {\n    background-color: #53CAC3;\n}\n.info-login li:nth-child(1) b[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1):before,\n.info-login li[data-v-1e57ac30]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n          transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n          transform-origin: 0 0;\n}\n.info-login li:nth-child(2) .icon-smartphone[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  left: .4rem;\n  padding-left: .1rem;\n  font-size: .5rem;\n}\n.info-login li:nth-child(2) button[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-1e57ac30] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-1e57ac30] {\n    margin-top: .5rem;\n}\n#login .info-login li[data-v-1e57ac30]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.login-footer[data-v-1e57ac30] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-1e57ac30] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-1e57ac30] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-1e57ac30] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-1e57ac30] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-1e57ac30] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-1e57ac30] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-1e57ac30] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(61) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.login-bg[data-v-1e57ac30] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-1e57ac30] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-1e57ac30] {\n    height: 2.2rem;\n    font-weight: bold;\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-1e57ac30] {\n      background: url(" + __webpack_require__(62) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1),\n.info-login li[data-v-1e57ac30]:nth-child(2) {\n  margin-top: .6rem;\n}\n.info-login li[data-v-1e57ac30]:nth-child(3) {\n  text-align: center;\n  color: #fff;\n}\n.info-login li[data-v-1e57ac30]:nth-child(4) {\n  margin-top: 1rem;\n}\n.info-login li[data-v-1e57ac30] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-1e57ac30] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-1e57ac30] {\n    font-size: 0.35rem;\n    color: #fff;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-1e57ac30], .info-login li input[type=number][data-v-1e57ac30], .info-login li input[type=password][data-v-1e57ac30] {\n    width: 100%;\n    padding: 0.4rem 1rem 0.4rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-webkit-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]:-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=number][data-v-1e57ac30]::-ms-input-placeholder, .info-login li input[type=password][data-v-1e57ac30]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]::placeholder, .info-login li input[type=number][data-v-1e57ac30]::placeholder, .info-login li input[type=password][data-v-1e57ac30]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-1e57ac30]:focus, .info-login li input[type=number][data-v-1e57ac30]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-1e57ac30], .info-login li input[type=button][data-v-1e57ac30] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-1e57ac30]:hover, .info-login li input[type=button][data-v-1e57ac30]:hover {\n    background-color: #53CAC3;\n}\n.info-login li:nth-child(1) b[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li:nth-child(1) .icon-circle-with-cross[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.info-login li[data-v-1e57ac30]:nth-child(1):before,\n.info-login li[data-v-1e57ac30]:nth-child(2):before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n          transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n          transform-origin: 0 0;\n}\n.info-login li:nth-child(2) .icon-smartphone[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  left: .4rem;\n  padding-left: .1rem;\n  font-size: .5rem;\n}\n.info-login li:nth-child(2) button[data-v-1e57ac30] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-1e57ac30] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-1e57ac30] {\n    margin-top: .5rem;\n}\n#login .info-login li[data-v-1e57ac30]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/select.png?2a249dc8c12f415af07368682ccc6557";
-
-/***/ }),
 /* 61 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/Introduction.png?454b362056fdbeb4653ef44a9910d26f";
+module.exports = "/images/select.png?b2fd849798eb41769c92a07eaee3a23a";
 
 /***/ }),
 /* 62 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/Introduction.png?44223a14919d6f3b4c8fef9e0e85b670";
+
+/***/ }),
+/* 63 */
 /***/ (function(module, exports) {
 
 /**
@@ -34990,21 +35059,21 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 63 */
+/* 64 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_config_js__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Mixin_mixin_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Mixin_mixin_js__ = __webpack_require__(12);
 //
 //
 //
@@ -35111,13 +35180,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 64 */
+/* 65 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(65);
+var content = __webpack_require__(66);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -35137,7 +35206,7 @@ if(false) {
 }
 
 /***/ }),
-/* 65 */
+/* 66 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35151,7 +35220,7 @@ exports.push([module.i, "\n.message[data-v-472dea7e] {\n  position: absolute;\n 
 
 
 /***/ }),
-/* 66 */
+/* 67 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35195,7 +35264,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 67 */
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35236,13 +35305,13 @@ if (false) {
 }
 
 /***/ }),
-/* 68 */
+/* 69 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(69);
+var content = __webpack_require__(70);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -35262,7 +35331,7 @@ if(false) {
 }
 
 /***/ }),
-/* 69 */
+/* 70 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35276,7 +35345,7 @@ exports.push([module.i, "\n.spinner-wrapper[data-v-7b20632d] {\n  position: abso
 
 
 /***/ }),
-/* 70 */
+/* 71 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35313,7 +35382,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 71 */
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35370,13 +35439,13 @@ if (false) {
 }
 
 /***/ }),
-/* 72 */
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(73);
+var content = __webpack_require__(74);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -35396,7 +35465,7 @@ if(false) {
 }
 
 /***/ }),
-/* 73 */
+/* 74 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35410,7 +35479,7 @@ exports.push([module.i, "\n.btn-link[data-v-698c1ae3] {\n  display: block;\n  wi
 
 
 /***/ }),
-/* 74 */
+/* 75 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35471,7 +35540,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 75 */
+/* 76 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35505,13 +35574,13 @@ if (false) {
 }
 
 /***/ }),
-/* 76 */
+/* 77 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(77);
+var content = __webpack_require__(78);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -35531,7 +35600,7 @@ if(false) {
 }
 
 /***/ }),
-/* 77 */
+/* 78 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -35545,7 +35614,7 @@ exports.push([module.i, "\n.confirm[data-v-3e200afc] {\n  position: fixed;\n  le
 
 
 /***/ }),
-/* 78 */
+/* 79 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35615,7 +35684,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 79 */
+/* 80 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35704,7 +35773,7 @@ if (false) {
 }
 
 /***/ }),
-/* 80 */
+/* 81 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -35757,7 +35826,7 @@ function delVerifyCode(mobile) {
 }
 
 /***/ }),
-/* 81 */
+/* 82 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -35983,19 +36052,19 @@ if (false) {
 }
 
 /***/ }),
-/* 82 */
+/* 83 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(83)
+  __webpack_require__(84)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(86)
+var __vue_script__ = __webpack_require__(87)
 /* template */
-var __vue_template__ = __webpack_require__(87)
+var __vue_template__ = __webpack_require__(88)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36034,13 +36103,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 83 */
+/* 84 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(84);
+var content = __webpack_require__(85);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -36060,7 +36129,7 @@ if(false) {
 }
 
 /***/ }),
-/* 84 */
+/* 85 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36068,28 +36137,28 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-footer[data-v-a5a9b29c] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-a5a9b29c] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-a5a9b29c] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-a5a9b29c] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-a5a9b29c] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-a5a9b29c] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-a5a9b29c] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-a5a9b29c] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-a5a9b29c] {\n      background: url(" + __webpack_require__(85) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.password-login-wrapper[data-v-a5a9b29c] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 100;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n.password-login-wrapper .back[data-v-a5a9b29c] {\n    position: absolute;\n    top: 14px;\n    left: 6px;\n    z-index: 100;\n}\n.password-login-wrapper .back .icon-left[data-v-a5a9b29c] {\n      display: block;\n      padding: 10px;\n      font-size: 0.5rem;\n      color: #fff;\n}\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    width: 90%;\n    height: 10rem;\n    margin-top: 1.5rem;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.password-login-wrapper .password-login h3[data-v-a5a9b29c] {\n      height: 2.2rem;\n      text-align: center;\n      margin-bottom: 1.2rem;\n}\n.password-login-wrapper .password-login .avatar[data-v-a5a9b29c] {\n      border: 1px solid #fff;\n      border-radius: 100%;\n      width: 75px;\n      height: 75px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1), .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2) {\n      margin-top: .6rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(3) {\n      text-align: center;\n      color: #fff;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: 1rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c] {\n      height: 1.2rem;\n      line-height: 1.2rem;\n      position: relative;\n}\n.password-login-wrapper .password-login .info-login input[data-v-a5a9b29c] {\n      font-size: 0.35rem;\n      color: #fff;\n      -webkit-transition: all .3s;\n      transition: all .3s;\n      background: rgba(154, 165, 181, 0.3);\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c] {\n      width: 100%;\n      padding: 0.4rem 1rem 0.4rem 2rem;\n      border-radius: .8rem;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-webkit-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-webkit-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:focus, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:focus {\n      border-color: #53CAC3;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c] {\n      width: 100%;\n      height: 100%;\n      cursor: pointer;\n      background-color: #53CAC3;\n      border: 1px solid #53CAC3;\n      border-radius: .8rem;\n      -webkit-appearance: none;\n      white-space: nowrap;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c]:hover, .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c]:hover {\n      background-color: #53CAC3;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) b[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #fff;\n      font-weight: 100;\n      padding-left: .4rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) .icon-circle-with-cross[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #605e5e;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1):before,\n    .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2):before {\n      display: table;\n      content: \"\";\n      position: absolute;\n      background: #fff;\n      width: 1px;\n      height: 100%;\n      top: 50%;\n      left: 1.6rem;\n      -webkit-transform: scaleY(0.3) translateY(-50%);\n              transform: scaleY(0.3) translateY(-50%);\n      -webkit-transform-origin: 0 0;\n              transform-origin: 0 0;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) .icon-lock[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #fff;\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) i.password-show-icon[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #fff;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(3) .reset[data-v-a5a9b29c] {\n      text-decoration: underline;\n      color: #42b983;\n      padding: 0.3rem;\n}\n.slide-enter-active[data-v-a5a9b29c], .slide-leave-active[data-v-a5a9b29c] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.slide-enter[data-v-a5a9b29c], .slide-leave-to[data-v-a5a9b29c] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n@media screen and (max-height: 505px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: .5rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.login-footer[data-v-a5a9b29c] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-a5a9b29c] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-a5a9b29c] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-a5a9b29c] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-a5a9b29c] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-a5a9b29c] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-a5a9b29c] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-a5a9b29c] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-a5a9b29c] {\n      background: url(" + __webpack_require__(86) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.password-login-wrapper[data-v-a5a9b29c] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 100;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n.password-login-wrapper .back[data-v-a5a9b29c] {\n    position: absolute;\n    top: 14px;\n    left: 6px;\n    z-index: 100;\n}\n.password-login-wrapper .back .icon-left[data-v-a5a9b29c] {\n      display: block;\n      padding: 10px;\n      font-size: 0.5rem;\n      color: #fff;\n}\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    width: 90%;\n    height: 10rem;\n    margin-top: 1.5rem;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n.password-login-wrapper .password-login h3[data-v-a5a9b29c] {\n      height: 2.2rem;\n      text-align: center;\n      margin-bottom: 1.2rem;\n}\n.password-login-wrapper .password-login .avatar[data-v-a5a9b29c] {\n      border: 1px solid #fff;\n      border-radius: 100%;\n      width: 75px;\n      height: 75px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1), .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2) {\n      margin-top: .6rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(3) {\n      text-align: center;\n      color: #fff;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: 1rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c] {\n      height: 1.2rem;\n      line-height: 1.2rem;\n      position: relative;\n}\n.password-login-wrapper .password-login .info-login input[data-v-a5a9b29c] {\n      font-size: 0.35rem;\n      color: #fff;\n      -webkit-transition: all .3s;\n      transition: all .3s;\n      background: rgba(154, 165, 181, 0.3);\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c] {\n      width: 100%;\n      padding: 0.4rem 1rem 0.4rem 2rem;\n      border-radius: .8rem;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-webkit-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-webkit-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::-ms-input-placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::-ms-input-placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]::placeholder, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]::placeholder {\n        color: #fff;\n}\n.password-login-wrapper .password-login .info-login input[type=text][data-v-a5a9b29c]:focus, .password-login-wrapper .password-login .info-login input[type=password][data-v-a5a9b29c]:focus {\n      border-color: #53CAC3;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c], .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c] {\n      width: 100%;\n      height: 100%;\n      cursor: pointer;\n      background-color: #53CAC3;\n      border: 1px solid #53CAC3;\n      border-radius: .8rem;\n      -webkit-appearance: none;\n      white-space: nowrap;\n}\n.password-login-wrapper .password-login .info-login input[type=submit][data-v-a5a9b29c]:hover, .password-login-wrapper .password-login .info-login input[type=button][data-v-a5a9b29c]:hover {\n      background-color: #53CAC3;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) b[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #fff;\n      font-weight: 100;\n      padding-left: .4rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(1) .icon-circle-with-cross[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #605e5e;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(1):before,\n    .password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(2):before {\n      display: table;\n      content: \"\";\n      position: absolute;\n      background: #fff;\n      width: 1px;\n      height: 100%;\n      top: 50%;\n      left: 1.6rem;\n      -webkit-transform: scaleY(0.3) translateY(-50%);\n              transform: scaleY(0.3) translateY(-50%);\n      -webkit-transform-origin: 0 0;\n              transform-origin: 0 0;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) .icon-lock[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #fff;\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(2) i.password-show-icon[data-v-a5a9b29c] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: #fff;\n      padding: 8px;\n}\n.password-login-wrapper .password-login .info-login li:nth-child(3) .reset[data-v-a5a9b29c] {\n      text-decoration: underline;\n      color: #42b983;\n      padding: 0.3rem;\n}\n.slide-enter-active[data-v-a5a9b29c], .slide-leave-active[data-v-a5a9b29c] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.slide-enter[data-v-a5a9b29c], .slide-leave-to[data-v-a5a9b29c] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n@media screen and (max-height: 505px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n.password-login-wrapper .password-login[data-v-a5a9b29c] {\n    margin-top: .5rem;\n}\n.password-login-wrapper .password-login .info-login li[data-v-a5a9b29c]:nth-child(4) {\n      margin-top: .5rem;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 85 */
+/* 86 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/select.png?2a249dc8c12f415af07368682ccc6557";
+module.exports = "/images/select.png?b2fd849798eb41769c92a07eaee3a23a";
 
 /***/ }),
-/* 86 */
+/* 87 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Mixin_mixin_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Mixin_mixin_js__ = __webpack_require__(12);
 //
 //
 //
@@ -36197,7 +36266,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 87 */
+/* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -36472,19 +36541,19 @@ if (false) {
 }
 
 /***/ }),
-/* 88 */
+/* 89 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(89)
+  __webpack_require__(90)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(91)
+var __vue_script__ = __webpack_require__(92)
 /* template */
-var __vue_template__ = __webpack_require__(93)
+var __vue_template__ = __webpack_require__(94)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -36523,13 +36592,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 89 */
+/* 90 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(90);
+var content = __webpack_require__(91);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -36549,7 +36618,7 @@ if(false) {
 }
 
 /***/ }),
-/* 90 */
+/* 91 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -36563,19 +36632,19 @@ exports.push([module.i, "\n.reset-wrapper[data-v-431a9e4a] {\n  position: fixed;
 
 
 /***/ }),
-/* 91 */
+/* 92 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Mixin_mixin_js__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Mixin_mixin_js__ = __webpack_require__(12);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_timer_btn_TimerBtn_vue__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_timer_btn_TimerBtn_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_user_js__ = __webpack_require__(92);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_user_js__ = __webpack_require__(93);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Api_config_js__ = __webpack_require__(22);
 //
 //
@@ -36690,7 +36759,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 92 */
+/* 93 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36714,7 +36783,7 @@ function resetPassword(requestData) {
 }
 
 /***/ }),
-/* 93 */
+/* 94 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37016,19 +37085,19 @@ if (false) {
 }
 
 /***/ }),
-/* 94 */
+/* 95 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(95)
+  __webpack_require__(96)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(99)
+var __vue_script__ = __webpack_require__(100)
 /* template */
-var __vue_template__ = __webpack_require__(100)
+var __vue_template__ = __webpack_require__(101)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37067,13 +37136,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 95 */
+/* 96 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(96);
+var content = __webpack_require__(97);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -37093,7 +37162,7 @@ if(false) {
 }
 
 /***/ }),
-/* 96 */
+/* 97 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37101,25 +37170,25 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.identity-wrapper[data-v-3575cff4] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.identity-wrapper .identity-button[data-v-3575cff4] {\n    display: block;\n    width: 40%;\n    padding: 0.3rem 0.6rem;\n    border: none;\n    border-radius: 0.1rem;\n    color: #ffffff;\n    background: #53CAC3;\n    margin: auto;\n}\n.identity-wrapper .identity-img[data-v-3575cff4] {\n    width: 5rem;\n    height: 5rem;\n    background-size: 100%;\n    margin: auto;\n}\n.identity-wrapper .job-wrapper[data-v-3575cff4] {\n    width: 100%;\n}\n.identity-wrapper .job-wrapper .job-img[data-v-3575cff4] {\n      background-image: url(" + __webpack_require__(97) + ");\n}\n.identity-wrapper .or[data-v-3575cff4] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 80%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: rgba(0, 0, 0, 0.3);\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n    margin: 0.5rem auto;\n}\n.identity-wrapper .or .line[data-v-3575cff4] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.identity-wrapper .or .line[data-v-3575cff4] {\n          border-top: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.identity-wrapper .or .line[data-v-3575cff4] {\n          border-top: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.identity-wrapper .or .text[data-v-3575cff4] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.identity-wrapper .hiring-wrapper[data-v-3575cff4] {\n    width: 100%;\n}\n.identity-wrapper .hiring-wrapper .hiring-img[data-v-3575cff4] {\n      background-image: url(" + __webpack_require__(98) + ");\n}\n.identity-wrapper .logout[data-v-3575cff4] {\n    position: absolute;\n    width: 100%;\n    bottom: 1rem;\n}\n.identity-wrapper .logout a[data-v-3575cff4] {\n      display: block;\n      width: 2rem;\n      color: #53CAC3;\n      text-align: center;\n      padding: 5px;\n      margin: auto;\n}\n@media screen and (max-width: 320px) {\n.identity-wrapper .identity-img[data-v-3575cff4] {\n    width: 4.5rem;\n    height: 4rem;\n}\n.identity-wrapper .logout[data-v-3575cff4] {\n    bottom: 0.2rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.identity-wrapper[data-v-3575cff4] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n}\n.identity-wrapper .identity-button[data-v-3575cff4] {\n    display: block;\n    width: 40%;\n    padding: 0.3rem 0.6rem;\n    border: none;\n    border-radius: 0.1rem;\n    color: #ffffff;\n    background: #53CAC3;\n    margin: auto;\n}\n.identity-wrapper .identity-img[data-v-3575cff4] {\n    width: 5rem;\n    height: 5rem;\n    background-size: 100%;\n    margin: auto;\n}\n.identity-wrapper .job-wrapper[data-v-3575cff4] {\n    width: 100%;\n}\n.identity-wrapper .job-wrapper .job-img[data-v-3575cff4] {\n      background-image: url(" + __webpack_require__(98) + ");\n}\n.identity-wrapper .or[data-v-3575cff4] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 80%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: rgba(0, 0, 0, 0.3);\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n    margin: 0.5rem auto;\n}\n.identity-wrapper .or .line[data-v-3575cff4] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.identity-wrapper .or .line[data-v-3575cff4] {\n          border-top: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.identity-wrapper .or .line[data-v-3575cff4] {\n          border-top: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.identity-wrapper .or .text[data-v-3575cff4] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.identity-wrapper .hiring-wrapper[data-v-3575cff4] {\n    width: 100%;\n}\n.identity-wrapper .hiring-wrapper .hiring-img[data-v-3575cff4] {\n      background-image: url(" + __webpack_require__(99) + ");\n}\n.identity-wrapper .logout[data-v-3575cff4] {\n    position: absolute;\n    width: 100%;\n    bottom: 1rem;\n}\n.identity-wrapper .logout a[data-v-3575cff4] {\n      display: block;\n      width: 2rem;\n      color: #53CAC3;\n      text-align: center;\n      padding: 5px;\n      margin: auto;\n}\n@media screen and (max-width: 320px) {\n.identity-wrapper .identity-img[data-v-3575cff4] {\n    width: 4.5rem;\n    height: 4rem;\n}\n.identity-wrapper .logout[data-v-3575cff4] {\n    bottom: 0.2rem;\n}\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 97 */
-/***/ (function(module, exports) {
-
-module.exports = "/images/job.jpg?720688661e164c3c109d78b95dd20582";
-
-/***/ }),
 /* 98 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/hiring.jpg?2e79eca6bab83bf98719b3d9503b6557";
+module.exports = "/images/job.jpg?be8b69e12c1dce06cd507e64d8b9e9fe";
 
 /***/ }),
 /* 99 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/hiring.jpg?9f6db81fcb6b3e4dc96fc6100134355e";
+
+/***/ }),
+/* 100 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37175,7 +37244,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 100 */
+/* 101 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37275,19 +37344,19 @@ if (false) {
 }
 
 /***/ }),
-/* 101 */
+/* 102 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(102)
+  __webpack_require__(103)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(104)
+var __vue_script__ = __webpack_require__(105)
 /* template */
-var __vue_template__ = __webpack_require__(132)
+var __vue_template__ = __webpack_require__(142)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37326,13 +37395,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 102 */
+/* 103 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(103);
+var content = __webpack_require__(104);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -37352,7 +37421,7 @@ if(false) {
 }
 
 /***/ }),
-/* 103 */
+/* 104 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37366,23 +37435,30 @@ exports.push([module.i, "\n.basic-info[data-v-60e969d3] {\n  position: fixed;\n 
 
 
 /***/ }),
-/* 104 */
+/* 105 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver__ = __webpack_require__(109);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver__ = __webpack_require__(110);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_name_input__ = __webpack_require__(114);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_name_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__base_name_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_radio_sex_radio__ = __webpack_require__(119);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_radio_sex_radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_radio_sex_radio__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_job_date_picker__ = __webpack_require__(124);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_job_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_job_date_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_birth_date_picker__ = __webpack_require__(150);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_birth_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_birth_date_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_avatar_avatar_cropper__ = __webpack_require__(114);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_avatar_avatar_cropper___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_avatar_avatar_cropper__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_name_input__ = __webpack_require__(120);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_name_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__base_name_input__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_radio_sex_radio__ = __webpack_require__(125);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_radio_sex_radio___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_radio_sex_radio__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker__ = __webpack_require__(137);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_fading_circle__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_fading_circle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_Base_spinner_fading_circle__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_vuex__ = __webpack_require__(54);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 //
 //
 //
@@ -37408,6 +37484,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
+
+
 
 
 
@@ -37424,10 +37505,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         sex: '',
         jobDate: '2016-06',
         birthDate: '1997-02'
-      }
+      },
+      cropImage: {},
+      cropperShowFlag: false,
+      spinner: false
     };
   },
 
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_8_vuex__["b" /* mapState */])({
+    user: function user(state) {
+      return state.AuthUser;
+    }
+  })),
   methods: {
     back: function back() {
       this.$router.back();
@@ -37456,26 +37545,44 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     birthDateHandleSelect: function birthDateHandleSelect(data) {
       this.userData.birthDate = data;
+    },
+    avatarDriverSucceed: function avatarDriverSucceed(data) {
+      this.cropImage = data;
+      this.cropperShowFlag = true;
+    },
+    hideCropper: function hideCropper() {
+      this.cropperShowFlag = false;
+    },
+    upload: function upload(data) {
+      var _this = this;
+
+      this.cropperShowFlag = false;
+      this.spinner = true;
+      this.$store.dispatch('uploadAvatar', data).then(function (response) {
+        _this.spinner = false;
+      });
     }
   },
   components: {
     dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
     avatarDriver: __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver___default.a,
-    nameInput: __WEBPACK_IMPORTED_MODULE_2__base_name_input___default.a,
-    sexRadio: __WEBPACK_IMPORTED_MODULE_3_Base_radio_sex_radio___default.a,
-    jobDatePicker: __WEBPACK_IMPORTED_MODULE_4_Base_picker_job_date_picker___default.a,
-    birthDatePicker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_birth_date_picker___default.a
+    avatarCropper: __WEBPACK_IMPORTED_MODULE_2_Base_avatar_avatar_cropper___default.a,
+    nameInput: __WEBPACK_IMPORTED_MODULE_3__base_name_input___default.a,
+    sexRadio: __WEBPACK_IMPORTED_MODULE_4_Base_radio_sex_radio___default.a,
+    jobDatePicker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker___default.a,
+    birthDatePicker: __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker___default.a,
+    fadingCircle: __WEBPACK_IMPORTED_MODULE_7_Base_spinner_fading_circle___default.a
   }
 });
 
 /***/ }),
-/* 105 */
+/* 106 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(106);
+var content = __webpack_require__(107);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -37495,7 +37602,7 @@ if(false) {
 }
 
 /***/ }),
-/* 106 */
+/* 107 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37503,13 +37610,13 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.header[data-v-06540c08] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  font-size: 0.4rem;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 1rem;\n  color: #fff;\n  background: #53CAC3;\n  padding: 0.35rem 0.2rem 0 0.2rem;\n}\n.header .title[data-v-06540c08] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    text-align: center;\n}\n.header .back[data-v-06540c08] {\n    width: 1.5rem;\n}\n.header [class^=\"icon-\"][data-v-06540c08], .header [class*=\" icon-\"][data-v-06540c08] {\n    font-weight: bold;\n    padding: 0.3rem;\n}\n.header .icon-correct[data-v-06540c08] {\n    font-size: 0.5rem;\n}\n.header .next[data-v-06540c08] {\n    width: 1.5rem;\n}\n", ""]);
+exports.push([module.i, "\n.header[data-v-06540c08] {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  font-size: 0.4rem;\n  -webkit-box-align: center;\n      -ms-flex-align: center;\n          align-items: center;\n  height: 1rem;\n  color: #fff;\n  background: #53CAC3;\n  padding: 0.35rem 0.2rem 0 0.2rem;\n}\n.header div[data-v-06540c08] {\n    width: 2rem;\n}\n.header div p[data-v-06540c08] {\n      padding: 0.3rem;\n}\n.header .title[data-v-06540c08] {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    text-align: center;\n}\n.header [class^=\"icon-\"][data-v-06540c08], .header [class*=\" icon-\"][data-v-06540c08] {\n    font-weight: bold;\n}\n.header .icon-correct[data-v-06540c08] {\n    font-size: 0.5rem;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 107 */
+/* 108 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -37555,7 +37662,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 108 */
+/* 109 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37575,7 +37682,7 @@ var render = function() {
             }
           }
         },
-        [_c("i", { staticClass: "icon", class: _vm.backIcon })]
+        [_c("p", [_c("i", { staticClass: "icon", class: _vm.backIcon })])]
       ),
       _vm._v(" "),
       _c("span", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))]),
@@ -37593,8 +37700,10 @@ var render = function() {
           }
         },
         [
-          _c("i", { staticClass: "icon", class: _vm.nextIcon }),
-          _vm._v(_vm._s(_vm.nextText))
+          _c("p", [
+            _c("i", { staticClass: "icon", class: _vm.nextIcon }),
+            _vm._v(_vm._s(_vm.nextText))
+          ])
         ]
       )
     ])
@@ -37611,25 +37720,25 @@ if (false) {
 }
 
 /***/ }),
-/* 109 */
+/* 110 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(110)
+  __webpack_require__(111)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(112)
+var __vue_script__ = __webpack_require__(113)
 /* template */
-var __vue_template__ = __webpack_require__(113)
+var __vue_template__ = __webpack_require__(119)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-53f1f8bd"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -37662,23 +37771,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 110 */
+/* 111 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(111);
+var content = __webpack_require__(112);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("14d3d48e", content, false);
+var update = __webpack_require__(2)("d45c5144", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53f1f8bd\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-driver.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53f1f8bd\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-driver.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53f1f8bd\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-driver.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-53f1f8bd\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-driver.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -37688,7 +37797,7 @@ if(false) {
 }
 
 /***/ }),
-/* 111 */
+/* 112 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37696,17 +37805,31 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.avatar-driver {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  z-index: 50;\n  width: 100%;\n  background: #ffffff;\n}\n.avatar-driver .avatar-driver-items {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    padding-top: 0.7rem;\n    margin-bottom: 0.5rem;\n}\n.avatar-driver .avatar-driver-items span {\n      display: block;\n}\n.avatar-driver .avatar-driver-items .icon-wrapper {\n      border: 1px solid #000000;\n      border-radius: 50%;\n      font-size: 0.7rem;\n      padding: 0.3rem;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.avatar-driver .avatar-driver-items .icon-wrapper {\n          border: 0.5px solid #000000;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.avatar-driver .avatar-driver-items .icon-wrapper {\n          border: 0.33333px solid #000000;\n}\n}\n.avatar-driver .avatar-driver-items .desc {\n      margin-top: 0.3rem;\n}\n.avatar-driver .avatar-driver-cancel {\n    width: 100%;\n    border-top: 1px solid #000000;\n    text-align: center;\n    font-size: 0.4rem;\n    padding: 0.5rem 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.avatar-driver .avatar-driver-cancel {\n        border-top: 0.5px solid #000000;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.avatar-driver .avatar-driver-cancel {\n        border-top: 0.33333px solid #000000;\n}\n}\n.avatar-driver.slide-enter-active, .avatar-driver.slide-leave-active {\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.avatar-driver.slide-enter, .avatar-driver.slide-leave-to {\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\n.list-mask {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 40;\n  /*backdrop-filter: blur(10px)*/\n  opacity: 1;\n  background: rgba(0, 0, 0, 0.3);\n}\n.list-mask.fade-enter-active, .list-mask.fade-leave-active {\n    -webkit-transition: all 0.5s;\n    transition: all 0.5s;\n}\n.list-mask.fade-enter, .list-mask.fade-leave-to {\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.avatar-driver[data-v-53f1f8bd] {\n  position: fixed;\n  left: 0;\n  bottom: 0;\n  z-index: 50;\n  width: 100%;\n  background: #ffffff;\n}\n.avatar-driver .avatar-driver-items[data-v-53f1f8bd] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-pack: distribute;\n        justify-content: space-around;\n    padding-top: 0.7rem;\n    margin-bottom: 0.5rem;\n}\n.avatar-driver .avatar-driver-items span[data-v-53f1f8bd] {\n      display: block;\n}\n.avatar-driver .avatar-driver-items .file[data-v-53f1f8bd] {\n      position: relative;\n      display: block;\n      width: 50px;\n      height: 50px;\n      color: #000000;\n}\n.avatar-driver .avatar-driver-items .file span[data-v-53f1f8bd] {\n        position: absolute;\n        display: block;\n        top: 0;\n        left: 0;\n        right: 0;\n}\n.avatar-driver .avatar-driver-items .file input[data-v-53f1f8bd] {\n        position: absolute;\n        left: 0;\n        right: 0;\n        top: 0;\n        width: 50px;\n        height: 50px;\n        opacity: 0;\n}\n.avatar-driver .avatar-driver-items .icon-wrapper[data-v-53f1f8bd] {\n      border: 1px solid #000000;\n      border-radius: 50%;\n      font-size: 0.7rem;\n      padding: 0.3rem;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.avatar-driver .avatar-driver-items .icon-wrapper[data-v-53f1f8bd] {\n          border: 0.5px solid #000000;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.avatar-driver .avatar-driver-items .icon-wrapper[data-v-53f1f8bd] {\n          border: 0.33333px solid #000000;\n}\n}\n.avatar-driver .avatar-driver-items .desc[data-v-53f1f8bd] {\n      margin-top: 0.3rem;\n}\n.avatar-driver .avatar-driver-cancel[data-v-53f1f8bd] {\n    width: 100%;\n    border-top: 1px solid #000000;\n    text-align: center;\n    font-size: 0.4rem;\n    padding: 0.5rem 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.avatar-driver .avatar-driver-cancel[data-v-53f1f8bd] {\n        border-top: 0.5px solid #000000;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.avatar-driver .avatar-driver-cancel[data-v-53f1f8bd] {\n        border-top: 0.33333px solid #000000;\n}\n}\n.avatar-driver.slide-enter-active[data-v-53f1f8bd], .avatar-driver.slide-leave-active[data-v-53f1f8bd] {\n    -webkit-transition: all 0.3s;\n    transition: all 0.3s;\n}\n.avatar-driver.slide-enter[data-v-53f1f8bd], .avatar-driver.slide-leave-to[data-v-53f1f8bd] {\n    -webkit-transform: translate3d(0, 100%, 0);\n            transform: translate3d(0, 100%, 0);\n}\n.list-mask[data-v-53f1f8bd] {\n  position: fixed;\n  top: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  z-index: 40;\n  /*backdrop-filter: blur(10px)*/\n  opacity: 1;\n  background: rgba(0, 0, 0, 0.3);\n}\n.list-mask.fade-enter-active[data-v-53f1f8bd], .list-mask.fade-leave-active[data-v-53f1f8bd] {\n    -webkit-transition: all 0.5s;\n    transition: all 0.5s;\n}\n.list-mask.fade-enter[data-v-53f1f8bd], .list-mask.fade-leave-to[data-v-53f1f8bd] {\n    opacity: 0;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 112 */
+/* 113 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -37726,10 +37849,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 
+
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      showFlag: false
+      showFlag: false,
+      cropperShowFlag: false,
+      cropImage: {}
     };
   },
 
@@ -37740,26 +37867,160 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     hide: function hide() {
       this.showFlag = false;
     },
-    invokingCarera: function invokingCarera() {
-      var p = navigator.mediaDevices.getUserMedia({ audio: true, video: true });
+    clickCamera: function clickCamera() {
+      return this.$refs['file'].click();
+    },
+    cancel: function cancel() {
+      this.cropperShowFlag = false;
+    },
+    uploadChange: function uploadChange(e) {
+      var _this = this;
 
-      p.then(function (mediaStream) {
-        var video = document.querySelector('video');
-        video.src = window.URL.createObjectURL(mediaStream);
-        video.onloadedmetadata = function (e) {
-          // Do something with the video here.
-        };
+      var files = e.target.files;
+      var formData = new FormData();
+
+      formData.append('file', files[0]);
+
+      __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('api/user/avatar', formData).then(function (response) {
+        _this.$emit('succeed', response.data);
       });
-
-      p.catch(function (err) {
-        console.log(err.name);
-      }); // always check for errors at the end.
     }
   }
 });
 
 /***/ }),
-/* 113 */
+/* 114 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(162)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(117)
+/* template */
+var __vue_template__ = __webpack_require__(164)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-59e1e370"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\avatar\\avatar-cropper.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-59e1e370", Component.options)
+  } else {
+    hotAPI.reload("data-v-59e1e370", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 115 */,
+/* 116 */,
+/* 117 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs_dist_cropper_min_css__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs_dist_cropper_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_cropperjs_dist_cropper_min_css__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cropperjs__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cropperjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_cropperjs__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_header_header__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_header_header__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    image: {
+      type: Object,
+      default: function _default() {
+        return {};
+      }
+    }
+  },
+  data: function data() {
+    return {
+      cropper: {}
+    };
+  },
+  mounted: function mounted() {
+    this.init();
+  },
+
+  methods: {
+    // 初始化裁剪插件
+    init: function init() {
+      var image = document.getElementById('cropImage');
+      this.cropper = new __WEBPACK_IMPORTED_MODULE_1_cropperjs___default.a(image, {
+        aspectRatio: 10 / 7,
+        viewMode: 3,
+        autoCropArea: 1,
+        movable: false,
+        zoomable: false,
+        //          modal: false, // 在图像上方和裁切框下方显示黑色模式。
+        guides: false // 在裁剪框上方显示虚线。
+      });
+    },
+    cancel: function cancel() {
+      this.$emit('cancel');
+    },
+    save: function save() {
+      var formData = {
+        'image': this.image,
+        'data': this.cropper.getData()
+      };
+      this.$emit('save', formData);
+    }
+  },
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_2_Base_header_header___default.a,
+    Cropper: __WEBPACK_IMPORTED_MODULE_1_cropperjs___default.a
+  }
+});
+
+/***/ }),
+/* 118 */,
+/* 119 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -37787,21 +38048,59 @@ var render = function() {
             _c("div", { staticClass: "avatar-driver-items" }, [
               _c("div", [
                 _c(
-                  "span",
+                  "a",
                   {
-                    staticClass: "icon-wrapper",
-                    on: { click: _vm.invokingCarera }
+                    staticClass: "file",
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.hide()
+                      }
+                    }
                   },
-                  [_c("i", { staticClass: "icon-camera-outline" })]
+                  [
+                    _c("span", { staticClass: "icon-wrapper" }, [
+                      _c("i", { staticClass: "icon-camera-outline" })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: {
+                        type: "file",
+                        accept: "image/*",
+                        capture: "camera"
+                      },
+                      on: { change: _vm.uploadChange }
+                    })
+                  ]
                 ),
                 _vm._v(" "),
                 _c("span", { staticClass: "desc" }, [_vm._v("拍摄照片")])
               ]),
               _vm._v(" "),
               _c("div", [
-                _c("span", { staticClass: "icon-wrapper" }, [
-                  _c("i", { staticClass: "icon-image" })
-                ]),
+                _c(
+                  "a",
+                  {
+                    staticClass: "file",
+                    attrs: { href: "javascript:;" },
+                    on: {
+                      click: function($event) {
+                        _vm.hide()
+                      }
+                    }
+                  },
+                  [
+                    _c("span", { staticClass: "icon-wrapper" }, [
+                      _c("i", { staticClass: "icon-image" })
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      attrs: { type: "file", accept: "image/*", multiple: "" },
+                      on: { change: _vm.uploadChange }
+                    })
+                  ]
+                ),
+                _vm._v(" "),
                 _c("span", { staticClass: "desc" }, [_vm._v("相册照片")])
               ]),
               _vm._v(" "),
@@ -37851,19 +38150,19 @@ if (false) {
 }
 
 /***/ }),
-/* 114 */
+/* 120 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(115)
+  __webpack_require__(121)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(117)
+var __vue_script__ = __webpack_require__(123)
 /* template */
-var __vue_template__ = __webpack_require__(118)
+var __vue_template__ = __webpack_require__(124)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -37902,13 +38201,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 115 */
+/* 121 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(116);
+var content = __webpack_require__(122);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -37928,7 +38227,7 @@ if(false) {
 }
 
 /***/ }),
-/* 116 */
+/* 122 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -37942,12 +38241,12 @@ exports.push([module.i, "\n.name-wrapper[data-v-50675bc8] {\n  position: fixed;\
 
 
 /***/ }),
-/* 117 */
+/* 123 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(13);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
@@ -38047,7 +38346,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 118 */
+/* 124 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -38159,19 +38458,19 @@ if (false) {
 }
 
 /***/ }),
-/* 119 */
+/* 125 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(120)
+  __webpack_require__(126)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(122)
+var __vue_script__ = __webpack_require__(128)
 /* template */
-var __vue_template__ = __webpack_require__(123)
+var __vue_template__ = __webpack_require__(129)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -38210,13 +38509,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 120 */
+/* 126 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(121);
+var content = __webpack_require__(127);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -38236,7 +38535,7 @@ if(false) {
 }
 
 /***/ }),
-/* 121 */
+/* 127 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38250,7 +38549,7 @@ exports.push([module.i, "\n.row[data-v-2870d402] {\n  display: -webkit-box;\n  d
 
 
 /***/ }),
-/* 122 */
+/* 128 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38278,7 +38577,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 123 */
+/* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -38353,15 +38652,15 @@ if (false) {
 }
 
 /***/ }),
-/* 124 */
+/* 130 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(125)
+var __vue_script__ = __webpack_require__(131)
 /* template */
-var __vue_template__ = __webpack_require__(131)
+var __vue_template__ = __webpack_require__(136)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -38400,14 +38699,14 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 125 */
+/* 131 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(126);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(23);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
 //
 //
@@ -38519,64 +38818,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 126 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(127)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(129)
-/* template */
-var __vue_template__ = __webpack_require__(130)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-281d08e8"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\base\\picker\\picker.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-281d08e8", Component.options)
-  } else {
-    hotAPI.reload("data-v-281d08e8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 127 */
+/* 132 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(128);
+var content = __webpack_require__(133);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -38596,7 +38844,7 @@ if(false) {
 }
 
 /***/ }),
-/* 128 */
+/* 133 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -38610,7 +38858,7 @@ exports.push([module.i, "\n.picker[data-v-281d08e8] {\n  position: absolute;\n  
 
 
 /***/ }),
-/* 129 */
+/* 134 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -38675,7 +38923,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 130 */
+/* 135 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -38774,7 +39022,7 @@ if (false) {
 }
 
 /***/ }),
-/* 131 */
+/* 136 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -38806,7 +39054,216 @@ if (false) {
 }
 
 /***/ }),
-/* 132 */
+/* 137 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(138)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(140)
+/* template */
+var __vue_template__ = __webpack_require__(141)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\picker\\birth-date-picker.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-495026d6", Component.options)
+  } else {
+    hotAPI.reload("data-v-495026d6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 138 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(139);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("6aaf6779", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-495026d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./birth-date-picker.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-495026d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./birth-date-picker.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 139 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 140 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(23);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    value: ''
+  },
+  data: function data() {
+    return {
+      birthDateSlots: [{
+        flex: 1,
+        values: [],
+        defaultIndex: 0
+      }, {
+        flex: 1,
+        values: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        defaultIndex: 0
+      }],
+      data: [],
+      message: ''
+    };
+  },
+  created: function created() {
+    this.init();
+  },
+
+  methods: {
+    init: function init() {
+      var birthYearListData = this._getBirthYearListData();
+      this.birthDateSlots[0].values = birthYearListData;
+      var values = this.value.split('-');
+      if (values.length < 2) {
+        return;
+      }
+      // 索引初始化（values中数据必须转换为int类型）
+      this.birthDateSlots[0].defaultIndex = birthYearListData.indexOf(parseInt(values[0]));
+      this.birthDateSlots[1].defaultIndex = this.birthDateSlots[1].values.indexOf(parseInt(values[1]));
+    },
+    _getBirthYearListData: function _getBirthYearListData() {
+      var date = new Date();
+      var currentYear = date.getFullYear();
+      var yearListData = [];
+      for (var i = currentYear - 15, j = currentYear - 50; i > j; i--) {
+        yearListData.push(i);
+      }
+      return yearListData;
+    },
+    show: function show() {
+      this.$refs.picker.show();
+    },
+    hide: function hide() {
+      this.$refs.picker.hide();
+    },
+    onValuesChange: function onValuesChange(picker, values) {
+      this.data = values;
+    },
+    confirm: function confirm() {
+      var data = this.data[0] + '-' + (this.data[1] < 10 ? '0' + this.data[1] : this.data[1]);
+      this.$emit('select', data);
+      this.hide();
+    }
+  },
+  components: {
+    picker: __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default.a,
+    message: __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default.a
+  }
+});
+
+/***/ }),
+/* 141 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("picker", {
+        ref: "picker",
+        attrs: { title: "出生年月", slots: _vm.birthDateSlots },
+        on: { onValuesChange: _vm.onValuesChange, confirm: _vm.confirm }
+      }),
+      _vm._v(" "),
+      _c("message", { ref: "message", attrs: { message: _vm.message } })
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-495026d6", module.exports)
+  }
+}
+
+/***/ }),
+/* 142 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -38833,7 +39290,9 @@ var render = function() {
             _c("img", {
               staticClass: "avatar",
               attrs: {
-                src: "https://img2.bosszhipin.com/boss/avatar/avatar_15.png"
+                src: _vm.user.avatar
+                  ? _vm.user.avatar
+                  : "https://img2.bosszhipin.com/boss/avatar/avatar_15.png"
               }
             })
           ]
@@ -38891,7 +39350,18 @@ var render = function() {
           _c("div", { staticClass: "basic-info-next" }, [_vm._v("下一步")])
         ]),
         _vm._v(" "),
-        _c("avatar-driver", { ref: "avatarDriver" }),
+        _c("avatar-driver", {
+          ref: "avatarDriver",
+          on: { succeed: _vm.avatarDriverSucceed }
+        }),
+        _vm._v(" "),
+        _vm.cropperShowFlag
+          ? _c("avatar-cropper", {
+              ref: "avatarCropper",
+              attrs: { image: _vm.cropImage },
+              on: { cancel: _vm.hideCropper, save: _vm.upload }
+            })
+          : _vm._e(),
         _vm._v(" "),
         _c("name-input", {
           ref: "nameInput",
@@ -38921,6 +39391,18 @@ var render = function() {
             },
             expression: "userData.birthDate"
           }
+        }),
+        _vm._v(" "),
+        _c("fading-circle", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.spinner,
+              expression: "spinner"
+            }
+          ],
+          attrs: { text: "上传中" }
         })
       ],
       1
@@ -38938,7 +39420,7 @@ if (false) {
 }
 
 /***/ }),
-/* 133 */
+/* 143 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -39786,7 +40268,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 134 */
+/* 144 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -49683,19 +50165,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(135);
+module.exports = __webpack_require__(145);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(136);
+module.exports = __webpack_require__(146);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(137);
+module.exports = __webpack_require__(147);
 
 /***/ },
 /* 202 */
@@ -49708,7 +50190,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 135 */
+/* 145 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -49740,7 +50222,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 136 */
+/* 146 */
 /***/ (function(module, exports) {
 
 /*
@@ -49787,7 +50269,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 137 */
+/* 147 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -49799,13 +50281,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 138 */
+/* 148 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(139);
+var content = __webpack_require__(149);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -49813,7 +50295,7 @@ var transform;
 var options = {"hmr":true}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(140)(content, options);
+var update = __webpack_require__(150)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -49830,7 +50312,7 @@ if(false) {
 }
 
 /***/ }),
-/* 139 */
+/* 149 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -49844,7 +50326,7 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 140 */
+/* 150 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -49900,7 +50382,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(141);
+var	fixUrls = __webpack_require__(151);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -50216,7 +50698,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 141 */
+/* 151 */
 /***/ (function(module, exports) {
 
 
@@ -50311,87 +50793,3844 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 142 */
+/* 152 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 143 */,
-/* 144 */,
-/* 145 */,
-/* 146 */,
-/* 147 */,
-/* 148 */,
-/* 149 */,
-/* 150 */
+/* 153 */,
+/* 154 */,
+/* 155 */,
+/* 156 */,
+/* 157 */,
+/* 158 */,
+/* 159 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(151)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(153)
-/* template */
-var __vue_template__ = __webpack_require__(154)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\base\\picker\\birth-date-picker.vue"
+/*!
+ * Cropper.js v1.2.1
+ * https://github.com/fengyuanchen/cropperjs
+ *
+ * Copyright (c) 2015-2017 Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2017-12-17T10:34:04.181Z
+ */
 
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-495026d6", Component.options)
-  } else {
-    hotAPI.reload("data-v-495026d6", Component.options)
+(function (global, factory) {
+	 true ? module.exports = factory() :
+	typeof define === 'function' && define.amd ? define(factory) :
+	(global.Cropper = factory());
+}(this, (function () { 'use strict';
+
+var WINDOW = typeof window !== 'undefined' ? window : {};
+var NAMESPACE = 'cropper';
+
+// Actions
+var ACTION_ALL = 'all';
+var ACTION_CROP = 'crop';
+var ACTION_MOVE = 'move';
+var ACTION_ZOOM = 'zoom';
+var ACTION_EAST = 'e';
+var ACTION_WEST = 'w';
+var ACTION_SOUTH = 's';
+var ACTION_NORTH = 'n';
+var ACTION_NORTH_EAST = 'ne';
+var ACTION_NORTH_WEST = 'nw';
+var ACTION_SOUTH_EAST = 'se';
+var ACTION_SOUTH_WEST = 'sw';
+
+// Classes
+var CLASS_CROP = NAMESPACE + '-crop';
+var CLASS_DISABLED = NAMESPACE + '-disabled';
+var CLASS_HIDDEN = NAMESPACE + '-hidden';
+var CLASS_HIDE = NAMESPACE + '-hide';
+var CLASS_INVISIBLE = NAMESPACE + '-invisible';
+var CLASS_MODAL = NAMESPACE + '-modal';
+var CLASS_MOVE = NAMESPACE + '-move';
+
+// Data keys
+var DATA_ACTION = 'action';
+var DATA_PREVIEW = 'preview';
+
+// Drag modes
+var DRAG_MODE_CROP = 'crop';
+var DRAG_MODE_MOVE = 'move';
+var DRAG_MODE_NONE = 'none';
+
+// Events
+var EVENT_CROP = 'crop';
+var EVENT_CROP_END = 'cropend';
+var EVENT_CROP_MOVE = 'cropmove';
+var EVENT_CROP_START = 'cropstart';
+var EVENT_DBLCLICK = 'dblclick';
+var EVENT_ERROR = 'error';
+var EVENT_LOAD = 'load';
+var EVENT_POINTER_DOWN = WINDOW.PointerEvent ? 'pointerdown' : 'touchstart mousedown';
+var EVENT_POINTER_MOVE = WINDOW.PointerEvent ? 'pointermove' : 'touchmove mousemove';
+var EVENT_POINTER_UP = WINDOW.PointerEvent ? 'pointerup pointercancel' : 'touchend touchcancel mouseup';
+var EVENT_READY = 'ready';
+var EVENT_RESIZE = 'resize';
+var EVENT_WHEEL = 'wheel mousewheel DOMMouseScroll';
+var EVENT_ZOOM = 'zoom';
+
+// RegExps
+var REGEXP_ACTIONS = /^(e|w|s|n|se|sw|ne|nw|all|crop|move|zoom)$/;
+var REGEXP_DATA_URL = /^data:/;
+var REGEXP_DATA_URL_JPEG = /^data:image\/jpeg;base64,/;
+var REGEXP_TAG_NAME = /^(img|canvas)$/i;
+
+var DEFAULTS = {
+  // Define the view mode of the cropper
+  viewMode: 0, // 0, 1, 2, 3
+
+  // Define the dragging mode of the cropper
+  dragMode: DRAG_MODE_CROP, // 'crop', 'move' or 'none'
+
+  // Define the aspect ratio of the crop box
+  aspectRatio: NaN,
+
+  // An object with the previous cropping result data
+  data: null,
+
+  // A selector for adding extra containers to preview
+  preview: '',
+
+  // Re-render the cropper when resize the window
+  responsive: true,
+
+  // Restore the cropped area after resize the window
+  restore: true,
+
+  // Check if the current image is a cross-origin image
+  checkCrossOrigin: true,
+
+  // Check the current image's Exif Orientation information
+  checkOrientation: true,
+
+  // Show the black modal
+  modal: true,
+
+  // Show the dashed lines for guiding
+  guides: true,
+
+  // Show the center indicator for guiding
+  center: true,
+
+  // Show the white modal to highlight the crop box
+  highlight: true,
+
+  // Show the grid background
+  background: true,
+
+  // Enable to crop the image automatically when initialize
+  autoCrop: true,
+
+  // Define the percentage of automatic cropping area when initializes
+  autoCropArea: 0.8,
+
+  // Enable to move the image
+  movable: true,
+
+  // Enable to rotate the image
+  rotatable: true,
+
+  // Enable to scale the image
+  scalable: true,
+
+  // Enable to zoom the image
+  zoomable: true,
+
+  // Enable to zoom the image by dragging touch
+  zoomOnTouch: true,
+
+  // Enable to zoom the image by wheeling mouse
+  zoomOnWheel: true,
+
+  // Define zoom ratio when zoom the image by wheeling mouse
+  wheelZoomRatio: 0.1,
+
+  // Enable to move the crop box
+  cropBoxMovable: true,
+
+  // Enable to resize the crop box
+  cropBoxResizable: true,
+
+  // Toggle drag mode between "crop" and "move" when click twice on the cropper
+  toggleDragModeOnDblclick: true,
+
+  // Size limitation
+  minCanvasWidth: 0,
+  minCanvasHeight: 0,
+  minCropBoxWidth: 0,
+  minCropBoxHeight: 0,
+  minContainerWidth: 200,
+  minContainerHeight: 100,
+
+  // Shortcuts of events
+  ready: null,
+  cropstart: null,
+  cropmove: null,
+  cropend: null,
+  crop: null,
+  zoom: null
+};
+
+var TEMPLATE = '<div class="cropper-container">' + '<div class="cropper-wrap-box">' + '<div class="cropper-canvas"></div>' + '</div>' + '<div class="cropper-drag-box"></div>' + '<div class="cropper-crop-box">' + '<span class="cropper-view-box"></span>' + '<span class="cropper-dashed dashed-h"></span>' + '<span class="cropper-dashed dashed-v"></span>' + '<span class="cropper-center"></span>' + '<span class="cropper-face"></span>' + '<span class="cropper-line line-e" data-action="e"></span>' + '<span class="cropper-line line-n" data-action="n"></span>' + '<span class="cropper-line line-w" data-action="w"></span>' + '<span class="cropper-line line-s" data-action="s"></span>' + '<span class="cropper-point point-e" data-action="e"></span>' + '<span class="cropper-point point-n" data-action="n"></span>' + '<span class="cropper-point point-w" data-action="w"></span>' + '<span class="cropper-point point-s" data-action="s"></span>' + '<span class="cropper-point point-ne" data-action="ne"></span>' + '<span class="cropper-point point-nw" data-action="nw"></span>' + '<span class="cropper-point point-sw" data-action="sw"></span>' + '<span class="cropper-point point-se" data-action="se"></span>' + '</div>' + '</div>';
+
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
   }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
+};
 
-module.exports = Component.exports
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var toConsumableArray = function (arr) {
+  if (Array.isArray(arr)) {
+    for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
+
+    return arr2;
+  } else {
+    return Array.from(arr);
+  }
+};
+
+/**
+ * Check if the given value is not a number.
+ */
+var isNaN = Number.isNaN || WINDOW.isNaN;
+
+/**
+ * Check if the given value is a number.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is a number, else `false`.
+ */
+function isNumber(value) {
+  return typeof value === 'number' && !isNaN(value);
+}
+
+/**
+ * Check if the given value is undefined.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is undefined, else `false`.
+ */
+function isUndefined(value) {
+  return typeof value === 'undefined';
+}
+
+/**
+ * Check if the given value is an object.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is an object, else `false`.
+ */
+function isObject(value) {
+  return (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object' && value !== null;
+}
+
+var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+/**
+ * Check if the given value is a plain object.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is a plain object, else `false`.
+ */
+
+function isPlainObject(value) {
+  if (!isObject(value)) {
+    return false;
+  }
+
+  try {
+    var _constructor = value.constructor;
+    var prototype = _constructor.prototype;
+
+
+    return _constructor && prototype && hasOwnProperty.call(prototype, 'isPrototypeOf');
+  } catch (e) {
+    return false;
+  }
+}
+
+/**
+ * Check if the given value is a function.
+ * @param {*} value - The value to check.
+ * @returns {boolean} Returns `true` if the given value is a function, else `false`.
+ */
+function isFunction(value) {
+  return typeof value === 'function';
+}
+
+/**
+ * Iterate the given data.
+ * @param {*} data - The data to iterate.
+ * @param {Function} callback - The process function for each element.
+ * @returns {*} The original data.
+ */
+function each(data, callback) {
+  if (data && isFunction(callback)) {
+    if (Array.isArray(data) || isNumber(data.length) /* array-like */) {
+        var length = data.length;
+
+        var i = void 0;
+
+        for (i = 0; i < length; i += 1) {
+          if (callback.call(data, data[i], i, data) === false) {
+            break;
+          }
+        }
+      } else if (isObject(data)) {
+      Object.keys(data).forEach(function (key) {
+        callback.call(data, data[key], key, data);
+      });
+    }
+  }
+
+  return data;
+}
+
+/**
+ * Extend the given object.
+ * @param {*} obj - The object to be extended.
+ * @param {*} args - The rest objects which will be merged to the first object.
+ * @returns {Object} The extended object.
+ */
+function extend(obj) {
+  for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    args[_key - 1] = arguments[_key];
+  }
+
+  if (isObject(obj) && args.length > 0) {
+    if (Object.assign) {
+      return Object.assign.apply(Object, [obj].concat(args));
+    }
+
+    args.forEach(function (arg) {
+      if (isObject(arg)) {
+        Object.keys(arg).forEach(function (key) {
+          obj[key] = arg[key];
+        });
+      }
+    });
+  }
+
+  return obj;
+}
+
+/**
+ * Takes a function and returns a new one that will always have a particular context.
+ * @param {Function} fn - The target function.
+ * @param {Object} context - The new context for the function.
+ * @returns {boolean} The new function.
+ */
+function proxy(fn, context) {
+  for (var _len2 = arguments.length, args = Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
+    args[_key2 - 2] = arguments[_key2];
+  }
+
+  return function () {
+    for (var _len3 = arguments.length, args2 = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+      args2[_key3] = arguments[_key3];
+    }
+
+    return fn.apply(context, args.concat(args2));
+  };
+}
+
+var REGEXP_DECIMALS = /\.\d*(?:0|9){12}\d*$/i;
+
+/**
+ * Normalize decimal number.
+ * Check out {@link http://0.30000000000000004.com/ }
+ * @param {number} value - The value to normalize.
+ * @param {number} [times=100000000000] - The times for normalizing.
+ * @returns {number} Returns the normalized number.
+ */
+function normalizeDecimalNumber(value) {
+  var times = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 100000000000;
+
+  return REGEXP_DECIMALS.test(value) ? Math.round(value * times) / times : value;
+}
+
+var REGEXP_SUFFIX = /^(width|height|left|top|marginLeft|marginTop)$/;
+
+/**
+ * Apply styles to the given element.
+ * @param {Element} element - The target element.
+ * @param {Object} styles - The styles for applying.
+ */
+function setStyle(element, styles) {
+  var style = element.style;
+
+
+  each(styles, function (value, property) {
+    if (REGEXP_SUFFIX.test(property) && isNumber(value)) {
+      value += 'px';
+    }
+
+    style[property] = value;
+  });
+}
+
+/**
+ * Check if the given element has a special class.
+ * @param {Element} element - The element to check.
+ * @param {string} value - The class to search.
+ * @returns {boolean} Returns `true` if the special class was found.
+ */
+function hasClass(element, value) {
+  return element.classList ? element.classList.contains(value) : element.className.indexOf(value) > -1;
+}
+
+/**
+ * Add classes to the given element.
+ * @param {Element} element - The target element.
+ * @param {string} value - The classes to be added.
+ */
+function addClass(element, value) {
+  if (!value) {
+    return;
+  }
+
+  if (isNumber(element.length)) {
+    each(element, function (elem) {
+      addClass(elem, value);
+    });
+    return;
+  }
+
+  if (element.classList) {
+    element.classList.add(value);
+    return;
+  }
+
+  var className = element.className.trim();
+
+  if (!className) {
+    element.className = value;
+  } else if (className.indexOf(value) < 0) {
+    element.className = className + ' ' + value;
+  }
+}
+
+/**
+ * Remove classes from the given element.
+ * @param {Element} element - The target element.
+ * @param {string} value - The classes to be removed.
+ */
+function removeClass(element, value) {
+  if (!value) {
+    return;
+  }
+
+  if (isNumber(element.length)) {
+    each(element, function (elem) {
+      removeClass(elem, value);
+    });
+    return;
+  }
+
+  if (element.classList) {
+    element.classList.remove(value);
+    return;
+  }
+
+  if (element.className.indexOf(value) >= 0) {
+    element.className = element.className.replace(value, '');
+  }
+}
+
+/**
+ * Add or remove classes from the given element.
+ * @param {Element} element - The target element.
+ * @param {string} value - The classes to be toggled.
+ * @param {boolean} added - Add only.
+ */
+function toggleClass(element, value, added) {
+  if (!value) {
+    return;
+  }
+
+  if (isNumber(element.length)) {
+    each(element, function (elem) {
+      toggleClass(elem, value, added);
+    });
+    return;
+  }
+
+  // IE10-11 doesn't support the second parameter of `classList.toggle`
+  if (added) {
+    addClass(element, value);
+  } else {
+    removeClass(element, value);
+  }
+}
+
+var REGEXP_HYPHENATE = /([a-z\d])([A-Z])/g;
+
+/**
+ * Hyphenate the given value.
+ * @param {string} value - The value to hyphenate.
+ * @returns {string} The hyphenated value.
+ */
+function hyphenate(value) {
+  return value.replace(REGEXP_HYPHENATE, '$1-$2').toLowerCase();
+}
+
+/**
+ * Get data from the given element.
+ * @param {Element} element - The target element.
+ * @param {string} name - The data key to get.
+ * @returns {string} The data value.
+ */
+function getData(element, name) {
+  if (isObject(element[name])) {
+    return element[name];
+  } else if (element.dataset) {
+    return element.dataset[name];
+  }
+
+  return element.getAttribute('data-' + hyphenate(name));
+}
+
+/**
+ * Set data to the given element.
+ * @param {Element} element - The target element.
+ * @param {string} name - The data key to set.
+ * @param {string} data - The data value.
+ */
+function setData(element, name, data) {
+  if (isObject(data)) {
+    element[name] = data;
+  } else if (element.dataset) {
+    element.dataset[name] = data;
+  } else {
+    element.setAttribute('data-' + hyphenate(name), data);
+  }
+}
+
+/**
+ * Remove data from the given element.
+ * @param {Element} element - The target element.
+ * @param {string} name - The data key to remove.
+ */
+function removeData(element, name) {
+  if (isObject(element[name])) {
+    try {
+      delete element[name];
+    } catch (e) {
+      element[name] = null;
+    }
+  } else if (element.dataset) {
+    // #128 Safari not allows to delete dataset property
+    try {
+      delete element.dataset[name];
+    } catch (e) {
+      element.dataset[name] = null;
+    }
+  } else {
+    element.removeAttribute('data-' + hyphenate(name));
+  }
+}
+
+var REGEXP_SPACES = /\s+/;
+
+/**
+ * Remove event listener from the target element.
+ * @param {Element} element - The event target.
+ * @param {string} type - The event type(s).
+ * @param {Function} listener - The event listener.
+ * @param {Object} options - The event options.
+ */
+function removeListener(element, type, listener) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  if (!isFunction(listener)) {
+    return;
+  }
+
+  var types = type.trim().split(REGEXP_SPACES);
+
+  if (types.length > 1) {
+    each(types, function (t) {
+      removeListener(element, t, listener, options);
+    });
+    return;
+  }
+
+  if (element.removeEventListener) {
+    element.removeEventListener(type, listener, options);
+  } else if (element.detachEvent) {
+    element.detachEvent('on' + type, listener);
+  }
+}
+
+/**
+ * Add event listener to the target element.
+ * @param {Element} element - The event target.
+ * @param {string} type - The event type(s).
+ * @param {Function} listener - The event listener.
+ * @param {Object} options - The event options.
+ */
+function addListener(element, type, _listener) {
+  var options = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : {};
+
+  if (!isFunction(_listener)) {
+    return;
+  }
+
+  var types = type.trim().split(REGEXP_SPACES);
+
+  if (types.length > 1) {
+    each(types, function (t) {
+      addListener(element, t, _listener, options);
+    });
+    return;
+  }
+
+  if (options.once) {
+    var originalListener = _listener;
+
+    _listener = function listener() {
+      for (var _len4 = arguments.length, args = Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        args[_key4] = arguments[_key4];
+      }
+
+      removeListener(element, type, _listener, options);
+      return originalListener.apply(element, args);
+    };
+  }
+
+  if (element.addEventListener) {
+    element.addEventListener(type, _listener, options);
+  } else if (element.attachEvent) {
+    element.attachEvent('on' + type, _listener);
+  }
+}
+
+/**
+ * Dispatch event on the target element.
+ * @param {Element} element - The event target.
+ * @param {string} type - The event type(s).
+ * @param {Object} data - The additional event data.
+ * @returns {boolean} Indicate if the event is default prevented or not.
+ */
+function dispatchEvent(element, type, data) {
+  if (element.dispatchEvent) {
+    var event = void 0;
+
+    // Event and CustomEvent on IE9-11 are global objects, not constructors
+    if (isFunction(Event) && isFunction(CustomEvent)) {
+      if (isUndefined(data)) {
+        event = new Event(type, {
+          bubbles: true,
+          cancelable: true
+        });
+      } else {
+        event = new CustomEvent(type, {
+          detail: data,
+          bubbles: true,
+          cancelable: true
+        });
+      }
+    } else if (isUndefined(data)) {
+      event = document.createEvent('Event');
+      event.initEvent(type, true, true);
+    } else {
+      event = document.createEvent('CustomEvent');
+      event.initCustomEvent(type, true, true, data);
+    }
+
+    // IE9+
+    return element.dispatchEvent(event);
+  } else if (element.fireEvent) {
+    // IE6-10 (native events only)
+    return element.fireEvent('on' + type);
+  }
+
+  return true;
+}
+
+/**
+ * Get the offset base on the document.
+ * @param {Element} element - The target element.
+ * @returns {Object} The offset data.
+ */
+function getOffset(element) {
+  var doc = document.documentElement;
+  var box = element.getBoundingClientRect();
+
+  return {
+    left: box.left + ((window.scrollX || doc && doc.scrollLeft || 0) - (doc && doc.clientLeft || 0)),
+    top: box.top + ((window.scrollY || doc && doc.scrollTop || 0) - (doc && doc.clientTop || 0))
+  };
+}
+
+/**
+ * Empty an element.
+ * @param {Element} element - The element to empty.
+ */
+function empty(element) {
+  while (element.firstChild) {
+    element.removeChild(element.firstChild);
+  }
+}
+
+var location = WINDOW.location;
+
+var REGEXP_ORIGINS = /^(https?:)\/\/([^:/?#]+):?(\d*)/i;
+
+/**
+ * Check if the given URL is a cross origin URL.
+ * @param {string} url - The target URL.
+ * @returns {boolean} Returns `true` if the given URL is a cross origin URL, else `false`.
+ */
+function isCrossOriginURL(url) {
+  var parts = url.match(REGEXP_ORIGINS);
+
+  return parts && (parts[1] !== location.protocol || parts[2] !== location.hostname || parts[3] !== location.port);
+}
+
+/**
+ * Add timestamp to the given URL.
+ * @param {string} url - The target URL.
+ * @returns {string} The result URL.
+ */
+function addTimestamp(url) {
+  var timestamp = 'timestamp=' + new Date().getTime();
+
+  return url + (url.indexOf('?') === -1 ? '?' : '&') + timestamp;
+}
+
+/**
+ * Get transforms base on the given object.
+ * @param {Object} obj - The target object.
+ * @returns {string} A string contains transform values.
+ */
+function getTransforms(_ref) {
+  var rotate = _ref.rotate,
+      scaleX = _ref.scaleX,
+      scaleY = _ref.scaleY,
+      translateX = _ref.translateX,
+      translateY = _ref.translateY;
+
+  var values = [];
+
+  if (isNumber(translateX) && translateX !== 0) {
+    values.push('translateX(' + translateX + 'px)');
+  }
+
+  if (isNumber(translateY) && translateY !== 0) {
+    values.push('translateY(' + translateY + 'px)');
+  }
+
+  // Rotate should come first before scale to match orientation transform
+  if (isNumber(rotate) && rotate !== 0) {
+    values.push('rotate(' + rotate + 'deg)');
+  }
+
+  if (isNumber(scaleX) && scaleX !== 1) {
+    values.push('scaleX(' + scaleX + ')');
+  }
+
+  if (isNumber(scaleY) && scaleY !== 1) {
+    values.push('scaleY(' + scaleY + ')');
+  }
+
+  var transform = values.length ? values.join(' ') : 'none';
+
+  return {
+    WebkitTransform: transform,
+    msTransform: transform,
+    transform: transform
+  };
+}
+
+var navigator = WINDOW.navigator;
+
+var IS_SAFARI_OR_UIWEBVIEW = navigator && /(Macintosh|iPhone|iPod|iPad).*AppleWebKit/i.test(navigator.userAgent);
+
+/**
+ * Get an image's natural sizes.
+ * @param {string} image - The target image.
+ * @param {Function} callback - The callback function.
+ */
+function getImageNaturalSizes(image, callback) {
+  // Modern browsers (except Safari)
+  if (image.naturalWidth && !IS_SAFARI_OR_UIWEBVIEW) {
+    callback(image.naturalWidth, image.naturalHeight);
+    return;
+  }
+
+  var newImage = document.createElement('img');
+  var body = document.body || document.documentElement;
+
+  newImage.onload = function () {
+    callback(newImage.width, newImage.height);
+    body.removeChild(newImage);
+  };
+
+  newImage.src = image.src;
+  newImage.style.cssText = 'position: absolute; top: 0; left: 0; z-index: -1; opacity: 0;';
+  body.appendChild(newImage);
+}
+
+/**
+ * Get the max ratio of a group of pointers.
+ * @param {string} pointers - The target pointers.
+ * @returns {number} The result ratio.
+ */
+function getMaxZoomRatio(pointers) {
+  var pointers2 = extend({}, pointers);
+  var ratios = [];
+
+  each(pointers, function (pointer, pointerId) {
+    delete pointers2[pointerId];
+
+    each(pointers2, function (pointer2) {
+      var x1 = Math.abs(pointer.startX - pointer2.startX);
+      var y1 = Math.abs(pointer.startY - pointer2.startY);
+      var x2 = Math.abs(pointer.endX - pointer2.endX);
+      var y2 = Math.abs(pointer.endY - pointer2.endY);
+      var z1 = Math.sqrt(x1 * x1 + y1 * y1);
+      var z2 = Math.sqrt(x2 * x2 + y2 * y2);
+      var ratio = (z2 - z1) / z1;
+
+      ratios.push(ratio);
+    });
+  });
+
+  ratios.sort(function (a, b) {
+    return Math.abs(a) < Math.abs(b);
+  });
+
+  return ratios[0];
+}
+
+/**
+ * Get a pointer from an event object.
+ * @param {Object} event - The target event object.
+ * @param {boolean} endOnly - Indicates if only returns the end point coordinate or not.
+ * @returns {Object} The result pointer contains start and/or end point coordinates.
+ */
+function getPointer(_ref2, endOnly) {
+  var pageX = _ref2.pageX,
+      pageY = _ref2.pageY;
+
+  var end = {
+    endX: pageX,
+    endY: pageY
+  };
+
+  if (endOnly) {
+    return end;
+  }
+
+  return extend({
+    startX: pageX,
+    startY: pageY
+  }, end);
+}
+
+/**
+ * Get the center point coordinate of a group of pointers.
+ * @param {Object} pointers - The target pointers.
+ * @returns {Object} The center point coordinate.
+ */
+function getPointersCenter(pointers) {
+  var pageX = 0;
+  var pageY = 0;
+  var count = 0;
+
+  each(pointers, function (_ref3) {
+    var startX = _ref3.startX,
+        startY = _ref3.startY;
+
+    pageX += startX;
+    pageY += startY;
+    count += 1;
+  });
+
+  pageX /= count;
+  pageY /= count;
+
+  return {
+    pageX: pageX,
+    pageY: pageY
+  };
+}
+
+/**
+ * Check if the given value is a finite number.
+ */
+var isFinite = Number.isFinite || WINDOW.isFinite;
+
+/**
+ * Get the max sizes in a rectangle under the given aspect ratio.
+ * @param {Object} data - The original sizes.
+ * @returns {Object} The result sizes.
+ */
+function getContainSizes(_ref4) {
+  var aspectRatio = _ref4.aspectRatio,
+      height = _ref4.height,
+      width = _ref4.width;
+
+  var isValidNumber = function isValidNumber(value) {
+    return isFinite(value) && value > 0;
+  };
+
+  if (isValidNumber(width) && isValidNumber(height)) {
+    if (height * aspectRatio > width) {
+      height = width / aspectRatio;
+    } else {
+      width = height * aspectRatio;
+    }
+  } else if (isValidNumber(width)) {
+    height = width / aspectRatio;
+  } else if (isValidNumber(height)) {
+    width = height * aspectRatio;
+  }
+
+  return {
+    width: width,
+    height: height
+  };
+}
+
+/**
+ * Get the new sizes of a rectangle after rotated.
+ * @param {Object} data - The original sizes.
+ * @returns {Object} The result sizes.
+ */
+function getRotatedSizes(_ref5) {
+  var width = _ref5.width,
+      height = _ref5.height,
+      degree = _ref5.degree;
+
+  degree = Math.abs(degree) % 180;
+
+  if (degree === 90) {
+    return {
+      width: height,
+      height: width
+    };
+  }
+
+  var arc = degree % 90 * Math.PI / 180;
+  var sinArc = Math.sin(arc);
+  var cosArc = Math.cos(arc);
+  var newWidth = width * cosArc + height * sinArc;
+  var newHeight = width * sinArc + height * cosArc;
+
+  return degree > 90 ? {
+    width: newHeight,
+    height: newWidth
+  } : {
+    width: newWidth,
+    height: newHeight
+  };
+}
+
+/**
+ * Get a canvas which drew the given image.
+ * @param {HTMLImageElement} image - The image for drawing.
+ * @param {Object} imageData - The image data.
+ * @param {Object} canvasData - The canvas data.
+ * @param {Object} options - The options.
+ * @returns {HTMLCanvasElement} The result canvas.
+ */
+function getSourceCanvas(image, _ref6, _ref7, _ref8) {
+  var imageNaturalWidth = _ref6.naturalWidth,
+      imageNaturalHeight = _ref6.naturalHeight,
+      _ref6$rotate = _ref6.rotate,
+      rotate = _ref6$rotate === undefined ? 0 : _ref6$rotate,
+      _ref6$scaleX = _ref6.scaleX,
+      scaleX = _ref6$scaleX === undefined ? 1 : _ref6$scaleX,
+      _ref6$scaleY = _ref6.scaleY,
+      scaleY = _ref6$scaleY === undefined ? 1 : _ref6$scaleY;
+  var aspectRatio = _ref7.aspectRatio,
+      naturalWidth = _ref7.naturalWidth,
+      naturalHeight = _ref7.naturalHeight;
+  var _ref8$fillColor = _ref8.fillColor,
+      fillColor = _ref8$fillColor === undefined ? 'transparent' : _ref8$fillColor,
+      _ref8$imageSmoothingE = _ref8.imageSmoothingEnabled,
+      imageSmoothingEnabled = _ref8$imageSmoothingE === undefined ? true : _ref8$imageSmoothingE,
+      _ref8$imageSmoothingQ = _ref8.imageSmoothingQuality,
+      imageSmoothingQuality = _ref8$imageSmoothingQ === undefined ? 'low' : _ref8$imageSmoothingQ,
+      _ref8$maxWidth = _ref8.maxWidth,
+      maxWidth = _ref8$maxWidth === undefined ? Infinity : _ref8$maxWidth,
+      _ref8$maxHeight = _ref8.maxHeight,
+      maxHeight = _ref8$maxHeight === undefined ? Infinity : _ref8$maxHeight,
+      _ref8$minWidth = _ref8.minWidth,
+      minWidth = _ref8$minWidth === undefined ? 0 : _ref8$minWidth,
+      _ref8$minHeight = _ref8.minHeight,
+      minHeight = _ref8$minHeight === undefined ? 0 : _ref8$minHeight;
+
+  var canvas = document.createElement('canvas');
+  var context = canvas.getContext('2d');
+  var maxSizes = getContainSizes({
+    aspectRatio: aspectRatio,
+    width: maxWidth,
+    height: maxHeight
+  });
+  var minSizes = getContainSizes({
+    aspectRatio: aspectRatio,
+    width: minWidth,
+    height: minHeight
+  });
+  var width = Math.min(maxSizes.width, Math.max(minSizes.width, naturalWidth));
+  var height = Math.min(maxSizes.height, Math.max(minSizes.height, naturalHeight));
+  var params = [-imageNaturalWidth / 2, -imageNaturalHeight / 2, imageNaturalWidth, imageNaturalHeight];
+
+  canvas.width = normalizeDecimalNumber(width);
+  canvas.height = normalizeDecimalNumber(height);
+  context.fillStyle = fillColor;
+  context.fillRect(0, 0, width, height);
+  context.save();
+  context.translate(width / 2, height / 2);
+  context.rotate(rotate * Math.PI / 180);
+  context.scale(scaleX, scaleY);
+  context.imageSmoothingEnabled = imageSmoothingEnabled;
+  context.imageSmoothingQuality = imageSmoothingQuality;
+  context.drawImage.apply(context, [image].concat(toConsumableArray(params.map(function (param) {
+    return Math.floor(normalizeDecimalNumber(param));
+  }))));
+  context.restore();
+  return canvas;
+}
+
+var fromCharCode = String.fromCharCode;
+
+/**
+ * Get string from char code in data view.
+ * @param {DataView} dataView - The data view for read.
+ * @param {number} start - The start index.
+ * @param {number} length - The read length.
+ * @returns {string} The read result.
+ */
+
+function getStringFromCharCode(dataView, start, length) {
+  var str = '';
+  var i = void 0;
+
+  length += start;
+
+  for (i = start; i < length; i += 1) {
+    str += fromCharCode(dataView.getUint8(i));
+  }
+
+  return str;
+}
+
+var REGEXP_DATA_URL_HEAD = /^data:.*,/;
+
+/**
+ * Transform Data URL to array buffer.
+ * @param {string} dataURL - The Data URL to transform.
+ * @returns {ArrayBuffer} The result array buffer.
+ */
+function dataURLToArrayBuffer(dataURL) {
+  var base64 = dataURL.replace(REGEXP_DATA_URL_HEAD, '');
+  var binary = atob(base64);
+  var arrayBuffer = new ArrayBuffer(binary.length);
+  var uint8 = new Uint8Array(arrayBuffer);
+
+  each(uint8, function (value, i) {
+    uint8[i] = binary.charCodeAt(i);
+  });
+
+  return arrayBuffer;
+}
+
+/**
+ * Transform array buffer to Data URL.
+ * @param {ArrayBuffer} arrayBuffer - The array buffer to transform.
+ * @param {string} mimeType - The mime type of the Data URL.
+ * @returns {string} The result Data URL.
+ */
+function arrayBufferToDataURL(arrayBuffer, mimeType) {
+  var uint8 = new Uint8Array(arrayBuffer);
+  var data = '';
+
+  // TypedArray.prototype.forEach is not supported in some browsers.
+  each(uint8, function (value) {
+    data += fromCharCode(value);
+  });
+
+  return 'data:' + mimeType + ';base64,' + btoa(data);
+}
+
+/**
+ * Get orientation value from given array buffer.
+ * @param {ArrayBuffer} arrayBuffer - The array buffer to read.
+ * @returns {number} The read orientation value.
+ */
+function getOrientation(arrayBuffer) {
+  var dataView = new DataView(arrayBuffer);
+  var orientation = void 0;
+  var littleEndian = void 0;
+  var app1Start = void 0;
+  var ifdStart = void 0;
+
+  // Only handle JPEG image (start by 0xFFD8)
+  if (dataView.getUint8(0) === 0xFF && dataView.getUint8(1) === 0xD8) {
+    var length = dataView.byteLength;
+    var offset = 2;
+
+    while (offset < length) {
+      if (dataView.getUint8(offset) === 0xFF && dataView.getUint8(offset + 1) === 0xE1) {
+        app1Start = offset;
+        break;
+      }
+
+      offset += 1;
+    }
+  }
+
+  if (app1Start) {
+    var exifIDCode = app1Start + 4;
+    var tiffOffset = app1Start + 10;
+
+    if (getStringFromCharCode(dataView, exifIDCode, 4) === 'Exif') {
+      var endianness = dataView.getUint16(tiffOffset);
+
+      littleEndian = endianness === 0x4949;
+
+      if (littleEndian || endianness === 0x4D4D /* bigEndian */) {
+          if (dataView.getUint16(tiffOffset + 2, littleEndian) === 0x002A) {
+            var firstIFDOffset = dataView.getUint32(tiffOffset + 4, littleEndian);
+
+            if (firstIFDOffset >= 0x00000008) {
+              ifdStart = tiffOffset + firstIFDOffset;
+            }
+          }
+        }
+    }
+  }
+
+  if (ifdStart) {
+    var _length = dataView.getUint16(ifdStart, littleEndian);
+    var _offset = void 0;
+    var i = void 0;
+
+    for (i = 0; i < _length; i += 1) {
+      _offset = ifdStart + i * 12 + 2;
+
+      if (dataView.getUint16(_offset, littleEndian) === 0x0112 /* Orientation */) {
+          // 8 is the offset of the current tag's value
+          _offset += 8;
+
+          // Get the original orientation value
+          orientation = dataView.getUint16(_offset, littleEndian);
+
+          // Override the orientation with its default value
+          dataView.setUint16(_offset, 1, littleEndian);
+          break;
+        }
+    }
+  }
+
+  return orientation;
+}
+
+/**
+ * Parse Exif Orientation value.
+ * @param {number} orientation - The orientation to parse.
+ * @returns {Object} The parsed result.
+ */
+function parseOrientation(orientation) {
+  var rotate = 0;
+  var scaleX = 1;
+  var scaleY = 1;
+
+  switch (orientation) {
+    // Flip horizontal
+    case 2:
+      scaleX = -1;
+      break;
+
+    // Rotate left 180°
+    case 3:
+      rotate = -180;
+      break;
+
+    // Flip vertical
+    case 4:
+      scaleY = -1;
+      break;
+
+    // Flip vertical and rotate right 90°
+    case 5:
+      rotate = 90;
+      scaleY = -1;
+      break;
+
+    // Rotate right 90°
+    case 6:
+      rotate = 90;
+      break;
+
+    // Flip horizontal and rotate right 90°
+    case 7:
+      rotate = 90;
+      scaleX = -1;
+      break;
+
+    // Rotate left 90°
+    case 8:
+      rotate = -90;
+      break;
+
+    default:
+  }
+
+  return {
+    rotate: rotate,
+    scaleX: scaleX,
+    scaleY: scaleY
+  };
+}
+
+var render = {
+  render: function render() {
+    this.initContainer();
+    this.initCanvas();
+    this.initCropBox();
+    this.renderCanvas();
+
+    if (this.cropped) {
+      this.renderCropBox();
+    }
+  },
+  initContainer: function initContainer() {
+    var element = this.element,
+        options = this.options,
+        container = this.container,
+        cropper = this.cropper;
+
+
+    addClass(cropper, CLASS_HIDDEN);
+    removeClass(element, CLASS_HIDDEN);
+
+    var containerData = {
+      width: Math.max(container.offsetWidth, Number(options.minContainerWidth) || 200),
+      height: Math.max(container.offsetHeight, Number(options.minContainerHeight) || 100)
+    };
+
+    this.containerData = containerData;
+
+    setStyle(cropper, {
+      width: containerData.width,
+      height: containerData.height
+    });
+
+    addClass(element, CLASS_HIDDEN);
+    removeClass(cropper, CLASS_HIDDEN);
+  },
+
+
+  // Canvas (image wrapper)
+  initCanvas: function initCanvas() {
+    var containerData = this.containerData,
+        imageData = this.imageData;
+    var viewMode = this.options.viewMode;
+
+    var rotated = Math.abs(imageData.rotate) % 180 === 90;
+    var naturalWidth = rotated ? imageData.naturalHeight : imageData.naturalWidth;
+    var naturalHeight = rotated ? imageData.naturalWidth : imageData.naturalHeight;
+    var aspectRatio = naturalWidth / naturalHeight;
+    var canvasWidth = containerData.width;
+    var canvasHeight = containerData.height;
+
+    if (containerData.height * aspectRatio > containerData.width) {
+      if (viewMode === 3) {
+        canvasWidth = containerData.height * aspectRatio;
+      } else {
+        canvasHeight = containerData.width / aspectRatio;
+      }
+    } else if (viewMode === 3) {
+      canvasHeight = containerData.width / aspectRatio;
+    } else {
+      canvasWidth = containerData.height * aspectRatio;
+    }
+
+    var canvasData = {
+      aspectRatio: aspectRatio,
+      naturalWidth: naturalWidth,
+      naturalHeight: naturalHeight,
+      width: canvasWidth,
+      height: canvasHeight
+    };
+
+    canvasData.left = (containerData.width - canvasWidth) / 2;
+    canvasData.top = (containerData.height - canvasHeight) / 2;
+    canvasData.oldLeft = canvasData.left;
+    canvasData.oldTop = canvasData.top;
+
+    this.canvasData = canvasData;
+    this.limited = viewMode === 1 || viewMode === 2;
+    this.limitCanvas(true, true);
+    this.initialImageData = extend({}, imageData);
+    this.initialCanvasData = extend({}, canvasData);
+  },
+  limitCanvas: function limitCanvas(sizeLimited, positionLimited) {
+    var options = this.options,
+        containerData = this.containerData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+    var viewMode = options.viewMode;
+    var aspectRatio = canvasData.aspectRatio;
+
+    var cropped = this.cropped && cropBoxData;
+
+    if (sizeLimited) {
+      var minCanvasWidth = Number(options.minCanvasWidth) || 0;
+      var minCanvasHeight = Number(options.minCanvasHeight) || 0;
+
+      if (viewMode > 1) {
+        minCanvasWidth = Math.max(minCanvasWidth, containerData.width);
+        minCanvasHeight = Math.max(minCanvasHeight, containerData.height);
+
+        if (viewMode === 3) {
+          if (minCanvasHeight * aspectRatio > minCanvasWidth) {
+            minCanvasWidth = minCanvasHeight * aspectRatio;
+          } else {
+            minCanvasHeight = minCanvasWidth / aspectRatio;
+          }
+        }
+      } else if (viewMode > 0) {
+        if (minCanvasWidth) {
+          minCanvasWidth = Math.max(minCanvasWidth, cropped ? cropBoxData.width : 0);
+        } else if (minCanvasHeight) {
+          minCanvasHeight = Math.max(minCanvasHeight, cropped ? cropBoxData.height : 0);
+        } else if (cropped) {
+          minCanvasWidth = cropBoxData.width;
+          minCanvasHeight = cropBoxData.height;
+
+          if (minCanvasHeight * aspectRatio > minCanvasWidth) {
+            minCanvasWidth = minCanvasHeight * aspectRatio;
+          } else {
+            minCanvasHeight = minCanvasWidth / aspectRatio;
+          }
+        }
+      }
+
+      var _getContainSizes = getContainSizes({
+        aspectRatio: aspectRatio,
+        width: minCanvasWidth,
+        height: minCanvasHeight
+      });
+
+      minCanvasWidth = _getContainSizes.width;
+      minCanvasHeight = _getContainSizes.height;
+
+
+      canvasData.minWidth = minCanvasWidth;
+      canvasData.minHeight = minCanvasHeight;
+      canvasData.maxWidth = Infinity;
+      canvasData.maxHeight = Infinity;
+    }
+
+    if (positionLimited) {
+      if (viewMode) {
+        var newCanvasLeft = containerData.width - canvasData.width;
+        var newCanvasTop = containerData.height - canvasData.height;
+
+        canvasData.minLeft = Math.min(0, newCanvasLeft);
+        canvasData.minTop = Math.min(0, newCanvasTop);
+        canvasData.maxLeft = Math.max(0, newCanvasLeft);
+        canvasData.maxTop = Math.max(0, newCanvasTop);
+
+        if (cropped && this.limited) {
+          canvasData.minLeft = Math.min(cropBoxData.left, cropBoxData.left + (cropBoxData.width - canvasData.width));
+          canvasData.minTop = Math.min(cropBoxData.top, cropBoxData.top + (cropBoxData.height - canvasData.height));
+          canvasData.maxLeft = cropBoxData.left;
+          canvasData.maxTop = cropBoxData.top;
+
+          if (viewMode === 2) {
+            if (canvasData.width >= containerData.width) {
+              canvasData.minLeft = Math.min(0, newCanvasLeft);
+              canvasData.maxLeft = Math.max(0, newCanvasLeft);
+            }
+
+            if (canvasData.height >= containerData.height) {
+              canvasData.minTop = Math.min(0, newCanvasTop);
+              canvasData.maxTop = Math.max(0, newCanvasTop);
+            }
+          }
+        }
+      } else {
+        canvasData.minLeft = -canvasData.width;
+        canvasData.minTop = -canvasData.height;
+        canvasData.maxLeft = containerData.width;
+        canvasData.maxTop = containerData.height;
+      }
+    }
+  },
+  renderCanvas: function renderCanvas(changed, transformed) {
+    var canvasData = this.canvasData,
+        imageData = this.imageData;
+
+
+    if (transformed) {
+      var _getRotatedSizes = getRotatedSizes({
+        width: imageData.naturalWidth * Math.abs(imageData.scaleX || 1),
+        height: imageData.naturalHeight * Math.abs(imageData.scaleY || 1),
+        degree: imageData.rotate || 0
+      }),
+          naturalWidth = _getRotatedSizes.width,
+          naturalHeight = _getRotatedSizes.height;
+
+      var width = canvasData.width * (naturalWidth / canvasData.naturalWidth);
+      var height = canvasData.height * (naturalHeight / canvasData.naturalHeight);
+
+      canvasData.left -= (width - canvasData.width) / 2;
+      canvasData.top -= (height - canvasData.height) / 2;
+      canvasData.width = width;
+      canvasData.height = height;
+      canvasData.aspectRatio = naturalWidth / naturalHeight;
+      canvasData.naturalWidth = naturalWidth;
+      canvasData.naturalHeight = naturalHeight;
+      this.limitCanvas(true, false);
+    }
+
+    if (canvasData.width > canvasData.maxWidth || canvasData.width < canvasData.minWidth) {
+      canvasData.left = canvasData.oldLeft;
+    }
+
+    if (canvasData.height > canvasData.maxHeight || canvasData.height < canvasData.minHeight) {
+      canvasData.top = canvasData.oldTop;
+    }
+
+    canvasData.width = Math.min(Math.max(canvasData.width, canvasData.minWidth), canvasData.maxWidth);
+    canvasData.height = Math.min(Math.max(canvasData.height, canvasData.minHeight), canvasData.maxHeight);
+
+    this.limitCanvas(false, true);
+
+    canvasData.left = Math.min(Math.max(canvasData.left, canvasData.minLeft), canvasData.maxLeft);
+    canvasData.top = Math.min(Math.max(canvasData.top, canvasData.minTop), canvasData.maxTop);
+    canvasData.oldLeft = canvasData.left;
+    canvasData.oldTop = canvasData.top;
+
+    setStyle(this.canvas, extend({
+      width: canvasData.width,
+      height: canvasData.height
+    }, getTransforms({
+      translateX: canvasData.left,
+      translateY: canvasData.top
+    })));
+
+    this.renderImage(changed);
+
+    if (this.cropped && this.limited) {
+      this.limitCropBox(true, true);
+    }
+  },
+  renderImage: function renderImage(changed) {
+    var canvasData = this.canvasData,
+        imageData = this.imageData;
+
+    var width = imageData.naturalWidth * (canvasData.width / canvasData.naturalWidth);
+    var height = imageData.naturalHeight * (canvasData.height / canvasData.naturalHeight);
+
+    extend(imageData, {
+      width: width,
+      height: height,
+      left: (canvasData.width - width) / 2,
+      top: (canvasData.height - height) / 2
+    });
+    setStyle(this.image, extend({
+      width: imageData.width,
+      height: imageData.height
+    }, getTransforms(extend({
+      translateX: imageData.left,
+      translateY: imageData.top
+    }, imageData))));
+
+    if (changed) {
+      this.output();
+    }
+  },
+  initCropBox: function initCropBox() {
+    var options = this.options,
+        canvasData = this.canvasData;
+    var aspectRatio = options.aspectRatio;
+
+    var autoCropArea = Number(options.autoCropArea) || 0.8;
+    var cropBoxData = {
+      width: canvasData.width,
+      height: canvasData.height
+    };
+
+    if (aspectRatio) {
+      if (canvasData.height * aspectRatio > canvasData.width) {
+        cropBoxData.height = cropBoxData.width / aspectRatio;
+      } else {
+        cropBoxData.width = cropBoxData.height * aspectRatio;
+      }
+    }
+
+    this.cropBoxData = cropBoxData;
+    this.limitCropBox(true, true);
+
+    // Initialize auto crop area
+    cropBoxData.width = Math.min(Math.max(cropBoxData.width, cropBoxData.minWidth), cropBoxData.maxWidth);
+    cropBoxData.height = Math.min(Math.max(cropBoxData.height, cropBoxData.minHeight), cropBoxData.maxHeight);
+
+    // The width/height of auto crop area must large than "minWidth/Height"
+    cropBoxData.width = Math.max(cropBoxData.minWidth, cropBoxData.width * autoCropArea);
+    cropBoxData.height = Math.max(cropBoxData.minHeight, cropBoxData.height * autoCropArea);
+    cropBoxData.left = canvasData.left + (canvasData.width - cropBoxData.width) / 2;
+    cropBoxData.top = canvasData.top + (canvasData.height - cropBoxData.height) / 2;
+    cropBoxData.oldLeft = cropBoxData.left;
+    cropBoxData.oldTop = cropBoxData.top;
+
+    this.initialCropBoxData = extend({}, cropBoxData);
+  },
+  limitCropBox: function limitCropBox(sizeLimited, positionLimited) {
+    var options = this.options,
+        containerData = this.containerData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData,
+        limited = this.limited;
+    var aspectRatio = options.aspectRatio;
+
+
+    if (sizeLimited) {
+      var minCropBoxWidth = Number(options.minCropBoxWidth) || 0;
+      var minCropBoxHeight = Number(options.minCropBoxHeight) || 0;
+      var maxCropBoxWidth = Math.min(containerData.width, limited ? canvasData.width : containerData.width);
+      var maxCropBoxHeight = Math.min(containerData.height, limited ? canvasData.height : containerData.height);
+
+      // The min/maxCropBoxWidth/Height must be less than container's width/height
+      minCropBoxWidth = Math.min(minCropBoxWidth, containerData.width);
+      minCropBoxHeight = Math.min(minCropBoxHeight, containerData.height);
+
+      if (aspectRatio) {
+        if (minCropBoxWidth && minCropBoxHeight) {
+          if (minCropBoxHeight * aspectRatio > minCropBoxWidth) {
+            minCropBoxHeight = minCropBoxWidth / aspectRatio;
+          } else {
+            minCropBoxWidth = minCropBoxHeight * aspectRatio;
+          }
+        } else if (minCropBoxWidth) {
+          minCropBoxHeight = minCropBoxWidth / aspectRatio;
+        } else if (minCropBoxHeight) {
+          minCropBoxWidth = minCropBoxHeight * aspectRatio;
+        }
+
+        if (maxCropBoxHeight * aspectRatio > maxCropBoxWidth) {
+          maxCropBoxHeight = maxCropBoxWidth / aspectRatio;
+        } else {
+          maxCropBoxWidth = maxCropBoxHeight * aspectRatio;
+        }
+      }
+
+      // The minWidth/Height must be less than maxWidth/Height
+      cropBoxData.minWidth = Math.min(minCropBoxWidth, maxCropBoxWidth);
+      cropBoxData.minHeight = Math.min(minCropBoxHeight, maxCropBoxHeight);
+      cropBoxData.maxWidth = maxCropBoxWidth;
+      cropBoxData.maxHeight = maxCropBoxHeight;
+    }
+
+    if (positionLimited) {
+      if (limited) {
+        cropBoxData.minLeft = Math.max(0, canvasData.left);
+        cropBoxData.minTop = Math.max(0, canvasData.top);
+        cropBoxData.maxLeft = Math.min(containerData.width, canvasData.left + canvasData.width) - cropBoxData.width;
+        cropBoxData.maxTop = Math.min(containerData.height, canvasData.top + canvasData.height) - cropBoxData.height;
+      } else {
+        cropBoxData.minLeft = 0;
+        cropBoxData.minTop = 0;
+        cropBoxData.maxLeft = containerData.width - cropBoxData.width;
+        cropBoxData.maxTop = containerData.height - cropBoxData.height;
+      }
+    }
+  },
+  renderCropBox: function renderCropBox() {
+    var options = this.options,
+        containerData = this.containerData,
+        cropBoxData = this.cropBoxData;
+
+
+    if (cropBoxData.width > cropBoxData.maxWidth || cropBoxData.width < cropBoxData.minWidth) {
+      cropBoxData.left = cropBoxData.oldLeft;
+    }
+
+    if (cropBoxData.height > cropBoxData.maxHeight || cropBoxData.height < cropBoxData.minHeight) {
+      cropBoxData.top = cropBoxData.oldTop;
+    }
+
+    cropBoxData.width = Math.min(Math.max(cropBoxData.width, cropBoxData.minWidth), cropBoxData.maxWidth);
+    cropBoxData.height = Math.min(Math.max(cropBoxData.height, cropBoxData.minHeight), cropBoxData.maxHeight);
+
+    this.limitCropBox(false, true);
+
+    cropBoxData.left = Math.min(Math.max(cropBoxData.left, cropBoxData.minLeft), cropBoxData.maxLeft);
+    cropBoxData.top = Math.min(Math.max(cropBoxData.top, cropBoxData.minTop), cropBoxData.maxTop);
+    cropBoxData.oldLeft = cropBoxData.left;
+    cropBoxData.oldTop = cropBoxData.top;
+
+    if (options.movable && options.cropBoxMovable) {
+      // Turn to move the canvas when the crop box is equal to the container
+      setData(this.face, DATA_ACTION, cropBoxData.width >= containerData.width && cropBoxData.height >= containerData.height ? ACTION_MOVE : ACTION_ALL);
+    }
+
+    setStyle(this.cropBox, extend({
+      width: cropBoxData.width,
+      height: cropBoxData.height
+    }, getTransforms({
+      translateX: cropBoxData.left,
+      translateY: cropBoxData.top
+    })));
+
+    if (this.cropped && this.limited) {
+      this.limitCanvas(true, true);
+    }
+
+    if (!this.disabled) {
+      this.output();
+    }
+  },
+  output: function output() {
+    this.preview();
+
+    if (this.complete) {
+      dispatchEvent(this.element, EVENT_CROP, this.getData());
+    }
+  }
+};
+
+var preview = {
+  initPreview: function initPreview() {
+    var crossOrigin = this.crossOrigin;
+    var preview = this.options.preview;
+
+    var url = crossOrigin ? this.crossOriginUrl : this.url;
+    var image = document.createElement('img');
+
+    if (crossOrigin) {
+      image.crossOrigin = crossOrigin;
+    }
+
+    image.src = url;
+    this.viewBox.appendChild(image);
+    this.image2 = image;
+
+    if (!preview) {
+      return;
+    }
+
+    var previews = preview.querySelector ? [preview] : document.querySelectorAll(preview);
+
+    this.previews = previews;
+
+    each(previews, function (element) {
+      var img = document.createElement('img');
+
+      // Save the original size for recover
+      setData(element, DATA_PREVIEW, {
+        width: element.offsetWidth,
+        height: element.offsetHeight,
+        html: element.innerHTML
+      });
+
+      if (crossOrigin) {
+        img.crossOrigin = crossOrigin;
+      }
+
+      img.src = url;
+
+      /**
+       * Override img element styles
+       * Add `display:block` to avoid margin top issue
+       * Add `height:auto` to override `height` attribute on IE8
+       * (Occur only when margin-top <= -height)
+       */
+      img.style.cssText = 'display:block;' + 'width:100%;' + 'height:auto;' + 'min-width:0!important;' + 'min-height:0!important;' + 'max-width:none!important;' + 'max-height:none!important;' + 'image-orientation:0deg!important;"';
+
+      empty(element);
+      element.appendChild(img);
+    });
+  },
+  resetPreview: function resetPreview() {
+    each(this.previews, function (element) {
+      var data = getData(element, DATA_PREVIEW);
+
+      setStyle(element, {
+        width: data.width,
+        height: data.height
+      });
+
+      element.innerHTML = data.html;
+      removeData(element, DATA_PREVIEW);
+    });
+  },
+  preview: function preview() {
+    var imageData = this.imageData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+    var cropBoxWidth = cropBoxData.width,
+        cropBoxHeight = cropBoxData.height;
+    var width = imageData.width,
+        height = imageData.height;
+
+    var left = cropBoxData.left - canvasData.left - imageData.left;
+    var top = cropBoxData.top - canvasData.top - imageData.top;
+
+    if (!this.cropped || this.disabled) {
+      return;
+    }
+
+    setStyle(this.image2, extend({
+      width: width,
+      height: height
+    }, getTransforms(extend({
+      translateX: -left,
+      translateY: -top
+    }, imageData))));
+
+    each(this.previews, function (element) {
+      var data = getData(element, DATA_PREVIEW);
+      var originalWidth = data.width;
+      var originalHeight = data.height;
+      var newWidth = originalWidth;
+      var newHeight = originalHeight;
+      var ratio = 1;
+
+      if (cropBoxWidth) {
+        ratio = originalWidth / cropBoxWidth;
+        newHeight = cropBoxHeight * ratio;
+      }
+
+      if (cropBoxHeight && newHeight > originalHeight) {
+        ratio = originalHeight / cropBoxHeight;
+        newWidth = cropBoxWidth * ratio;
+        newHeight = originalHeight;
+      }
+
+      setStyle(element, {
+        width: newWidth,
+        height: newHeight
+      });
+
+      setStyle(element.getElementsByTagName('img')[0], extend({
+        width: width * ratio,
+        height: height * ratio
+      }, getTransforms(extend({
+        translateX: -left * ratio,
+        translateY: -top * ratio
+      }, imageData))));
+    });
+  }
+};
+
+var events = {
+  bind: function bind() {
+    var element = this.element,
+        options = this.options,
+        cropper = this.cropper;
+
+
+    if (isFunction(options.cropstart)) {
+      addListener(element, EVENT_CROP_START, options.cropstart);
+    }
+
+    if (isFunction(options.cropmove)) {
+      addListener(element, EVENT_CROP_MOVE, options.cropmove);
+    }
+
+    if (isFunction(options.cropend)) {
+      addListener(element, EVENT_CROP_END, options.cropend);
+    }
+
+    if (isFunction(options.crop)) {
+      addListener(element, EVENT_CROP, options.crop);
+    }
+
+    if (isFunction(options.zoom)) {
+      addListener(element, EVENT_ZOOM, options.zoom);
+    }
+
+    addListener(cropper, EVENT_POINTER_DOWN, this.onCropStart = proxy(this.cropStart, this));
+
+    if (options.zoomable && options.zoomOnWheel) {
+      addListener(cropper, EVENT_WHEEL, this.onWheel = proxy(this.wheel, this));
+    }
+
+    if (options.toggleDragModeOnDblclick) {
+      addListener(cropper, EVENT_DBLCLICK, this.onDblclick = proxy(this.dblclick, this));
+    }
+
+    addListener(element.ownerDocument, EVENT_POINTER_MOVE, this.onCropMove = proxy(this.cropMove, this));
+    addListener(element.ownerDocument, EVENT_POINTER_UP, this.onCropEnd = proxy(this.cropEnd, this));
+
+    if (options.responsive) {
+      addListener(window, EVENT_RESIZE, this.onResize = proxy(this.resize, this));
+    }
+  },
+  unbind: function unbind() {
+    var element = this.element,
+        options = this.options,
+        cropper = this.cropper;
+
+
+    if (isFunction(options.cropstart)) {
+      removeListener(element, EVENT_CROP_START, options.cropstart);
+    }
+
+    if (isFunction(options.cropmove)) {
+      removeListener(element, EVENT_CROP_MOVE, options.cropmove);
+    }
+
+    if (isFunction(options.cropend)) {
+      removeListener(element, EVENT_CROP_END, options.cropend);
+    }
+
+    if (isFunction(options.crop)) {
+      removeListener(element, EVENT_CROP, options.crop);
+    }
+
+    if (isFunction(options.zoom)) {
+      removeListener(element, EVENT_ZOOM, options.zoom);
+    }
+
+    removeListener(cropper, EVENT_POINTER_DOWN, this.onCropStart);
+
+    if (options.zoomable && options.zoomOnWheel) {
+      removeListener(cropper, EVENT_WHEEL, this.onWheel);
+    }
+
+    if (options.toggleDragModeOnDblclick) {
+      removeListener(cropper, EVENT_DBLCLICK, this.onDblclick);
+    }
+
+    removeListener(element.ownerDocument, EVENT_POINTER_MOVE, this.onCropMove);
+    removeListener(element.ownerDocument, EVENT_POINTER_UP, this.onCropEnd);
+
+    if (options.responsive) {
+      removeListener(window, EVENT_RESIZE, this.onResize);
+    }
+  }
+};
+
+var handlers = {
+  resize: function resize() {
+    var options = this.options,
+        container = this.container,
+        containerData = this.containerData;
+
+    var minContainerWidth = Number(options.minContainerWidth) || 200;
+    var minContainerHeight = Number(options.minContainerHeight) || 100;
+
+    if (this.disabled || containerData.width <= minContainerWidth || containerData.height <= minContainerHeight) {
+      return;
+    }
+
+    var ratio = container.offsetWidth / containerData.width;
+
+    // Resize when width changed or height changed
+    if (ratio !== 1 || container.offsetHeight !== containerData.height) {
+      var canvasData = void 0;
+      var cropBoxData = void 0;
+
+      if (options.restore) {
+        canvasData = this.getCanvasData();
+        cropBoxData = this.getCropBoxData();
+      }
+
+      this.render();
+
+      if (options.restore) {
+        this.setCanvasData(each(canvasData, function (n, i) {
+          canvasData[i] = n * ratio;
+        }));
+        this.setCropBoxData(each(cropBoxData, function (n, i) {
+          cropBoxData[i] = n * ratio;
+        }));
+      }
+    }
+  },
+  dblclick: function dblclick() {
+    if (this.disabled || this.options.dragMode === DRAG_MODE_NONE) {
+      return;
+    }
+
+    this.setDragMode(hasClass(this.dragBox, CLASS_CROP) ? DRAG_MODE_MOVE : DRAG_MODE_CROP);
+  },
+  wheel: function wheel(e) {
+    var _this = this;
+
+    var ratio = Number(this.options.wheelZoomRatio) || 0.1;
+    var delta = 1;
+
+    if (this.disabled) {
+      return;
+    }
+
+    e.preventDefault();
+
+    // Limit wheel speed to prevent zoom too fast (#21)
+    if (this.wheeling) {
+      return;
+    }
+
+    this.wheeling = true;
+
+    setTimeout(function () {
+      _this.wheeling = false;
+    }, 50);
+
+    if (e.deltaY) {
+      delta = e.deltaY > 0 ? 1 : -1;
+    } else if (e.wheelDelta) {
+      delta = -e.wheelDelta / 120;
+    } else if (e.detail) {
+      delta = e.detail > 0 ? 1 : -1;
+    }
+
+    this.zoom(-delta * ratio, e);
+  },
+  cropStart: function cropStart(e) {
+    if (this.disabled) {
+      return;
+    }
+
+    var options = this.options,
+        pointers = this.pointers;
+
+    var action = void 0;
+
+    if (e.changedTouches) {
+      // Handle touch event
+      each(e.changedTouches, function (touch) {
+        pointers[touch.identifier] = getPointer(touch);
+      });
+    } else {
+      // Handle mouse event and pointer event
+      pointers[e.pointerId || 0] = getPointer(e);
+    }
+
+    if (Object.keys(pointers).length > 1 && options.zoomable && options.zoomOnTouch) {
+      action = ACTION_ZOOM;
+    } else {
+      action = getData(e.target, DATA_ACTION);
+    }
+
+    if (!REGEXP_ACTIONS.test(action)) {
+      return;
+    }
+
+    if (dispatchEvent(this.element, EVENT_CROP_START, {
+      originalEvent: e,
+      action: action
+    }) === false) {
+      return;
+    }
+
+    e.preventDefault();
+
+    this.action = action;
+    this.cropping = false;
+
+    if (action === ACTION_CROP) {
+      this.cropping = true;
+      addClass(this.dragBox, CLASS_MODAL);
+    }
+  },
+  cropMove: function cropMove(e) {
+    var action = this.action;
+
+
+    if (this.disabled || !action) {
+      return;
+    }
+
+    var pointers = this.pointers;
+
+
+    e.preventDefault();
+
+    if (dispatchEvent(this.element, EVENT_CROP_MOVE, {
+      originalEvent: e,
+      action: action
+    }) === false) {
+      return;
+    }
+
+    if (e.changedTouches) {
+      each(e.changedTouches, function (touch) {
+        extend(pointers[touch.identifier], getPointer(touch, true));
+      });
+    } else {
+      extend(pointers[e.pointerId || 0], getPointer(e, true));
+    }
+
+    this.change(e);
+  },
+  cropEnd: function cropEnd(e) {
+    if (this.disabled) {
+      return;
+    }
+
+    var action = this.action,
+        pointers = this.pointers;
+
+
+    if (e.changedTouches) {
+      each(e.changedTouches, function (touch) {
+        delete pointers[touch.identifier];
+      });
+    } else {
+      delete pointers[e.pointerId || 0];
+    }
+
+    if (!action) {
+      return;
+    }
+
+    e.preventDefault();
+
+    if (!Object.keys(pointers).length) {
+      this.action = '';
+    }
+
+    if (this.cropping) {
+      this.cropping = false;
+      toggleClass(this.dragBox, CLASS_MODAL, this.cropped && this.options.modal);
+    }
+
+    dispatchEvent(this.element, EVENT_CROP_END, {
+      originalEvent: e,
+      action: action
+    });
+  }
+};
+
+var change = {
+  change: function change(e) {
+    var options = this.options,
+        canvasData = this.canvasData,
+        containerData = this.containerData,
+        cropBoxData = this.cropBoxData,
+        pointers = this.pointers;
+    var action = this.action;
+    var aspectRatio = options.aspectRatio;
+    var left = cropBoxData.left,
+        top = cropBoxData.top,
+        width = cropBoxData.width,
+        height = cropBoxData.height;
+
+    var right = left + width;
+    var bottom = top + height;
+    var minLeft = 0;
+    var minTop = 0;
+    var maxWidth = containerData.width;
+    var maxHeight = containerData.height;
+    var renderable = true;
+    var offset = void 0;
+
+    // Locking aspect ratio in "free mode" by holding shift key
+    if (!aspectRatio && e.shiftKey) {
+      aspectRatio = width && height ? width / height : 1;
+    }
+
+    if (this.limited) {
+      minLeft = cropBoxData.minLeft;
+      minTop = cropBoxData.minTop;
+
+      maxWidth = minLeft + Math.min(containerData.width, canvasData.width, canvasData.left + canvasData.width);
+      maxHeight = minTop + Math.min(containerData.height, canvasData.height, canvasData.top + canvasData.height);
+    }
+
+    var pointer = pointers[Object.keys(pointers)[0]];
+    var range = {
+      x: pointer.endX - pointer.startX,
+      y: pointer.endY - pointer.startY
+    };
+    var check = function check(side) {
+      switch (side) {
+        case ACTION_EAST:
+          if (right + range.x > maxWidth) {
+            range.x = maxWidth - right;
+          }
+
+          break;
+
+        case ACTION_WEST:
+          if (left + range.x < minLeft) {
+            range.x = minLeft - left;
+          }
+
+          break;
+
+        case ACTION_NORTH:
+          if (top + range.y < minTop) {
+            range.y = minTop - top;
+          }
+
+          break;
+
+        case ACTION_SOUTH:
+          if (bottom + range.y > maxHeight) {
+            range.y = maxHeight - bottom;
+          }
+
+          break;
+
+        default:
+      }
+    };
+
+    switch (action) {
+      // Move crop box
+      case ACTION_ALL:
+        left += range.x;
+        top += range.y;
+        break;
+
+      // Resize crop box
+      case ACTION_EAST:
+        if (range.x >= 0 && (right >= maxWidth || aspectRatio && (top <= minTop || bottom >= maxHeight))) {
+          renderable = false;
+          break;
+        }
+
+        check(ACTION_EAST);
+        width += range.x;
+
+        if (aspectRatio) {
+          height = width / aspectRatio;
+          top -= range.x / aspectRatio / 2;
+        }
+
+        if (width < 0) {
+          action = ACTION_WEST;
+          width = 0;
+        }
+
+        break;
+
+      case ACTION_NORTH:
+        if (range.y <= 0 && (top <= minTop || aspectRatio && (left <= minLeft || right >= maxWidth))) {
+          renderable = false;
+          break;
+        }
+
+        check(ACTION_NORTH);
+        height -= range.y;
+        top += range.y;
+
+        if (aspectRatio) {
+          width = height * aspectRatio;
+          left += range.y * aspectRatio / 2;
+        }
+
+        if (height < 0) {
+          action = ACTION_SOUTH;
+          height = 0;
+        }
+
+        break;
+
+      case ACTION_WEST:
+        if (range.x <= 0 && (left <= minLeft || aspectRatio && (top <= minTop || bottom >= maxHeight))) {
+          renderable = false;
+          break;
+        }
+
+        check(ACTION_WEST);
+        width -= range.x;
+        left += range.x;
+
+        if (aspectRatio) {
+          height = width / aspectRatio;
+          top += range.x / aspectRatio / 2;
+        }
+
+        if (width < 0) {
+          action = ACTION_EAST;
+          width = 0;
+        }
+
+        break;
+
+      case ACTION_SOUTH:
+        if (range.y >= 0 && (bottom >= maxHeight || aspectRatio && (left <= minLeft || right >= maxWidth))) {
+          renderable = false;
+          break;
+        }
+
+        check(ACTION_SOUTH);
+        height += range.y;
+
+        if (aspectRatio) {
+          width = height * aspectRatio;
+          left -= range.y * aspectRatio / 2;
+        }
+
+        if (height < 0) {
+          action = ACTION_NORTH;
+          height = 0;
+        }
+
+        break;
+
+      case ACTION_NORTH_EAST:
+        if (aspectRatio) {
+          if (range.y <= 0 && (top <= minTop || right >= maxWidth)) {
+            renderable = false;
+            break;
+          }
+
+          check(ACTION_NORTH);
+          height -= range.y;
+          top += range.y;
+          width = height * aspectRatio;
+        } else {
+          check(ACTION_NORTH);
+          check(ACTION_EAST);
+
+          if (range.x >= 0) {
+            if (right < maxWidth) {
+              width += range.x;
+            } else if (range.y <= 0 && top <= minTop) {
+              renderable = false;
+            }
+          } else {
+            width += range.x;
+          }
+
+          if (range.y <= 0) {
+            if (top > minTop) {
+              height -= range.y;
+              top += range.y;
+            }
+          } else {
+            height -= range.y;
+            top += range.y;
+          }
+        }
+
+        if (width < 0 && height < 0) {
+          action = ACTION_SOUTH_WEST;
+          height = 0;
+          width = 0;
+        } else if (width < 0) {
+          action = ACTION_NORTH_WEST;
+          width = 0;
+        } else if (height < 0) {
+          action = ACTION_SOUTH_EAST;
+          height = 0;
+        }
+
+        break;
+
+      case ACTION_NORTH_WEST:
+        if (aspectRatio) {
+          if (range.y <= 0 && (top <= minTop || left <= minLeft)) {
+            renderable = false;
+            break;
+          }
+
+          check(ACTION_NORTH);
+          height -= range.y;
+          top += range.y;
+          width = height * aspectRatio;
+          left += range.y * aspectRatio;
+        } else {
+          check(ACTION_NORTH);
+          check(ACTION_WEST);
+
+          if (range.x <= 0) {
+            if (left > minLeft) {
+              width -= range.x;
+              left += range.x;
+            } else if (range.y <= 0 && top <= minTop) {
+              renderable = false;
+            }
+          } else {
+            width -= range.x;
+            left += range.x;
+          }
+
+          if (range.y <= 0) {
+            if (top > minTop) {
+              height -= range.y;
+              top += range.y;
+            }
+          } else {
+            height -= range.y;
+            top += range.y;
+          }
+        }
+
+        if (width < 0 && height < 0) {
+          action = ACTION_SOUTH_EAST;
+          height = 0;
+          width = 0;
+        } else if (width < 0) {
+          action = ACTION_NORTH_EAST;
+          width = 0;
+        } else if (height < 0) {
+          action = ACTION_SOUTH_WEST;
+          height = 0;
+        }
+
+        break;
+
+      case ACTION_SOUTH_WEST:
+        if (aspectRatio) {
+          if (range.x <= 0 && (left <= minLeft || bottom >= maxHeight)) {
+            renderable = false;
+            break;
+          }
+
+          check(ACTION_WEST);
+          width -= range.x;
+          left += range.x;
+          height = width / aspectRatio;
+        } else {
+          check(ACTION_SOUTH);
+          check(ACTION_WEST);
+
+          if (range.x <= 0) {
+            if (left > minLeft) {
+              width -= range.x;
+              left += range.x;
+            } else if (range.y >= 0 && bottom >= maxHeight) {
+              renderable = false;
+            }
+          } else {
+            width -= range.x;
+            left += range.x;
+          }
+
+          if (range.y >= 0) {
+            if (bottom < maxHeight) {
+              height += range.y;
+            }
+          } else {
+            height += range.y;
+          }
+        }
+
+        if (width < 0 && height < 0) {
+          action = ACTION_NORTH_EAST;
+          height = 0;
+          width = 0;
+        } else if (width < 0) {
+          action = ACTION_SOUTH_EAST;
+          width = 0;
+        } else if (height < 0) {
+          action = ACTION_NORTH_WEST;
+          height = 0;
+        }
+
+        break;
+
+      case ACTION_SOUTH_EAST:
+        if (aspectRatio) {
+          if (range.x >= 0 && (right >= maxWidth || bottom >= maxHeight)) {
+            renderable = false;
+            break;
+          }
+
+          check(ACTION_EAST);
+          width += range.x;
+          height = width / aspectRatio;
+        } else {
+          check(ACTION_SOUTH);
+          check(ACTION_EAST);
+
+          if (range.x >= 0) {
+            if (right < maxWidth) {
+              width += range.x;
+            } else if (range.y >= 0 && bottom >= maxHeight) {
+              renderable = false;
+            }
+          } else {
+            width += range.x;
+          }
+
+          if (range.y >= 0) {
+            if (bottom < maxHeight) {
+              height += range.y;
+            }
+          } else {
+            height += range.y;
+          }
+        }
+
+        if (width < 0 && height < 0) {
+          action = ACTION_NORTH_WEST;
+          height = 0;
+          width = 0;
+        } else if (width < 0) {
+          action = ACTION_SOUTH_WEST;
+          width = 0;
+        } else if (height < 0) {
+          action = ACTION_NORTH_EAST;
+          height = 0;
+        }
+
+        break;
+
+      // Move canvas
+      case ACTION_MOVE:
+        this.move(range.x, range.y);
+        renderable = false;
+        break;
+
+      // Zoom canvas
+      case ACTION_ZOOM:
+        this.zoom(getMaxZoomRatio(pointers), e);
+        renderable = false;
+        break;
+
+      // Create crop box
+      case ACTION_CROP:
+        if (!range.x || !range.y) {
+          renderable = false;
+          break;
+        }
+
+        offset = getOffset(this.cropper);
+        left = pointer.startX - offset.left;
+        top = pointer.startY - offset.top;
+        width = cropBoxData.minWidth;
+        height = cropBoxData.minHeight;
+
+        if (range.x > 0) {
+          action = range.y > 0 ? ACTION_SOUTH_EAST : ACTION_NORTH_EAST;
+        } else if (range.x < 0) {
+          left -= width;
+          action = range.y > 0 ? ACTION_SOUTH_WEST : ACTION_NORTH_WEST;
+        }
+
+        if (range.y < 0) {
+          top -= height;
+        }
+
+        // Show the crop box if is hidden
+        if (!this.cropped) {
+          removeClass(this.cropBox, CLASS_HIDDEN);
+          this.cropped = true;
+
+          if (this.limited) {
+            this.limitCropBox(true, true);
+          }
+        }
+
+        break;
+
+      default:
+    }
+
+    if (renderable) {
+      cropBoxData.width = width;
+      cropBoxData.height = height;
+      cropBoxData.left = left;
+      cropBoxData.top = top;
+      this.action = action;
+      this.renderCropBox();
+    }
+
+    // Override
+    each(pointers, function (p) {
+      p.startX = p.endX;
+      p.startY = p.endY;
+    });
+  }
+};
+
+var methods = {
+  // Show the crop box manually
+  crop: function crop() {
+    if (this.ready && !this.disabled) {
+      if (!this.cropped) {
+        this.cropped = true;
+        this.limitCropBox(true, true);
+
+        if (this.options.modal) {
+          addClass(this.dragBox, CLASS_MODAL);
+        }
+
+        removeClass(this.cropBox, CLASS_HIDDEN);
+      }
+
+      this.setCropBoxData(this.initialCropBoxData);
+    }
+
+    return this;
+  },
+
+
+  // Reset the image and crop box to their initial states
+  reset: function reset() {
+    if (this.ready && !this.disabled) {
+      this.imageData = extend({}, this.initialImageData);
+      this.canvasData = extend({}, this.initialCanvasData);
+      this.cropBoxData = extend({}, this.initialCropBoxData);
+      this.renderCanvas();
+
+      if (this.cropped) {
+        this.renderCropBox();
+      }
+    }
+
+    return this;
+  },
+
+
+  // Clear the crop box
+  clear: function clear() {
+    if (this.cropped && !this.disabled) {
+      extend(this.cropBoxData, {
+        left: 0,
+        top: 0,
+        width: 0,
+        height: 0
+      });
+
+      this.cropped = false;
+      this.renderCropBox();
+      this.limitCanvas(true, true);
+
+      // Render canvas after crop box rendered
+      this.renderCanvas();
+      removeClass(this.dragBox, CLASS_MODAL);
+      addClass(this.cropBox, CLASS_HIDDEN);
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Replace the image's src and rebuild the cropper
+   * @param {string} url - The new URL.
+   * @param {boolean} [onlyColorChanged] - Indicate if the new image only changed color.
+   * @returns {Object} this
+   */
+  replace: function replace(url) {
+    var onlyColorChanged = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+
+    if (!this.disabled && url) {
+      if (this.isImg) {
+        this.element.src = url;
+      }
+
+      if (onlyColorChanged) {
+        this.url = url;
+        this.image.src = url;
+
+        if (this.ready) {
+          this.image2.src = url;
+
+          each(this.previews, function (element) {
+            element.getElementsByTagName('img')[0].src = url;
+          });
+        }
+      } else {
+        if (this.isImg) {
+          this.replaced = true;
+        }
+
+        // Clear previous data
+        this.options.data = null;
+        this.load(url);
+      }
+    }
+
+    return this;
+  },
+
+
+  // Enable (unfreeze) the cropper
+  enable: function enable() {
+    if (this.ready) {
+      this.disabled = false;
+      removeClass(this.cropper, CLASS_DISABLED);
+    }
+
+    return this;
+  },
+
+
+  // Disable (freeze) the cropper
+  disable: function disable() {
+    if (this.ready) {
+      this.disabled = true;
+      addClass(this.cropper, CLASS_DISABLED);
+    }
+
+    return this;
+  },
+
+
+  // Destroy the cropper and remove the instance from the image
+  destroy: function destroy() {
+    var element = this.element,
+        image = this.image;
+
+
+    if (this.loaded) {
+      if (this.isImg && this.replaced) {
+        element.src = this.originalUrl;
+      }
+
+      this.unbuild();
+      removeClass(element, CLASS_HIDDEN);
+    } else if (this.isImg) {
+      removeListener(element, EVENT_LOAD, this.onStart);
+    } else if (image) {
+      image.parentNode.removeChild(image);
+    }
+
+    removeData(element, NAMESPACE);
+
+    return this;
+  },
+
+
+  /**
+   * Move the canvas with relative offsets
+   * @param {number} offsetX - The relative offset distance on the x-axis.
+   * @param {number} offsetY - The relative offset distance on the y-axis.
+   * @returns {Object} this
+   */
+  move: function move(offsetX, offsetY) {
+    var _canvasData = this.canvasData,
+        left = _canvasData.left,
+        top = _canvasData.top;
+
+
+    return this.moveTo(isUndefined(offsetX) ? offsetX : left + Number(offsetX), isUndefined(offsetY) ? offsetY : top + Number(offsetY));
+  },
+
+
+  /**
+   * Move the canvas to an absolute point
+   * @param {number} x - The x-axis coordinate.
+   * @param {number} [y=x] - The y-axis coordinate.
+   * @returns {Object} this
+   */
+  moveTo: function moveTo(x) {
+    var y = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : x;
+    var canvasData = this.canvasData;
+
+    var changed = false;
+
+    x = Number(x);
+    y = Number(y);
+
+    if (this.ready && !this.disabled && this.options.movable) {
+      if (isNumber(x)) {
+        canvasData.left = x;
+        changed = true;
+      }
+
+      if (isNumber(y)) {
+        canvasData.top = y;
+        changed = true;
+      }
+
+      if (changed) {
+        this.renderCanvas(true);
+      }
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Zoom the canvas with a relative ratio
+   * @param {number} ratio - The target ratio.
+   * @param {Event} _originalEvent - The original event if any.
+   * @returns {Object} this
+   */
+  zoom: function zoom(ratio, _originalEvent) {
+    var canvasData = this.canvasData;
+
+
+    ratio = Number(ratio);
+
+    if (ratio < 0) {
+      ratio = 1 / (1 - ratio);
+    } else {
+      ratio = 1 + ratio;
+    }
+
+    return this.zoomTo(canvasData.width * ratio / canvasData.naturalWidth, null, _originalEvent);
+  },
+
+
+  /**
+   * Zoom the canvas to an absolute ratio
+   * @param {number} ratio - The target ratio.
+   * @param {Object} pivot - The zoom pivot point coordinate.
+   * @param {Event} _originalEvent - The original event if any.
+   * @returns {Object} this
+   */
+  zoomTo: function zoomTo(ratio, pivot, _originalEvent) {
+    var options = this.options,
+        canvasData = this.canvasData;
+    var width = canvasData.width,
+        height = canvasData.height,
+        naturalWidth = canvasData.naturalWidth,
+        naturalHeight = canvasData.naturalHeight;
+
+
+    ratio = Number(ratio);
+
+    if (ratio >= 0 && this.ready && !this.disabled && options.zoomable) {
+      var newWidth = naturalWidth * ratio;
+      var newHeight = naturalHeight * ratio;
+
+      if (dispatchEvent(this.element, EVENT_ZOOM, {
+        originalEvent: _originalEvent,
+        oldRatio: width / naturalWidth,
+        ratio: newWidth / naturalWidth
+      }) === false) {
+        return this;
+      }
+
+      if (_originalEvent) {
+        var pointers = this.pointers;
+
+        var offset = getOffset(this.cropper);
+        var center = pointers && Object.keys(pointers).length ? getPointersCenter(pointers) : {
+          pageX: _originalEvent.pageX,
+          pageY: _originalEvent.pageY
+        };
+
+        // Zoom from the triggering point of the event
+        canvasData.left -= (newWidth - width) * ((center.pageX - offset.left - canvasData.left) / width);
+        canvasData.top -= (newHeight - height) * ((center.pageY - offset.top - canvasData.top) / height);
+      } else if (isPlainObject(pivot) && isNumber(pivot.x) && isNumber(pivot.y)) {
+        canvasData.left -= (newWidth - width) * ((pivot.x - canvasData.left) / width);
+        canvasData.top -= (newHeight - height) * ((pivot.y - canvasData.top) / height);
+      } else {
+        // Zoom from the center of the canvas
+        canvasData.left -= (newWidth - width) / 2;
+        canvasData.top -= (newHeight - height) / 2;
+      }
+
+      canvasData.width = newWidth;
+      canvasData.height = newHeight;
+      this.renderCanvas(true);
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Rotate the canvas with a relative degree
+   * @param {number} degree - The rotate degree.
+   * @returns {Object} this
+   */
+  rotate: function rotate(degree) {
+    return this.rotateTo((this.imageData.rotate || 0) + Number(degree));
+  },
+
+
+  /**
+   * Rotate the canvas to an absolute degree
+   * @param {number} degree - The rotate degree.
+   * @returns {Object} this
+   */
+  rotateTo: function rotateTo(degree) {
+    degree = Number(degree);
+
+    if (isNumber(degree) && this.ready && !this.disabled && this.options.rotatable) {
+      this.imageData.rotate = degree % 360;
+      this.renderCanvas(true, true);
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Scale the image on the x-axis.
+   * @param {number} scaleX - The scale ratio on the x-axis.
+   * @returns {Object} this
+   */
+  scaleX: function scaleX(_scaleX) {
+    var scaleY = this.imageData.scaleY;
+
+
+    return this.scale(_scaleX, isNumber(scaleY) ? scaleY : 1);
+  },
+
+
+  /**
+   * Scale the image on the y-axis.
+   * @param {number} scaleY - The scale ratio on the y-axis.
+   * @returns {Object} this
+   */
+  scaleY: function scaleY(_scaleY) {
+    var scaleX = this.imageData.scaleX;
+
+
+    return this.scale(isNumber(scaleX) ? scaleX : 1, _scaleY);
+  },
+
+
+  /**
+   * Scale the image
+   * @param {number} scaleX - The scale ratio on the x-axis.
+   * @param {number} [scaleY=scaleX] - The scale ratio on the y-axis.
+   * @returns {Object} this
+   */
+  scale: function scale(scaleX) {
+    var scaleY = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : scaleX;
+    var imageData = this.imageData;
+
+    var transformed = false;
+
+    scaleX = Number(scaleX);
+    scaleY = Number(scaleY);
+
+    if (this.ready && !this.disabled && this.options.scalable) {
+      if (isNumber(scaleX)) {
+        imageData.scaleX = scaleX;
+        transformed = true;
+      }
+
+      if (isNumber(scaleY)) {
+        imageData.scaleY = scaleY;
+        transformed = true;
+      }
+
+      if (transformed) {
+        this.renderCanvas(true, true);
+      }
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Get the cropped area position and size data (base on the original image)
+   * @param {boolean} [rounded=false] - Indicate if round the data values or not.
+   * @returns {Object} The result cropped data.
+   */
+  getData: function getData$$1() {
+    var rounded = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : false;
+    var options = this.options,
+        imageData = this.imageData,
+        canvasData = this.canvasData,
+        cropBoxData = this.cropBoxData;
+
+    var data = void 0;
+
+    if (this.ready && this.cropped) {
+      data = {
+        x: cropBoxData.left - canvasData.left,
+        y: cropBoxData.top - canvasData.top,
+        width: cropBoxData.width,
+        height: cropBoxData.height
+      };
+
+      var ratio = imageData.width / imageData.naturalWidth;
+
+      each(data, function (n, i) {
+        n /= ratio;
+        data[i] = rounded ? Math.round(n) : n;
+      });
+    } else {
+      data = {
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
+      };
+    }
+
+    if (options.rotatable) {
+      data.rotate = imageData.rotate || 0;
+    }
+
+    if (options.scalable) {
+      data.scaleX = imageData.scaleX || 1;
+      data.scaleY = imageData.scaleY || 1;
+    }
+
+    return data;
+  },
+
+
+  /**
+   * Set the cropped area position and size with new data
+   * @param {Object} data - The new data.
+   * @returns {Object} this
+   */
+  setData: function setData$$1(data) {
+    var options = this.options,
+        imageData = this.imageData,
+        canvasData = this.canvasData;
+
+    var cropBoxData = {};
+
+    if (isFunction(data)) {
+      data = data.call(this.element);
+    }
+
+    if (this.ready && !this.disabled && isPlainObject(data)) {
+      var transformed = false;
+
+      if (options.rotatable) {
+        if (isNumber(data.rotate) && data.rotate !== imageData.rotate) {
+          imageData.rotate = data.rotate;
+          transformed = true;
+        }
+      }
+
+      if (options.scalable) {
+        if (isNumber(data.scaleX) && data.scaleX !== imageData.scaleX) {
+          imageData.scaleX = data.scaleX;
+          transformed = true;
+        }
+
+        if (isNumber(data.scaleY) && data.scaleY !== imageData.scaleY) {
+          imageData.scaleY = data.scaleY;
+          transformed = true;
+        }
+      }
+
+      if (transformed) {
+        this.renderCanvas(true, true);
+      }
+
+      var ratio = imageData.width / imageData.naturalWidth;
+
+      if (isNumber(data.x)) {
+        cropBoxData.left = data.x * ratio + canvasData.left;
+      }
+
+      if (isNumber(data.y)) {
+        cropBoxData.top = data.y * ratio + canvasData.top;
+      }
+
+      if (isNumber(data.width)) {
+        cropBoxData.width = data.width * ratio;
+      }
+
+      if (isNumber(data.height)) {
+        cropBoxData.height = data.height * ratio;
+      }
+
+      this.setCropBoxData(cropBoxData);
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Get the container size data.
+   * @returns {Object} The result container data.
+   */
+  getContainerData: function getContainerData() {
+    return this.ready ? extend({}, this.containerData) : {};
+  },
+
+
+  /**
+   * Get the image position and size data.
+   * @returns {Object} The result image data.
+   */
+  getImageData: function getImageData() {
+    return this.loaded ? extend({}, this.imageData) : {};
+  },
+
+
+  /**
+   * Get the canvas position and size data.
+   * @returns {Object} The result canvas data.
+   */
+  getCanvasData: function getCanvasData() {
+    var canvasData = this.canvasData;
+
+    var data = {};
+
+    if (this.ready) {
+      each(['left', 'top', 'width', 'height', 'naturalWidth', 'naturalHeight'], function (n) {
+        data[n] = canvasData[n];
+      });
+    }
+
+    return data;
+  },
+
+
+  /**
+   * Set the canvas position and size with new data.
+   * @param {Object} data - The new canvas data.
+   * @returns {Object} this
+   */
+  setCanvasData: function setCanvasData(data) {
+    var canvasData = this.canvasData;
+    var aspectRatio = canvasData.aspectRatio;
+
+
+    if (isFunction(data)) {
+      data = data.call(this.element);
+    }
+
+    if (this.ready && !this.disabled && isPlainObject(data)) {
+      if (isNumber(data.left)) {
+        canvasData.left = data.left;
+      }
+
+      if (isNumber(data.top)) {
+        canvasData.top = data.top;
+      }
+
+      if (isNumber(data.width)) {
+        canvasData.width = data.width;
+        canvasData.height = data.width / aspectRatio;
+      } else if (isNumber(data.height)) {
+        canvasData.height = data.height;
+        canvasData.width = data.height * aspectRatio;
+      }
+
+      this.renderCanvas(true);
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Get the crop box position and size data.
+   * @returns {Object} The result crop box data.
+   */
+  getCropBoxData: function getCropBoxData() {
+    var cropBoxData = this.cropBoxData;
+
+    var data = void 0;
+
+    if (this.ready && this.cropped) {
+      data = {
+        left: cropBoxData.left,
+        top: cropBoxData.top,
+        width: cropBoxData.width,
+        height: cropBoxData.height
+      };
+    }
+
+    return data || {};
+  },
+
+
+  /**
+   * Set the crop box position and size with new data.
+   * @param {Object} data - The new crop box data.
+   * @returns {Object} this
+   */
+  setCropBoxData: function setCropBoxData(data) {
+    var cropBoxData = this.cropBoxData;
+    var aspectRatio = this.options.aspectRatio;
+
+    var widthChanged = void 0;
+    var heightChanged = void 0;
+
+    if (isFunction(data)) {
+      data = data.call(this.element);
+    }
+
+    if (this.ready && this.cropped && !this.disabled && isPlainObject(data)) {
+      if (isNumber(data.left)) {
+        cropBoxData.left = data.left;
+      }
+
+      if (isNumber(data.top)) {
+        cropBoxData.top = data.top;
+      }
+
+      if (isNumber(data.width) && data.width !== cropBoxData.width) {
+        widthChanged = true;
+        cropBoxData.width = data.width;
+      }
+
+      if (isNumber(data.height) && data.height !== cropBoxData.height) {
+        heightChanged = true;
+        cropBoxData.height = data.height;
+      }
+
+      if (aspectRatio) {
+        if (widthChanged) {
+          cropBoxData.height = cropBoxData.width / aspectRatio;
+        } else if (heightChanged) {
+          cropBoxData.width = cropBoxData.height * aspectRatio;
+        }
+      }
+
+      this.renderCropBox();
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Get a canvas drawn the cropped image.
+   * @param {Object} [options={}] - The config options.
+   * @returns {HTMLCanvasElement} - The result canvas.
+   */
+  getCroppedCanvas: function getCroppedCanvas() {
+    var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+    if (!this.ready || !window.HTMLCanvasElement) {
+      return null;
+    }
+
+    var canvasData = this.canvasData;
+
+    var source = getSourceCanvas(this.image, this.imageData, canvasData, options);
+
+    // Returns the source canvas if it is not cropped.
+    if (!this.cropped) {
+      return source;
+    }
+
+    var _getData = this.getData(),
+        x = _getData.x,
+        y = _getData.y,
+        initialWidth = _getData.width,
+        initialHeight = _getData.height;
+
+    var aspectRatio = initialWidth / initialHeight;
+    var maxSizes = getContainSizes({
+      aspectRatio: aspectRatio,
+      width: options.maxWidth || Infinity,
+      height: options.maxHeight || Infinity
+    });
+    var minSizes = getContainSizes({
+      aspectRatio: aspectRatio,
+      width: options.minWidth || 0,
+      height: options.minHeight || 0
+    });
+
+    var _getContainSizes = getContainSizes({
+      aspectRatio: aspectRatio,
+      width: options.width || initialWidth,
+      height: options.height || initialHeight
+    }),
+        width = _getContainSizes.width,
+        height = _getContainSizes.height;
+
+    width = Math.min(maxSizes.width, Math.max(minSizes.width, width));
+    height = Math.min(maxSizes.height, Math.max(minSizes.height, height));
+
+    var canvas = document.createElement('canvas');
+    var context = canvas.getContext('2d');
+
+    canvas.width = normalizeDecimalNumber(width);
+    canvas.height = normalizeDecimalNumber(height);
+
+    context.fillStyle = options.fillColor || 'transparent';
+    context.fillRect(0, 0, width, height);
+
+    var _options$imageSmoothi = options.imageSmoothingEnabled,
+        imageSmoothingEnabled = _options$imageSmoothi === undefined ? true : _options$imageSmoothi,
+        imageSmoothingQuality = options.imageSmoothingQuality;
+
+
+    context.imageSmoothingEnabled = imageSmoothingEnabled;
+
+    if (imageSmoothingQuality) {
+      context.imageSmoothingQuality = imageSmoothingQuality;
+    }
+
+    // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.drawImage
+    var sourceWidth = source.width;
+    var sourceHeight = source.height;
+
+    // Source canvas parameters
+    var srcX = x;
+    var srcY = y;
+    var srcWidth = void 0;
+    var srcHeight = void 0;
+
+    // Destination canvas parameters
+    var dstX = void 0;
+    var dstY = void 0;
+    var dstWidth = void 0;
+    var dstHeight = void 0;
+
+    if (srcX <= -initialWidth || srcX > sourceWidth) {
+      srcX = 0;
+      srcWidth = 0;
+      dstX = 0;
+      dstWidth = 0;
+    } else if (srcX <= 0) {
+      dstX = -srcX;
+      srcX = 0;
+      srcWidth = Math.min(sourceWidth, initialWidth + srcX);
+      dstWidth = srcWidth;
+    } else if (srcX <= sourceWidth) {
+      dstX = 0;
+      srcWidth = Math.min(initialWidth, sourceWidth - srcX);
+      dstWidth = srcWidth;
+    }
+
+    if (srcWidth <= 0 || srcY <= -initialHeight || srcY > sourceHeight) {
+      srcY = 0;
+      srcHeight = 0;
+      dstY = 0;
+      dstHeight = 0;
+    } else if (srcY <= 0) {
+      dstY = -srcY;
+      srcY = 0;
+      srcHeight = Math.min(sourceHeight, initialHeight + srcY);
+      dstHeight = srcHeight;
+    } else if (srcY <= sourceHeight) {
+      dstY = 0;
+      srcHeight = Math.min(initialHeight, sourceHeight - srcY);
+      dstHeight = srcHeight;
+    }
+
+    // All the numerical parameters should be integer for `drawImage`
+    // https://github.com/fengyuanchen/cropper/issues/476
+    var params = [srcX, srcY, srcWidth, srcHeight];
+
+    // Avoid "IndexSizeError"
+    if (dstWidth > 0 && dstHeight > 0) {
+      var scale = width / initialWidth;
+
+      params.push(dstX * scale, dstY * scale, dstWidth * scale, dstHeight * scale);
+    }
+
+    context.drawImage.apply(context, [source].concat(toConsumableArray(params.map(function (param) {
+      return Math.floor(normalizeDecimalNumber(param));
+    }))));
+
+    return canvas;
+  },
+
+
+  /**
+   * Change the aspect ratio of the crop box.
+   * @param {number} aspectRatio - The new aspect ratio.
+   * @returns {Object} this
+   */
+  setAspectRatio: function setAspectRatio(aspectRatio) {
+    var options = this.options;
+
+
+    if (!this.disabled && !isUndefined(aspectRatio)) {
+      // 0 -> NaN
+      options.aspectRatio = Math.max(0, aspectRatio) || NaN;
+
+      if (this.ready) {
+        this.initCropBox();
+
+        if (this.cropped) {
+          this.renderCropBox();
+        }
+      }
+    }
+
+    return this;
+  },
+
+
+  /**
+   * Change the drag mode.
+   * @param {string} mode - The new drag mode.
+   * @returns {Object} this
+   */
+  setDragMode: function setDragMode(mode) {
+    var options = this.options,
+        dragBox = this.dragBox,
+        face = this.face;
+
+
+    if (this.loaded && !this.disabled) {
+      var croppable = mode === DRAG_MODE_CROP;
+      var movable = options.movable && mode === DRAG_MODE_MOVE;
+
+      mode = croppable || movable ? mode : DRAG_MODE_NONE;
+
+      setData(dragBox, DATA_ACTION, mode);
+      toggleClass(dragBox, CLASS_CROP, croppable);
+      toggleClass(dragBox, CLASS_MOVE, movable);
+
+      if (!options.cropBoxMovable) {
+        // Sync drag mode to crop box when it is not movable
+        setData(face, DATA_ACTION, mode);
+        toggleClass(face, CLASS_CROP, croppable);
+        toggleClass(face, CLASS_MOVE, movable);
+      }
+    }
+
+    return this;
+  }
+};
+
+var AnotherCropper = WINDOW.Cropper;
+
+var Cropper = function () {
+  /**
+   * Create a new Cropper.
+   * @param {Element} element - The target element for cropping.
+   * @param {Object} [options={}] - The configuration options.
+   */
+  function Cropper(element) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+    classCallCheck(this, Cropper);
+
+    if (!element || !REGEXP_TAG_NAME.test(element.tagName)) {
+      throw new Error('The first argument is required and must be an <img> or <canvas> element.');
+    }
+
+    this.element = element;
+    this.options = extend({}, DEFAULTS, isPlainObject(options) && options);
+    this.complete = false;
+    this.cropped = false;
+    this.disabled = false;
+    this.isImg = false;
+    this.limited = false;
+    this.loaded = false;
+    this.ready = false;
+    this.replaced = false;
+    this.wheeling = false;
+    this.originalUrl = '';
+    this.canvasData = null;
+    this.cropBoxData = null;
+    this.previews = null;
+    this.pointers = {};
+    this.init();
+  }
+
+  createClass(Cropper, [{
+    key: 'init',
+    value: function init() {
+      var element = this.element;
+
+      var tagName = element.tagName.toLowerCase();
+      var url = void 0;
+
+      if (getData(element, NAMESPACE)) {
+        return;
+      }
+
+      setData(element, NAMESPACE, this);
+
+      if (tagName === 'img') {
+        this.isImg = true;
+
+        // e.g.: "img/picture.jpg"
+        url = element.getAttribute('src') || '';
+        this.originalUrl = url;
+
+        // Stop when it's a blank image
+        if (!url) {
+          return;
+        }
+
+        // e.g.: "http://example.com/img/picture.jpg"
+        url = element.src;
+      } else if (tagName === 'canvas' && window.HTMLCanvasElement) {
+        url = element.toDataURL();
+      }
+
+      this.load(url);
+    }
+  }, {
+    key: 'load',
+    value: function load(url) {
+      var _this = this;
+
+      if (!url) {
+        return;
+      }
+
+      this.url = url;
+      this.imageData = {};
+
+      var element = this.element,
+          options = this.options;
+
+
+      if (!options.checkOrientation || !window.ArrayBuffer) {
+        this.clone();
+        return;
+      }
+
+      // XMLHttpRequest disallows to open a Data URL in some browsers like IE11 and Safari
+      if (REGEXP_DATA_URL.test(url)) {
+        if (REGEXP_DATA_URL_JPEG.test(url)) {
+          this.read(dataURLToArrayBuffer(url));
+        } else {
+          this.clone();
+        }
+
+        return;
+      }
+
+      var xhr = new XMLHttpRequest();
+
+      xhr.onerror = function () {
+        _this.clone();
+      };
+
+      xhr.onload = function () {
+        _this.read(xhr.response);
+      };
+
+      if (options.checkCrossOrigin && isCrossOriginURL(url) && element.crossOrigin) {
+        url = addTimestamp(url);
+      }
+
+      xhr.open('get', url);
+      xhr.responseType = 'arraybuffer';
+      xhr.withCredentials = element.crossOrigin === 'use-credentials';
+      xhr.send();
+    }
+  }, {
+    key: 'read',
+    value: function read(arrayBuffer) {
+      var options = this.options,
+          imageData = this.imageData;
+
+      var orientation = getOrientation(arrayBuffer);
+      var rotate = 0;
+      var scaleX = 1;
+      var scaleY = 1;
+
+      if (orientation > 1) {
+        this.url = arrayBufferToDataURL(arrayBuffer, 'image/jpeg');
+
+        var _parseOrientation = parseOrientation(orientation);
+
+        rotate = _parseOrientation.rotate;
+        scaleX = _parseOrientation.scaleX;
+        scaleY = _parseOrientation.scaleY;
+      }
+
+      if (options.rotatable) {
+        imageData.rotate = rotate;
+      }
+
+      if (options.scalable) {
+        imageData.scaleX = scaleX;
+        imageData.scaleY = scaleY;
+      }
+
+      this.clone();
+    }
+  }, {
+    key: 'clone',
+    value: function clone() {
+      var element = this.element,
+          url = this.url;
+
+      var crossOrigin = void 0;
+      var crossOriginUrl = void 0;
+
+      if (this.options.checkCrossOrigin && isCrossOriginURL(url)) {
+        crossOrigin = element.crossOrigin;
+
+
+        if (crossOrigin) {
+          crossOriginUrl = url;
+        } else {
+          crossOrigin = 'anonymous';
+
+          // Bust cache when there is not a "crossOrigin" property
+          crossOriginUrl = addTimestamp(url);
+        }
+      }
+
+      this.crossOrigin = crossOrigin;
+      this.crossOriginUrl = crossOriginUrl;
+
+      var image = document.createElement('img');
+
+      if (crossOrigin) {
+        image.crossOrigin = crossOrigin;
+      }
+
+      image.src = crossOriginUrl || url;
+
+      var start = proxy(this.start, this);
+      var stop = proxy(this.stop, this);
+
+      this.image = image;
+      this.onStart = start;
+      this.onStop = stop;
+
+      if (this.isImg) {
+        if (element.complete) {
+          this.start();
+        } else {
+          addListener(element, EVENT_LOAD, start);
+        }
+      } else {
+        addListener(image, EVENT_LOAD, start);
+        addListener(image, EVENT_ERROR, stop);
+        addClass(image, CLASS_HIDE);
+        element.parentNode.insertBefore(image, element.nextSibling);
+      }
+    }
+  }, {
+    key: 'start',
+    value: function start(event) {
+      var _this2 = this;
+
+      var image = this.isImg ? this.element : this.image;
+
+      if (event) {
+        removeListener(image, EVENT_LOAD, this.onStart);
+        removeListener(image, EVENT_ERROR, this.onStop);
+      }
+
+      getImageNaturalSizes(image, function (naturalWidth, naturalHeight) {
+        extend(_this2.imageData, {
+          naturalWidth: naturalWidth,
+          naturalHeight: naturalHeight,
+          aspectRatio: naturalWidth / naturalHeight
+        });
+        _this2.loaded = true;
+        _this2.build();
+      });
+    }
+  }, {
+    key: 'stop',
+    value: function stop() {
+      var image = this.image;
+
+
+      removeListener(image, EVENT_LOAD, this.onStart);
+      removeListener(image, EVENT_ERROR, this.onStop);
+      image.parentNode.removeChild(image);
+      this.image = null;
+    }
+  }, {
+    key: 'build',
+    value: function build() {
+      var _this3 = this;
+
+      if (!this.loaded) {
+        return;
+      }
+
+      // Unbuild first when replace
+      if (this.ready) {
+        this.unbuild();
+      }
+
+      var element = this.element,
+          options = this.options,
+          image = this.image;
+
+      // Create cropper elements
+
+      var container = element.parentNode;
+      var template = document.createElement('div');
+
+      template.innerHTML = TEMPLATE;
+
+      var cropper = template.querySelector('.' + NAMESPACE + '-container');
+      var canvas = cropper.querySelector('.' + NAMESPACE + '-canvas');
+      var dragBox = cropper.querySelector('.' + NAMESPACE + '-drag-box');
+      var cropBox = cropper.querySelector('.' + NAMESPACE + '-crop-box');
+      var face = cropBox.querySelector('.' + NAMESPACE + '-face');
+
+      this.container = container;
+      this.cropper = cropper;
+      this.canvas = canvas;
+      this.dragBox = dragBox;
+      this.cropBox = cropBox;
+      this.viewBox = cropper.querySelector('.' + NAMESPACE + '-view-box');
+      this.face = face;
+
+      canvas.appendChild(image);
+
+      // Hide the original image
+      addClass(element, CLASS_HIDDEN);
+
+      // Inserts the cropper after to the current image
+      container.insertBefore(cropper, element.nextSibling);
+
+      // Show the image if is hidden
+      if (!this.isImg) {
+        removeClass(image, CLASS_HIDE);
+      }
+
+      this.initPreview();
+      this.bind();
+
+      options.aspectRatio = Math.max(0, options.aspectRatio) || NaN;
+      options.viewMode = Math.max(0, Math.min(3, Math.round(options.viewMode))) || 0;
+
+      this.cropped = options.autoCrop;
+
+      if (options.autoCrop) {
+        if (options.modal) {
+          addClass(dragBox, CLASS_MODAL);
+        }
+      } else {
+        addClass(cropBox, CLASS_HIDDEN);
+      }
+
+      if (!options.guides) {
+        addClass(cropBox.getElementsByClassName(NAMESPACE + '-dashed'), CLASS_HIDDEN);
+      }
+
+      if (!options.center) {
+        addClass(cropBox.getElementsByClassName(NAMESPACE + '-center'), CLASS_HIDDEN);
+      }
+
+      if (options.background) {
+        addClass(cropper, NAMESPACE + '-bg');
+      }
+
+      if (!options.highlight) {
+        addClass(face, CLASS_INVISIBLE);
+      }
+
+      if (options.cropBoxMovable) {
+        addClass(face, CLASS_MOVE);
+        setData(face, DATA_ACTION, ACTION_ALL);
+      }
+
+      if (!options.cropBoxResizable) {
+        addClass(cropBox.getElementsByClassName(NAMESPACE + '-line'), CLASS_HIDDEN);
+        addClass(cropBox.getElementsByClassName(NAMESPACE + '-point'), CLASS_HIDDEN);
+      }
+
+      this.setDragMode(options.dragMode);
+      this.render();
+      this.ready = true;
+      this.setData(options.data);
+
+      // Call the "ready" option asynchronously to keep "image.cropper" is defined
+      this.completing = setTimeout(function () {
+        if (isFunction(options.ready)) {
+          addListener(element, EVENT_READY, options.ready, {
+            once: true
+          });
+        }
+
+        dispatchEvent(element, EVENT_READY);
+        dispatchEvent(element, EVENT_CROP, _this3.getData());
+
+        _this3.complete = true;
+      }, 0);
+    }
+  }, {
+    key: 'unbuild',
+    value: function unbuild() {
+      if (!this.ready) {
+        return;
+      }
+
+      if (!this.complete) {
+        clearTimeout(this.completing);
+      }
+
+      this.ready = false;
+      this.complete = false;
+      this.initialImageData = null;
+
+      // Clear `initialCanvasData` is necessary when replace
+      this.initialCanvasData = null;
+      this.initialCropBoxData = null;
+      this.containerData = null;
+      this.canvasData = null;
+
+      // Clear `cropBoxData` is necessary when replace
+      this.cropBoxData = null;
+      this.unbind();
+      this.resetPreview();
+      this.previews = null;
+      this.viewBox = null;
+      this.cropBox = null;
+      this.dragBox = null;
+      this.canvas = null;
+      this.container = null;
+      this.cropper.parentNode.removeChild(this.cropper);
+      this.cropper = null;
+    }
+
+    /**
+     * Get the no conflict cropper class.
+     * @returns {Cropper} The cropper class.
+     */
+
+  }], [{
+    key: 'noConflict',
+    value: function noConflict() {
+      window.Cropper = AnotherCropper;
+      return Cropper;
+    }
+
+    /**
+     * Change the default options.
+     * @param {Object} options - The new default options.
+     */
+
+  }, {
+    key: 'setDefaults',
+    value: function setDefaults(options) {
+      extend(DEFAULTS, isPlainObject(options) && options);
+    }
+  }]);
+  return Cropper;
+}();
+
+extend(Cropper.prototype, render, preview, events, handlers, change, methods);
+
+return Cropper;
+
+})));
 
 
 /***/ }),
-/* 151 */
+/* 160 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(152);
+var content = __webpack_require__(161);
+if(typeof content === 'string') content = [[module.i, content, '']];
+// Prepare cssTransformation
+var transform;
+
+var options = {"hmr":true}
+options.transform = transform
+// add the styles to the DOM
+var update = __webpack_require__(150)(content, options);
+if(content.locals) module.exports = content.locals;
+// Hot Module Replacement
+if(false) {
+	// When the styles change, update the <style> tags
+	if(!content.locals) {
+		module.hot.accept("!!../../css-loader/index.js!./cropper.min.css", function() {
+			var newContent = require("!!../../css-loader/index.js!./cropper.min.css");
+			if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+			update(newContent);
+		});
+	}
+	// When the module is disposed, remove the <style> tags
+	module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "/*!\n * Cropper.js v1.2.1\n * https://github.com/fengyuanchen/cropperjs\n *\n * Copyright (c) 2015-2017 Chen Fengyuan\n * Released under the MIT license\n *\n * Date: 2017-12-17T10:33:56.588Z\n */.cropper-container{direction:ltr;font-size:0;line-height:0;position:relative;-ms-touch-action:none;touch-action:none;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.cropper-container img{display:block;height:100%;image-orientation:0deg;max-height:none!important;max-width:none!important;min-height:0!important;min-width:0!important;width:100%}.cropper-canvas,.cropper-crop-box,.cropper-drag-box,.cropper-modal,.cropper-wrap-box{bottom:0;left:0;position:absolute;right:0;top:0}.cropper-canvas,.cropper-wrap-box{overflow:hidden}.cropper-drag-box{background-color:#fff;opacity:0}.cropper-modal{background-color:#000;opacity:.5}.cropper-view-box{display:block;height:100%;outline-color:rgba(51,153,255,.75);outline:1px solid #39f;overflow:hidden;width:100%}.cropper-dashed{border:0 dashed #eee;display:block;opacity:.5;position:absolute}.cropper-dashed.dashed-h{border-bottom-width:1px;border-top-width:1px;height:33.33333%;left:0;top:33.33333%;width:100%}.cropper-dashed.dashed-v{border-left-width:1px;border-right-width:1px;height:100%;left:33.33333%;top:0;width:33.33333%}.cropper-center{display:block;height:0;left:50%;opacity:.75;position:absolute;top:50%;width:0}.cropper-center:after,.cropper-center:before{background-color:#eee;content:\" \";display:block;position:absolute}.cropper-center:before{height:1px;left:-3px;top:0;width:7px}.cropper-center:after{height:7px;left:0;top:-3px;width:1px}.cropper-face,.cropper-line,.cropper-point{display:block;height:100%;opacity:.1;position:absolute;width:100%}.cropper-face{background-color:#fff;left:0;top:0}.cropper-line{background-color:#39f}.cropper-line.line-e{cursor:ew-resize;right:-3px;top:0;width:5px}.cropper-line.line-n{cursor:ns-resize;height:5px;left:0;top:-3px}.cropper-line.line-w{cursor:ew-resize;left:-3px;top:0;width:5px}.cropper-line.line-s{bottom:-3px;cursor:ns-resize;height:5px;left:0}.cropper-point{background-color:#39f;height:5px;opacity:.75;width:5px}.cropper-point.point-e{cursor:ew-resize;margin-top:-3px;right:-3px;top:50%}.cropper-point.point-n{cursor:ns-resize;left:50%;margin-left:-3px;top:-3px}.cropper-point.point-w{cursor:ew-resize;left:-3px;margin-top:-3px;top:50%}.cropper-point.point-s{bottom:-3px;cursor:s-resize;left:50%;margin-left:-3px}.cropper-point.point-ne{cursor:nesw-resize;right:-3px;top:-3px}.cropper-point.point-nw{cursor:nwse-resize;left:-3px;top:-3px}.cropper-point.point-sw{bottom:-3px;cursor:nesw-resize;left:-3px}.cropper-point.point-se{bottom:-3px;cursor:nwse-resize;height:20px;opacity:1;right:-3px;width:20px}@media (min-width:768px){.cropper-point.point-se{height:15px;width:15px}}@media (min-width:992px){.cropper-point.point-se{height:10px;width:10px}}@media (min-width:1200px){.cropper-point.point-se{height:5px;opacity:.75;width:5px}}.cropper-point.point-se:before{background-color:#39f;bottom:-50%;content:\" \";display:block;height:200%;opacity:0;position:absolute;right:-50%;width:200%}.cropper-invisible{opacity:0}.cropper-bg{background-image:url(\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQAQMAAAAlPW0iAAAAA3NCSVQICAjb4U/gAAAABlBMVEXMzMz////TjRV2AAAACXBIWXMAAArrAAAK6wGCiw1aAAAAHHRFWHRTb2Z0d2FyZQBBZG9iZSBGaXJld29ya3MgQ1M26LyyjAAAABFJREFUCJlj+M/AgBVhF/0PAH6/D/HkDxOGAAAAAElFTkSuQmCC\")}.cropper-hide{display:block;height:0;position:absolute;width:0}.cropper-hidden{display:none!important}.cropper-move{cursor:move}.cropper-crop{cursor:crosshair}.cropper-disabled .cropper-drag-box,.cropper-disabled .cropper-face,.cropper-disabled .cropper-line,.cropper-disabled .cropper-point{cursor:not-allowed}", ""]);
+
+// exports
+
+
+/***/ }),
+/* 162 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(163);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("6aaf6779", content, false);
+var update = __webpack_require__(2)("54c5857b", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-495026d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./birth-date-picker.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-495026d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./birth-date-picker.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59e1e370\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-cropper.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-59e1e370\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./avatar-cropper.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -50401,7 +54640,7 @@ if(false) {
 }
 
 /***/ }),
-/* 152 */
+/* 163 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -50409,118 +54648,39 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "\n.cropper-wrapper[data-v-59e1e370] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background-color: #ffffff;\n}\n.cropper-wrapper .cropper[data-v-59e1e370] {\n    margin-top: 1.5rem;\n}\n.cropper-wrapper .cropper .cropper-drag-box[data-v-59e1e370] {\n      opacity: 0.5;\n}\n.slide-enter-active[data-v-59e1e370], .slide-leave-active[data-v-59e1e370] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.slide-enter[data-v-59e1e370], .slide-leave-to[data-v-59e1e370] {\n  -webkit-transform: translate3d(0, 100%, 0);\n          transform: translate3d(0, 100%, 0);\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
-/* 153 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(126);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    value: ''
-  },
-  data: function data() {
-    return {
-      birthDateSlots: [{
-        flex: 1,
-        values: [],
-        defaultIndex: 0
-      }, {
-        flex: 1,
-        values: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
-        defaultIndex: 0
-      }],
-      data: [],
-      message: ''
-    };
-  },
-  created: function created() {
-    this.init();
-  },
-
-  methods: {
-    init: function init() {
-      var birthYearListData = this._getBirthYearListData();
-      this.birthDateSlots[0].values = birthYearListData;
-      var values = this.value.split('-');
-      if (values.length < 2) {
-        return;
-      }
-      // 索引初始化（values中数据必须转换为int类型）
-      this.birthDateSlots[0].defaultIndex = birthYearListData.indexOf(parseInt(values[0]));
-      this.birthDateSlots[1].defaultIndex = this.birthDateSlots[1].values.indexOf(parseInt(values[1]));
-    },
-    _getBirthYearListData: function _getBirthYearListData() {
-      var date = new Date();
-      var currentYear = date.getFullYear();
-      var yearListData = [];
-      for (var i = currentYear - 15, j = currentYear - 50; i > j; i--) {
-        yearListData.push(i);
-      }
-      return yearListData;
-    },
-    show: function show() {
-      this.$refs.picker.show();
-    },
-    hide: function hide() {
-      this.$refs.picker.hide();
-    },
-    onValuesChange: function onValuesChange(picker, values) {
-      this.data = values;
-    },
-    confirm: function confirm() {
-      var data = this.data[0] + '-' + (this.data[1] < 10 ? '0' + this.data[1] : this.data[1]);
-      this.$emit('select', data);
-      this.hide();
-    }
-  },
-  components: {
-    picker: __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default.a,
-    message: __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default.a
-  }
-});
-
-/***/ }),
-/* 154 */
+/* 164 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    [
-      _c("picker", {
-        ref: "picker",
-        attrs: { title: "出生年月", slots: _vm.birthDateSlots },
-        on: { onValuesChange: _vm.onValuesChange, confirm: _vm.confirm }
-      }),
-      _vm._v(" "),
-      _c("message", { ref: "message", attrs: { message: _vm.message } })
-    ],
-    1
-  )
+  return _c("transition", { attrs: { name: "slide" } }, [
+    _c(
+      "div",
+      { staticClass: "cropper-wrapper" },
+      [
+        _c("dkf-header", {
+          attrs: { title: "选择显示区域", nextText: "保存" },
+          on: { left: _vm.cancel, right: _vm.save }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "cropper" }, [
+          _c("img", {
+            ref: "cropperImg",
+            attrs: { id: "cropImage", width: "100%", src: _vm.image.url }
+          })
+        ])
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50528,7 +54688,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-495026d6", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-59e1e370", module.exports)
   }
 }
 

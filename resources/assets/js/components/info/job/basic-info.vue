@@ -3,7 +3,7 @@
         <div class="basic-info">
             <dkf-header title="个人信息" @left="back" nextText="下一步"></dkf-header>
             <div class="avatar-wrapper active" @click="showAvatarDriver">
-                <img src="https://img2.bosszhipin.com/boss/avatar/avatar_15.png" class="avatar">
+                <img :src="user.avatar ? user.avatar : 'https://img2.bosszhipin.com/boss/avatar/avatar_15.png'" class="avatar">
             </div>
             <ul class="basic-info-items">
                 <li class="active" @click="showNameInput"><label class="item-name">姓名</label><span class="item-value">{{ userData.name }} <i class="icon icon-right"></i></span></li>
@@ -15,10 +15,12 @@
                 <span class="disc">创建一份微简历，高薪职位触手可得</span>
                 <div class="basic-info-next">下一步</div>
             </div>
-            <avatar-driver ref="avatarDriver"></avatar-driver>
-            <name-input ref="nameInput" :name="userData.name" @saveName="saveName"></name-input>
-            <job-date-picker ref="picker" v-model="userData.jobDate" @select="jobDateHandleSelect"></job-date-picker>
-            <birth-date-picker ref="birthDatePicker" v-model="userData.birthDate" @select="birthDateHandleSelect"></birth-date-picker>
+            <avatar-driver @succeed="avatarDriverSucceed" ref="avatarDriver"></avatar-driver>
+            <avatar-cropper  :image="cropImage" @cancel="hideCropper"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
+            <name-input :name="userData.name" @saveName="saveName" ref="nameInput"></name-input>
+            <job-date-picker v-model="userData.jobDate" @select="jobDateHandleSelect" ref="picker"></job-date-picker>
+            <birth-date-picker v-model="userData.birthDate" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
+            <fading-circle text="上传中" v-show="spinner"></fading-circle>
         </div>
     </transition>
 </template>
@@ -26,10 +28,13 @@
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
   import avatarDriver from 'Base/avatar/avatar-driver'
+  import avatarCropper from 'Base/avatar/avatar-cropper'
   import nameInput from '../base/name-input'
   import sexRadio from 'Base/radio/sex-radio'
   import jobDatePicker from 'Base/picker/job-date-picker'
   import birthDatePicker from 'Base/picker/birth-date-picker'
+  import fadingCircle from 'Base/spinner/fading-circle'
+  import {mapState} from 'vuex'
 
   export default {
     data() {
@@ -39,8 +44,16 @@
           sex: '',
           jobDate: '2016-06',
           birthDate: '1997-02'
-        }
+        },
+        cropImage: {},
+        cropperShowFlag: false,
+        spinner: false
       }
+    },
+    computed: {
+      ...mapState({
+        user: state => state.AuthUser
+      })
     },
     methods: {
       back() {
@@ -70,15 +83,31 @@
       },
       birthDateHandleSelect(data) {
         this.userData.birthDate = data
+      },
+      avatarDriverSucceed(data) {
+        this.cropImage = data
+        this.cropperShowFlag = true
+      },
+      hideCropper() {
+        this.cropperShowFlag = false
+      },
+      upload(data) {
+        this.cropperShowFlag = false
+        this.spinner = true
+        this.$store.dispatch('uploadAvatar', data).then(response => {
+          this.spinner = false
+        })
       }
     },
     components: {
       dkfHeader,
       avatarDriver,
+      avatarCropper,
       nameInput,
       sexRadio,
       jobDatePicker,
-      birthDatePicker
+      birthDatePicker,
+      fadingCircle
     }
   }
 </script>

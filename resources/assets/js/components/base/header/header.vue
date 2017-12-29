@@ -1,9 +1,9 @@
 <template>
     <div>
         <header class="header">
-            <div class="back" @click.stop="left"><i class="icon" :class="backIcon"></i></div>
+            <div class="back" @click.stop="left"><p><i class="icon" :class="backIcon"></i></p></div>
             <span class="title">{{ title }}</span>
-            <div class="next" @click.stop="right" style="text-align: right"><i class="icon" :class="nextIcon"></i>{{ nextText }}</div>
+            <div class="next" @click.stop="right" style="text-align: right"><p><i class="icon" :class="nextIcon"></i>{{ nextText }}</p></div>
         </header>
     </div>
 </template>
@@ -52,16 +52,15 @@
         color: $color-text
         background: $color-theme
         padding: 0.35rem 0.2rem 0 0.2rem
+        div
+            width: 2rem
+            p
+                padding: 0.3rem
         .title
             flex: 1
             text-align: center
-        .back
-            width: 1.5rem
         [class^="icon-"], [class*=" icon-"]
             font-weight: bold
-            padding: 0.3rem
         .icon-correct
             font-size: 0.5rem
-        .next
-            width: 1.5rem
 </style>

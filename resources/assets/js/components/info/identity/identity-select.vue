@@ -68,7 +68,7 @@
         .job-wrapper
             width: 100%
             .job-img
-                background-image: url("job.jpg")
+                background-image: url("./job.jpg")
         .or
             display: flex
             width: 80%
@@ -88,7 +88,7 @@
         .hiring-wrapper
             width: 100%
             .hiring-img
-                background-image: url("hiring.jpg")
+                background-image: url("./hiring.jpg")
         .logout
             position: absolute
             width: 100%

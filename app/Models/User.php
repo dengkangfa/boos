@@ -29,6 +29,16 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    /**
+     * 保存头像
+     * @param $avatar
+     */
+    public function saveAvatar($avatar)
+    {
+        $this->avatar = $avatar;
+        $this->save();
+    }
+
     public function getByMobile($mobile)
     {
         return $this->where('mobiel', $mobile);

@@ -21,6 +21,9 @@ export default {
       return axios.post('/api/logout').then(response => {
         jwtToken.removeToken()
         dispatch('unsetAuthUser')
+      }).catch(error => {
+        jwtToken.removeToken()
+        dispatch('unsetAuthUser')
       })
     }
   }

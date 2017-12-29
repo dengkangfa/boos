@@ -3,8 +3,20 @@
             <transition name="slide">
                 <div class="avatar-driver" v-show="showFlag">
                     <div class="avatar-driver-items">
-                        <div><span class="icon-wrapper" @click="invokingCarera"><i class="icon-camera-outline"></i></span> <span class="desc">拍摄照片</span></div>
-                        <div><span class="icon-wrapper"><i class="icon-image"></i></span><span class="desc">相册照片</span></div>
+                        <div>
+                            <a href="javascript:;" class="file" @click="hide()">
+                                <span class="icon-wrapper"><i class="icon-camera-outline"></i></span>
+                                <input type="file" accept="image/*" capture="camera" @change="uploadChange">
+                            </a>
+                            <span class="desc">拍摄照片</span>
+                        </div>
+                        <div>
+                            <a href="javascript:;" class="file" @click="hide()">
+                                <span class="icon-wrapper"><i class="icon-image"></i></span>
+                                <input type="file" accept="image/*" @change="uploadChange" multiple>
+                            </a>
+                            <span class="desc">相册照片</span>
+                        </div>
                         <div><span class="icon-wrapper"><i class="icon-portrait"></i></span><span class="desc">默认头像</span></div>
                     </div>
                     <div class="avatar-driver-cancel" @click="hide">取消</div>
@@ -17,10 +29,14 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import axios from 'axios'
+
   export default {
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        cropperShowFlag: false,
+        cropImage: {}
       }
     },
     methods: {
@@ -30,24 +46,27 @@
       hide() {
         this.showFlag = false
       },
-      invokingCarera() {
-        var p = navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+      clickCamera() {
+        return this.$refs['file'].click()
+      },
+      cancel() {
+        this.cropperShowFlag = false
+      },
+      uploadChange(e) {
+        let files = e.target.files
+        let formData = new FormData()
 
-        p.then(function(mediaStream) {
-          var video = document.querySelector('video');
-          video.src = window.URL.createObjectURL(mediaStream);
-          video.onloadedmetadata = function(e) {
-            // Do something with the video here.
-          };
-        });
+        formData.append('file', files[0])
 
-        p.catch(function(err) { console.log(err.name); }); // always check for errors at the end.
+        axios.post('api/user/avatar', formData).then((response) => {
+          this.$emit('succeed', response.data)
+        })
       }
     }
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 
@@ -65,6 +84,26 @@
             margin-bottom: 0.5rem
             span
                 display: block
+            .file
+                position: relative
+                display: block
+                width: 50px
+                height: 50px
+                color: #000000
+                span
+                    position: absolute
+                    display: block
+                    top: 0
+                    left: 0
+                    right: 0
+                input
+                    position: absolute
+                    left: 0
+                    right: 0
+                    top: 0
+                    width: 50px
+                    height: 50px
+                    opacity: 0
             .icon-wrapper
                 @include border-1px(#000000)
                 border-radius: 50%

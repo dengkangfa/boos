@@ -2,6 +2,8 @@
 
 namespace App\Http\Proxy;
 
+use Auth;
+
 class TokenProxy
 {
     protected $http;
@@ -17,7 +19,7 @@ class TokenProxy
 
     public function login($mobile, $password)
     {
-        if (auth()->attempt(['mobile' => $mobile, 'password' => $password])) {
+        if (auth('web')->attempt(['mobile' => $mobile, 'password' => $password])) {
             return $this->proxy('password', [
                 'username' => $mobile,
                 'password' => $password,

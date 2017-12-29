@@ -17,6 +17,16 @@ mix.webpackConfig({
       Mixin: path.resolve(__dirname, 'resources/assets/js/mixin'),
       Base: path.resolve(__dirname, 'resources/assets/js/components/base')
     }
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(jpg|png|gif)$/,
+        use: [
+          'file-loader?name=[name].[ext]&outputPath=images/'
+        ]
+      }
+    ]
   }
 });
 
