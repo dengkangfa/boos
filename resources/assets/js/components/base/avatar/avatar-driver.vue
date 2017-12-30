@@ -17,7 +17,7 @@
                             </a>
                             <span class="desc">相册照片</span>
                         </div>
-                        <div><span class="icon-wrapper"><i class="icon-portrait"></i></span><span class="desc">默认头像</span></div>
+                        <div><span class="icon-wrapper" @click="showDefaultAvatarDriver"><i class="icon-portrait"></i></span><span class="desc">默认头像</span></div>
                     </div>
                     <div class="avatar-driver-cancel" @click="hide">取消</div>
                 </div>
@@ -34,9 +34,7 @@
   export default {
     data() {
       return {
-        showFlag: false,
-        cropperShowFlag: false,
-        cropImage: {}
+        showFlag: false
       }
     },
     methods: {
@@ -49,9 +47,6 @@
       clickCamera() {
         return this.$refs['file'].click()
       },
-      cancel() {
-        this.cropperShowFlag = false
-      },
       uploadChange(e) {
         let files = e.target.files
         let formData = new FormData()
@@ -61,6 +56,10 @@
         axios.post('api/user/avatar', formData).then((response) => {
           this.$emit('succeed', response.data)
         })
+      },
+      showDefaultAvatarDriver() {
+        this.hide()
+        this.$emit('showDefaultAvatarDriver')
       }
     }
   }

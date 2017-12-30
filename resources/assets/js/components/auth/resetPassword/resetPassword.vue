@@ -2,7 +2,7 @@
     <transition name="slide">
         <div class="reset-wrapper">
             <div class="sider">
-                <img src="https://img2.bosszhipin.com/boss/avatar/avatar_15.png" class="avatar">
+                <img src="images/default.png" class="avatar">
                 <div class="left-triangle" ref="left_triangle" :style="{borderRight: triangleWidth + 'px solid transparent'}"></div>
                 <div class="right-triangle" ref="right_triangle"  :style="{borderLeft: triangleWidth + 'px solid transparent'}"></div>
             </div>

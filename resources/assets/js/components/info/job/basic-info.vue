@@ -1,26 +1,28 @@
 <template>
     <transition name="slide">
         <div class="basic-info">
-            <dkf-header title="个人信息" @left="back" nextText="下一步"></dkf-header>
+            <dkf-header title="个人信息" @left="back" nextText="下一步" @right="next"></dkf-header>
             <div class="avatar-wrapper active" @click="showAvatarDriver">
-                <img :src="user.avatar ? user.avatar : 'https://img2.bosszhipin.com/boss/avatar/avatar_15.png'" class="avatar">
+                <img :src="user.avatar ? user.avatar : 'images/default.png'" class="avatar">
             </div>
             <ul class="basic-info-items">
                 <li class="active" @click="showNameInput"><label class="item-name">姓名</label><span class="item-value">{{ userData.name }} <i class="icon icon-right"></i></span></li>
-                <li><label class="item-name">性别</label><div class="radio-group"><sex-radio @change="sexChange"></sex-radio> </div></li>
-                <li class="active" @click="showPicker"><label class="item-name">参加工作时间</label><span class="item-value">{{ userData.jobDate }} <i class="icon icon-right"></i></span></li>
-                <li class="active" @click="showBirthDatePicker"><label class="item-name">出生年月</label><span class="item-value">{{ userData.birthDate }} <i class="icon icon-right"></i></span></li>
+                <li><label class="item-name">性别</label><div class="radio-group"><sex-radio v-model="userData.gender" @change="genderChange"></sex-radio> </div></li>
+                <li class="active" @click="showPicker"><label class="item-name">参加工作时间</label><span class="item-value">{{ userData.job_date }} <i class="icon icon-right"></i></span></li>
+                <li class="active" @click="showBirthDatePicker"><label class="item-name">出生年月</label><span class="item-value">{{ userData.birth_date }} <i class="icon icon-right"></i></span></li>
             </ul>
             <div class="basic-info-bottom">
                 <span class="disc">创建一份微简历，高薪职位触手可得</span>
-                <div class="basic-info-next">下一步</div>
+                <div class="basic-info-next" @click="next">下一步</div>
             </div>
-            <avatar-driver @succeed="avatarDriverSucceed" ref="avatarDriver"></avatar-driver>
+            <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="showDefaultAvatarDriver" ref="avatarDriver"></avatar-driver>
             <avatar-cropper  :image="cropImage" @cancel="hideCropper"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
+            <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>
             <name-input :name="userData.name" @saveName="saveName" ref="nameInput"></name-input>
-            <job-date-picker v-model="userData.jobDate" @select="jobDateHandleSelect" ref="picker"></job-date-picker>
-            <birth-date-picker v-model="userData.birthDate" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
-            <fading-circle text="上传中" v-show="spinner"></fading-circle>
+            <job-date-picker v-model="userData.job_date" @select="jobDateHandleSelect" ref="picker"></job-date-picker>
+            <birth-date-picker v-model="userData.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
+            <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
+            <message :message="message" ref="message"></message>
         </div>
     </transition>
 </template>
@@ -28,27 +30,39 @@
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
   import avatarDriver from 'Base/avatar/avatar-driver'
+  import avatarDefault from 'Base/avatar/avatar-default'
   import avatarCropper from 'Base/avatar/avatar-cropper'
   import nameInput from '../base/name-input'
   import sexRadio from 'Base/radio/sex-radio'
   import jobDatePicker from 'Base/picker/job-date-picker'
   import birthDatePicker from 'Base/picker/birth-date-picker'
   import fadingCircle from 'Base/spinner/fading-circle'
+  import message from 'Base/message/message'
   import {mapState} from 'vuex'
+  import {ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
 
   export default {
     data() {
       return {
         userData: {
           name: '',
-          sex: '',
-          jobDate: '2016-06',
-          birthDate: '1997-02'
+          gender: '',
+          job_date: '',
+          birth_date: ''
         },
         cropImage: {},
         cropperShowFlag: false,
-        spinner: false
+        spinner: false,
+        spinnerText: '',
+        message: '',
+        defaultAvatarType: 1
       }
+    },
+    created() {
+      this.userData.name = this.user.name
+      this.userData.gender = this.user.gender
+      this.userData.job_date = this.user.job_date
+      this.userData.birth_date = this.user.birth_date
     },
     computed: {
       ...mapState({
@@ -58,10 +72,25 @@
     methods: {
       back() {
         this.$router.back()
-        console.log(this.userData)
+      },
+      next() {
+        this.spinnerText = '正在保存个人信息，请稍后'
+        this.spinner = true
+        this.$store.dispatch('updateProflie', this.userData).then(response => {
+          this.spinner = false
+        }).catch(error => {
+          this.spinner = false
+          if (error.code === ERR_UNPROCESSABLE_ENTITY) {
+            this.message = error.message
+            this.$refs.message.show()
+          }
+        })
       },
       showAvatarDriver() {
         this.$refs.avatarDriver.show()
+      },
+      showDefaultAvatarDriver() {
+        this.$refs.avatarDefault.show()
       },
       showNameInput() {
         this.$refs.nameInput.show()
@@ -69,8 +98,8 @@
       saveName(nameValue) {
         this.userData.name = nameValue
       },
-      sexChange(currentValue) {
-        this.userData.sex = currentValue
+      genderChange(currentValue) {
+        this.userData.gender = currentValue
       },
       showPicker() {
         this.$refs.picker.show()
@@ -79,10 +108,10 @@
         this.$refs.birthDatePicker.show()
       },
       jobDateHandleSelect(data) {
-        this.userData.jobDate = data
+        this.userData.job_date = data
       },
       birthDateHandleSelect(data) {
-        this.userData.birthDate = data
+        this.userData.birth_date = data
       },
       avatarDriverSucceed(data) {
         this.cropImage = data
@@ -93,21 +122,29 @@
       },
       upload(data) {
         this.cropperShowFlag = false
+        this.spinnerText = '上传中'
         this.spinner = true
         this.$store.dispatch('uploadAvatar', data).then(response => {
           this.spinner = false
+        })
+      },
+      selectDefaultAvatar(avatar) {
+        this.$store.dispatch('updateDefaultAvatar', avatar).then(response => {
+
         })
       }
     },
     components: {
       dkfHeader,
       avatarDriver,
+      avatarDefault,
       avatarCropper,
       nameInput,
       sexRadio,
       jobDatePicker,
       birthDatePicker,
-      fadingCircle
+      fadingCircle,
+      message
     }
   }
 </script>

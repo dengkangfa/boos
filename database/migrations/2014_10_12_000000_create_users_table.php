@@ -20,6 +20,9 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('email')->unique()->nullable()->index();
             $table->string('password');
+            $table->enum('gender', ['male', 'female']);
+            $table->timestamp('job_date')->nullable();
+            $table->timestamp('birth_date')->nullable();
             $table->timestamps();
         });
     }

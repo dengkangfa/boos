@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
@@ -17,7 +18,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile'
+        'name', 'email', 'password', 'mobile', 'gender', 'job_date', 'birth_date'
     ];
 
     /**
@@ -28,6 +29,25 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setJobDateAttribute($value)
+    {
+        if ($value == '应届生') {
+            $value = null;
+        } else if($value == '1990年以前') {
+            $knownDate = Carbon::create(1990, 0, 0, 0, 0, 0);
+            Carbon::setTestNow($knownDate);
+            $value = Carbon::now();
+        } else {
+            $value = Carbon::createFromTimestamp(strtotime($value));
+        }
+        $this->attributes['job_date'] = $value;
+    }
+
+    public function setBirthDateAttribute($value)
+    {
+        $this->attributes['birth_date'] = Carbon::createFromTimestamp(strtotime($value));
+    }
 
     /**
      * 保存头像

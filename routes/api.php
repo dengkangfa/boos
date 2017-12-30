@@ -20,5 +20,7 @@ Route::post('login/{driver}', 'Auth\LoginController@login');
 Route::post('logout', 'Auth\LoginController@logout');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::post('/user/avatar', 'UsersController@avatar');
-Route::post('/user/crop/avatar', 'UsersController@cropAvatar');
+Route::post('/user/avatar', 'Api\UsersController@avatar');
+Route::put('/user/avatar', 'Api\UsersController@defaultAvatar');
+Route::post('/user/crop/avatar', 'Api\UsersController@cropAvatar');
+Route::patch('/user/profile', 'Api\UsersController@updateProfile');

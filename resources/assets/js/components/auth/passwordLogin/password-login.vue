@@ -6,7 +6,7 @@
             </div>
             <div class="password-login">
                 <form action="">
-                    <h3><img src="https://img2.bosszhipin.com/boss/avatar/avatar_15.png" class="avatar"></h3>
+                    <h3><img src="images/default.png" class="avatar"></h3>
                     <ul class="info-login">
                         <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
                         <li><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'" v-model="userules.password" placeholder="6-25位字母、数字或下划线"><i class="password-show-icon" :class="passwordShow ? 'icon-eye-view' : 'icon-eye-blocked'" @click="passwordShowLogger"></i></li>

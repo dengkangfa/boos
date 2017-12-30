@@ -28,7 +28,7 @@
         }, 2000)
       },
       hide() {
-        this.showFlag = false;
+        this.showFlag = false
       }
     }
   }

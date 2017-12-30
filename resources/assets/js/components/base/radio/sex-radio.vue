@@ -1,11 +1,11 @@
 <template>
     <div class="row" @change="$emit('change', currentValue)">
         <div class="female">
-            <input type="radio" id="female" v-model="currentValue" value="女" name="sex" />
+            <input type="radio" id="female" v-model="currentValue" value="female" name="sex" />
             <label for="female">女</label>
         </div>
         <div class="male">
-            <input type="radio" id="male" v-model="currentValue" value="男" name="sex" />
+            <input type="radio" id="male" v-model="currentValue" value="male" name="sex" />
             <label for="male">男</label>
         </div>
     </div>
@@ -13,6 +13,12 @@
 
 <script type="text/ecmascript-6">
   export default {
+    props: {
+      value: ''
+    },
+    created() {
+      this.currentValue = this.value
+    },
     data() {
       return {
         currentValue: ''

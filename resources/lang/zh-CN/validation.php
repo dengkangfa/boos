@@ -44,7 +44,7 @@ return [
     'filled'               => ':attribute 不能为空。',
     'image'                => ':attribute 必须是图片。',
     'in'                   => '已选的属性 :attribute 非法。',
-    'in_array'             => ':attribute 没有在 :other 中。',
+    'in_array'             => ':attribute没有在可选范围中。',
     'integer'              => ':attribute 必须是整数。',
     'ip'                   => ':attribute 必须是有效的 IP 地址。',
     'ipv4'                 => ':attribute 必须是有效的 IPv4 地址。',
@@ -68,7 +68,7 @@ return [
     'numeric'              => ':attribute 必须是一个数字。',
     'present'              => ':attribute 必须存在。',
     'regex'                => ':attribute 格式不正确。',
-    'required'             => ':attribute 不能为空。',
+    'required'             => ':attribute不能为空',
     'required_if'          => '当 :other 为 :value 时 :attribute 不能为空。',
     'required_unless'      => '当 :other 不为 :value 时 :attribute 不能为空。',
     'required_with'        => '当 :values 存在时 :attribute 不能为空。',
@@ -117,7 +117,7 @@ return [
     */
 
     'attributes'           => [
-        'name'                  => '名称',
+        'name'                  => '姓名',
         'username'              => '用户名',
         'email'                 => '邮箱',
         'first_name'            => '名',
@@ -132,6 +132,8 @@ return [
         'age'                   => '年龄',
         'sex'                   => '性别',
         'gender'                => '性别',
+        'job_date'              => '参加工作时间',
+        'birth_date'            => '出生年月',
         'day'                   => '天',
         'month'                 => '月',
         'year'                  => '年',
