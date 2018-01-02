@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
 use Auth;
+use DB;
 use Image;
 use Validator;
 use Illuminate\Http\Request;
@@ -27,19 +28,37 @@ class UsersController extends ApiController
 
         $this->user = $user;
     }
-    
+
+    public function me(Request $request)
+    {
+        $user = Auth::user();
+
+        return $this->respondWithItem($user, new UserTransformer);
+    }
+
     public function avatar(Request $request)
+    {
+        $user = DB::table('users')->select('avatar')->where('mobile', $request->mobile)->first();
+
+        if (is_null($user)) {
+            return $this->noContent();
+        }
+
+        return response()->json([
+            'success' => true,
+            'avatar' => $user->avatar,
+            'code' => 200
+        ]);
+    }
+    
+    public function uploadAvatar(Request $request)
     {
         $validator = Validator::make($request->all(),[
             'file' => 'image'
         ]);
         
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->getMessageBag()->first(),
-                'code' => '10422'
-            ], 422);
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
 
         $path = 'avatars/' . Auth::user()->id;
@@ -86,11 +105,7 @@ class UsersController extends ApiController
         ]);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->getMessageBag()->first(),
-                'code' => 10422
-            ], 422);
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
 
         $result = $this->user->update(Auth::id(), $request->all());

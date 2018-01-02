@@ -42,6 +42,7 @@
         height: 100px
         border-radius: 0.2rem
         background: rgba(40, 47, 52, 0.7)
+        padding-bottom: 10px
     .spinner-fading-circle
         position: relative
         width: 1rem

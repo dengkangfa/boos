@@ -53,6 +53,9 @@
       },
       selectItem(item) {
         let avatar = 'images/avatar_' + (item + (this.type * 8)) + '.png'
+        if (this.currentAvatar === avatar) {
+          return
+        }
         this.$emit('selectDefaultAvatar', {'avatar': avatar})
         this.hide()
       }

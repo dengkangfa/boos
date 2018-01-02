@@ -6,9 +6,9 @@
             </div>
             <div class="password-login">
                 <form action="">
-                    <h3><img src="images/default.png" class="avatar"></h3>
+                    <h3><img :src="avatar ? avatar : 'images/default.png'" class="avatar"></h3>
                     <ul class="info-login">
-                        <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
+                        <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="mobileInputBlur" @input="mobileInputEvent" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
                         <li><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'" v-model="userules.password" placeholder="6-25位字母、数字或下划线"><i class="password-show-icon" :class="passwordShow ? 'icon-eye-view' : 'icon-eye-blocked'" @click="passwordShowLogger"></i></li>
                         <li><p><router-link to="/login/password/reset" class="reset">忘记密码</router-link></p></li>
                         <li><input @click.prevent="submit" type="submit" value="登录"></li>
@@ -35,6 +35,11 @@
   import messageBox from 'Base/message/message-box.vue'
   import fadingCircle from 'Base/spinner/fading-circle.vue'
   import {loginFooterMixin, checkMobileRegex} from 'Mixin/mixin.js'
+  import {getAvatar} from 'Api/user'
+  import avatar from 'Helpers/avatar'
+
+  // 手机正则表达式
+  const phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/
 
   export default {
     mixins: [loginFooterMixin, checkMobileRegex],
@@ -48,11 +53,15 @@
         message: '',
         lable: '+86',
         loadingText: '',
-        spinning: false
+        spinning: false,
+        avatar: ''
       }
     },
     created() {
-      this.userules.mobile = sessionStorage.getItem('mobile')
+      if (sessionStorage.getItem('mobile')) {
+        this.userules.mobile = sessionStorage.getItem('mobile')
+        this.setAvatar()
+      }
     },
     methods: {
       back() {
@@ -63,6 +72,26 @@
       },
       passwordShowLogger() {
         this.passwordShow = !this.passwordShow
+      },
+      mobileInputBlur() {
+        this.closeIconShow = false
+        if (phoneRegex.test(this.userules.mobile)) {
+          this.setAvatar()
+        }
+      },
+      setAvatar() {
+        this.avatar = avatar.getAvatar(this.userules.mobile)
+        if (!this.avatar) {
+          getAvatar(this.userules.mobile).then(response => {
+            this.avatar = response.avatar
+            if (this.avatar) {
+              avatar.setAvatar(this.userules.mobile, response.avatar)
+            }
+          })
+        }
+      },
+      mobileInputEvent() {
+        this.avatar = null
       },
       submit() {
         // 验证手机号码格式

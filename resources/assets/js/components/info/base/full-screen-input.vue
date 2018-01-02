@@ -1,10 +1,10 @@
 <template>
     <transition name="slide">
-        <div class="name-wrapper" v-if="showFlag" @click.stop.prevent="">
-            <dkf-header title="姓名" nextIcon="icon-correct" backIcon="icon-close"  @left="cancel" @right="confirm"></dkf-header>
+        <div class="name-wrapper" v-if="showFlag" @click.stop.prevent>
+            <dkf-header :title="title" nextIcon="icon-correct" backIcon="icon-close"  @left="cancel" @right="confirm"></dkf-header>
             <div>
-                <input type="text" v-model="nameValue" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
-                <div style="text-align: right;padding: 0.4rem 0.2rem;"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ nameLength }}</p>/{{ length }}</span></div>
+                <input type="text" v-model="newValue" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
+                <div style="text-align: right;padding: 0.4rem 0.2rem;" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ length }}</span></div>
             </div>
             <message-box confirmButtonText="放弃"  :cancelButtonText="cancelButtonText" :showConfirmButton="showConfirmButton" :message="message" @confirm="messageBoxConfirm" ref="messageBox"></message-box>
         </div>
@@ -17,23 +17,35 @@
 
   export default {
     props: {
-      name: {
+      value: '',
+      title: {
         type: String,
         default: ''
+      },
+      showValueLength: {
+        type: Boolean,
+        default: true
+      },
+      allowEmpty: {
+        type: Boolean,
+        default: false
+      },
+      length: {
+        type: Number,
+        default: 20
       }
     },
     data() {
       return {
         showFlag: false,
-        nameValue: '', // 旧姓名
+        newValue: '', // 旧姓名
         message: '',
-        length: 12,
         showConfirmButton: false,
         cancelButtonText: '取消'
       }
     },
     created() {
-      this.nameValue = this.name
+      this.newValue = this.value
     },
     directives: {
       focus: {
@@ -45,11 +57,11 @@
       }
     },
     computed: {
-      nameLength() {
-        return this.nameValue.length
+      valueLength() {
+        return this.newValue.length
       },
       isExceed() {
-        return this.nameValue.length > this.length
+        return this.newValue.length > this.length
       }
     },
     methods: {
@@ -60,7 +72,7 @@
         this.showFlag = false
       },
       cancel() {
-        if (this.nameValue === this.name) {
+        if (this.newValue === this.value) {
           this.hide()
           return
         }
@@ -71,18 +83,25 @@
       },
       confirm() {
         this.$refs.nameInput.blur()
-        if (this.nameValue.length > this.length) {
+        if (this.newValue.length === 0 && !this.allowEmpty) {
+          this.message = '内容不能为空'
+          this.cancelButtonText = '好'
+          this.showConfirmButton = false
+          this.$refs.messageBox.show()
+          return
+        }
+        if (this.newValue.length > this.length) {
           this.message = '超过字数限制'
           this.cancelButtonText = '好'
           this.showConfirmButton = false
           this.$refs.messageBox.show()
           return
         }
-        this.$emit('saveName', this.nameValue)
+        this.$emit('saveValue', this.newValue)
         this.hide()
       },
       messageBoxConfirm() {
-        this.nameValue = this.name
+        this.newValue = this.value
         this.hide()
       }
     },

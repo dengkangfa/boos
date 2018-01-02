@@ -1,9 +1,10 @@
 <template>
     <transition name="confirm-fade">
-        <div class="confirm" v-show="showFlag" @click.stop>
+        <div class="confirm" v-show="showFlag" @click.stop @touchmove.prevent>
             <div class="confirm-wrapper">
                 <div class="confirm-content">
-                    <p class="text">{{ message }}</p>
+                    <p class="text" :class="{lessenPadding: description}">{{ message }}</p>
+                    <div class="description" v-if="description">{{ description }}</div>
                     <div class="operate">
                         <div @click="cancel" class="operate-btn" :class="{'border-radius-left': showConfirmButton}" v-show="showCancelButton">{{ cancelButtonText ? cancelButtonText : '取消' }}</div>
                         <div @click="confirm" class="operate-btn left" :class="{'border-radius-right': showConfirmButton}" v-show="showConfirmButton">{{ confirmButtonText }}</div>
@@ -23,6 +24,10 @@
       },
       props: {
         message: {
+          type: String,
+          default: ''
+        },
+        description: {
           type: String,
           default: ''
         },
@@ -94,6 +99,11 @@
                     font-size: .45rem
                     font-weight: 700
                     color: #000000
+                    &.lessenPadding
+                        padding-bottom: 5px
+                .description
+                    padding: 0 .5rem .5rem
+                    text-align: center
                 .operate
                     display: flex
                     align-items: center

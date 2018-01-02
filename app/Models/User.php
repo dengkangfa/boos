@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name', 'email', 'password', 'mobile', 'gender', 'job_date', 'birth_date'
     ];
 
+    protected $dates = ['created_at', 'updated_at', 'disabled_at', 'job_date', 'birth_date'];
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -29,6 +31,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function educationInfos()
+    {
+        return $this->hasMany(EducationInfo::class);
+    }
 
     public function setJobDateAttribute($value)
     {

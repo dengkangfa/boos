@@ -8,6 +8,7 @@ import passwordLogin from '../components/auth/passwordLogin/password-login.vue'
 import resetPassword from '../components/auth/resetPassword/resetPassword.vue'
 import identitySelect from '../components/info/identity/identity-select.vue'
 import basicInfo from '../components/info/job/basic-info.vue'
+import educationExperience from '../components/info/job/education-experience.vue'
 
 Vue.use(VueRouter)
 
@@ -45,10 +46,18 @@ let routes = [
     meta: {requiresAuth: true},
     children: [
       {
-        path: 'job/basicinfo',
+        path: '/job/basicinfo',
         name: 'job-basic-info',
         component: basicInfo,
-        meta: {requiresAuth: true}
+        meta: {requiresAuth: true},
+        children: [
+          {
+            path: '/job/education',
+            name: 'job-education',
+            component: educationExperience,
+            meta: {requiresAuth: true}
+          }
+        ]
       }
     ]
   },

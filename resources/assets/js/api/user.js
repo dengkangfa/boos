@@ -13,3 +13,17 @@ export function resetPassword(requestData) {
     return Promise.reject(error.response.data)
   })
 }
+
+export function getAvatar(mobile) {
+  const url = 'api/user/avatar'
+
+  return axios.get(url, {
+    params: {
+      mobile
+    }
+  }).then(response => {
+    return Promise.resolve(response.data)
+  }).catch(error => {
+    return Promise.reject(error.response.data)
+  })
+}

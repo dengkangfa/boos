@@ -13,6 +13,11 @@ export default {
   mutations: {
     [types.SET_AUTH_USER](state, payload) {
       state.authenticated = true
+      state.avatar = payload.user.avatar
+      state.name = payload.user.name
+      state.gender = payload.user.gender
+      state.job_date = payload.user.job_date
+      state.birth_date = payload.user.birth_date
     },
     [types.UNSET_AUTH_USER](state) {
       state.authenticated = false
@@ -36,7 +41,7 @@ export default {
       return axios.get('/api/user').then(response => {
         commit({
           type: types.SET_AUTH_USER,
-          user: response.data
+          user: response.data.data
         })
       }).catch(() => {
         dispatch('refreshToken')

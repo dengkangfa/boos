@@ -53,6 +53,11 @@
         sessionStorage.removeItem('logout-message')
       }
     },
+    created() {
+      if (sessionStorage.getItem('mobile')) {
+        this.userules.mobile = sessionStorage.getItem('mobile')
+      }
+    },
     methods: {
       submit() {
         if (this.checkMobileRegex() && this.checkVerifyCode()) {

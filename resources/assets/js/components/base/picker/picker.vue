@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div @click.stop @touchmove.prevent>
         <transition name="slide">
             <mint-picker :slots="slots" :showToolbar="showToolbar" v-show="showFlag" class="picker" @change="onValuesChange">
                 <div class="header">
@@ -16,7 +16,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-
   export default {
     props: {
       title: {
@@ -62,8 +61,9 @@
     @import "../../../../sass/mixin"
 
     .picker
-        position: absolute
+        position: fixed
         width: 100%
+        bottom: 0
         background: #ffffff
         z-index: 50
         .header
@@ -92,9 +92,9 @@
         &.slide-enter, .slide-leave-to
             transform: translate3d(0, 100%, 0)
     .list-mask
-        position: fixed
-        top: 0
-        left: 0
+        position: absolute
+        /*top: 0*/
+        /*left: 0*/
         width: 100%
         height: 100%
         z-index: 40

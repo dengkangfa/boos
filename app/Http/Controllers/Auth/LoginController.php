@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Api\ApiController;
 use App\Http\Proxy\TokenProxy;
 use Validator;
 use App\Models\User;
@@ -9,7 +10,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 
-class LoginController extends Controller
+class LoginController extends ApiController
 {
     /*
     |--------------------------------------------------------------------------
@@ -77,11 +78,7 @@ class LoginController extends Controller
         $validator = $this->validateLogin($request);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()->first(),
-                'code' => 10422
-            ], 422);
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
 
         $user = User::where('mobile', $request->mobile)->first();
@@ -104,11 +101,7 @@ class LoginController extends Controller
         $validator = $this->validateLogin($request);
 
         if ($validator->fails()) {
-            return response()->json([
-                'success' => false,
-                'message' => $validator->errors()->first(),
-                'code' => 10422
-            ], 422);
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
 
         return $this->proxy->login($request->mobile, $request->password);
