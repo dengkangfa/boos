@@ -44,11 +44,7 @@ class UsersController extends ApiController
             return $this->noContent();
         }
 
-        return response()->json([
-            'success' => true,
-            'avatar' => $user->avatar,
-            'code' => 200
-        ]);
+        return $this->respondWithArray(['success' => true, 'avatar' => $user->avatar, 'code' => 0]);
     }
     
     public function uploadAvatar(Request $request)
@@ -64,8 +60,9 @@ class UsersController extends ApiController
         $path = 'avatars/' . Auth::user()->id;
         
         $result = $this->manager->store($request->file, $path);
-        
-        return response()->json($result, 201);
+
+        return $this->setStatusCode(201)
+                ->respondWithArray(array_merge($result, ['success' => true, 'code' => 0]));
     }
 
     public function defaultAvatar(Request $request)
@@ -74,7 +71,7 @@ class UsersController extends ApiController
         $user->avatar = $request->avatar;
         $user->save();
 
-        return $user->avatar;
+        return $this->respondWithArray(['success' => true, 'url' => $user->avatar, 'code' => 0]);
     }
 
     public function cropAvatar(Request $request)

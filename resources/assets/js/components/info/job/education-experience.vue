@@ -9,7 +9,7 @@
                         <li @click="showSchoolInput"><label>学校</label><span class="item-value" :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }} <i class="icon icon-right"></i></span></li>
                         <li @click="showMajorInput"><label>专业</label><span class="item-value" :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}} <i class="icon icon-right"></i></span></li>
                         <li @click="showDegreePicker"><label>学历</label><span class="item-value" :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }}</span></li>
+                        <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }} <i class="icon icon-right"></i></span></li>
                     </ul>
                 </div>
                 <div class="at-school-experience">
@@ -22,10 +22,10 @@
                 <div class="next-button" @click.stop="next">下一步</div>
             </div>
             <message-box :message="message" ref="message"></message-box>
-            <message-box message="直聘君建议" description="突出在校经历，可以弥补工作经历不足的缺点，也可获得更多工作机会" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="eduDescriptionTextareaFocus" ref="eduDescriptionMessage"></message-box>
+            <message-box message="直聘君建议" description="突出在校经历，<br>可以弥补工作经历不足的缺点，也可获得更多工作机会" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="eduDescriptionTextareaFocus" ref="eduDescriptionMessage"></message-box>
             <full-screen-input v-model="educationData.school" id="school" title="学校" :allowEmpty="true" :showValueLength="false" @saveValue="saveSchoolValue" ref="schoolInput"></full-screen-input>
             <full-screen-input v-model="educationData.major" id="major" title="专业" :allowEmpty="true" :showValueLength="false" @saveValue="saveMajorValue" ref="majorInput"></full-screen-input>
-            <period-picker v-model="periodValue" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
+            <period-picker :period="[educationData.start_year, educationData.end_year]" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
             <picker title="学历" :slots="degreePicker" @onValuesChange="degreePickerOnValuesChange" @confirm="degreePickerSelectHandle" ref="degreePicker"></picker>
             <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
         </div>
@@ -132,7 +132,6 @@
         return false
       },
       next() {
-        console.log(this.educationData)
         if (this.checkDate()) {
           this.submit()
         }
@@ -142,7 +141,14 @@
         this.spinner = true
         if (this.educationData.id) {
           updateEducationExperience(this.educationData).then(response => {
+            this.spinner = false
             console.log(response)
+          }).catch(error => {
+            this.spinner = false
+            if (error.code === ERR_UNPROCESSABLE_ENTITY) {
+              this.message = error.message
+              this.$refs.message.show()
+            }
           })
         } else {
           createdEducationExperience(this.educationData).then(response => {
@@ -194,7 +200,7 @@
         @include allCover()
         width: 100%
         height: 100%
-        font-size: .4rem
+        font-size: .35rem
         background: $bc
         overflow-y: auto
         -webkit-overflow-scrolling: touch
@@ -223,6 +229,7 @@
                         &.placeholder
                             color: $color-text-d
                     i.icon
+                        font-size: .3rem
                         color: $color-theme
             .at-school-experience
                 width: 100%

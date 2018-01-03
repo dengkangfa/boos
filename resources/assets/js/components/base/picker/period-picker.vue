@@ -8,9 +8,9 @@
   import picker from 'Base/picker/picker'
   export default {
     props: {
-      value: {
-        type: String,
-        default: ''
+      period: {
+        type: Array,
+        default: []
       }
     },
     data() {
@@ -32,7 +32,6 @@
       }
     },
     created() {
-      console.log(this.value)
       this.init()
     },
     methods: {
@@ -76,6 +75,13 @@
       confirm() {
         this.$emit('select', this.values)
         this.hide()
+      }
+    },
+    watch: {
+      period(value) {
+        this.startYear = value[0]
+        this.$refs.picker.setSlotValues(1, this.getEndData(value[0]))
+        this.$refs.picker.setValues(value)
       }
     },
     components: {

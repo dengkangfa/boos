@@ -44,9 +44,6 @@
         cancelButtonText: '取消'
       }
     },
-    created() {
-      this.newValue = this.value
-    },
     directives: {
       focus: {
         inserted (el) {
@@ -103,6 +100,11 @@
       messageBoxConfirm() {
         this.newValue = this.value
         this.hide()
+      }
+    },
+    watch: {
+      value() {
+        this.newValue = this.value
       }
     },
     components: {

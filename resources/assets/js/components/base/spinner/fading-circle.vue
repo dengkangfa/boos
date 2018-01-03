@@ -40,6 +40,7 @@
         transform: translate(-50%, -50%)
         width: 100px
         height: 100px
+        font-size: .35rem
         border-radius: 0.2rem
         background: rgba(40, 47, 52, 0.7)
         padding-bottom: 10px

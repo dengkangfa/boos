@@ -52,17 +52,18 @@ class LoginController extends ApiController
             'password' => 'passwordLogin'
         ];
 
-        $function = $functionMap[$driver];
-        if (!$function) {
-            return response()->json([
-                'success' => false,
-                'message' => '不支持该方式登录',
-                'code' => 10406
-            ], 406);;
+        // 检测是否支持该登录方式
+        if (!array_key_exists($driver, $functionMap)) {
+            return $this->errorNotAcceptable('不支持该方式登录');
         }
+
+        $function = $functionMap[$driver];
         return $this->{$function}($request);
     }
 
+    /**
+     * 退出登录
+     */
     public function logout()
     {
         $this->proxy->logout();
@@ -88,6 +89,7 @@ class LoginController extends ApiController
                 'mobile' => $request->mobile,
                 'password' => bcrypt(str_random(12).time())
             ]);
+            // 新用户标识
             $code = 10201;
         }
 
@@ -96,6 +98,12 @@ class LoginController extends ApiController
         return $response;
     }
 
+    /**
+     * 密码登录
+     *
+     * @param Request $request
+     * @return $this|\Illuminate\Http\JsonResponse
+     */
     public function passwordLogin(Request $request)
     {
         $validator = $this->validateLogin($request);

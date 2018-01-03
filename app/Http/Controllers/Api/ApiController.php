@@ -10,7 +10,9 @@ class ApiController extends Controller
 {
     protected $statusCode = 200;
 
-    protected $success = true;
+    const CODE_NOT_FOUND = 10404;
+    const CODE_NOT_ACCEPTABLE = 10406;
+    const CODE_UNPROCESSABLE_ENTITY = 10422;
 
     protected $code = 0;
 
@@ -19,6 +21,28 @@ class ApiController extends Controller
     public function __construct()
     {
         $this->fractal = new Manager;
+    }
+
+    public function setStatusCode($statusCode)
+    {
+        $this->statusCode = $statusCode;
+        return $this;
+    }
+
+    public function setCode($code)
+    {
+        $this->code = $code;
+        return $this;
+    }
+
+    public function getStatusCode()
+    {
+        return $this->statusCode;
+    }
+
+    public function getCode()
+    {
+        return $this->code;
     }
 
     /**
@@ -37,12 +61,35 @@ class ApiController extends Controller
 
         $rootScope = $this->fractal->createData($resource);
 
-        return $this->respondWithArray($rootScope->toArray());
+        return $this->respondWithArray(array_merge($rootScope->toArray(), ['success' => true, 'code' => $this->code]));
     }
 
     public function respondWithArray(array $array, array $header = [])
     {
-        return response()->json(array_merge($array, ['success' => $this->success, 'code' => $this->code]), $this->statusCode, $header);
+        return response()->json($array, $this->statusCode, $header);
+    }
+
+    /**
+     * Respond the error message.
+     *
+     * @param  string $message
+     * @param  string $errorCode
+     * @return json
+     */
+    protected function respondWithError($message, $errorCode)
+    {
+        if ($this->statusCode === 200) {
+            trigger_error(
+                "You better have a really good reason for erroring on a 200...",
+                E_USER_WARNING
+            );
+        }
+
+        return $this->respondWithArray([
+            'success' => false,
+            'message' => $message,
+            'code' => $errorCode
+        ]);
     }
 
     /**
@@ -50,12 +97,28 @@ class ApiController extends Controller
      * @param $message
      * @return \Illuminate\Http\JsonResponse
      */
-    public function errorUnprocessableEntity($message)
+    public function errorUnprocessableEntity($message = 'Unprocessable Entity')
     {
-        return response()->json([
-            'success' => false,
-            'message' => $message,
-            'code' => 10422
-        ], 422);
+        return $this->setStatusCode(422)
+                    ->respondWithError($message, self::CODE_UNPROCESSABLE_ENTITY);
     }
+
+    /**
+     * Respond the error of 'Resource Not Found'
+     *
+     * @param string $message
+     * @return mixed
+     */
+    public function errorNotFound($message = 'Resource Not Found')
+    {
+        return $this->setStatusCode(404)
+            ->respondWithError($message, self::CODE_NOT_FOUND);
+    }
+
+    public function errorNotAcceptable($message = 'Not Acceptable')
+    {
+        return $this->setStatusCode(406)
+            ->respondWithError($message, self::CODE_NOT_ACCEPTABLE);
+    }
+
 }

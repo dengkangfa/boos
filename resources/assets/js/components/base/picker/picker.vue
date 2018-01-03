@@ -1,7 +1,7 @@
 <template>
     <div @click.stop @touchmove.prevent>
         <transition name="slide">
-            <mint-picker :slots="slots" :showToolbar="showToolbar" v-show="showFlag" class="picker" @change="onValuesChange">
+            <mint-picker :slots="slots" :showToolbar="showToolbar" v-show="showFlag" class="picker" @change="onValuesChange" ref="picker">
                 <div class="header">
                     <div class="cancel" @click.stop="cancel"><i class="icon icon-close"></i></div>
                     <span class="title">{{ title }}</span>
@@ -51,6 +51,12 @@
       },
       onValuesChange(picker, values) {
         this.$emit('onValuesChange', picker, values)
+      },
+      setValues(values) {
+        this.$refs.picker.setValues(values)
+      },
+      setSlotValues(index, value) {
+        this.$refs.picker.setSlotValues(index, value)
       }
     }
   }

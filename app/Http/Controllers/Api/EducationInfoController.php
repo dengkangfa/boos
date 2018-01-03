@@ -6,7 +6,6 @@ use App\Transformers\EducationInfoTransformer;
 use Auth;
 use App\Repositories\EducationInfoRepository;
 use Validator;
-use App\Http\Requests\EducationInfoRequest;
 use Illuminate\Http\Request;
 
 class EducationInfoController extends ApiController
@@ -25,6 +24,9 @@ class EducationInfoController extends ApiController
     public function index()
     {
         $educationInfos = Auth::user()->educationInfos()->first();
+        if (is_null($educationInfos)) {
+            return $this->errorNotFound();
+        }
         return $this->respondWithItem($educationInfos, new EducationInfoTransformer);
     }
 
@@ -38,12 +40,7 @@ class EducationInfoController extends ApiController
         $data = $request->all();
         $data['user_id'] = Auth::id();
         $educationInfo = $this->educationInfo->store($data);
-        return response()->json([
-            'success' => true,
-            'message' => 'Education Info Created',
-            'data' => $educationInfo,
-            'code' => 0
-        ]);
+        return $this->respondWithItem($educationInfo, new EducationInfoTransformer);
     }
 
     public function update(Request $request, $id)

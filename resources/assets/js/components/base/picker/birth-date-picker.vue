@@ -70,6 +70,11 @@
         this.hide()
       }
     },
+    watch: {
+      value() {
+        this.init()
+      }
+    },
     components: {
       picker,
       message

@@ -59,7 +59,7 @@ export default {
       return axios.put('/api/user/avatar', data).then(response => {
         commit({
           type: types.UPDATE_USER_DEFAULT_AVATAR,
-          avatar: response.data
+          avatar: response.data.url
         })
       })
     },

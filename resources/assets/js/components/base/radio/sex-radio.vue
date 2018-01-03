@@ -23,6 +23,11 @@
       return {
         currentValue: ''
       }
+    },
+    watch: {
+      value() {
+        this.currentValue = this.value
+      }
     }
   }
 </script>

@@ -24,7 +24,7 @@
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="showDefaultAvatarDriver" ref="avatarDriver"></avatar-driver>
             <avatar-cropper  :image="cropImage" @cancel="hideCropper"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
             <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>
-            <name-input title="姓名" :length="12" v-model="userData.name" @saveName="saveName" ref="nameInput"></name-input>
+            <name-input title="姓名" :length="12" v-model="userData.name" @saveValue="saveName" ref="nameInput"></name-input>
             <job-date-picker v-model="userData.job_date" @select="jobDateHandleSelect" ref="jobDatePicker"></job-date-picker>
             <birth-date-picker v-model="userData.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
             <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
@@ -66,10 +66,13 @@
       }
     },
     created() {
-      this.userData.name = this.user.name
-      this.userData.gender = this.user.gender
-      this.userData.job_date = this.user.job_date
-      this.userData.birth_date = this.user.birth_date
+      if (!this.user.authenticated) {
+        this.$store.dispatch('setAuthUser').then(response => {
+          this.init()
+        })
+      } else {
+        this.init()
+      }
     },
     computed: {
       ...mapState({
@@ -77,12 +80,16 @@
       })
     },
     methods: {
+      init() {
+        this.userData.name = this.user.name
+        this.userData.gender = this.user.gender
+        this.userData.job_date = this.user.job_date
+        this.userData.birth_date = this.user.birth_date
+      },
       back() {
         this.$router.back()
       },
       next() {
-        this.$router.push({'name': 'job-education'})
-        return
         // 验证数据合法性
         if (this.checkData()) {
           this.spinnerText = '正在保存个人信息，请稍后'
@@ -197,6 +204,7 @@
 
     .basic-info
         @include allCover()
+        font-size: .35rem
         background: $bc
         .active:active
             background: #d9d9d9
@@ -259,6 +267,7 @@
                 .item-value
                     color: $color-text-d
                 i.icon
+                    font-size: .3rem
                     color: $color-theme
         .basic-info-bottom
             position: absolute
