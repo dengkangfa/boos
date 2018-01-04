@@ -108,8 +108,9 @@
           'driver': 'password', // 登录的方式
           'formData': this.userules
         }
-        this.$store.dispatch('loginRequest', data).then(res => {
+        this.$store.dispatch('loginRequest', data).then(response => {
           this.spinning = false
+          avatar.removeAvatar(this.userules.mobile)
           this.$router.push({'name': 'index'})
         }).catch(error => {
           this.spinning = false

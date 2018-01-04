@@ -18,7 +18,7 @@ export function sendVoiceVerify(requestData) {
 
   const url = '/laravel-sms/voice-verify'
 
-  return axios.post(url, requestData,{
+  return axios.post(url, requestData, {
     headers: {
       'access-token': requestData.mobile
     }

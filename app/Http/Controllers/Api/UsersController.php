@@ -109,4 +109,19 @@ class UsersController extends ApiController
 
         return $this->respondWithItem($result, new UserTransformer);
     }
+
+    public function updateAdvantage(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'advantage' => 'required|max:140',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
+        }
+
+        $this->user->updateColumn(Auth::id(), $request->all());
+
+        return $this->respondWithArray(['advantage' => Auth::user()->advantage, 'success' => true, 'code' => 0]);
+    }
 }

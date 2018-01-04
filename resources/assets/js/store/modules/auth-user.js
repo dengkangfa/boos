@@ -7,6 +7,7 @@ export default {
     name: '',
     avatar: '',
     gender: '',
+    advantage: '',
     job_date: '',
     birth_date: ''
   },
@@ -16,6 +17,7 @@ export default {
       state.avatar = payload.user.avatar
       state.name = payload.user.name
       state.gender = payload.user.gender
+      state.advantage = payload.user.advantage
       state.job_date = payload.user.job_date
       state.birth_date = payload.user.birth_date
     },
@@ -34,6 +36,9 @@ export default {
       state.gender = payload.user.gender
       state.job_date = payload.user.job_date
       state.birth_date = payload.user.birth_date
+    },
+    [types.SET_USER_ADVANTAGE](state, payload) {
+      state.advantage = payload.advantage
     }
   },
   actions: {
@@ -71,6 +76,15 @@ export default {
         })
       }).catch(error => {
         return Promise.reject(error.response.data)
+      })
+    },
+    updateAdvantage({commit}, data) {
+      return axios.patch('api/user/advantage', data).then(response => {
+        console.log(response)
+        commit({
+          type: types.SET_USER_ADVANTAGE,
+          advantage: response.data.advantage
+        })
       })
     },
     unsetAuthUser({commit}) {

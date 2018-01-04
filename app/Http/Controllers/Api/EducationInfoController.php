@@ -51,7 +51,8 @@ class EducationInfoController extends ApiController
             return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
 
-        return $this->educationInfo->update($id, $request->only('school', 'major', 'degree', 'edu_description', 'start_year', 'end_year'));
+        $educationInfo = $this->educationInfo->update($id, $request->only('school', 'major', 'degree', 'edu_description', 'start_year', 'end_year'));
+        return $this->respondWithItem($educationInfo, new EducationInfoTransformer);
     }
 
     public function validateEducationInfo(Request $request)

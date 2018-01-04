@@ -9,6 +9,7 @@ import resetPassword from '../components/auth/resetPassword/resetPassword.vue'
 import identitySelect from '../components/info/identity/identity-select.vue'
 import basicInfo from '../components/info/job/basic-info.vue'
 import educationExperience from '../components/info/job/education-experience.vue'
+import Advantage from '../components/info/job/advantage.vue'
 
 Vue.use(VueRouter)
 
@@ -55,7 +56,15 @@ let routes = [
             path: '/job/education',
             name: 'job-education',
             component: educationExperience,
-            meta: {requiresAuth: true}
+            meta: {requiresAuth: true},
+            children: [
+              {
+                path: '/job/advantage',
+                name: 'job-advantage',
+                component: Advantage,
+                meta: {requiresAuth: true}
+              }
+            ]
           }
         ]
       }

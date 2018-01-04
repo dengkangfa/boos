@@ -1,8 +1,9 @@
 <template>
     <transition name="slide">
         <div class="education-experience-wrapper">
-            <dkf-header title="教育经历" nextText="下一步" class="header-wrapper" @left="back" @right="next"></dkf-header>
-            <div class="education-experience-content">
+            <dkf-header title="教育经历" nextText="下一步" class="header-wrapper" @left="showFriendlyReminderMessage" @right="next"></dkf-header>
+            <main>
+                <div class="education-experience-content">
                 <div class="education-experience">
                     <h1>教育经历</h1>
                     <ul class="education-experience-items">
@@ -12,6 +13,7 @@
                         <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }} <i class="icon icon-right"></i></span></li>
                     </ul>
                 </div>
+                <!-- 在校经历文本输入框 -->
                 <div class="at-school-experience">
                     <h3>在校经历</h3>
                     <div class="text">
@@ -19,15 +21,23 @@
                         <p class="text-num"><span class="input-num"  :class="{'exceed': isExceed}">{{ descriptionLength }}</span>/{{ length }}</p>
                     </div>
                 </div>
+                <!-- 在校经历文本输入框END -->
                 <div class="next-button" @click.stop="next">下一步</div>
             </div>
+            </main>
             <message-box :message="message" ref="message"></message-box>
             <message-box message="直聘君建议" description="突出在校经历，<br>可以弥补工作经历不足的缺点，也可获得更多工作机会" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="eduDescriptionTextareaFocus" ref="eduDescriptionMessage"></message-box>
+            <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
+            <!-- 学校名称输入框 -->
             <full-screen-input v-model="educationData.school" id="school" title="学校" :allowEmpty="true" :showValueLength="false" @saveValue="saveSchoolValue" ref="schoolInput"></full-screen-input>
+            <!-- 专业名称输入框 -->
             <full-screen-input v-model="educationData.major" id="major" title="专业" :allowEmpty="true" :showValueLength="false" @saveValue="saveMajorValue" ref="majorInput"></full-screen-input>
-            <period-picker :period="[educationData.start_year, educationData.end_year]" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
+            <!-- 在校时间段选择器 -->
+            <period-picker :period="periodValue" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
+            <!-- 学历选择器 -->
             <picker title="学历" :slots="degreePicker" @onValuesChange="degreePickerOnValuesChange" @confirm="degreePickerSelectHandle" ref="degreePicker"></picker>
             <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
+            <router-view></router-view>
         </div>
     </transition>
 </template>
@@ -49,27 +59,24 @@
           school: '', // 学校
           major: '', // 专业
           degree: '', // 学历
-          start_year: '',
-          end_year: '',
-          edu_description: ''
+          start_year: '', // 在校时间段开始时间
+          end_year: '', // 在校时间段结束时间
+          edu_description: '' // 在校经历
         },
         length: 300,
-        message: '',
-        description: '',
-        cancelButtonText: '',
-        confirmButtonText: '',
-        showConfirmButton: false,
-        spinnerText: '',
-        spinner: false,
-        degreePicker: [{
+        message: '', // 提示消息
+        spinnerText: '', // spinner提示消息
+        spinner: false, // 用于控制spinner显示与否
+        degreePicker: [{ // 学历选择框可选值
           flex: 1,
           values: ['中专及以下', '高中', '大专', '本科', '硕士', '博士'],
           defaultIndex: 3
         }],
-        degreePickerValue: ''
+        degreePickerValue: '' // 用于临时记录用户学历选择值
       }
     },
     created() {
+      // 请求当前登录用户的教育经历
       getEducationExperience().then(response => {
         if (response.code === ERR_OK) {
           this.educationData = response.data
@@ -79,37 +86,56 @@
     },
     methods: {
       back() {
+        this.hideFriendlyReminderMessage()
         this.$router.back()
       },
+      // 显示学校名称输入框
       showSchoolInput() {
         this.$refs.schoolInput.show()
       },
+      // 显示专业名称输入框
       showMajorInput() {
         this.$refs.majorInput.show()
       },
-      showPeriodPicker() {
-        this.$refs.periodPicker.show()
-      },
+      // 显示学历选择框
       showDegreePicker() {
         this.$refs.degreePicker.show()
       },
+      // 显示在校时间段选择框
+      showPeriodPicker() {
+        this.$refs.periodPicker.show()
+      },
+      // 显示友情提示消息框
+      showFriendlyReminderMessage() {
+        this.$refs.friendlyReminderMessage.show()
+      },
+      // 隐藏友情提示消息框
+      hideFriendlyReminderMessage() {
+        this.$refs.friendlyReminderMessage.hide()
+      },
+      // 学校名称保存函数
       saveSchoolValue(value) {
         this.educationData.school = value
       },
+      // 专业名称保存函数
       saveMajorValue(value) {
         this.educationData.major = value
       },
+      // 学历选择框值发送变化触发函数
       degreePickerOnValuesChange(picker, values) {
         this.degreePickerValue = values[0]
       },
-      PeriodPickerSelectHandle(values) {
-        this.educationData.start_year = values[0]
-        this.educationData.end_year = values[1]
-      },
+      // 学历选择框确定选择回调
       degreePickerSelectHandle() {
         this.educationData.degree = this.degreePickerValue
         this.$refs.degreePicker.hide()
       },
+      // 在校时间段选择框值发送变化触发函数
+      PeriodPickerSelectHandle(values) {
+        this.educationData.start_year = values[0]
+        this.educationData.end_year = values[1]
+      },
+      // 触发在校经历获取焦点
       eduDescriptionTextareaFocus() {
         this.$refs.edu_descriptionTextarea.focus()
       },
@@ -136,32 +162,28 @@
           this.submit()
         }
       },
+      // 保存操作
       submit() {
         this.spinnerText = '保存中'
         this.spinner = true
+        let handle
         if (this.educationData.id) {
-          updateEducationExperience(this.educationData).then(response => {
-            this.spinner = false
-            console.log(response)
-          }).catch(error => {
-            this.spinner = false
-            if (error.code === ERR_UNPROCESSABLE_ENTITY) {
-              this.message = error.message
-              this.$refs.message.show()
-            }
-          })
+          handle = updateEducationExperience(this.educationData)
         } else {
-          createdEducationExperience(this.educationData).then(response => {
-            this.spinner = false
-            console.log(response)
-          }).catch(error => {
-            this.spinner = false
-            if (error.code === ERR_UNPROCESSABLE_ENTITY) {
-              this.message = error.message
-              this.$refs.message.show()
-            }
-          })
+          handle = createdEducationExperience(this.educationData)
         }
+        handle.then(response => {
+          this.spinner = false
+          if (response.code === ERR_OK) {
+            this.$router.push({'name': 'job-advantage'})
+          }
+        }).catch(error => {
+          this.spinner = false
+          if (error.code === ERR_UNPROCESSABLE_ENTITY) {
+            this.message = error.message
+            this.$refs.message.show()
+          }
+        })
       }
     },
     computed: {
@@ -178,7 +200,7 @@
         return this.educationData.edu_description.length > this.length
       },
       periodValue() {
-        return this.educationData.start_year + '-' + this.educationData.end_year
+        return [this.educationData.start_year, this.educationData.end_year]
       }
     },
     components: {
@@ -205,67 +227,81 @@
         overflow-y: auto
         -webkit-overflow-scrolling: touch
         .header-wrapper
-            overflow: hidden
-        .education-experience-content
+            position: fixed
+            height: 50px
+            left: 0
+            right: 0
+            top: 0
+        main
+            position: absolute
+            top: 50px
+            left: 0
+            bottom: 0
             width: 100%
-            .education-experience, .at-school-experience
-                h1, h3
-                    height: 40px
-                    line-height: 40px
-                    padding-left: 10px
-                    font-size: .3rem
-                    color: rgba(0,0,0,.5)
-            .education-experience .education-experience-items
-                li
-                    display: flex
-                    justify-content: space-between
-                    height: 45px
-                    line-height: 45px
-                    @include border-top-1px($bc)
-                    padding: 0 0.3rem
-                    background: #ffffff
-                    .item-value
-                        color: $color-text-l
-                        &.placeholder
-                            color: $color-text-d
-                    i.icon
-                        font-size: .3rem
-                        color: $color-theme
-            .at-school-experience
+            overflow-y: scroll
+            -webkit-overflow-scrolling: touch
+            .education-experience-content
                 width: 100%
-                margin-bottom: 1rem
-                .text
-                    padding: 10px 10px 0
-                    background: #ffffff
-                    textarea
-                        width: 100%
-                        height: 150px
-                        font-size: .37rem
-                        color: $color-text-l
-                        border: none
-                        outline: none
-                        resize: none
-                        padding: 0
-                        @include border-bottom-1px($bc)
-                        &::placeholder
-                            color: #999
-                    .text-num
+                .education-experience, .at-school-experience
+                    h1, h3
+                        height: 40px
+                        line-height: 40px
+                        padding-left: 10px
+                        font-size: .3rem
+                        color: rgba(0,0,0,.5)
+                .education-experience .education-experience-items
+                    li
+                        display: flex
+                        justify-content: space-between
                         height: 45px
                         line-height: 45px
-                        text-align: right
-                        font-size: .3rem
-                        background: #fff
-                        .input-num
+                        @include border-top-1px($bc)
+                        padding: 0 0.3rem
+                        background: #ffffff
+                        .item-value
+                            color: $color-text-l
+                            &.placeholder
+                                color: $color-text-d
+                        i.icon
+                            font-size: .3rem
                             color: $color-theme
-            .next-button
-                height: 50px
-                line-height: 50px
-                font-size: 0.45rem
-                text-align: center
-                background: $color-theme
-                border-radius: 0.15rem
-                color: $color-text
-                margin: 10px
+                .at-school-experience
+                    width: 100%
+                    margin-bottom: 1rem
+                    .text
+                        padding: 10px 10px 0
+                        background: #ffffff
+                        textarea
+                            width: 100%
+                            height: 150px
+                            font-size: .37rem
+                            color: $color-text-l
+                            border: none
+                            outline: none
+                            resize: none
+                            padding: 0
+                            @include border-bottom-1px($bc)
+                            &::placeholder
+                                color: #999
+                        .text-num
+                            height: 45px
+                            line-height: 45px
+                            text-align: right
+                            font-size: .3rem
+                            background: #fff
+                            .input-num
+                                color: $color-theme
+                                &.exceed
+                                    color: red
+                .next-button
+                    height: 50px
+                    line-height: 50px
+                    font-size: 0.45rem
+                    text-align: center
+                    background: $color-theme
+                    border-radius: 0.15rem
+                    color: $color-text
+                    margin: 10px
 
     /*.slide-enter-active, .slide-leave-active*/
         /*transition: all .3s*/

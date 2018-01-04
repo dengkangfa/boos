@@ -14,6 +14,24 @@ trait BaseRepository
         return $this->save($this->model, $input);
     }
 
+    /**
+     * Update columns in the record by id.
+     *
+     * @param $id
+     * @param $input
+     * @return mixed
+     */
+    public function updateColumn($id, $input)
+    {
+        $this->model = $this->getById($id);
+
+        foreach ($input as $key => $value) {
+            $this->model->{$key} = $value;
+        }
+
+        return $this->model->save();
+    }
+
     public function update($id, $input)
     {
         $this->model = $this->getById($id);

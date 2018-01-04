@@ -17,7 +17,7 @@
                             <span class="item" @click="selectItem(8)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (8 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (8 + (type * 8)) + '.png'"></span>
                         </div>
                     </div>
-                    <div class="cancel">取消</div>
+                    <div class="cancel" @click="hide">取消</div>
                 </div>
             </div>
         </transition>

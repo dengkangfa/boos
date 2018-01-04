@@ -4,7 +4,6 @@ export function getEducationExperience() {
   const url = 'api/me/education_infos'
 
   return axios.get(url).then(response => {
-    console.log(response)
     return Promise.resolve(response.data)
   }).catch(error => {
     return Promise.reject(error.response.data)

@@ -897,6 +897,57 @@ module.exports = Component.exports
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(109)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(111)
+/* template */
+var __vue_template__ = __webpack_require__(112)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-06540c08"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\header\\header.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-06540c08", Component.options)
+  } else {
+    hotAPI.reload("data-v-06540c08", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
  * Vue.js v2.5.11
@@ -11670,7 +11721,7 @@ module.exports = Vue$3;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12), __webpack_require__(52).setImmediate))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
@@ -11721,7 +11772,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -11731,57 +11782,6 @@ module.exports = Component.exports
 var ERR_OK = 0;
 var ERR_REGISTER_CODE = 10201;
 var ERR_UNPROCESSABLE_ENTITY = 10422;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(109)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(111)
-/* template */
-var __vue_template__ = __webpack_require__(112)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-06540c08"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\base\\header\\header.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-06540c08", Component.options)
-  } else {
-    hotAPI.reload("data-v-06540c08", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ }),
 /* 11 */
@@ -12624,7 +12624,7 @@ module.exports = Cancel;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuex__ = __webpack_require__(24);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__modules_login__ = __webpack_require__(59);
@@ -14085,7 +14085,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(30);
-module.exports = __webpack_require__(170);
+module.exports = __webpack_require__(180);
 
 
 /***/ }),
@@ -14094,7 +14094,7 @@ module.exports = __webpack_require__(170);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_axios__);
@@ -14102,12 +14102,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(57);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(23);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(173);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(14);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(174);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(168);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(178);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
 __webpack_require__(31);
 
@@ -32554,7 +32554,7 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_router__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__store_index__ = __webpack_require__(23);
@@ -32571,6 +32571,9 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_info_job_education_experience_vue__ = __webpack_require__(152);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__components_info_job_education_experience_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9__components_info_job_education_experience_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_info_job_advantage_vue__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__components_info_job_advantage_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10__components_info_job_advantage_vue__);
+
 
 
 
@@ -32619,7 +32622,13 @@ var routes = [{
       path: '/job/education',
       name: 'job-education',
       component: __WEBPACK_IMPORTED_MODULE_9__components_info_job_education_experience_vue___default.a,
-      meta: { requiresAuth: true }
+      meta: { requiresAuth: true },
+      children: [{
+        path: '/job/advantage',
+        name: 'job-advantage',
+        component: __WEBPACK_IMPORTED_MODULE_10__components_info_job_advantage_vue___default.a,
+        meta: { requiresAuth: true }
+      }]
     }]
   }]
 }, {
@@ -35348,6 +35357,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     name: '',
     avatar: '',
     gender: '',
+    advantage: '',
     job_date: '',
     birth_date: ''
   },
@@ -35356,20 +35366,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     state.avatar = payload.user.avatar;
     state.name = payload.user.name;
     state.gender = payload.user.gender;
+    state.advantage = payload.user.advantage;
     state.job_date = payload.user.job_date;
     state.birth_date = payload.user.birth_date;
-  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["d" /* UNSET_AUTH_USER */], function (state) {
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["e" /* UNSET_AUTH_USER */], function (state) {
     state.authenticated = false;
-  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_AVATAR */], function (state, payload) {
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_USER_AVATAR */], function (state, payload) {
     state.avatar = payload.avatar;
-  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["e" /* UPDATE_USER_DEFAULT_AVATAR */], function (state, payload) {
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["f" /* UPDATE_USER_DEFAULT_AVATAR */], function (state, payload) {
     state.avatar = payload.avatar;
-  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_USER_PROFILE */], function (state, payload) {
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["d" /* SET_USER_PROFILE */], function (state, payload) {
     state.avatar = payload.user.avatar;
     state.name = payload.user.name;
     state.gender = payload.user.gender;
     state.job_date = payload.user.job_date;
     state.birth_date = payload.user.birth_date;
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_ADVANTAGE */], function (state, payload) {
+    state.advantage = payload.advantage;
   }), _mutations),
   actions: {
     setAuthUser: function setAuthUser(_ref) {
@@ -35390,7 +35403,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/user/crop/avatar', data).then(function (response) {
         commit({
-          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_AVATAR */],
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_USER_AVATAR */],
           avatar: response.data.url
         });
       });
@@ -35400,7 +35413,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put('/api/user/avatar', data).then(function (response) {
         commit({
-          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["e" /* UPDATE_USER_DEFAULT_AVATAR */],
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["f" /* UPDATE_USER_DEFAULT_AVATAR */],
           avatar: response.data.url
         });
       });
@@ -35410,23 +35423,34 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/api/user/profile', data).then(function (response) {
         commit({
-          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_USER_PROFILE */],
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["d" /* SET_USER_PROFILE */],
           user: response.data.data
         });
       }).catch(function (error) {
         return Promise.reject(error.response.data);
       });
     },
-    unsetAuthUser: function unsetAuthUser(_ref5) {
+    updateAdvantage: function updateAdvantage(_ref5, data) {
       var commit = _ref5.commit;
 
-      commit({
-        type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["d" /* UNSET_AUTH_USER */]
+      return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/advantage', data).then(function (response) {
+        console.log(response);
+        commit({
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_USER_ADVANTAGE */],
+          advantage: response.data.advantage
+        });
       });
     },
-    refreshToken: function refreshToken(_ref6) {
-      var commit = _ref6.commit,
-          dispatch = _ref6.dispatch;
+    unsetAuthUser: function unsetAuthUser(_ref6) {
+      var commit = _ref6.commit;
+
+      commit({
+        type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["e" /* UNSET_AUTH_USER */]
+      });
+    },
+    refreshToken: function refreshToken(_ref7) {
+      var commit = _ref7.commit,
+          dispatch = _ref7.dispatch;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/token/refresh').then(function (response) {
         dispatch('loginSuccess', response.data);
@@ -35443,15 +35467,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_AUTH_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return UNSET_AUTH_USER; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_USER_AVATAR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return UPDATE_USER_DEFAULT_AVATAR; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_USER_PROFILE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return UNSET_AUTH_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_USER_AVATAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return UPDATE_USER_DEFAULT_AVATAR; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SET_USER_PROFILE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return SET_USER_ADVANTAGE; });
 var SET_AUTH_USER = 'SET_AUTH_USER';
 var UNSET_AUTH_USER = 'UNSET_AUTH_USER';
 var SET_USER_AVATAR = 'SET_USER_AVATAR';
 var UPDATE_USER_DEFAULT_AVATAR = 'UPDATE_USER_DEFAULT_AVATAR';
 var SET_USER_PROFILE = 'SET_USER_PROFILE';
+var SET_USER_ADVANTAGE = 'SET_USER_ADVANTAGE';
 
 /***/ }),
 /* 62 */
@@ -35595,7 +35621,7 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_fading_circle_vue__);
@@ -35603,7 +35629,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_message_message_box_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_config_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_config_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Mixin_mixin_js__ = __webpack_require__(15);
 //
 //
@@ -36833,8 +36859,9 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
         'driver': 'password', // 登录的方式
         'formData': this.userules
       };
-      this.$store.dispatch('loginRequest', data).then(function (res) {
+      this.$store.dispatch('loginRequest', data).then(function (response) {
         _this2.spinning = false;
+        __WEBPACK_IMPORTED_MODULE_4_Helpers_avatar__["a" /* default */].removeAvatar(_this2.userules.mobile);
         _this2.$router.push({ 'name': 'index' });
       }).catch(function (error) {
         _this2.spinning = false;
@@ -37234,7 +37261,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_spinner_fading_circle_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_user_js__ = __webpack_require__(16);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Api_config_js__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Api_config_js__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_user__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Helpers_avatar__ = __webpack_require__(26);
 //
@@ -38055,7 +38082,7 @@ exports.push([module.i, "\n.basic-info[data-v-60e969d3] {\n  position: fixed;\n 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver__ = __webpack_require__(113);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_avatar_avatar_driver__);
@@ -38073,10 +38100,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_picker_birth_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_Base_picker_birth_date_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_spinner_fading_circle__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_spinner_fading_circle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_Base_spinner_fading_circle__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_Base_message_message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vuex__ = __webpack_require__(24);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Api_config__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Api_config__ = __webpack_require__(10);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -39163,7 +39190,9 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "cancel" }, [_vm._v("取消")])
+              _c("div", { staticClass: "cancel", on: { click: _vm.hide } }, [
+                _vm._v("取消")
+              ])
             ])
           ]
         )
@@ -39298,7 +39327,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_cropperjs_dist_cropper_min_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_cropperjs_dist_cropper_min_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cropperjs__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_cropperjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_cropperjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_header_header__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_header_header__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_header_header__);
 //
 //
@@ -43354,7 +43383,7 @@ exports.push([module.i, "\n.name-wrapper[data-v-6016dfc3] {\n  position: fixed;\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
@@ -43855,7 +43884,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
 //
 //
@@ -44278,7 +44307,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
 //
 //
@@ -44712,7 +44741,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-56fd15d6] {\n    overflow: hidden;\n}\n.education-experience-wrapper .education-experience-content[data-v-56fd15d6] {\n    width: 100%;\n}\n.education-experience-wrapper .education-experience-content .education-experience h1[data-v-56fd15d6], .education-experience-wrapper .education-experience-content .education-experience h3[data-v-56fd15d6], .education-experience-wrapper .education-experience-content .at-school-experience h1[data-v-56fd15d6], .education-experience-wrapper .education-experience-content .at-school-experience h3[data-v-56fd15d6] {\n      height: 40px;\n      line-height: 40px;\n      padding-left: 10px;\n      font-size: .3rem;\n      color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      height: 45px;\n      line-height: 45px;\n      border-top: 1px solid #e9efef;\n      padding: 0 0.3rem;\n      background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n          border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n          border-top: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li .item-value[data-v-56fd15d6] {\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li .item-value.placeholder[data-v-56fd15d6] {\n          color: rgba(0, 0, 0, 0.3);\n}\n.education-experience-wrapper .education-experience-content .education-experience .education-experience-items li i.icon[data-v-56fd15d6] {\n        font-size: .3rem;\n        color: #53CAC3;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience[data-v-56fd15d6] {\n      width: 100%;\n      margin-bottom: 1rem;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text[data-v-56fd15d6] {\n        padding: 10px 10px 0;\n        background: #ffffff;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n          width: 100%;\n          height: 150px;\n          font-size: .37rem;\n          color: rgba(0, 0, 0, 0.5);\n          border: none;\n          outline: none;\n          resize: none;\n          padding: 0;\n          border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n              border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n              border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-webkit-input-placeholder {\n            color: #999;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]:-ms-input-placeholder {\n            color: #999;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-ms-input-placeholder {\n            color: #999;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::placeholder {\n            color: #999;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text .text-num[data-v-56fd15d6] {\n          height: 45px;\n          line-height: 45px;\n          text-align: right;\n          font-size: .3rem;\n          background: #fff;\n}\n.education-experience-wrapper .education-experience-content .at-school-experience .text .text-num .input-num[data-v-56fd15d6] {\n            color: #53CAC3;\n}\n.education-experience-wrapper .education-experience-content .next-button[data-v-56fd15d6] {\n      height: 50px;\n      line-height: 50px;\n      font-size: 0.45rem;\n      text-align: center;\n      background: #53CAC3;\n      border-radius: 0.15rem;\n      color: #fff;\n      margin: 10px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
+exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-56fd15d6] {\n    position: fixed;\n    height: 50px;\n    left: 0;\n    right: 0;\n    top: 0;\n}\n.education-experience-wrapper main[data-v-56fd15d6] {\n    position: absolute;\n    top: 50px;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper main .education-experience-content[data-v-56fd15d6] {\n      width: 100%;\n}\n.education-experience-wrapper main .education-experience-content .education-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .education-experience h3[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h3[data-v-56fd15d6] {\n        height: 40px;\n        line-height: 40px;\n        padding-left: 10px;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value[data-v-56fd15d6] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value.placeholder[data-v-56fd15d6] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li i.icon[data-v-56fd15d6] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience[data-v-56fd15d6] {\n        width: 100%;\n        margin-bottom: 1rem;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text[data-v-56fd15d6] {\n          padding: 10px 10px 0;\n          background: #ffffff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n            width: 100%;\n            height: 150px;\n            font-size: .37rem;\n            color: rgba(0, 0, 0, 0.5);\n            border: none;\n            outline: none;\n            resize: none;\n            padding: 0;\n            border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-webkit-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]:-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num[data-v-56fd15d6] {\n            height: 45px;\n            line-height: 45px;\n            text-align: right;\n            font-size: .3rem;\n            background: #fff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num[data-v-56fd15d6] {\n              color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num.exceed[data-v-56fd15d6] {\n                color: red;\n}\n.education-experience-wrapper main .education-experience-content .next-button[data-v-56fd15d6] {\n        height: 50px;\n        line-height: 50px;\n        font-size: 0.45rem;\n        text-align: center;\n        background: #53CAC3;\n        border-radius: 0.15rem;\n        color: #fff;\n        margin: 10px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
 
 // exports
 
@@ -44723,7 +44752,7 @@ exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  p
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
@@ -44735,8 +44764,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_fading_circle__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_fading_circle___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_spinner_fading_circle__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_config__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_config__ = __webpack_require__(10);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_education_experience__ = __webpack_require__(161);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -44788,29 +44827,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         school: '', // 学校
         major: '', // 专业
         degree: '', // 学历
-        start_year: '',
-        end_year: '',
-        edu_description: ''
+        start_year: '', // 在校时间段开始时间
+        end_year: '', // 在校时间段结束时间
+        edu_description: '' // 在校经历
       },
       length: 300,
-      message: '',
-      description: '',
-      cancelButtonText: '',
-      confirmButtonText: '',
-      showConfirmButton: false,
-      spinnerText: '',
-      spinner: false,
-      degreePicker: [{
+      message: '', // 提示消息
+      spinnerText: '', // spinner提示消息
+      spinner: false, // 用于控制spinner显示与否
+      degreePicker: [{ // 学历选择框可选值
         flex: 1,
         values: ['中专及以下', '高中', '大专', '本科', '硕士', '博士'],
         defaultIndex: 3
       }],
-      degreePickerValue: ''
+      degreePickerValue: '' // 用于临时记录用户学历选择值
     };
   },
   created: function created() {
     var _this = this;
 
+    // 请求当前登录用户的教育经历
     Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["b" /* getEducationExperience */])().then(function (response) {
       if (response.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["a" /* ERR_OK */]) {
         _this.educationData = response.data;
@@ -44821,37 +44857,68 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
   methods: {
     back: function back() {
+      this.hideFriendlyReminderMessage();
       this.$router.back();
     },
+
+    // 显示学校名称输入框
     showSchoolInput: function showSchoolInput() {
       this.$refs.schoolInput.show();
     },
+
+    // 显示专业名称输入框
     showMajorInput: function showMajorInput() {
       this.$refs.majorInput.show();
     },
-    showPeriodPicker: function showPeriodPicker() {
-      this.$refs.periodPicker.show();
-    },
+
+    // 显示学历选择框
     showDegreePicker: function showDegreePicker() {
       this.$refs.degreePicker.show();
     },
+
+    // 显示在校时间段选择框
+    showPeriodPicker: function showPeriodPicker() {
+      this.$refs.periodPicker.show();
+    },
+
+    // 显示友情提示消息框
+    showFriendlyReminderMessage: function showFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.show();
+    },
+
+    // 隐藏友情提示消息框
+    hideFriendlyReminderMessage: function hideFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.hide();
+    },
+
+    // 学校名称保存函数
     saveSchoolValue: function saveSchoolValue(value) {
       this.educationData.school = value;
     },
+
+    // 专业名称保存函数
     saveMajorValue: function saveMajorValue(value) {
       this.educationData.major = value;
     },
+
+    // 学历选择框值发送变化触发函数
     degreePickerOnValuesChange: function degreePickerOnValuesChange(picker, values) {
       this.degreePickerValue = values[0];
     },
-    PeriodPickerSelectHandle: function PeriodPickerSelectHandle(values) {
-      this.educationData.start_year = values[0];
-      this.educationData.end_year = values[1];
-    },
+
+    // 学历选择框确定选择回调
     degreePickerSelectHandle: function degreePickerSelectHandle() {
       this.educationData.degree = this.degreePickerValue;
       this.$refs.degreePicker.hide();
     },
+
+    // 在校时间段选择框值发送变化触发函数
+    PeriodPickerSelectHandle: function PeriodPickerSelectHandle(values) {
+      this.educationData.start_year = values[0];
+      this.educationData.end_year = values[1];
+    },
+
+    // 触发在校经历获取焦点
     eduDescriptionTextareaFocus: function eduDescriptionTextareaFocus() {
       this.$refs.edu_descriptionTextarea.focus();
     },
@@ -44878,34 +44945,31 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.submit();
       }
     },
+
+    // 保存操作
     submit: function submit() {
       var _this2 = this;
 
       this.spinnerText = '保存中';
       this.spinner = true;
+      var handle = void 0;
       if (this.educationData.id) {
-        Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["c" /* updateEducationExperience */])(this.educationData).then(function (response) {
-          _this2.spinner = false;
-          console.log(response);
-        }).catch(function (error) {
-          _this2.spinner = false;
-          if (error.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
-            _this2.message = error.message;
-            _this2.$refs.message.show();
-          }
-        });
+        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["c" /* updateEducationExperience */])(this.educationData);
       } else {
-        Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["a" /* createdEducationExperience */])(this.educationData).then(function (response) {
-          _this2.spinner = false;
-          console.log(response);
-        }).catch(function (error) {
-          _this2.spinner = false;
-          if (error.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
-            _this2.message = error.message;
-            _this2.$refs.message.show();
-          }
-        });
+        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["a" /* createdEducationExperience */])(this.educationData);
       }
+      handle.then(function (response) {
+        _this2.spinner = false;
+        if (response.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["a" /* ERR_OK */]) {
+          _this2.$router.push({ 'name': 'job-advantage' });
+        }
+      }).catch(function (error) {
+        _this2.spinner = false;
+        if (error.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
+          _this2.message = error.message;
+          _this2.$refs.message.show();
+        }
+      });
     }
   },
   computed: {
@@ -44922,7 +44986,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       return this.educationData.edu_description.length > this.length;
     },
     periodValue: function periodValue() {
-      return this.educationData.start_year + '-' + this.educationData.end_year;
+      return [this.educationData.start_year, this.educationData.end_year];
     }
   },
   components: {
@@ -45169,7 +45233,6 @@ function getEducationExperience() {
   var url = 'api/me/education_infos';
 
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
-    console.log(response);
     return Promise.resolve(response.data);
   }).catch(function (error) {
     return Promise.reject(error.response.data);
@@ -45212,147 +45275,152 @@ var render = function() {
         _c("dkf-header", {
           staticClass: "header-wrapper",
           attrs: { title: "教育经历", nextText: "下一步" },
-          on: { left: _vm.back, right: _vm.next }
+          on: { left: _vm.showFriendlyReminderMessage, right: _vm.next }
         }),
         _vm._v(" "),
-        _c("div", { staticClass: "education-experience-content" }, [
-          _c("div", { staticClass: "education-experience" }, [
-            _c("h1", [_vm._v("教育经历")]),
-            _vm._v(" "),
-            _c("ul", { staticClass: "education-experience-items" }, [
-              _c("li", { on: { click: _vm.showSchoolInput } }, [
-                _c("label", [_vm._v("学校")]),
-                _c(
-                  "span",
-                  {
-                    staticClass: "item-value",
-                    class: { placeholder: !_vm.educationData.school }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(
-                        _vm.educationData.school
-                          ? _vm.educationData.school
-                          : "中央美术学院"
-                      ) + " "
-                    ),
-                    _c("i", { staticClass: "icon icon-right" })
-                  ]
-                )
-              ]),
+        _c("main", [
+          _c("div", { staticClass: "education-experience-content" }, [
+            _c("div", { staticClass: "education-experience" }, [
+              _c("h1", [_vm._v("教育经历")]),
               _vm._v(" "),
-              _c("li", { on: { click: _vm.showMajorInput } }, [
-                _c("label", [_vm._v("专业")]),
-                _c(
-                  "span",
-                  {
-                    staticClass: "item-value",
-                    class: { placeholder: !_vm.educationData.major }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(
-                        _vm.educationData.major
-                          ? _vm.educationData.major
-                          : "产品设计"
-                      ) + " "
-                    ),
+              _c("ul", { staticClass: "education-experience-items" }, [
+                _c("li", { on: { click: _vm.showSchoolInput } }, [
+                  _c("label", [_vm._v("学校")]),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "item-value",
+                      class: { placeholder: !_vm.educationData.school }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(
+                          _vm.educationData.school
+                            ? _vm.educationData.school
+                            : "中央美术学院"
+                        ) + " "
+                      ),
+                      _c("i", { staticClass: "icon icon-right" })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { on: { click: _vm.showMajorInput } }, [
+                  _c("label", [_vm._v("专业")]),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "item-value",
+                      class: { placeholder: !_vm.educationData.major }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(
+                          _vm.educationData.major
+                            ? _vm.educationData.major
+                            : "产品设计"
+                        ) + " "
+                      ),
+                      _c("i", { staticClass: "icon icon-right" })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { on: { click: _vm.showDegreePicker } }, [
+                  _c("label", [_vm._v("学历")]),
+                  _c(
+                    "span",
+                    {
+                      staticClass: "item-value",
+                      class: { placeholder: !_vm.educationData.degree }
+                    },
+                    [
+                      _vm._v(
+                        _vm._s(
+                          _vm.educationData.degree
+                            ? _vm.educationData.degree
+                            : "本科"
+                        ) + " "
+                      ),
+                      _c("i", { staticClass: "icon icon-right" })
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _c("li", { on: { click: _vm.showPeriodPicker } }, [
+                  _c("label", [_vm._v("时间段")]),
+                  _c("span", { staticClass: "item-value" }, [
+                    _vm._v(_vm._s(_vm.atSchoolPeriod) + " "),
                     _c("i", { staticClass: "icon icon-right" })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { on: { click: _vm.showDegreePicker } }, [
-                _c("label", [_vm._v("学历")]),
-                _c(
-                  "span",
-                  {
-                    staticClass: "item-value",
-                    class: { placeholder: !_vm.educationData.degree }
-                  },
-                  [
-                    _vm._v(
-                      _vm._s(
-                        _vm.educationData.degree
-                          ? _vm.educationData.degree
-                          : "本科"
-                      ) + " "
-                    ),
-                    _c("i", { staticClass: "icon icon-right" })
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("li", { on: { click: _vm.showPeriodPicker } }, [
-                _c("label", [_vm._v("时间段")]),
-                _c("span", { staticClass: "item-value" }, [
-                  _vm._v(_vm._s(_vm.atSchoolPeriod) + " "),
-                  _c("i", { staticClass: "icon icon-right" })
+                  ])
                 ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "at-school-experience" }, [
-            _c("h3", [_vm._v("在校经历")]),
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "text" }, [
-              _c("textarea", {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.educationData.edu_description,
-                    expression: "educationData.edu_description"
-                  }
-                ],
-                ref: "edu_descriptionTextarea",
-                staticClass: "item-value",
-                attrs: {
-                  maxlength: "300",
-                  mixlength: "2",
-                  placeholder:
-                    "作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."
-                },
-                domProps: { value: _vm.educationData.edu_description },
-                on: {
-                  input: function($event) {
-                    if ($event.target.composing) {
-                      return
-                    }
-                    _vm.$set(
-                      _vm.educationData,
-                      "edu_description",
-                      $event.target.value
-                    )
-                  }
-                }
-              }),
+            _c("div", { staticClass: "at-school-experience" }, [
+              _c("h3", [_vm._v("在校经历")]),
               _vm._v(" "),
-              _c("p", { staticClass: "text-num" }, [
-                _c(
-                  "span",
-                  { staticClass: "input-num", class: { exceed: _vm.isExceed } },
-                  [_vm._v(_vm._s(_vm.descriptionLength))]
-                ),
-                _vm._v("/" + _vm._s(_vm.length))
+              _c("div", { staticClass: "text" }, [
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.educationData.edu_description,
+                      expression: "educationData.edu_description"
+                    }
+                  ],
+                  ref: "edu_descriptionTextarea",
+                  staticClass: "item-value",
+                  attrs: {
+                    maxlength: "300",
+                    mixlength: "2",
+                    placeholder:
+                      "作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."
+                  },
+                  domProps: { value: _vm.educationData.edu_description },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.educationData,
+                        "edu_description",
+                        $event.target.value
+                      )
+                    }
+                  }
+                }),
+                _vm._v(" "),
+                _c("p", { staticClass: "text-num" }, [
+                  _c(
+                    "span",
+                    {
+                      staticClass: "input-num",
+                      class: { exceed: _vm.isExceed }
+                    },
+                    [_vm._v(_vm._s(_vm.descriptionLength))]
+                  ),
+                  _vm._v("/" + _vm._s(_vm.length))
+                ])
               ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "next-button",
-              on: {
-                click: function($event) {
-                  $event.stopPropagation()
-                  _vm.next($event)
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "next-button",
+                on: {
+                  click: function($event) {
+                    $event.stopPropagation()
+                    _vm.next($event)
+                  }
                 }
-              }
-            },
-            [_vm._v("下一步")]
-          )
+              },
+              [_vm._v("下一步")]
+            )
+          ])
         ]),
         _vm._v(" "),
         _c("message-box", { ref: "message", attrs: { message: _vm.message } }),
@@ -45368,6 +45436,18 @@ var render = function() {
             showConfirmButton: true
           },
           on: { cancel: _vm.submit, confirm: _vm.eduDescriptionTextareaFocus }
+        }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "friendlyReminderMessage",
+          attrs: {
+            message: "友情提示",
+            description: "离高薪职位只差一步，你确定放弃？",
+            confirmButtonText: "放弃",
+            cancelButtonText: "点错了",
+            showConfirmButton: true
+          },
+          on: { cancel: _vm.hideFriendlyReminderMessage, confirm: _vm.back }
         }),
         _vm._v(" "),
         _c("full-screen-input", {
@@ -45408,9 +45488,7 @@ var render = function() {
         _vm._v(" "),
         _c("period-picker", {
           ref: "periodPicker",
-          attrs: {
-            period: [_vm.educationData.start_year, _vm.educationData.end_year]
-          },
+          attrs: { period: _vm.periodValue },
           on: { select: _vm.PeriodPickerSelectHandle }
         }),
         _vm._v(" "),
@@ -45433,7 +45511,9 @@ var render = function() {
             }
           ],
           attrs: { text: _vm.spinnerText }
-        })
+        }),
+        _vm._v(" "),
+        _c("router-view")
       ],
       1
     )
@@ -45451,6 +45531,634 @@ if (false) {
 
 /***/ }),
 /* 163 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(164)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(166)
+/* template */
+var __vue_template__ = __webpack_require__(172)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1691f696"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\info\\job\\advantage.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1691f696", Component.options)
+  } else {
+    hotAPI.reload("data-v-1691f696", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 164 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(165);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("f6566dbc", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1691f696\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./advantage.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1691f696\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./advantage.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 165 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.advantage-wrapper[data-v-1691f696] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n  height: 100%;\n}\n.advantage-wrapper .header-wrapper[data-v-1691f696] {\n    position: fixed;\n    width: 100%;\n    height: 50px;\n    right: 0;\n    top: 0;\n}\n.advantage-wrapper main[data-v-1691f696] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.advantage-wrapper main .advantage-content[data-v-1691f696] {\n      height: 100%;\n}\n.advantage-wrapper main .advantage-content .submit-button-group .micro-resume[data-v-1691f696] {\n        text-align: center;\n        padding: 20px;\n}\n.advantage-wrapper main .advantage-content .submit-button-group .micro-resume span[data-v-1691f696] {\n          color: #999;\n          padding: 5px;\n}\n.slide-enter-active[data-v-1691f696], .slide-leave-active[data-v-1691f696] {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.slide-enter[data-v-1691f696], .slide-leave-to[data-v-1691f696] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 166 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_message_message__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_dkf_textarea__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__base_dkf_textarea___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__base_dkf_textarea__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_vuex__ = __webpack_require__(24);
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      advantage: '',
+      message: '',
+      placeholder: '两年UI设计经验，                                                         熟悉iOS和Android的界面设计规范,                                                        对产品本色有独特见解，有一定的手绘基础。                            不少于20字',
+      examples: [{
+        'avatar': 'images/avatar_9.png',
+        'position': '产品助理',
+        'advantage': '具备一定的产品设计与规划经验，可运用Axure、visio、PS等工具来工作，善于分享市场及用户需求，实事求是，不会夸夸其谈，热爱产品，喜爱阅读与思考。'
+      }, {
+        'avatar': 'images/avatar_10.png',
+        'position': 'Android开发',
+        'advantage': '4年Android开发经验，参与过多款 App开发，涉及到教育，电商，资讯多方面。为人谦虚谨慎，求知欲望强烈，对待工作一丝不苟'
+      }, {
+        'avatar': 'images/avatar_11.png',
+        'position': '资深UI设计师',
+        'advantage': '3年UI设计经验，曾混在景观，游戏，教育行业。上可出原型，下可做UI，动画，插画，原画。经重重磨练，具备各方综合能力'
+      }, {
+        'avatar': 'images/avatar_12.png',
+        'position': 'PHP工程师',
+        'advantage': '3年PHP开发经验，逻辑思维强悍，沟通能力好。对需求分析从无理解偏差，并能更好完善需求！'
+      }, {
+        'avatar': 'images/avatar_13.png',
+        'position': '销售经理',
+        'advantage': '2年销售管理经验，在担任区域负责人期间，带领区域同事做到移动业务量全省第一。口齿伶俐、思维灵敏、管理组织能力强，精通各种营销手段。'
+      }]
+    };
+  },
+  created: function created() {
+    this.advantage = this.user.advantage;
+  },
+
+  methods: {
+    showFriendlyReminderMessage: function showFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.show();
+    },
+    hideFriendlyReminderMessage: function hideFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.hide();
+    },
+    back: function back() {
+      this.$router.back();
+    },
+    onValueChange: function onValueChange(value) {
+      this.advantage = value;
+    },
+    advantageTextareaFocus: function advantageTextareaFocus() {
+      this.$refs.suggestMessage.hide();
+      this.$refs.advantageTextarea.textareaFoucs();
+    },
+    checkData: function checkData() {
+      if (!this.advantage) {
+        this.message = '请填写您的个人优势';
+        this.$refs.message.show();
+      } else if (this.advantage.length <= 20) {
+        this.$refs.suggestMessage.show();
+      } else {
+        return true;
+      }
+      return false;
+    },
+    submit: function submit() {
+      if (this.checkData()) {
+        this.request();
+      }
+    },
+    request: function request() {
+      this.$store.dispatch('updateAdvantage', { 'advantage': this.advantage }).then(function (response) {});
+    }
+  },
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_4_vuex__["b" /* mapState */])({
+    user: function user(state) {
+      return state.AuthUser;
+    }
+  })),
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
+    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a,
+    message: __WEBPACK_IMPORTED_MODULE_2_Base_message_message___default.a,
+    dkfTextarea: __WEBPACK_IMPORTED_MODULE_3__base_dkf_textarea___default.a
+  }
+});
+
+/***/ }),
+/* 167 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(168)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(170)
+/* template */
+var __vue_template__ = __webpack_require__(171)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\info\\base\\dkf-textarea.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2212a4c8", Component.options)
+  } else {
+    hotAPI.reload("data-v-2212a4c8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 168 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(169);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("5d0d968b", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 169 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dkf-textarea {\n  width: 100%;\n  font-size: .37rem;\n}\n.dkf-textarea .title {\n    height: 40px;\n    line-height: 40px;\n    padding-left: 10px;\n    color: rgba(0, 0, 0, 0.5);\n}\n.dkf-textarea .text {\n    padding: 10px 10px 0;\n    background: #ffffff;\n}\n.dkf-textarea .text.add-padding-bottom {\n      margin-bottom: 85px;\n}\n.dkf-textarea .text textarea {\n      width: 100%;\n      height: 150px;\n      font-size: .37rem;\n      color: rgba(0, 0, 0, 0.5);\n      border: none;\n      outline: none;\n      resize: none;\n      padding: 0;\n      border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .text textarea {\n          border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .text textarea {\n          border-bottom: 0.33333px solid #e9efef;\n}\n}\n.dkf-textarea .text textarea::-webkit-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea:-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea::-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea::placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text .text-bottom {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      height: 45px;\n      line-height: 45px;\n      color: #53CAC3;\n      text-align: right;\n      background: #fff;\n}\n.dkf-textarea .text .text-bottom .input-num {\n        font-size: .3rem;\n}\n.dkf-textarea .text .text-bottom .input-num .max-length {\n          color: #999;\n}\n.dkf-textarea .text .text-bottom .input-num.exceed {\n          color: red;\n}\n.dkf-textarea .example {\n    color: #ffffff;\n    background: #53CAC3;\n    opacity: 0.8;\n    border-radius: .1rem;\n    padding: 10px 10px 0;\n    margin: 20px 10px 30px;\n}\n.dkf-textarea .example:before {\n      position: absolute;\n      display: block;\n      width: 0;\n      height: 0;\n      border: 10px solid transparent;\n      pointer-events: none;\n      content: \"\";\n      border-bottom-color: #53CAC3;\n      -webkit-transform: translate3d(5px, -150%, 0);\n              transform: translate3d(5px, -150%, 0);\n}\n.dkf-textarea .example .example-header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      height: 25px;\n      line-height: 25px;\n      border-bottom: 1px solid #ffffff;\n      padding-bottom: 5px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .example .example-header {\n          border-bottom: 0.5px solid #ffffff;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .example .example-header {\n          border-bottom: 0.33333px solid #ffffff;\n}\n}\n.dkf-textarea .example .example-header .left {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        height: 25px;\n        text-align: center;\n}\n.dkf-textarea .example .example-header .left .position {\n          display: block;\n          padding: 10px;\n}\n.dkf-textarea .example .example-header .avatar {\n        border-radius: 50%;\n}\n.dkf-textarea .example .example-content {\n      font-size: .3rem;\n      line-height: .4rem;\n      padding: .4rem 0 .4rem;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 170 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    value: {
+      type: String,
+      default: ''
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    placeholder: {
+      type: String,
+      default: ''
+    },
+    maxLength: {
+      type: Number,
+      default: -1
+    },
+    examples: {
+      type: Array,
+      default: []
+    }
+  },
+  data: function data() {
+    return {
+      exampleShowFlag: false,
+      currentValue: '',
+      currentExampleIndex: -1
+    };
+  },
+  created: function created() {
+    this.currentValue = this.value;
+  },
+
+  methods: {
+    toggleExampleShowFlag: function toggleExampleShowFlag() {
+      this.exampleShowFlag = !this.exampleShowFlag;
+      if (this.exampleShowFlag) {
+        this.next();
+      }
+    },
+    next: function next() {
+      if (this.currentExampleIndex === this.examples.length - 1) {
+        this.currentExampleIndex = 0;
+      } else {
+        this.currentExampleIndex++;
+      }
+    },
+    textareaFoucs: function textareaFoucs() {
+      this.$refs.dkfTextarea.focus();
+    }
+  },
+  computed: {
+    isExceed: function isExceed() {
+      if (this.maxLength !== -1) {
+        return this.currentValue.length > this.maxLength;
+      }
+    }
+  },
+  watch: {
+    currentValue: function currentValue(value) {
+      this.$emit('onValueChange', value);
+    }
+  }
+});
+
+/***/ }),
+/* 171 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "dkf-textarea" },
+    [
+      _vm.title
+        ? _c("h3", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))])
+        : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "text",
+          class: { "add-padding-bottom": !_vm.exampleShowFlag }
+        },
+        [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.currentValue,
+                expression: "currentValue"
+              }
+            ],
+            ref: "dkfTextarea",
+            staticClass: "item-value",
+            attrs: {
+              maxlength: _vm.maxLength !== -1 ? _vm.maxLength : "",
+              mixlength: "2",
+              placeholder: _vm.placeholder
+            },
+            domProps: { value: _vm.currentValue },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.currentValue = $event.target.value
+              }
+            }
+          }),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-bottom" }, [
+            _c("span", { on: { click: _vm.toggleExampleShowFlag } }, [
+              _vm._v("看看别人怎么写")
+            ]),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "input-num", class: { exceed: _vm.isExceed } },
+              [
+                _vm._v(_vm._s(_vm.currentValue.length) + "/"),
+                _c("span", { staticClass: "max-length" }, [
+                  _vm._v(_vm._s(_vm.maxLength))
+                ])
+              ]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _vm._l(_vm.examples, function(example, index) {
+        return _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: index === _vm.currentExampleIndex && _vm.exampleShowFlag,
+                expression: "index === currentExampleIndex && exampleShowFlag"
+              }
+            ],
+            staticClass: "example"
+          },
+          [
+            _c("div", { staticClass: "example-header" }, [
+              _c("div", { staticClass: "left" }, [
+                _c("img", {
+                  staticClass: "avatar",
+                  attrs: { src: example.avatar, width: "24", height: "24" }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "position" }, [
+                  _vm._v(_vm._s(example.position))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "replace", on: { click: _vm.next } }, [
+                _vm._v("换一个")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "example-content" }, [
+              _vm._v(
+                "\n            " + _vm._s(example.advantage) + "\n        "
+              )
+            ])
+          ]
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2212a4c8", module.exports)
+  }
+}
+
+/***/ }),
+/* 172 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide" } }, [
+    _c(
+      "div",
+      { staticClass: "advantage-wrapper" },
+      [
+        _c("dkf-header", {
+          staticClass: "header-wrapper",
+          attrs: { title: "我的优势", nextIcon: "icon-correct" },
+          on: { left: _vm.showFriendlyReminderMessage, right: _vm.submit }
+        }),
+        _vm._v(" "),
+        _c("main", [
+          _c(
+            "div",
+            { staticClass: "advantage-content" },
+            [
+              _c("dkf-textarea", {
+                ref: "advantageTextarea",
+                attrs: {
+                  examples: _vm.examples,
+                  title: "我的优势",
+                  maxLength: 140,
+                  placeholder: _vm.placeholder
+                },
+                on: { onValueChange: _vm.onValueChange },
+                model: {
+                  value: _vm.advantage,
+                  callback: function($$v) {
+                    _vm.advantage = $$v
+                  },
+                  expression: "advantage"
+                }
+              }),
+              _vm._v(" "),
+              _c("div", { staticClass: "submit-button-group" }, [
+                _c(
+                  "div",
+                  { staticClass: "theme-button", on: { click: _vm.submit } },
+                  [_vm._v("完成")]
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "micro-resume" }, [
+                  _c("span", [_vm._v("继续完善微简历>")])
+                ])
+              ])
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("message", { ref: "message", attrs: { message: _vm.message } }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "suggestMessage",
+          attrs: {
+            message: "直聘君建议",
+            description: "文字可以再修饰一下，可加深Boos对你的印象",
+            confirmButtonText: "再改改",
+            cancelButtonText: "就这样",
+            showConfirmButton: true
+          },
+          on: { confirm: _vm.advantageTextareaFocus, cancel: _vm.request }
+        }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "friendlyReminderMessage",
+          attrs: {
+            message: "友情提示",
+            description: "离高薪职位只差一步，你确定放弃？",
+            confirmButtonText: "放弃",
+            cancelButtonText: "点错了",
+            showConfirmButton: true
+          },
+          on: { cancel: _vm.hideFriendlyReminderMessage, confirm: _vm.back }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1691f696", module.exports)
+  }
+}
+
+/***/ }),
+/* 173 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -46298,7 +47006,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 164 */
+/* 174 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -46471,7 +47179,7 @@ module.exports = function normalizeComponent (
 /* 1 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(7);
+module.exports = __webpack_require__(8);
 
 /***/ },
 /* 2 */
@@ -56195,19 +56903,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(165);
+module.exports = __webpack_require__(175);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(166);
+module.exports = __webpack_require__(176);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(167);
+module.exports = __webpack_require__(177);
 
 /***/ },
 /* 202 */
@@ -56220,7 +56928,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 165 */
+/* 175 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -56252,7 +56960,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 166 */
+/* 176 */
 /***/ (function(module, exports) {
 
 /*
@@ -56299,7 +57007,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 167 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -56311,13 +57019,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 168 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(169);
+var content = __webpack_require__(179);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -56342,7 +57050,7 @@ if(false) {
 }
 
 /***/ }),
-/* 169 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -56356,7 +57064,7 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 170 */
+/* 180 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
