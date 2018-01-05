@@ -4,16 +4,17 @@
             <dkf-header title="我的优势" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="submit" class="header-wrapper"></dkf-header>
             <main>
                 <div class="advantage-content">
-                    <dkf-textarea v-model="advantage" :examples="examples" @onValueChange="onValueChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
-                    <div class="submit-button-group">
+                    <dkf-textarea v-model="advantage" :examples="examples" @onValueChange="onValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
+                    <div class="submit-button-group" :class="{'add-margin-top': !exampleShowFlag}">
                         <div class="theme-button" @click="submit">完成</div>
-                        <div class="micro-resume"><span>继续完善微简历></span></div>
+                        <div class="micro-resume"><span @click="submitToMicroResume">继续完善微简历></span></div>
                     </div>
                 </div>
             </main>
             <message :message="message" ref="message"></message>
             <message-box message="直聘君建议" description="文字可以再修饰一下，可加深Boos对你的印象" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @confirm="advantageTextareaFocus" @cancel="request" ref="suggestMessage"></message-box>
             <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
+            <spinner text="保存中" v-show="spinner"></spinner>
         </div>
     </transition>
 </template>
@@ -22,6 +23,7 @@
   import dkfHeader from 'Base/header/header'
   import messageBox from 'Base/message/message-box'
   import message from 'Base/message/message'
+  import spinner from 'Base/spinner/spinner'
   import dkfTextarea from '../base/dkf-textarea'
   import {mapState} from 'vuex'
 
@@ -30,8 +32,9 @@
       return {
         advantage: '',
         message: '',
+        spinner: false,
         placeholder: '两年UI设计经验，                                                         熟悉iOS和Android的界面设计规范,                                                        对产品本色有独特见解，有一定的手绘基础。                            不少于20字',
-        examples: [
+        examples: [ // 我的优势例子
           {
             'avatar': 'images/avatar_9.png',
             'position': '产品助理',
@@ -57,25 +60,33 @@
             'position': '销售经理',
             'advantage': '2年销售管理经验，在担任区域负责人期间，带领区域同事做到移动业务量全省第一。口齿伶俐、思维灵敏、管理组织能力强，精通各种营销手段。'
           }
-        ]
+        ],
+        exampleShowFlag: false
       }
     },
     created() {
       this.advantage = this.user.advantage
     },
     methods: {
+      // 显示建议消息框
       showFriendlyReminderMessage() {
         this.$refs.friendlyReminderMessage.show()
       },
+      // 隐藏建议消息框
       hideFriendlyReminderMessage() {
         this.$refs.friendlyReminderMessage.hide()
       },
       back() {
         this.$router.back()
       },
+      // 文本框值发送改变将触发该函数
       onValueChange(value) {
         this.advantage = value
       },
+      exampleShowFlagChange(value) {
+        this.exampleShowFlag = value
+      },
+      // 我的优势文本框获取焦点
       advantageTextareaFocus() {
         this.$refs.suggestMessage.hide()
         this.$refs.advantageTextarea.textareaFoucs()
@@ -94,12 +105,23 @@
       submit() {
         if (this.checkData()) {
           this.request()
+          // 跳转到求职页面
         }
       },
+      submitToMicroResume() {
+        if (this.checkData()) {
+          this.request()
+          // 跳转到微简历页面
+        }
+      },
+      // 发出请求
       request() {
+        this.spinner = true
         this.$store.dispatch('updateAdvantage', {'advantage': this.advantage}).then(response => {
-
+          this.spinner = false
+          return true
         })
+        return false
       }
     },
     computed: {
@@ -111,7 +133,8 @@
       dkfHeader,
       messageBox,
       message,
-      dkfTextarea
+      dkfTextarea,
+      spinner
     }
   }
 </script>
@@ -140,6 +163,8 @@
             .advantage-content
                 height: 100%
                 .submit-button-group
+                    &.add-margin-top
+                        margin-top: 85px
                     .micro-resume
                         text-align: center
                         padding: 20px

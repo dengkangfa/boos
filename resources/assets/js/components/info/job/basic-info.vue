@@ -24,10 +24,10 @@
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="showDefaultAvatarDriver" ref="avatarDriver"></avatar-driver>
             <avatar-cropper  :image="cropImage" @cancel="hideCropper"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
             <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>
-            <name-input title="姓名" :length="12" v-model="userData.name" @saveValue="saveName" ref="nameInput"></name-input>
+            <name-input title="姓名" :maxLength="12" v-model="userData.name" @saveValue="saveName" ref="nameInput"></name-input>
             <job-date-picker v-model="userData.job_date" @select="jobDateHandleSelect" ref="jobDatePicker"></job-date-picker>
             <birth-date-picker v-model="userData.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
-            <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
+            <spinner :text="spinnerText" v-show="spinner"></spinner>
             <message :message="message" ref="message"></message>
             <router-view></router-view>
         </div>
@@ -43,7 +43,7 @@
   import sexRadio from 'Base/radio/sex-radio'
   import jobDatePicker from 'Base/picker/job-date-picker'
   import birthDatePicker from 'Base/picker/birth-date-picker'
-  import fadingCircle from 'Base/spinner/fading-circle'
+  import spinner from 'Base/spinner/spinner'
   import message from 'Base/message/message'
   import {mapState} from 'vuex'
   import {ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
@@ -96,7 +96,11 @@
           this.spinner = true
           this.$store.dispatch('updateProflie', this.userData).then(response => {
             this.spinner = false
-            this.$router.push({'name': 'job-education'})
+            if (this.userData.job_date === '应届生') {
+              this.$router.push({'name': 'job-education'})
+            } else {
+              this.$router.push({'name': 'job-work-experience'})
+            }
           }).catch(error => {
             this.spinner = false
             if (error.code === ERR_UNPROCESSABLE_ENTITY) {
@@ -192,7 +196,7 @@
       sexRadio,
       jobDatePicker,
       birthDatePicker,
-      fadingCircle,
+      spinner,
       message
     }
   }

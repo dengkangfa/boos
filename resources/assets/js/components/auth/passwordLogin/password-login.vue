@@ -25,7 +25,7 @@
                 <router-link to=""><span>登录遇到问题</span></router-link>
             </div>
             <message-box :message="message" cancelButtonText="好" ref="message"></message-box>
-            <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
+            <spinner :text="spinnerText" v-show="spinning"></spinner>
             <router-view></router-view>
         </div>
     </transition>
@@ -33,7 +33,7 @@
 
 <script type="text/ecmascript-6">
   import messageBox from 'Base/message/message-box.vue'
-  import fadingCircle from 'Base/spinner/fading-circle.vue'
+  import spinner from 'Base/spinner/spinner.vue'
   import {loginFooterMixin, checkMobileRegex} from 'Mixin/mixin.js'
   import {getAvatar} from 'Api/user'
   import avatar from 'Helpers/avatar'
@@ -52,7 +52,7 @@
         passwordShow: false,
         message: '',
         lable: '+86',
-        loadingText: '',
+        spinnerText: '',
         spinning: false,
         avatar: ''
       }
@@ -102,7 +102,7 @@
           this.$refs.message.show()
           return
         }
-        this.loadingText = '正在登录中'
+        this.spinnerText = '正在登录中'
         this.spinning = true
         let data = {
           'driver': 'password', // 登录的方式
@@ -127,7 +127,7 @@
     },
     components: {
       messageBox,
-      fadingCircle
+      spinner
     }
   }
 </script>

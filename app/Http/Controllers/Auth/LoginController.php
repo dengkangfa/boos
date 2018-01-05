@@ -48,7 +48,7 @@ class LoginController extends ApiController
     public function login(Request $request, $driver)
     {
         $functionMap = [
-            'verifycode' => 'verifyCodeLogin',
+            'verifycode' => 'verifycodeLogin',
             'password' => 'passwordLogin'
         ];
 
@@ -67,6 +67,11 @@ class LoginController extends ApiController
     public function logout()
     {
         $this->proxy->logout();
+    }
+
+    public function refresh()
+    {
+        return $this->proxy->refresh();
     }
 
     /**

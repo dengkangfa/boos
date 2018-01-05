@@ -16,7 +16,8 @@ mix.webpackConfig({
       Api: path.resolve(__dirname, 'resources/assets/js/api'),
       Mixin: path.resolve(__dirname, 'resources/assets/js/mixin'),
       Base: path.resolve(__dirname, 'resources/assets/js/components/base'),
-      Helpers: path.resolve(__dirname, 'resources/assets/js/helpers')
+      Helpers: path.resolve(__dirname, 'resources/assets/js/helpers'),
+      Components: path.resolve(__dirname, 'resources/assets/js/components')
     }
   },
   module: {

@@ -66,9 +66,9 @@ class User extends Authenticatable
         $this->save();
     }
 
-    public function getByMobile($mobile)
+    public function getAvatarByMobile($mobile)
     {
-        return $this->where('mobiel', $mobile);
+        return $this->where('mobile', $mobile)->select('avatar')->first();
     }
 
     public function findForPassport($username)

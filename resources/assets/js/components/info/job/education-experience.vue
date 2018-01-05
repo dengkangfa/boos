@@ -36,7 +36,7 @@
             <period-picker :period="periodValue" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
             <!-- 学历选择器 -->
             <picker title="学历" :slots="degreePicker" @onValuesChange="degreePickerOnValuesChange" @confirm="degreePickerSelectHandle" ref="degreePicker"></picker>
-            <fading-circle :text="spinnerText" v-show="spinner"></fading-circle>
+            <spinner :text="spinnerText" v-show="spinner"></spinner>
             <router-view></router-view>
         </div>
     </transition>
@@ -48,7 +48,7 @@
   import fullScreenInput from '../base/full-screen-input'
   import periodPicker from 'Base/picker/period-picker'
   import picker from 'Base/picker/picker'
-  import fadingCircle from 'Base/spinner/fading-circle'
+  import spinner from 'Base/spinner/spinner'
   import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
   import {getEducationExperience, createdEducationExperience, updateEducationExperience} from 'Api/education-experience'
 
@@ -209,7 +209,7 @@
       fullScreenInput,
       periodPicker,
       picker,
-      fadingCircle
+      spinner
     }
   }
 </script>

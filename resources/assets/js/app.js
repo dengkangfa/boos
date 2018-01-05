@@ -19,9 +19,18 @@ axios.interceptors.request.use(config => {
     config.headers['Authorization'] = 'Bearer ' + jwtToken.getToken()
   }
   return config
-}, error => {
-  return Promise.reject(error)
 })
+
+axios.interceptors.response.use(
+  response => {
+    return response
+  },
+  error => {
+    if ((error.response.statusText === 'Unauthorized') && (error.response.status === 400 || error.response.status === 401)) {
+      store.dispatch('refreshToken')
+    }
+    return Promise.reject(error)
+  })
 
 /* eslint-disable no-new */
 new Vue({
@@ -30,12 +39,3 @@ new Vue({
   router,
   store
 })
-
-// // 注册一个全局自定义指令 v-focus
-// Vue.directive('focus', {
-//   // 当绑定元素插入到 DOM 中。
-//   inserted: function (el) {
-//     // 聚焦元素
-//     el.focus()
-//   }
-// })

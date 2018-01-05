@@ -23,14 +23,14 @@
       </div>
       <message :message="message" ref="message"></message>
       <message-box :message="message" cancelButtonText="好" ref="messageBox"></message-box>
-      <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
+      <spinner :text="spinnerText" v-show="spinning"></spinner>
       <router-view></router-view>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   import message from 'Base/message/message.vue'
-  import fadingCircle from 'Base/spinner/fading-circle.vue'
+  import spinner from 'Base/spinner/spinner.vue'
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
   import messageBox from 'Base/message/message-box.vue'
   import {ERR_OK, ERR_REGISTER_CODE, ERR_UNPROCESSABLE_ENTITY} from 'Api/config.js'
@@ -43,7 +43,7 @@
         spinning: false, // 是否显示loading
         message: '', // 提示消息
         lable: '+86',
-        loadingText: ''
+        spinnerText: ''
       }
     },
     mounted() {
@@ -61,7 +61,7 @@
     methods: {
       submit() {
         if (this.checkMobileRegex() && this.checkVerifyCode()) {
-          this.loadingText = '正在登录中'
+          this.spinnerText = '正在登录中'
           this.spinning = true
           let data = {
             'driver': 'verifycode',
@@ -99,7 +99,7 @@
     },
     components: {
       message,
-      fadingCircle,
+      spinner,
       timerBtn,
       messageBox
     }

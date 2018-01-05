@@ -58,16 +58,12 @@
       show() {
         this.$refs.picker.show()
       },
-      hide() {
-        this.$refs.picker.hide()
-      },
       onValuesChange(picker, values) {
         this.data = values
       },
       confirm() {
         let data = this.data[0] + '-' + (this.data[1] < 10 ? '0' + this.data[1] : this.data[1])
         this.$emit('select', data)
-        this.hide()
       }
     },
     watch: {

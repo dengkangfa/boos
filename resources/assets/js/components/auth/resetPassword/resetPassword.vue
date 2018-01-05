@@ -38,7 +38,7 @@
                 <i class="icon-left"></i>
             </div>
             <message-box :message="message" cancelButtonText="好" @confirm="confirm" ref="message"></message-box>
-            <fading-circle :text="loadingText" v-show="spinning"></fading-circle>
+            <spinner :text="spinnerText" v-show="spinning"></spinner>
         </div>
     </transition>
 </template>
@@ -47,7 +47,7 @@
   import { checkMobileRegex, verifycodeMixin } from 'Mixin/mixin.js'
   import timerBtn from 'Base/timer-btn/TimerBtn.vue'
   import messageBox from 'Base/message/message-box.vue'
-  import fadingCircle from 'Base/spinner/fading-circle.vue'
+  import spinner from 'Base/spinner/spinner.vue'
   import { resetPassword } from 'Api/user.js'
   import { ERR_OK, ERR_UNPROCESSABLE_ENTITY } from 'Api/config.js'
   import { getAvatar } from 'Api/user'
@@ -63,7 +63,7 @@
         passwordShow: false,
         lable: '+86',
         message: '',
-        loadingText: '',
+        spinnerText: '',
         spinning: false,
         mobileRule: 'mobile_exists',
         route: '',
@@ -100,7 +100,7 @@
       },
       submit() {
         if (this.checkMobileRegex() && this.checkPassword() && this.checkVerifyCode()) {
-          this.loadingText = '正在重置密码'
+          this.spinnerText = '正在重置密码'
           this.spinning = true
           resetPassword(this.userules).then(response => {
             this.spinning = false
@@ -149,7 +149,7 @@
     components: {
       timerBtn,
       messageBox,
-      fadingCircle
+      spinner
     }
   }
 </script>

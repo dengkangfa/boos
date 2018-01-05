@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
 use Auth;
@@ -22,6 +23,8 @@ class UsersController extends ApiController
 
     public function __construct(UploadManager $manager, UserRepository $user)
     {
+        $this->middleware('auth', ['except' => ['avatar']]);
+
         parent::__construct();
 
         $this->manager = $manager;
@@ -36,9 +39,15 @@ class UsersController extends ApiController
         return $this->respondWithItem($user, new UserTransformer);
     }
 
-    public function avatar(Request $request)
+    /**
+     * 通过手机号码查找该手机号码用户的头像
+     *
+     * @param Request $request
+     * @return response|\Illuminate\Http\JsonResponse
+     */
+    public function avatar(Request $request, User $user)
     {
-        $user = DB::table('users')->select('avatar')->where('mobile', $request->mobile)->first();
+        $user = $user->getAvatarByMobile($request->mobile);
 
         if (is_null($user)) {
             return $this->noContent();
@@ -122,6 +131,6 @@ class UsersController extends ApiController
 
         $this->user->updateColumn(Auth::id(), $request->all());
 
-        return $this->respondWithArray(['advantage' => Auth::user()->advantage, 'success' => true, 'code' => 0]);
+        return $this->respondWithArray(['advantage' => $request->advantage, 'success' => true, 'code' => 0]);
     }
 }

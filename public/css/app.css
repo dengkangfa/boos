@@ -416,3 +416,7 @@ input::-webkit-inner-spin-button {
   margin: 10px;
 }
 
+.right-float {
+  float: right;
+}
+

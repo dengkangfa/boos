@@ -1,11 +1,11 @@
 <template>
     <div class="dkf-textarea">
         <h3 class="title" v-if="title">{{ title }}</h3>
-        <div class="text" :class="{'add-padding-bottom': !exampleShowFlag}">
+        <div class="text">
             <textarea class="item-value" v-model="currentValue"  :maxlength="maxLength !== -1 ? maxLength : ''" mixlength="2" ref="dkfTextarea" :placeholder="placeholder"></textarea>
             <p class="text-bottom">
-                <span @click="toggleExampleShowFlag">看看别人怎么写</span>
-                <span class="input-num"  :class="{'exceed': isExceed}">{{ currentValue.length }}/<span class="max-length">{{ maxLength }}</span></span>
+                <span @click="toggleExampleShowFlag" v-if="examples.length">看看别人怎么写</span>
+                <span class="input-num right-float"  :class="{'exceed': isExceed}">{{ currentValue.length }}/<span class="max-length">{{ maxLength }}</span></span>
             </p>
         </div>
         <div class="example" v-for="(example, index) in examples" v-show="index === currentExampleIndex && exampleShowFlag">
@@ -61,6 +61,7 @@
       toggleExampleShowFlag() {
         this.exampleShowFlag = !this.exampleShowFlag
         if (this.exampleShowFlag) {
+          this.$emit('exampleShowFlagChange', this.exampleShowFlag)
           this.next()
         }
       },
@@ -105,8 +106,6 @@
         .text
             padding: 10px 10px 0
             background: #ffffff
-            &.add-padding-bottom
-                margin-bottom: 85px
             textarea
                 width: 100%
                 height: 150px
@@ -120,12 +119,9 @@
                 &::placeholder
                     color: #bdbdbd
             .text-bottom
-                display: flex
-                justify-content: space-between
                 height: 45px
                 line-height: 45px
                 color: $color-theme
-                text-align: right
                 background: #fff
                 .input-num
                     font-size: .3rem

@@ -18,14 +18,18 @@ class EducationInfoController extends ApiController
     public function __construct(EducationInfoRepository $educationInfo)
     {
         parent::__construct();
+
+        $this->middleware('auth');
+
         $this->educationInfo = $educationInfo;
     }
 
     public function index()
     {
         $educationInfos = Auth::user()->educationInfos()->first();
+
         if (is_null($educationInfos)) {
-            return $this->errorNotFound();
+            return $this->noContent();
         }
         return $this->respondWithItem($educationInfos, new EducationInfoTransformer);
     }

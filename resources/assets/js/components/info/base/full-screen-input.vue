@@ -4,7 +4,7 @@
             <dkf-header :title="title" nextIcon="icon-correct" backIcon="icon-close"  @left="cancel" @right="confirm"></dkf-header>
             <div>
                 <input type="text" v-model="newValue" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
-                <div style="text-align: right;padding: 0.4rem 0.2rem;" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ length }}</span></div>
+                <div style="text-align: right;padding: 0.4rem 0.2rem;" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ maxLength }}</span></div>
             </div>
             <message-box confirmButtonText="放弃"  :cancelButtonText="cancelButtonText" :showConfirmButton="showConfirmButton" :message="message" @confirm="messageBoxConfirm" ref="messageBox"></message-box>
         </div>
@@ -30,7 +30,7 @@
         type: Boolean,
         default: false
       },
-      length: {
+      maxLength: {
         type: Number,
         default: 20
       }
@@ -58,7 +58,7 @@
         return this.newValue.length
       },
       isExceed() {
-        return this.newValue.length > this.length
+        return this.newValue.length > this.maxLength
       }
     },
     methods: {
@@ -87,7 +87,7 @@
           this.$refs.messageBox.show()
           return
         }
-        if (this.newValue.length > this.length) {
+        if (this.newValue.length > this.maxLength) {
           this.message = '超过字数限制'
           this.cancelButtonText = '好'
           this.showConfirmButton = false

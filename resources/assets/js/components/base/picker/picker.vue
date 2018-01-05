@@ -33,6 +33,7 @@
     },
     data() {
       return {
+        values: '',
         showFlag: false
       }
     },
@@ -47,9 +48,11 @@
         this.hide()
       },
       confirm() {
-        this.$emit('confirm')
+        this.$emit('confirm', this.values)
+        this.hide()
       },
       onValuesChange(picker, values) {
+        this.values = values
         this.$emit('onValuesChange', picker, values)
       },
       setValues(values) {

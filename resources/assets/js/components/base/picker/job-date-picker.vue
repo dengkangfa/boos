@@ -11,7 +11,11 @@
 
   export default {
     props: {
-      value: ''
+      value: '',
+      type: {
+        type: Number,
+        default: 0
+      }
     },
     data() {
       return {
@@ -94,13 +98,9 @@
         }
 
         this.$emit('select', jobDate)
-        this.hide()
       },
       show() {
         this.$refs.picker.show()
-      },
-      hide() {
-        this.$refs.picker.hide()
       }
     },
     watch: {

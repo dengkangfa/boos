@@ -38,9 +38,6 @@
       show() {
         this.$refs.picker.show()
       },
-      hide() {
-        this.$refs.picker.hide()
-      },
       init() {
         let date = new Date()
         let startYears = []
@@ -74,7 +71,6 @@
       },
       confirm() {
         this.$emit('select', this.values)
-        this.hide()
       }
     },
     watch: {
