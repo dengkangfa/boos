@@ -5,16 +5,16 @@
                 <div class="avatar-default-items">
                     <div class="box">
                         <div class="row">
-                            <span class="item" @click="selectItem(1)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (1 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (1 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(2)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (2 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (2 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(3)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (3 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (3 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(4)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (4 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (4 + (type * 8)) + '.png'"></span>
+                            <div class="item" @click="selectItem(1)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (1 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (1 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(2)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (2 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (2 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(3)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (3 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (3 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(4)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (4 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (4 + (type * 8)) + '.png'"></div>
                         </div>
                         <div class="row">
-                            <span class="item" @click="selectItem(5)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (5 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (5 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(6)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (6 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (6 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(7)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (7 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (7 + (type * 8)) + '.png'"></span>
-                            <span class="item" @click="selectItem(8)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (8 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (8 + (type * 8)) + '.png'"></span>
+                            <div class="item" @click="selectItem(5)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (5 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (5 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(6)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (6 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (6 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(7)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (7 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (7 + (type * 8)) + '.png'"></div>
+                            <div class="item" @click="selectItem(8)"><div class="item-active"></div><i class="icon icon-correct-filling" :class="{active: currentAvatar === 'images/avatar_' + (8 + (type * 8)) + '.png'}"></i><img :src="'images/avatar_' + (8 + (type * 8)) + '.png'"></div>
                         </div>
                     </div>
                     <div class="cancel" @click="hide">取消</div>

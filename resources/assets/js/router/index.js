@@ -89,11 +89,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // 路由来源限制
-  if (to.meta.autoFrom) {
-    if (to.meta.autoFrom.indexOf(from.name) === -1) {
-      return next({'name': 'select-identity'})
-    }
-  }
+  // if (to.meta.autoFrom) {
+  //   if (to.meta.autoFrom.indexOf(from.name) === -1) {
+  //     return next({'name': 'select-identity'})
+  //   }
+  // }
   if (to.meta.requiresAuth) {
     if (Store.state.AuthUser.authenticated || jwtToken.getToken()) {
       return next()

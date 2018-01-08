@@ -6,11 +6,11 @@
                 <div class="work-experience">
                     <div class="recent-work-experience">
                         <h3>最近一份工作经历</h3>
-                        <ul class="recent-work-experience-items">
-                            <li @click="showCompanyNameInput"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
-                            <li class="period"><label>时间段</label><div class="item-value"><span @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time ? workExperienceData.end_time : '至今' }}</span></div></li>
-                            <li><label>职位类型</label><span class="item-value"><i class="icon icon-right"></i></span></li>
-                            <li><label>技能标签</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                        <ul class="recent-work-experience-items cell">
+                            <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
+                            <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time ? workExperienceData.end_time : '至今' }}</span></div></li>
+                            <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                            <li class="active"><label>技能标签</label><span class="item-value"><i class="icon icon-right"></i></span></li>
                         </ul>
                     </div>
                     <div class="work-content">
@@ -24,6 +24,7 @@
             <full-screen-input v-model="workExperienceData.company_name" @saveValue="saveCompanyName" title="公司名称" ref="companyNameInput"></full-screen-input>
             <picker title="时间段" :slots="startTimePickerSlots" :showToolbar="true" ref="startTimePicker" @click="startOnValuesChange" @onValuesChange="startOnValuesChange" @confirm="startPickerConfirm"></picker>
             <picker title="时间段" :slots="endTimePickerSlots" :showToolbar="true" ref="endTimePicker" @click="endOnValuesChange" @onValuesChange="endOnValuesChange" @confirm="endPickerConfirm"></picker>
+            <position-type-select ref="positionTypeSelect"></position-type-select>
         </div>
     </transition>
 </template>
@@ -34,6 +35,7 @@
   import fullScreenInput from '../base/full-screen-input'
   import messageBox from 'Base/message/message-box'
   import picker from 'Base/picker/picker'
+  import positionTypeSelect from '../base/position-type-select'
 
   export default {
     data() {
@@ -141,6 +143,9 @@
       showEndTimePicker() {
         this.$refs.endTimePicker.show()
       },
+      showPositionTypeSelect() {
+        this.$refs.positionTypeSelect.show()
+      },
       startOnValuesChange(picker, values) {
         if (values[0] === '1990年以前') {
           picker.setSlotValues(1, [])
@@ -175,7 +180,8 @@
       dkfTextarea,
       fullScreenInput,
       messageBox,
-      picker
+      picker,
+      positionTypeSelect
     }
   }
 </script>
@@ -217,11 +223,16 @@
                         @include border-top-1px($bc)
                         padding: 0 0.3rem
                         background: #ffffff
+                        &.active:active
+                            background: #d9d9d9
                         &.period
                             .item-value span
                                 display: inline-block
                                 width: 50px
                                 padding: 0 10px
+                                &.start-time
+                                    width: 70px
+                                    text-align: right
                         .item-value
                             color: $color-text-l
                             &.placeholder
