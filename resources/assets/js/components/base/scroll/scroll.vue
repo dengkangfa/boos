@@ -23,7 +23,7 @@
         default: true
       },
       data: {
-        type: Array,
+        type: Object,
         default: null
       },
       listenScroll: {

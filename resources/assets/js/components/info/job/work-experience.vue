@@ -9,7 +9,7 @@
                         <ul class="recent-work-experience-items cell">
                             <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
                             <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time ? workExperienceData.end_time : '至今' }}</span></div></li>
-                            <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                            <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
                             <li class="active"><label>技能标签</label><span class="item-value"><i class="icon icon-right"></i></span></li>
                         </ul>
                     </div>
@@ -24,7 +24,7 @@
             <full-screen-input v-model="workExperienceData.company_name" @saveValue="saveCompanyName" title="公司名称" ref="companyNameInput"></full-screen-input>
             <picker title="时间段" :slots="startTimePickerSlots" :showToolbar="true" ref="startTimePicker" @click="startOnValuesChange" @onValuesChange="startOnValuesChange" @confirm="startPickerConfirm"></picker>
             <picker title="时间段" :slots="endTimePickerSlots" :showToolbar="true" ref="endTimePicker" @click="endOnValuesChange" @onValuesChange="endOnValuesChange" @confirm="endPickerConfirm"></picker>
-            <position-type-select ref="positionTypeSelect"></position-type-select>
+            <position-type-select @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
         </div>
     </transition>
 </template>
@@ -44,7 +44,7 @@
           company_name: '', // 公司名称
           start_time: '', // 开始时间
           end_time: '', // 结束时间
-          position_type: '', // 技能标签
+          position_type: '', // 职位类型
           work_content: '' // 工作内容
         },
         startTimePickerSlots: [
@@ -72,6 +72,7 @@
           }
         ],
         monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        position: '',
         placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
         examples: [ // 我的优势例子
           {
@@ -173,6 +174,11 @@
         } else {
           this.workExperienceData.end_time = values[0] + '.' + (values[1] < 10 ? '0' + values[1] : values[1])
         }
+      },
+      positionSelected(value) {
+        this.position = value.name
+        this.workExperienceData.position_type = value.id
+        console.log(value)
       }
     },
     components: {
