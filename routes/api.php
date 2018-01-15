@@ -29,3 +29,5 @@ Route::patch('user/advantage', 'Api\UsersController@updateAdvantage');
 Route::get('me/education_infos', 'Api\EducationInfoController@index');
 Route::post('education_infos', 'Api\EducationInfoController@store');
 Route::put('education_infos/{id}', 'Api\EducationInfoController@update');
+
+Route::get('positionSkill', 'Api\PositionSkillController@index');

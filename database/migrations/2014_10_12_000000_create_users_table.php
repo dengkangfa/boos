@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->enum('gender', ['male', 'female']);
             $table->text('advantage')->nullable();
             $table->timestamp('job_date')->nullable();
-            $table->timestamp('birth_date')->nullable();
+            $table->dateTime('birth_date')->nullable();
             $table->timestamps();
         });
     }

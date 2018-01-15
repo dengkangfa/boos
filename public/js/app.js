@@ -14136,7 +14136,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31);
-module.exports = __webpack_require__(195);
+module.exports = __webpack_require__(196);
 
 
 /***/ }),
@@ -14153,12 +14153,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(189);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(190);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
 __webpack_require__(32);
 
@@ -46238,7 +46238,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(187)
+var __vue_template__ = __webpack_require__(188)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46311,7 +46311,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.work-experience-wrapper[data-v-0a134330] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.work-experience-wrapper .header-wrapper[data-v-0a134330] {\n    position: fixed;\n    width: 100%;\n    height: 50px;\n    right: 0;\n    top: 0;\n}\n.work-experience-wrapper main[data-v-0a134330] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.work-experience-wrapper main h3[data-v-0a134330] {\n      height: 40px;\n      line-height: 40px;\n      padding-left: 10px;\n      font-size: .3rem;\n      color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience[data-v-0a134330] {\n      height: 100%;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.active[data-v-0a134330]:active {\n          background: #d9d9d9;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span[data-v-0a134330] {\n          display: inline-block;\n          width: 50px;\n          padding: 0 10px;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span.start-time[data-v-0a134330] {\n            width: 70px;\n            text-align: right;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value[data-v-0a134330] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value.placeholder[data-v-0a134330] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li i.icon[data-v-0a134330] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.work-experience-wrapper main .work-experience div.theme-button[data-v-0a134330] {\n        margin-top: 20px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
+exports.push([module.i, "\n.work-experience-wrapper[data-v-0a134330] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.work-experience-wrapper .header-wrapper[data-v-0a134330] {\n    position: fixed;\n    width: 100%;\n    height: 50px;\n    right: 0;\n    top: 0;\n}\n.work-experience-wrapper main[data-v-0a134330] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.work-experience-wrapper main h3[data-v-0a134330] {\n      height: 40px;\n      line-height: 40px;\n      padding-left: 10px;\n      font-size: .3rem;\n      color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience[data-v-0a134330] {\n      height: 100%;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.active[data-v-0a134330]:active {\n          background: #d9d9d9;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span[data-v-0a134330] {\n          display: inline-block;\n          width: 50px;\n          padding: 0 10px;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span.start-time[data-v-0a134330] {\n            width: 70px;\n            text-align: right;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value[data-v-0a134330] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value.placeholder[data-v-0a134330] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li i.icon[data-v-0a134330] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.work-experience-wrapper main .work-experience div.theme-button[data-v-0a134330] {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
 
 // exports
 
@@ -46334,6 +46334,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__base_position_type_select__ = __webpack_require__(177);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__base_position_type_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__base_position_type_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_position_skill__ = __webpack_require__(187);
 //
 //
 //
@@ -46365,6 +46368,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
 
 
 
@@ -46381,7 +46387,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         start_time: '', // 开始时间
         end_time: '', // 结束时间
         position_type: '', // 职位类型
-        work_content: '' // 工作内容
+        work_emphasis: '', // 技能
+        responsibility: '' // 工作内容
       },
       startTimePickerSlots: [{
         flex: 1,
@@ -46403,6 +46410,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }],
       monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
       position: '',
+      positionSkills: [],
       placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
       examples: [// 我的优势例子
       {
@@ -46502,9 +46510,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
     },
     positionSelected: function positionSelected(value) {
+      var _this = this;
+
       this.position = value.name;
       this.workExperienceData.position_type = value.id;
-      console.log(value);
+      Object(__WEBPACK_IMPORTED_MODULE_7_Api_position_skill__["a" /* getPositionSkill */])(value.id.substr(0, 4) + '00').then(function (response) {
+        _this.positionSkills = response;
+      }).catch(function (error) {
+        console.log(error);
+      });
+    },
+    positionSkillClick: function positionSkillClick() {
+      if (!this.workExperienceData.position_type) {
+        this.$refs.messageBox.show();
+        return;
+      }
+      this.$refs.positionSkillCheckbox.show();
     }
   },
   components: {
@@ -46513,7 +46534,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     fullScreenInput: __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default.a,
     messageBox: __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box___default.a,
     picker: __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default.a,
-    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_5__base_position_type_select___default.a
+    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_5__base_position_type_select___default.a,
+    positionSkillCheckbox: __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox___default.a
   }
 });
 
@@ -50020,6 +50042,30 @@ if (false) {
 
 /***/ }),
 /* 187 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = getPositionSkill;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+function getPositionSkill(position) {
+  var url = 'api/positionSkill';
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url, {
+    params: {
+      'positonLv2': position
+    }
+  }).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+/***/ }),
+/* 188 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50108,12 +50154,19 @@ var render = function() {
                   ]
                 ),
                 _vm._v(" "),
-                _c("li", { staticClass: "active" }, [
-                  _c("label", [_vm._v("技能标签")]),
-                  _c("span", { staticClass: "item-value" }, [
-                    _c("i", { staticClass: "icon icon-right" })
-                  ])
-                ])
+                _c(
+                  "li",
+                  {
+                    staticClass: "active",
+                    on: { click: _vm.positionSkillClick }
+                  },
+                  [
+                    _c("label", [_vm._v("技能标签")]),
+                    _c("span", { staticClass: "item-value" }, [
+                      _c("i", { staticClass: "icon icon-right" })
+                    ])
+                  ]
+                )
               ])
             ]),
             _vm._v(" "),
@@ -50136,6 +50189,11 @@ var render = function() {
             _c("div", { staticClass: "theme-button" }, [_vm._v("下一步")])
           ])
         ]),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "messageBox",
+          attrs: { message: "请先选择职位类型" }
+        }),
         _vm._v(" "),
         _c("message-box", {
           ref: "friendlyReminderMessage",
@@ -50193,6 +50251,11 @@ var render = function() {
         _c("position-type-select", {
           ref: "positionTypeSelect",
           on: { selected: _vm.positionSelected }
+        }),
+        _vm._v(" "),
+        _c("position-skill-checkbox", {
+          ref: "positionSkillCheckbox",
+          attrs: { data: _vm.positionSkills }
         })
       ],
       1
@@ -50210,7 +50273,7 @@ if (false) {
 }
 
 /***/ }),
-/* 188 */
+/* 189 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -51058,7 +51121,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 189 */
+/* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -60955,19 +61018,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(190);
+module.exports = __webpack_require__(191);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(191);
+module.exports = __webpack_require__(192);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(192);
+module.exports = __webpack_require__(193);
 
 /***/ },
 /* 202 */
@@ -60980,7 +61043,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 190 */
+/* 191 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61012,7 +61075,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 191 */
+/* 192 */
 /***/ (function(module, exports) {
 
 /*
@@ -61059,7 +61122,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 192 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -61071,13 +61134,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 193 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(194);
+var content = __webpack_require__(195);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -61102,7 +61165,7 @@ if(false) {
 }
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -61116,10 +61179,245 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 197 */,
+/* 198 */,
+/* 199 */,
+/* 200 */,
+/* 201 */,
+/* 202 */,
+/* 203 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(204)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(206)
+/* template */
+var __vue_template__ = __webpack_require__(207)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0facddff"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\info\\base\\position-skill-checkbox.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0facddff", Component.options)
+  } else {
+    hotAPI.reload("data-v-0facddff", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 204 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(205);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("b7230708", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 205 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.position-skill-wrapper[data-v-0facddff] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.position-skill-wrapper .main[data-v-0facddff] {\n    height: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.position-skill-wrapper .main .disc[data-v-0facddff] {\n      color: #999;\n      text-align: center;\n      padding: 10px;\n}\n.position-skill-wrapper .main .position-skills[data-v-0facddff] {\n      padding: 5px;\n}\n.position-skill-wrapper .main .position-skills div[data-v-0facddff] {\n        display: inline-block;\n        border: 1px solid #999;\n        border-radius: .1rem;\n        background: #fff;\n        padding: 10px;\n        margin: 5px;\n}\n.position-skill-wrapper .main .position-skills div.active[data-v-0facddff] {\n          background: #53CAC3;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 206 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    data: {
+      type: Array,
+      default: []
+    }
+  },
+  data: function data() {
+    return {
+      value: [],
+      showFlag: false
+    };
+  },
+
+  methods: {
+    show: function show() {
+      this.showFlag = true;
+    },
+    hide: function hide() {
+      this.showFlag = false;
+    },
+    checkbox: function checkbox(item) {
+      if (this.value.length >= 3) {
+        this.refs.messageBox.show();
+        return;
+      }
+      this.value.push(item);
+    },
+    inArray: function inArray(item) {
+      return this.value.indexOf(item) > -1;
+    }
+  },
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
+    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a
+  }
+});
+
+/***/ }),
+/* 207 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showFlag,
+            expression: "showFlag"
+          }
+        ],
+        staticClass: "position-skill-wrapper"
+      },
+      [
+        _c("dkf-header", { attrs: { title: "技能标签", nextText: "确定" } }),
+        _vm._v(" "),
+        _c("div", { staticClass: "main" }, [
+          _c("div", { staticClass: "disc" }, [
+            _c("p", [_vm._v("输入或选择技能标签，最多3个")])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "position-skills" },
+            _vm._l(_vm.data, function(item) {
+              return _c(
+                "div",
+                {
+                  class: { active: _vm.inArray(item) },
+                  on: {
+                    click: function($event) {
+                      _vm.checkbox(item)
+                    }
+                  }
+                },
+                [_vm._v(_vm._s(item))]
+              )
+            })
+          )
+        ]),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "messageBox",
+          attrs: { message: "最多3个标签" }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0facddff", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
