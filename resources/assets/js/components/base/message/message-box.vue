@@ -5,8 +5,11 @@
                 <div class="confirm-content">
                     <p class="text" :class="{lessenPadding: description}">{{ message }}</p>
                     <div class="description" v-if="description">{{ description }}</div>
+                    <div class="input" v-show="showInput">
+                        <input v-model="inputValue" :placeholder="inputPlaceholder" ref="input">
+                    </div>
                     <div class="operate">
-                        <div @click="cancel" class="operate-btn" :class="{'border-radius-left': showConfirmButton}" v-show="showCancelButton">{{ cancelButtonText ? cancelButtonText : '取消' }}</div>
+                        <div @click="cancel" class="operate-btn" :class="{'border-radius-left': showConfirmButton}" v-show="showCancelButton">{{ cancelButtonText }}</div>
                         <div @click="confirm" class="operate-btn left" :class="{'border-radius-right': showConfirmButton}" v-show="showConfirmButton">{{ confirmButtonText }}</div>
                     </div>
                 </div>
@@ -19,6 +22,7 @@
     export default {
       data() {
         return {
+          inputValue: '',
           showFlag: false
         }
       },
@@ -28,6 +32,14 @@
           default: ''
         },
         description: {
+          type: String,
+          default: ''
+        },
+        showInput: {
+          type: Boolean,
+          default: false
+        },
+        inputPlaceholder: {
           type: String,
           default: ''
         },
@@ -58,10 +70,24 @@
         cancel() {
           this.hide()
           this.$emit('cancel')
+          this.inputValue = ''
         },
         confirm() {
           this.hide()
           this.$emit('confirm')
+          this.inputValue = ''
+        }
+      },
+      watch: {
+        inputValue(value) {
+          if (this.showInput) {
+            this.$emit('inputValueChange', value)
+          }
+        },
+        showFlag() {
+          setTimeout(() => {
+            this.$refs.input.focus()
+          }, 350)
         }
       }
     }
@@ -104,6 +130,12 @@
                 .description
                     padding: 0 .5rem .5rem
                     text-align: center
+                .input
+                    padding: 0 .5rem .5rem
+                    input
+                        width: 100%
+                        border: 1px solid #999
+                        padding: 5px
                 .operate
                     display: flex
                     align-items: center

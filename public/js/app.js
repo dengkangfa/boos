@@ -14136,7 +14136,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31);
-module.exports = __webpack_require__(196);
+module.exports = __webpack_require__(201);
 
 
 /***/ }),
@@ -14153,12 +14153,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(189);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(194);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(190);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(199);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
 __webpack_require__(32);
 
@@ -36233,7 +36233,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.confirm[data-v-3e200afc] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: 998;\n  background: rgba(0, 0, 0, 0.3);\n}\n.confirm.confirm-fade-enter-active[data-v-3e200afc] {\n    -webkit-animation: confirm-fadein-data-v-3e200afc 0.3s;\n            animation: confirm-fadein-data-v-3e200afc 0.3s;\n}\n.confirm.confirm-fade-enter-active .confirm-content[data-v-3e200afc] {\n      -webkit-animation: confirm-zoom-data-v-3e200afc 0.3s;\n              animation: confirm-zoom-data-v-3e200afc 0.3s;\n}\n.confirm .confirm-wrapper[data-v-3e200afc] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    z-index: 999;\n}\n.confirm .confirm-wrapper .confirm-content[data-v-3e200afc] {\n      width: 270px;\n      border-radius: 13px;\n      background: #fff;\n}\n.confirm .confirm-wrapper .confirm-content .text[data-v-3e200afc] {\n        padding: 19px 15px;\n        line-height: 22px;\n        text-align: center;\n        font-size: .45rem;\n        font-weight: 700;\n        color: #000000;\n}\n.confirm .confirm-wrapper .confirm-content .text.lessenPadding[data-v-3e200afc] {\n          padding-bottom: 5px;\n}\n.confirm .confirm-wrapper .confirm-content .description[data-v-3e200afc] {\n        padding: 0 .5rem .5rem;\n        text-align: center;\n}\n.confirm .confirm-wrapper .confirm-content .operate[data-v-3e200afc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        text-align: center;\n        font-size: .45rem;\n        border-radius: 0 0 13px 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn[data-v-3e200afc]:active {\n          background: #d9d9d9;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn[data-v-3e200afc] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          line-height: 22px;\n          padding: 10px 0;\n          border-top: 1px solid #cccccc;\n          color: #59A6FA;\n          border-radius: 0 0 13px 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.border-radius-left[data-v-3e200afc] {\n            border-radius: 0 0 0 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.border-radius-right[data-v-3e200afc] {\n            border-radius: 0 0 13px 0;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.left[data-v-3e200afc] {\n            border-left: 1px solid #cccccc;\n}\n@-webkit-keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@-webkit-keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n@keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n", ""]);
+exports.push([module.i, "\n.confirm[data-v-3e200afc] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  top: 0;\n  bottom: 0;\n  z-index: 998;\n  background: rgba(0, 0, 0, 0.3);\n}\n.confirm.confirm-fade-enter-active[data-v-3e200afc] {\n    -webkit-animation: confirm-fadein-data-v-3e200afc 0.3s;\n            animation: confirm-fadein-data-v-3e200afc 0.3s;\n}\n.confirm.confirm-fade-enter-active .confirm-content[data-v-3e200afc] {\n      -webkit-animation: confirm-zoom-data-v-3e200afc 0.3s;\n              animation: confirm-zoom-data-v-3e200afc 0.3s;\n}\n.confirm .confirm-wrapper[data-v-3e200afc] {\n    position: absolute;\n    top: 50%;\n    left: 50%;\n    -webkit-transform: translate(-50%, -50%);\n            transform: translate(-50%, -50%);\n    z-index: 999;\n}\n.confirm .confirm-wrapper .confirm-content[data-v-3e200afc] {\n      width: 270px;\n      border-radius: 13px;\n      background: #fff;\n}\n.confirm .confirm-wrapper .confirm-content .text[data-v-3e200afc] {\n        padding: 19px 15px;\n        line-height: 22px;\n        text-align: center;\n        font-size: .45rem;\n        font-weight: 700;\n        color: #000000;\n}\n.confirm .confirm-wrapper .confirm-content .text.lessenPadding[data-v-3e200afc] {\n          padding-bottom: 5px;\n}\n.confirm .confirm-wrapper .confirm-content .description[data-v-3e200afc] {\n        padding: 0 .5rem .5rem;\n        text-align: center;\n}\n.confirm .confirm-wrapper .confirm-content .input[data-v-3e200afc] {\n        padding: 0 .5rem .5rem;\n}\n.confirm .confirm-wrapper .confirm-content .input input[data-v-3e200afc] {\n          width: 100%;\n          border: 1px solid #999;\n          padding: 5px;\n}\n.confirm .confirm-wrapper .confirm-content .operate[data-v-3e200afc] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        text-align: center;\n        font-size: .45rem;\n        border-radius: 0 0 13px 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn[data-v-3e200afc]:active {\n          background: #d9d9d9;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn[data-v-3e200afc] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n          line-height: 22px;\n          padding: 10px 0;\n          border-top: 1px solid #cccccc;\n          color: #59A6FA;\n          border-radius: 0 0 13px 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.border-radius-left[data-v-3e200afc] {\n            border-radius: 0 0 0 13px;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.border-radius-right[data-v-3e200afc] {\n            border-radius: 0 0 13px 0;\n}\n.confirm .confirm-wrapper .confirm-content .operate .operate-btn.left[data-v-3e200afc] {\n            border-left: 1px solid #cccccc;\n}\n@-webkit-keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@keyframes confirm-fadein-data-v-3e200afc {\n0% {\n    opacity: 0;\n}\n100% {\n    opacity: 1;\n}\n}\n@-webkit-keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n@keyframes confirm-zoom-data-v-3e200afc {\n0% {\n    -webkit-transform: scale(0);\n            transform: scale(0);\n}\n50% {\n    -webkit-transform: scale(1.1);\n            transform: scale(1.1);\n}\n100% {\n    -webkit-transform: scale(1);\n            transform: scale(1);\n}\n}\n", ""]);
 
 // exports
 
@@ -36261,10 +36261,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      inputValue: '',
       showFlag: false
     };
   },
@@ -36275,6 +36279,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: ''
     },
     description: {
+      type: String,
+      default: ''
+    },
+    showInput: {
+      type: Boolean,
+      default: false
+    },
+    inputPlaceholder: {
       type: String,
       default: ''
     },
@@ -36305,10 +36317,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     cancel: function cancel() {
       this.hide();
       this.$emit('cancel');
+      this.inputValue = '';
     },
     confirm: function confirm() {
       this.hide();
       this.$emit('confirm');
+      this.inputValue = '';
+    }
+  },
+  watch: {
+    inputValue: function inputValue(value) {
+      if (this.showInput) {
+        this.$emit('inputValueChange', value);
+      }
+    },
+    showFlag: function showFlag() {
+      var _this = this;
+
+      setTimeout(function () {
+        _this.$refs.input.focus();
+      }, 350);
     }
   }
 });
@@ -36361,6 +36389,44 @@ var render = function() {
                 ])
               : _vm._e(),
             _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.showInput,
+                    expression: "showInput"
+                  }
+                ],
+                staticClass: "input"
+              },
+              [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.inputValue,
+                      expression: "inputValue"
+                    }
+                  ],
+                  ref: "input",
+                  attrs: { placeholder: _vm.inputPlaceholder },
+                  domProps: { value: _vm.inputValue },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.inputValue = $event.target.value
+                    }
+                  }
+                })
+              ]
+            ),
+            _vm._v(" "),
             _c("div", { staticClass: "operate" }, [
               _c(
                 "div",
@@ -36377,11 +36443,7 @@ var render = function() {
                   class: { "border-radius-left": _vm.showConfirmButton },
                   on: { click: _vm.cancel }
                 },
-                [
-                  _vm._v(
-                    _vm._s(_vm.cancelButtonText ? _vm.cancelButtonText : "取消")
-                  )
-                ]
+                [_vm._v(_vm._s(_vm.cancelButtonText))]
               ),
               _vm._v(" "),
               _c(
@@ -46238,7 +46300,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(188)
+var __vue_template__ = __webpack_require__(193)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46330,13 +46392,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_message_message_box__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__base_position_type_select__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__base_position_type_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__base_position_type_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_position_skill__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_message_message__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_type_select__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_type_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__base_position_type_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Api_position_skill__ = __webpack_require__(192);
 //
 //
 //
@@ -46369,6 +46433,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
@@ -46385,7 +46452,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       workExperienceData: {
         company_name: '', // 公司名称
         start_time: '', // 开始时间
-        end_time: '', // 结束时间
+        end_time: '至今', // 结束时间
         position_type: '', // 职位类型
         work_emphasis: '', // 技能
         responsibility: '' // 工作内容
@@ -46410,7 +46477,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }],
       monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
       position: '',
+      message: '',
+      messageBoxText: '',
       positionSkills: [],
+      workEmphasisArr: [],
       placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
       examples: [// 我的优势例子
       {
@@ -46514,7 +46584,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
       this.position = value.name;
       this.workExperienceData.position_type = value.id;
-      Object(__WEBPACK_IMPORTED_MODULE_7_Api_position_skill__["a" /* getPositionSkill */])(value.id.substr(0, 4) + '00').then(function (response) {
+      Object(__WEBPACK_IMPORTED_MODULE_8_Api_position_skill__["a" /* getPositionSkill */])(value.id.substr(0, 4) + '00').then(function (response) {
         _this.positionSkills = response;
       }).catch(function (error) {
         console.log(error);
@@ -46522,20 +46592,56 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     positionSkillClick: function positionSkillClick() {
       if (!this.workExperienceData.position_type) {
+        this.messageBoxText = '请先选择职位类型';
         this.$refs.messageBox.show();
         return;
       }
       this.$refs.positionSkillCheckbox.show();
+    },
+    savePositionSkill: function savePositionSkill(value) {
+      this.workEmphasisArr = value;
+    },
+    responsibilityOnValueChange: function responsibilityOnValueChange(value) {
+      this.workExperienceData.responsibility = value;
+    },
+    save: function save() {
+      console.log(this.workExperienceData);
+    },
+    _checkData: function _checkData() {
+      if (!this.workExperienceData.company_name) {
+        this.message = '请填写公司名称';
+      } else if (!this.workExperienceData.position_type) {
+        this.message = '请填写职位类型';
+      } else if (!this.workExperienceData.work_emphasis) {
+        this.message = '请选择技能标签';
+      } else if (!this.workExperienceData.start_time || !this.workExperienceData.end_time) {
+        this.messageBoxText = '请选择时间段';
+        this.$refs.messageBox.show();
+        return false;
+      } else if (!this.workExperienceData.responsibility) {
+        this.message = '工作内容的描述很重要，请务必填写。';
+      } else if (this.workExperienceData.responsibility.length <= 20) {
+        this.$refs.responsibilityMessage.show();
+      }
+    }
+  },
+  watch: {
+    position_type: function position_type() {
+      this.workEmphasisArr = [];
+    },
+    workEmphasisArr: function workEmphasisArr(value) {
+      this.workExperienceData.work_emphasis = value.join('・');
     }
   },
   components: {
     dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
     dkfTextarea: __WEBPACK_IMPORTED_MODULE_1__base_dkf_textarea___default.a,
     fullScreenInput: __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default.a,
+    message: __WEBPACK_IMPORTED_MODULE_4_Base_message_message___default.a,
     messageBox: __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box___default.a,
-    picker: __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default.a,
-    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_5__base_position_type_select___default.a,
-    positionSkillCheckbox: __WEBPACK_IMPORTED_MODULE_6__base_position_skill_checkbox___default.a
+    picker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker___default.a,
+    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_6__base_position_type_select___default.a,
+    positionSkillCheckbox: __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox___default.a
   }
 });
 
@@ -50042,6 +50148,352 @@ if (false) {
 
 /***/ }),
 /* 187 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(188)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(190)
+/* template */
+var __vue_template__ = __webpack_require__(191)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-0facddff"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\info\\base\\position-skill-checkbox.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-0facddff", Component.options)
+  } else {
+    hotAPI.reload("data-v-0facddff", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 188 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(189);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("b7230708", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 189 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.position-skill-wrapper[data-v-0facddff] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.position-skill-wrapper .main[data-v-0facddff] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.position-skill-wrapper .main .content[data-v-0facddff] {\n      height: 100%;\n}\n.position-skill-wrapper .main .content .disc[data-v-0facddff] {\n        color: #999;\n        text-align: center;\n        padding: 15px 10px 10px;\n}\n.position-skill-wrapper .main .content .position-skills[data-v-0facddff] {\n        padding: 5px;\n}\n.position-skill-wrapper .main .content .position-skills div[data-v-0facddff] {\n          display: inline-block;\n          border: 1px solid #c2c2c2;\n          border-radius: .1rem;\n          background: #fff;\n          padding: 10px;\n          margin: 5px;\n}\n.position-skill-wrapper .main .content .position-skills div[data-v-0facddff]:last-child {\n            width: 50px;\n            text-align: center;\n            color: #53CAC3;\n            border: 1px dashed #53CAC3;\n}\n.position-skill-wrapper .main .content .position-skills div.active[data-v-0facddff] {\n            color: #fff;\n            background: #53CAC3;\n            border: 1px solid #53CAC3;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 190 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    value: {
+      type: Array,
+      default: []
+    },
+    data: {
+      type: Array,
+      default: []
+    }
+  },
+  data: function data() {
+    return {
+      currentValue: [],
+      showFlag: false,
+      message: '',
+      positionSkillValue: '',
+      positionSkills: [],
+      isChange: false
+    };
+  },
+
+  methods: {
+    show: function show() {
+      this.showFlag = true;
+    },
+    hide: function hide() {
+      this.showFlag = false;
+    },
+    checkbox: function checkbox(item) {
+      this.isChange = true;
+      var index = this.currentValue.indexOf(item);
+      if (index > -1) {
+        this.currentValue.splice(index, 1);
+        return;
+      }
+      if (this.currentValue.length >= 3) {
+        this.message = '最多3个标签';
+        this.$refs.message.show();
+        return;
+      }
+      this.currentValue.push(item);
+    },
+    inArray: function inArray(item) {
+      return this.currentValue.indexOf(item) > -1;
+    },
+    confirm: function confirm() {
+      if (!this.currentValue) {
+        this.message = '至少选择一个标签';
+        this.$refs.message.show();
+        return;
+      }
+      this.$emit('save', this.currentValue);
+      this.hide();
+    },
+    cancel: function cancel() {
+      if (this.isChange) {
+        this.$refs.notSavedYetMessage.show();
+        return;
+      }
+      this.hide();
+    },
+    hideNotSavedYetMessage: function hideNotSavedYetMessage() {
+      this.$refs.notSavedYetMessage.hide();
+    },
+    addPositionSkill: function addPositionSkill() {
+      if (this.currentValue.length >= 3) {
+        this.message = '最多3个标签';
+        this.$refs.message.show();
+        return;
+      }
+      this.isChange = true;
+      this.$refs.inputMessageBox.show();
+    },
+    inputValueChange: function inputValueChange(value) {
+      this.positionSkillValue = value;
+    },
+    savePositionSkill: function savePositionSkill() {
+      if (!this.positionSkillValue) {
+        return;
+      }
+      if (this._getByteLen(this.positionSkillValue) > 12) {
+        this.message = '不超过6个字';
+        this.$refs.message.show();
+        return;
+      }
+      this.positionSkills.push(this.positionSkillValue);
+      this.currentValue.push(this.positionSkillValue);
+    },
+    _getByteLen: function _getByteLen(val) {
+      var len = 0;
+      for (var i = 0; i < val.length; i++) {
+        var a = val.charAt(i);
+        if (a.match(/[^\x00-\xff]/ig) != null) {
+          len += 2;
+        } else {
+          len += 1;
+        }
+      }
+      return len;
+    }
+  },
+  watch: {
+    data: function data(value) {
+      this.positionSkills = value;
+    },
+    showFlag: function showFlag() {
+      this.currentValue = this.value.slice(0);
+      this.isChange = false;
+    }
+  },
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
+    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a
+  }
+});
+
+/***/ }),
+/* 191 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "slide" } }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.showFlag,
+            expression: "showFlag"
+          }
+        ],
+        staticClass: "position-skill-wrapper"
+      },
+      [
+        _c("dkf-header", {
+          attrs: { title: "技能标签", nextText: "确定" },
+          on: { left: _vm.cancel, right: _vm.confirm }
+        }),
+        _vm._v(" "),
+        _c("div", { staticClass: "main" }, [
+          _c("div", { staticClass: "content" }, [
+            _c("div", { staticClass: "disc" }, [
+              _c("p", [_vm._v("输入或选择技能标签，最多3个")])
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "position-skills" },
+              [
+                _vm._l(_vm.positionSkills, function(item) {
+                  return _c(
+                    "div",
+                    {
+                      class: { active: _vm.inArray(item) },
+                      on: {
+                        click: function($event) {
+                          _vm.checkbox(item)
+                        }
+                      }
+                    },
+                    [_vm._v(_vm._s(item))]
+                  )
+                }),
+                _vm._v(" "),
+                _c("div", { on: { click: _vm.addPositionSkill } }, [
+                  _c("i", { staticClass: "icon-jiahao" })
+                ])
+              ],
+              2
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("message-box", { ref: "message", attrs: { message: _vm.message } }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "notSavedYetMessage",
+          attrs: {
+            message: "内容尚未保存，确定放弃？",
+            cancleText: "取消",
+            confirmText: "确定",
+            showConfirmButton: true
+          },
+          on: { confirm: _vm.hide, cancle: _vm.hideNotSavedYetMessage }
+        }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "inputMessageBox",
+          attrs: {
+            message: "输入标签，不超过6个字",
+            showInput: true,
+            showConfirmButton: true
+          },
+          on: {
+            inputValueChange: _vm.inputValueChange,
+            confirm: _vm.savePositionSkill
+          }
+        })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-0facddff", module.exports)
+  }
+}
+
+/***/ }),
+/* 192 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -50065,7 +50517,7 @@ function getPositionSkill(position) {
 }
 
 /***/ }),
-/* 188 */
+/* 193 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50080,10 +50532,7 @@ var render = function() {
         _c("dkf-header", {
           staticClass: "header-wrapper",
           attrs: { title: "创建微简历", nextIcon: "icon-correct" },
-          on: {
-            left: _vm.showFriendlyReminderMessage,
-            right: function($event) {}
-          }
+          on: { left: _vm.showFriendlyReminderMessage, right: _vm.submit }
         }),
         _vm._v(" "),
         _c("main", [
@@ -50163,6 +50612,13 @@ var render = function() {
                   [
                     _c("label", [_vm._v("技能标签")]),
                     _c("span", { staticClass: "item-value" }, [
+                      _vm._v(
+                        _vm._s(
+                          _vm.workEmphasisArr.length
+                            ? _vm.workEmphasisArr.length + "个标签"
+                            : ""
+                        )
+                      ),
                       _c("i", { staticClass: "icon icon-right" })
                     ])
                   ]
@@ -50180,19 +50636,33 @@ var render = function() {
                     placeholder: _vm.placeholder,
                     "max-length": 1600,
                     examples: _vm.examples
+                  },
+                  on: { onValueChange: _vm.responsibilityOnValueChange },
+                  model: {
+                    value: _vm.workExperienceData.responsibility,
+                    callback: function($$v) {
+                      _vm.$set(_vm.workExperienceData, "responsibility", $$v)
+                    },
+                    expression: "workExperienceData.responsibility"
                   }
                 })
               ],
               1
             ),
             _vm._v(" "),
-            _c("div", { staticClass: "theme-button" }, [_vm._v("下一步")])
+            _c(
+              "div",
+              { staticClass: "theme-button", on: { click: _vm.save } },
+              [_vm._v("下一步")]
+            )
           ])
         ]),
         _vm._v(" "),
+        _c("message", { ref: "message", attrs: { message: "message" } }),
+        _vm._v(" "),
         _c("message-box", {
           ref: "messageBox",
-          attrs: { message: "请先选择职位类型" }
+          attrs: { message: _vm.messageBoxText }
         }),
         _vm._v(" "),
         _c("message-box", {
@@ -50205,6 +50675,18 @@ var render = function() {
             showConfirmButton: true
           },
           on: { cancel: _vm.hideFriendlyReminderMessage, confirm: _vm.back }
+        }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "responsibilityMessage",
+          attrs: {
+            message: "直聘君建议",
+            description: "清晰有条理的工作内容，可获得更多的高薪职位！",
+            confirmButtonText: "再改改",
+            cancelButtonText: "就这样",
+            showConfirmButton: true
+          },
+          on: { cancel: _vm.submit, confirm: _vm.responsibilityTextareaFocus }
         }),
         _vm._v(" "),
         _c("full-screen-input", {
@@ -50228,7 +50710,6 @@ var render = function() {
             showToolbar: true
           },
           on: {
-            click: _vm.startOnValuesChange,
             onValuesChange: _vm.startOnValuesChange,
             confirm: _vm.startPickerConfirm
           }
@@ -50242,7 +50723,6 @@ var render = function() {
             showToolbar: true
           },
           on: {
-            click: _vm.endOnValuesChange,
             onValuesChange: _vm.endOnValuesChange,
             confirm: _vm.endPickerConfirm
           }
@@ -50255,7 +50735,15 @@ var render = function() {
         _vm._v(" "),
         _c("position-skill-checkbox", {
           ref: "positionSkillCheckbox",
-          attrs: { data: _vm.positionSkills }
+          attrs: { data: _vm.positionSkills },
+          on: { save: _vm.savePositionSkill },
+          model: {
+            value: _vm.workEmphasisArr,
+            callback: function($$v) {
+              _vm.workEmphasisArr = $$v
+            },
+            expression: "workEmphasisArr"
+          }
         })
       ],
       1
@@ -50273,7 +50761,7 @@ if (false) {
 }
 
 /***/ }),
-/* 189 */
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -51121,7 +51609,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 190 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -61018,19 +61506,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(191);
+module.exports = __webpack_require__(196);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(192);
+module.exports = __webpack_require__(197);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(193);
+module.exports = __webpack_require__(198);
 
 /***/ },
 /* 202 */
@@ -61043,7 +61531,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 191 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61075,7 +61563,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 192 */
+/* 197 */
 /***/ (function(module, exports) {
 
 /*
@@ -61122,7 +61610,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 193 */
+/* 198 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -61134,13 +61622,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 194 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(195);
+var content = __webpack_require__(200);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -61165,7 +61653,7 @@ if(false) {
 }
 
 /***/ }),
-/* 195 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -61179,245 +61667,10 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 196 */
+/* 201 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 197 */,
-/* 198 */,
-/* 199 */,
-/* 200 */,
-/* 201 */,
-/* 202 */,
-/* 203 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(204)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(206)
-/* template */
-var __vue_template__ = __webpack_require__(207)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-0facddff"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\info\\base\\position-skill-checkbox.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-0facddff", Component.options)
-  } else {
-    hotAPI.reload("data-v-0facddff", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 204 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(205);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("b7230708", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-0facddff\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./position-skill-checkbox.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 205 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.position-skill-wrapper[data-v-0facddff] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.position-skill-wrapper .main[data-v-0facddff] {\n    height: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.position-skill-wrapper .main .disc[data-v-0facddff] {\n      color: #999;\n      text-align: center;\n      padding: 10px;\n}\n.position-skill-wrapper .main .position-skills[data-v-0facddff] {\n      padding: 5px;\n}\n.position-skill-wrapper .main .position-skills div[data-v-0facddff] {\n        display: inline-block;\n        border: 1px solid #999;\n        border-radius: .1rem;\n        background: #fff;\n        padding: 10px;\n        margin: 5px;\n}\n.position-skill-wrapper .main .position-skills div.active[data-v-0facddff] {\n          background: #53CAC3;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 206 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    data: {
-      type: Array,
-      default: []
-    }
-  },
-  data: function data() {
-    return {
-      value: [],
-      showFlag: false
-    };
-  },
-
-  methods: {
-    show: function show() {
-      this.showFlag = true;
-    },
-    hide: function hide() {
-      this.showFlag = false;
-    },
-    checkbox: function checkbox(item) {
-      if (this.value.length >= 3) {
-        this.refs.messageBox.show();
-        return;
-      }
-      this.value.push(item);
-    },
-    inArray: function inArray(item) {
-      return this.value.indexOf(item) > -1;
-    }
-  },
-  components: {
-    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
-    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a
-  }
-});
-
-/***/ }),
-/* 207 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "slide" } }, [
-    _c(
-      "div",
-      {
-        directives: [
-          {
-            name: "show",
-            rawName: "v-show",
-            value: _vm.showFlag,
-            expression: "showFlag"
-          }
-        ],
-        staticClass: "position-skill-wrapper"
-      },
-      [
-        _c("dkf-header", { attrs: { title: "技能标签", nextText: "确定" } }),
-        _vm._v(" "),
-        _c("div", { staticClass: "main" }, [
-          _c("div", { staticClass: "disc" }, [
-            _c("p", [_vm._v("输入或选择技能标签，最多3个")])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "position-skills" },
-            _vm._l(_vm.data, function(item) {
-              return _c(
-                "div",
-                {
-                  class: { active: _vm.inArray(item) },
-                  on: {
-                    click: function($event) {
-                      _vm.checkbox(item)
-                    }
-                  }
-                },
-                [_vm._v(_vm._s(item))]
-              )
-            })
-          )
-        ]),
-        _vm._v(" "),
-        _c("message-box", {
-          ref: "messageBox",
-          attrs: { message: "最多3个标签" }
-        })
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-0facddff", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);

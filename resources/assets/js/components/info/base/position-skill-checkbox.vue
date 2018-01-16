@@ -1,16 +1,21 @@
 <template>
     <transition name="slide">
         <div class="position-skill-wrapper" v-show="showFlag">
-            <dkf-header title="技能标签" nextText="确定"></dkf-header>
+            <dkf-header title="技能标签" nextText="确定" @left="cancel" @right="confirm"></dkf-header>
             <div class="main">
-                <div class="disc">
-                    <p>输入或选择技能标签，最多3个</p>
-                </div>
-                <div class="position-skills">
-                    <div v-for="item in data" :class="{'active': inArray(item)}" @click="checkbox(item)">{{ item }}</div>
+                <div class="content">
+                    <div class="disc">
+                        <p>输入或选择技能标签，最多3个</p>
+                    </div>
+                    <div class="position-skills">
+                        <div v-for="item in positionSkills" :class="{'active': inArray(item)}" @click="checkbox(item)">{{ item }}</div>
+                        <div @click="addPositionSkill"><i class="icon-jiahao"></i></div>
+                    </div>
                 </div>
             </div>
-            <message-box message="最多3个标签" ref="messageBox"></message-box>
+            <message-box :message="message" ref="message"></message-box>
+            <message-box message="内容尚未保存，确定放弃？" @confirm="hide" @cancle="hideNotSavedYetMessage" cancleText="取消" confirmText="确定" :showConfirmButton="true" ref="notSavedYetMessage"></message-box>
+            <message-box @inputValueChange="inputValueChange" @confirm="savePositionSkill" message="输入标签，不超过6个字" :showInput="true" :showConfirmButton="true" ref="inputMessageBox"></message-box>
         </div>
     </transition>
 </template>
@@ -21,6 +26,10 @@
 
   export default {
     props: {
+      value: {
+        type: Array,
+        default: []
+      },
       data: {
         type: Array,
         default: []
@@ -28,8 +37,12 @@
     },
     data() {
       return {
-        value: [],
-        showFlag: false
+        currentValue: [],
+        showFlag: false,
+        message: '',
+        positionSkillValue: '',
+        positionSkills: [],
+        isChange: false
       }
     },
     methods: {
@@ -40,14 +53,85 @@
         this.showFlag = false
       },
       checkbox(item) {
-        if (this.value.length >= 3) {
-          this.refs.messageBox.show()
+        this.isChange = true
+        let index = this.currentValue.indexOf(item)
+        if (index > -1) {
+          this.currentValue.splice(index, 1)
           return
         }
-        this.value.push(item)
+        if (this.currentValue.length >= 3) {
+          this.message = '最多3个标签'
+          this.$refs.message.show()
+          return
+        }
+        this.currentValue.push(item)
       },
       inArray(item) {
-        return this.value.indexOf(item) > -1
+        return this.currentValue.indexOf(item) > -1
+      },
+      confirm() {
+        if (!this.currentValue) {
+          this.message = '至少选择一个标签'
+          this.$refs.message.show()
+          return
+        }
+        this.$emit('save', this.currentValue)
+        this.hide()
+      },
+      cancel() {
+        if (this.isChange) {
+          this.$refs.notSavedYetMessage.show()
+          return
+        }
+        this.hide()
+      },
+      hideNotSavedYetMessage() {
+        this.$refs.notSavedYetMessage.hide()
+      },
+      addPositionSkill() {
+        if (this.currentValue.length >= 3) {
+          this.message = '最多3个标签'
+          this.$refs.message.show()
+          return
+        }
+        this.isChange = true
+        this.$refs.inputMessageBox.show()
+      },
+      inputValueChange(value) {
+        this.positionSkillValue = value
+      },
+      savePositionSkill() {
+        if (!this.positionSkillValue) {
+          return
+        }
+        if (this._getByteLen(this.positionSkillValue) > 12) {
+          this.message = '不超过6个字'
+          this.$refs.message.show()
+          return
+        }
+        this.positionSkills.push(this.positionSkillValue)
+        this.currentValue.push(this.positionSkillValue)
+      },
+      _getByteLen(val) {
+        var len = 0
+        for (var i = 0; i < val.length; i++) {
+          var a = val.charAt(i)
+          if (a.match(/[^\x00-\xff]/ig) != null) {
+            len += 2
+          } else {
+            len += 1
+          }
+        }
+        return len
+      }
+    },
+    watch: {
+      data(value) {
+        this.positionSkills = value
+      },
+      showFlag() {
+        this.currentValue = this.value.slice(0)
+        this.isChange = false
       }
     },
     components: {
@@ -65,22 +149,33 @@
         @include allCover()
         background: $bc
         .main
-            height: 100%
+            position: absolute
+            top: 50px
+            bottom: 0
             overflow-y: scroll
             -webkit-overflow-scrolling: touch
-            .disc
-                color: #999
-                text-align: center
-                padding: 10px
-            .position-skills
-                padding: 5px
-                div
-                    display: inline-block
-                    border: 1px solid #999
-                    border-radius: .1rem
-                    background: #fff
-                    padding: 10px
-                    margin: 5px
-                    &.active
-                        background: $color-theme
+            .content
+                height: 100%
+                .disc
+                    color: #999
+                    text-align: center
+                    padding: 15px 10px 10px
+                .position-skills
+                    padding: 5px
+                    div
+                        display: inline-block
+                        border: 1px solid #c2c2c2
+                        border-radius: .1rem
+                        background: #fff
+                        padding: 10px
+                        margin: 5px
+                        &:last-child
+                            width: 50px
+                            text-align: center
+                            color: $color-theme
+                            border: 1px dashed $color-theme
+                        &.active
+                            color: #fff
+                            background: $color-theme
+                            border: 1px solid $color-theme
 </style>

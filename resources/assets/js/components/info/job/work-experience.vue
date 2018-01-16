@@ -1,7 +1,7 @@
 <template>
     <transition name="slide">
         <div class="work-experience-wrapper">
-            <dkf-header title="创建微简历" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="" class="header-wrapper"></dkf-header>
+            <dkf-header title="创建微简历" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="submit" class="header-wrapper"></dkf-header>
             <main>
                 <div class="work-experience">
                     <div class="recent-work-experience">
@@ -10,22 +10,24 @@
                             <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
                             <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time ? workExperienceData.end_time : '至今' }}</span></div></li>
                             <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
-                            <li @click="positionSkillClick" class="active"><label>技能标签</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                            <li @click="positionSkillClick" class="active"><label>技能标签</label><span class="item-value">{{ workEmphasisArr.length ? workEmphasisArr.length + '个标签' : '' }}<i class="icon icon-right"></i></span></li>
                         </ul>
                     </div>
                     <div class="work-content">
-                        <dkf-textarea title="工作内容" :placeholder="placeholder" :max-length="1600" :examples="examples"></dkf-textarea>
+                        <dkf-textarea v-model="workExperienceData.responsibility" @onValueChange="responsibilityOnValueChange" title="工作内容" :placeholder="placeholder" :max-length="1600" :examples="examples"></dkf-textarea>
                     </div>
-                    <div class="theme-button">下一步</div>
+                    <div class="theme-button" @click="save">下一步</div>
                 </div>
             </main>
-            <message-box message="请先选择职位类型" ref="messageBox"></message-box>
+            <message message="message" ref="message"></message>
+            <message-box :message="messageBoxText" ref="messageBox"></message-box>
             <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
+            <message-box message="直聘君建议" description="清晰有条理的工作内容，可获得更多的高薪职位！" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="responsibilityTextareaFocus" ref="responsibilityMessage"></message-box>
             <full-screen-input v-model="workExperienceData.company_name" @saveValue="saveCompanyName" title="公司名称" ref="companyNameInput"></full-screen-input>
-            <picker title="时间段" :slots="startTimePickerSlots" :showToolbar="true" ref="startTimePicker" @click="startOnValuesChange" @onValuesChange="startOnValuesChange" @confirm="startPickerConfirm"></picker>
-            <picker title="时间段" :slots="endTimePickerSlots" :showToolbar="true" ref="endTimePicker" @click="endOnValuesChange" @onValuesChange="endOnValuesChange" @confirm="endPickerConfirm"></picker>
+            <picker title="时间段" :slots="startTimePickerSlots" :showToolbar="true" ref="startTimePicker" @onValuesChange="startOnValuesChange" @confirm="startPickerConfirm"></picker>
+            <picker title="时间段" :slots="endTimePickerSlots" :showToolbar="true" ref="endTimePicker" @onValuesChange="endOnValuesChange" @confirm="endPickerConfirm"></picker>
             <position-type-select @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
-            <position-skill-checkbox :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
+            <position-skill-checkbox @save="savePositionSkill" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
         </div>
     </transition>
 </template>
@@ -35,6 +37,7 @@
   import dkfTextarea from '../base/dkf-textarea'
   import fullScreenInput from '../base/full-screen-input'
   import messageBox from 'Base/message/message-box'
+  import message from 'Base/message/message'
   import picker from 'Base/picker/picker'
   import positionTypeSelect from '../base/position-type-select'
   import positionSkillCheckbox from '../base/position-skill-checkbox'
@@ -46,7 +49,7 @@
         workExperienceData: {
           company_name: '', // 公司名称
           start_time: '', // 开始时间
-          end_time: '', // 结束时间
+          end_time: '至今', // 结束时间
           position_type: '', // 职位类型
           work_emphasis: '', // 技能
           responsibility: '' // 工作内容
@@ -77,7 +80,10 @@
         ],
         monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
         position: '',
+        message: '',
+        messageBoxText: '',
         positionSkills: [],
+        workEmphasisArr: [],
         placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
         examples: [ // 我的优势例子
           {
@@ -191,16 +197,52 @@
       },
       positionSkillClick() {
         if (!this.workExperienceData.position_type) {
+          this.messageBoxText = '请先选择职位类型'
           this.$refs.messageBox.show()
           return
         }
         this.$refs.positionSkillCheckbox.show()
+      },
+      savePositionSkill(value) {
+        this.workEmphasisArr = value
+      },
+      responsibilityOnValueChange(value) {
+        this.workExperienceData.responsibility = value
+      },
+      save() {
+        console.log(this.workExperienceData)
+      },
+      _checkData() {
+        if (!this.workExperienceData.company_name) {
+          this.message = '请填写公司名称'
+        } else if (!this.workExperienceData.position_type) {
+          this.message = '请填写职位类型'
+        } else if (!this.workExperienceData.work_emphasis) {
+          this.message = '请选择技能标签'
+        } else if (!this.workExperienceData.start_time || !this.workExperienceData.end_time) {
+          this.messageBoxText = '请选择时间段'
+          this.$refs.messageBox.show()
+          return false
+        } else if (!this.workExperienceData.responsibility) {
+          this.message = '工作内容的描述很重要，请务必填写。'
+        } else if (this.workExperienceData.responsibility.length <= 20) {
+          this.$refs.responsibilityMessage.show()
+        }
+      }
+    },
+    watch: {
+      position_type() {
+        this.workEmphasisArr = []
+      },
+      workEmphasisArr(value) {
+        this.workExperienceData.work_emphasis = value.join('・')
       }
     },
     components: {
       dkfHeader,
       dkfTextarea,
       fullScreenInput,
+      message,
       messageBox,
       picker,
       positionTypeSelect,
