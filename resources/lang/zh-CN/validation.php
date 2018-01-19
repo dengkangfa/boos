@@ -139,6 +139,8 @@ return [
         'birth_date'            => '出生年月',
         'start_year'            => '开始年份',
         'end_year'            => '结束年份',
+        'start_time'            => '开始时间',
+        'end_time'            => '结束时间',
         'day'                   => '天',
         'month'                 => '月',
         'year'                  => '年',

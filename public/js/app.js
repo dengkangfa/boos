@@ -900,57 +900,6 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(74)
-}
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(76)
-/* template */
-var __vue_template__ = __webpack_require__(77)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-85152abc"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources\\assets\\js\\components\\base\\spinner\\spinner.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-85152abc", Component.options)
-  } else {
-    hotAPI.reload("data-v-85152abc", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
   __webpack_require__(70)
 }
 var normalizeComponent = __webpack_require__(0)
@@ -986,6 +935,57 @@ if (false) {(function () {
     hotAPI.createRecord("data-v-472dea7e", Component.options)
   } else {
     hotAPI.reload("data-v-472dea7e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(74)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(76)
+/* template */
+var __vue_template__ = __webpack_require__(77)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-85152abc"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\spinner\\spinner.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-85152abc", Component.options)
+  } else {
+    hotAPI.reload("data-v-85152abc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -14087,19 +14087,19 @@ function updateLink (link, options, obj) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(168)
+  __webpack_require__(209)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(170)
 /* template */
-var __vue_template__ = __webpack_require__(171)
+var __vue_template__ = __webpack_require__(211)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-2212a4c8"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -14136,7 +14136,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(31);
-module.exports = __webpack_require__(201);
+module.exports = __webpack_require__(202);
 
 
 /***/ }),
@@ -14153,12 +14153,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(58);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(194);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(195);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(195);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(196);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(199);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(200);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
 __webpack_require__(32);
 
@@ -35684,9 +35684,9 @@ module.exports = function listToStyles (parentId, list) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__ = __webpack_require__(26);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_timer_btn_TimerBtn_vue__);
@@ -35839,7 +35839,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.message[data-v-472dea7e] {\n  position: absolute;\n  z-index: 998;\n  top: 42%;\n  left: 50%;\n  padding: 0.4rem 0;\n  width: 60%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.7);\n  border-radius: .8rem;\n  color: #ffffff;\n  font-size: 0.4rem;\n}\n.message p[data-v-472dea7e] {\n    text-align: center;\n}\n", ""]);
+exports.push([module.i, "\n.message[data-v-472dea7e] {\n  position: absolute;\n  z-index: 998;\n  top: 42%;\n  left: 50%;\n  padding: 0.4rem;\n  width: 60%;\n  -webkit-transform: translate(-50%, -50%);\n          transform: translate(-50%, -50%);\n  background: rgba(0, 0, 0, 0.7);\n  border-radius: .8rem;\n  color: #ffffff;\n  font-size: 0.4rem;\n}\n.message p[data-v-472dea7e] {\n    text-align: center;\n}\n", ""]);
 
 // exports
 
@@ -36335,7 +36335,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       var _this = this;
 
       setTimeout(function () {
-        _this.$refs.input.focus();
+        if (_this.$refs.input) {
+          _this.$refs.input.focus();
+        }
       }, 350);
     }
   }
@@ -36864,7 +36866,7 @@ module.exports = "/images/select.png?b2fd849798eb41769c92a07eaee3a23a";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_box_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Mixin_mixin_js__ = __webpack_require__(16);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Api_user__ = __webpack_require__(17);
@@ -37383,7 +37385,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_timer_btn_TimerBtn_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_timer_btn_TimerBtn_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_message_message_box_vue__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner_vue__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner_vue__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Api_user_js__ = __webpack_require__(17);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Api_config_js__ = __webpack_require__(11);
@@ -38223,9 +38225,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_picker_job_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_Base_picker_job_date_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_picker_birth_date_picker__ = __webpack_require__(149);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_picker_birth_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_Base_picker_birth_date_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_spinner_spinner__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_spinner_spinner__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_Base_spinner_spinner__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_Base_message_message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_vuex__ = __webpack_require__(14);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Api_config__ = __webpack_require__(11);
@@ -44013,7 +44015,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
 //
 //
@@ -44439,7 +44441,7 @@ module.exports = Component.exports
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message__);
 //
 //
@@ -44869,7 +44871,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-56fd15d6] {\n    position: fixed;\n    height: 50px;\n    left: 0;\n    right: 0;\n    top: 0;\n}\n.education-experience-wrapper main[data-v-56fd15d6] {\n    position: absolute;\n    top: 50px;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper main .education-experience-content[data-v-56fd15d6] {\n      width: 100%;\n}\n.education-experience-wrapper main .education-experience-content .education-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .education-experience h3[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h3[data-v-56fd15d6] {\n        height: 40px;\n        line-height: 40px;\n        padding-left: 10px;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value[data-v-56fd15d6] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value.placeholder[data-v-56fd15d6] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li i.icon[data-v-56fd15d6] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience[data-v-56fd15d6] {\n        width: 100%;\n        margin-bottom: 1rem;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text[data-v-56fd15d6] {\n          padding: 10px 10px 0;\n          background: #ffffff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n            width: 100%;\n            height: 150px;\n            font-size: .37rem;\n            color: rgba(0, 0, 0, 0.5);\n            border: none;\n            outline: none;\n            resize: none;\n            padding: 0;\n            border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-webkit-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]:-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num[data-v-56fd15d6] {\n            height: 45px;\n            line-height: 45px;\n            text-align: right;\n            font-size: .3rem;\n            background: #fff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num[data-v-56fd15d6] {\n              color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num.exceed[data-v-56fd15d6] {\n                color: red;\n}\n.education-experience-wrapper main .education-experience-content .next-button[data-v-56fd15d6] {\n        height: 50px;\n        line-height: 50px;\n        font-size: 0.45rem;\n        text-align: center;\n        background: #53CAC3;\n        border-radius: 0.15rem;\n        color: #fff;\n        margin: 10px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
+exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-56fd15d6] {\n    position: fixed;\n    height: 50px;\n    left: 0;\n    right: 0;\n    top: 0;\n}\n.education-experience-wrapper main[data-v-56fd15d6] {\n    position: absolute;\n    top: 50px;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper main .education-experience-content[data-v-56fd15d6] {\n      width: 100%;\n}\n.education-experience-wrapper main .education-experience-content .education-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .education-experience h3[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h3[data-v-56fd15d6] {\n        height: 40px;\n        line-height: 40px;\n        padding-left: 10px;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li[data-v-56fd15d6] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value[data-v-56fd15d6] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li .item-value.placeholder[data-v-56fd15d6] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.education-experience-wrapper main .education-experience-content .education-experience .education-experience-items li i.icon[data-v-56fd15d6] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience[data-v-56fd15d6] {\n        width: 100%;\n        margin-bottom: 1rem;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text[data-v-56fd15d6] {\n          padding: 10px 10px 0;\n          background: #ffffff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n            width: 100%;\n            height: 150px;\n            font-size: .37rem;\n            color: rgba(0, 0, 0, 0.5);\n            border: none;\n            outline: none;\n            resize: none;\n            padding: 0;\n            border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-webkit-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]:-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num[data-v-56fd15d6] {\n            height: 45px;\n            line-height: 45px;\n            text-align: right;\n            font-size: .3rem;\n            background: #fff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num[data-v-56fd15d6] {\n              color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num.exceed[data-v-56fd15d6] {\n                color: red;\n}\n.education-experience-wrapper main .education-experience-content .next-button[data-v-56fd15d6] {\n        height: 50px;\n        line-height: 50px;\n        font-size: 0.45rem;\n        text-align: center;\n        background: #53CAC3;\n        border-radius: 0.15rem;\n        color: #fff;\n        margin: 10px;\n}\n.slide-enter-active[data-v-56fd15d6], .slide-leave-active[data-v-56fd15d6] {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.slide-enter[data-v-56fd15d6], .slide-leave-to[data-v-56fd15d6] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n", ""]);
 
 // exports
 
@@ -44890,7 +44892,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_config__ = __webpack_require__(11);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_education_experience__ = __webpack_require__(162);
@@ -45373,10 +45375,10 @@ function createdEducationExperience(requestData) {
   });
 }
 
-function updateEducationExperience(responseData) {
-  var url = 'api/education_infos/' + responseData.id;
+function updateEducationExperience(requestData) {
+  var url = 'api/education_infos/' + requestData.id;
 
-  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(url, responseData).then(function (response) {
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(url, requestData).then(function (response) {
     return Promise.resolve(response.data);
   }).catch(function (error) {
     return Promise.reject(error.response.data);
@@ -45754,9 +45756,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_message_message__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_spinner_spinner__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__base_dkf_textarea__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__base_dkf_textarea___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__base_dkf_textarea__);
@@ -45823,9 +45825,6 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       }],
       exampleShowFlag: false
     };
-  },
-  created: function created() {
-    this.advantage = this.user.advantage;
   },
 
   methods: {
@@ -45906,46 +45905,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 });
 
 /***/ }),
-/* 168 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(169);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("5d0d968b", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 169 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.dkf-textarea {\n  width: 100%;\n  font-size: .37rem;\n}\n.dkf-textarea .title {\n    height: 40px;\n    line-height: 40px;\n    padding-left: 10px;\n    color: rgba(0, 0, 0, 0.5);\n}\n.dkf-textarea .text {\n    padding: 10px 10px 0;\n    background: #ffffff;\n}\n.dkf-textarea .text textarea {\n      width: 100%;\n      height: 150px;\n      font-size: .37rem;\n      color: rgba(0, 0, 0, 0.5);\n      border: none;\n      outline: none;\n      resize: none;\n      padding: 0;\n      border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .text textarea {\n          border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .text textarea {\n          border-bottom: 0.33333px solid #e9efef;\n}\n}\n.dkf-textarea .text textarea::-webkit-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea:-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea::-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea::placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text .text-bottom {\n      height: 45px;\n      line-height: 45px;\n      color: #53CAC3;\n      background: #fff;\n}\n.dkf-textarea .text .text-bottom .input-num {\n        font-size: .3rem;\n}\n.dkf-textarea .text .text-bottom .input-num .max-length {\n          color: #999;\n}\n.dkf-textarea .text .text-bottom .input-num.exceed {\n          color: red;\n}\n.dkf-textarea .example {\n    color: #ffffff;\n    background: #53CAC3;\n    opacity: 0.8;\n    border-radius: .1rem;\n    padding: 10px 10px 0;\n    margin: 20px 10px 30px;\n}\n.dkf-textarea .example:before {\n      position: absolute;\n      display: block;\n      width: 0;\n      height: 0;\n      border: 10px solid transparent;\n      pointer-events: none;\n      content: \"\";\n      border-bottom-color: #53CAC3;\n      -webkit-transform: translate3d(5px, -150%, 0);\n              transform: translate3d(5px, -150%, 0);\n}\n.dkf-textarea .example .example-header {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      height: 25px;\n      line-height: 25px;\n      border-bottom: 1px solid #ffffff;\n      padding-bottom: 5px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .example .example-header {\n          border-bottom: 0.5px solid #ffffff;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .example .example-header {\n          border-bottom: 0.33333px solid #ffffff;\n}\n}\n.dkf-textarea .example .example-header .left {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        height: 25px;\n        text-align: center;\n}\n.dkf-textarea .example .example-header .left .position {\n          display: block;\n          padding: 10px;\n}\n.dkf-textarea .example .example-header .avatar {\n        border-radius: 50%;\n}\n.dkf-textarea .example .example-content {\n      font-size: .3rem;\n      line-height: .4rem;\n      padding: .4rem 0 .4rem;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 168 */,
+/* 169 */,
 /* 170 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -46007,9 +45968,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       currentExampleIndex: -1
     };
   },
-  created: function created() {
-    this.currentValue = this.value;
-  },
 
   methods: {
     toggleExampleShowFlag: function toggleExampleShowFlag() {
@@ -46038,6 +45996,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   },
   watch: {
+    value: function value(_value) {
+      this.currentValue = _value;
+    },
     currentValue: function currentValue(value) {
       this.$emit('onValueChange', value);
     }
@@ -46045,127 +46006,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 171 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "dkf-textarea" },
-    [
-      _vm.title
-        ? _c("h3", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("div", { staticClass: "text" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.currentValue,
-              expression: "currentValue"
-            }
-          ],
-          ref: "dkfTextarea",
-          staticClass: "item-value",
-          attrs: {
-            maxlength: _vm.maxLength !== -1 ? _vm.maxLength : "",
-            mixlength: "2",
-            placeholder: _vm.placeholder
-          },
-          domProps: { value: _vm.currentValue },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.currentValue = $event.target.value
-            }
-          }
-        }),
-        _vm._v(" "),
-        _c("p", { staticClass: "text-bottom" }, [
-          _vm.examples.length
-            ? _c("span", { on: { click: _vm.toggleExampleShowFlag } }, [
-                _vm._v("看看别人怎么写")
-              ])
-            : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "span",
-            {
-              staticClass: "input-num right-float",
-              class: { exceed: _vm.isExceed }
-            },
-            [
-              _vm._v(_vm._s(_vm.currentValue.length) + "/"),
-              _c("span", { staticClass: "max-length" }, [
-                _vm._v(_vm._s(_vm.maxLength))
-              ])
-            ]
-          )
-        ])
-      ]),
-      _vm._v(" "),
-      _vm._l(_vm.examples, function(example, index) {
-        return _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: index === _vm.currentExampleIndex && _vm.exampleShowFlag,
-                expression: "index === currentExampleIndex && exampleShowFlag"
-              }
-            ],
-            staticClass: "example"
-          },
-          [
-            _c("div", { staticClass: "example-header" }, [
-              _c("div", { staticClass: "left" }, [
-                _c("img", {
-                  staticClass: "avatar",
-                  attrs: { src: example.avatar, width: "24", height: "24" }
-                }),
-                _vm._v(" "),
-                _c("span", { staticClass: "position" }, [
-                  _vm._v(_vm._s(example.position))
-                ])
-              ]),
-              _vm._v(" "),
-              _c("span", { staticClass: "replace", on: { click: _vm.next } }, [
-                _vm._v("换一个")
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "example-content" }, [
-              _vm._v(
-                "\n            " + _vm._s(example.advantage) + "\n        "
-              )
-            ])
-          ]
-        )
-      })
-    ],
-    2
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-2212a4c8", module.exports)
-  }
-}
-
-/***/ }),
+/* 171 */,
 /* 172 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -46202,11 +46043,11 @@ var render = function() {
                   exampleShowFlagChange: _vm.exampleShowFlagChange
                 },
                 model: {
-                  value: _vm.advantage,
+                  value: _vm.user.advantage,
                   callback: function($$v) {
-                    _vm.advantage = $$v
+                    _vm.$set(_vm.user, "advantage", $$v)
                   },
-                  expression: "advantage"
+                  expression: "user.advantage"
                 }
               }),
               _vm._v(" "),
@@ -46300,7 +46141,7 @@ var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(176)
 /* template */
-var __vue_template__ = __webpack_require__(193)
+var __vue_template__ = __webpack_require__(194)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -46373,7 +46214,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.work-experience-wrapper[data-v-0a134330] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.work-experience-wrapper .header-wrapper[data-v-0a134330] {\n    position: fixed;\n    width: 100%;\n    height: 50px;\n    right: 0;\n    top: 0;\n}\n.work-experience-wrapper main[data-v-0a134330] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.work-experience-wrapper main h3[data-v-0a134330] {\n      height: 40px;\n      line-height: 40px;\n      padding-left: 10px;\n      font-size: .3rem;\n      color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience[data-v-0a134330] {\n      height: 100%;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.active[data-v-0a134330]:active {\n          background: #d9d9d9;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span[data-v-0a134330] {\n          display: inline-block;\n          width: 50px;\n          padding: 0 10px;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span.start-time[data-v-0a134330] {\n            width: 70px;\n            text-align: right;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value[data-v-0a134330] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value.placeholder[data-v-0a134330] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li i.icon[data-v-0a134330] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.work-experience-wrapper main .work-experience div.theme-button[data-v-0a134330] {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n\n/*.slide-enter-active, .slide-leave-active*/\n/*transition: all .3s*/\n/*.slide-enter, .slide-leave-to*/\n/*transform: translate3d(100%, 0, 0)*/\n", ""]);
+exports.push([module.i, "\n.work-experience-wrapper[data-v-0a134330] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.work-experience-wrapper .header-wrapper[data-v-0a134330] {\n    position: fixed;\n    width: 100%;\n    height: 50px;\n    right: 0;\n    top: 0;\n}\n.work-experience-wrapper main[data-v-0a134330] {\n    position: absolute;\n    top: 50px;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.work-experience-wrapper main h3[data-v-0a134330] {\n      height: 40px;\n      line-height: 40px;\n      padding-left: 10px;\n      font-size: .3rem;\n      color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience[data-v-0a134330] {\n      height: 100%;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        height: 45px;\n        line-height: 45px;\n        border-top: 1px solid #e9efef;\n        padding: 0 0.3rem;\n        background: #ffffff;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li[data-v-0a134330] {\n            border-top: 0.33333px solid #e9efef;\n}\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.active[data-v-0a134330]:active {\n          background: #d9d9d9;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span[data-v-0a134330] {\n          display: inline-block;\n          width: 50px;\n          padding: 0 10px;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li.period .item-value span.start-time[data-v-0a134330] {\n            width: 70px;\n            text-align: right;\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value[data-v-0a134330] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li .item-value.placeholder[data-v-0a134330] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.work-experience-wrapper main .work-experience .recent-work-experience .recent-work-experience-items li i.icon[data-v-0a134330] {\n          font-size: .3rem;\n          color: #53CAC3;\n}\n.work-experience-wrapper main .work-experience div.theme-button[data-v-0a134330] {\n        margin-top: 20px;\n        margin-bottom: 20px;\n}\n.slide-enter-active[data-v-0a134330], .slide-leave-active[data-v-0a134330] {\n  -webkit-transition: all .3s;\n  transition: all .3s;\n}\n.slide-enter[data-v-0a134330], .slide-leave-to[data-v-0a134330] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n", ""]);
 
 // exports
 
@@ -46392,15 +46233,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box__ = __webpack_require__(5);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_message_message_box__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_message_message__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_message_message__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_message_message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_type_select__ = __webpack_require__(177);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__base_position_type_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__base_position_type_select__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox__ = __webpack_require__(187);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Api_position_skill__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_spinner_spinner__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_Base_spinner_spinner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_type_select__ = __webpack_require__(177);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_position_type_select___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__base_position_type_select__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__base_position_skill_checkbox__ = __webpack_require__(187);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__base_position_skill_checkbox___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8__base_position_skill_checkbox__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Api_config__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_Api_position_skill__ = __webpack_require__(192);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Api_work_experience__ = __webpack_require__(193);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__base_positions__ = __webpack_require__(185);
 //
 //
 //
@@ -46435,6 +46281,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
+
+
+
 
 
 
@@ -46452,7 +46303,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       workExperienceData: {
         company_name: '', // 公司名称
         start_time: '', // 开始时间
-        end_time: '至今', // 结束时间
+        end_time: -1, // 结束时间
         position_type: '', // 职位类型
         work_emphasis: '', // 技能
         responsibility: '' // 工作内容
@@ -46481,6 +46332,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       messageBoxText: '',
       positionSkills: [],
       workEmphasisArr: [],
+      spinner: false,
       placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
       examples: [// 我的优势例子
       {
@@ -46507,7 +46359,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     };
   },
   created: function created() {
+    var _this = this;
+
     this.init();
+    // 请求当前登录用户的教育经历
+    Object(__WEBPACK_IMPORTED_MODULE_11_Api_work_experience__["b" /* getWorkExperience */])().then(function (response) {
+      if (response.code === __WEBPACK_IMPORTED_MODULE_9_Api_config__["a" /* ERR_OK */]) {
+        _this.workExperienceData = response.data;
+        _this.workEmphasisArr = _this.workExperienceData.work_emphasis.split('・');
+        _this._getPositionSkill(_this.workExperienceData.position_type.toString().substr(0, 4) + '00');
+        // 查询position_type index对应的职位类型名称
+        for (var x in __WEBPACK_IMPORTED_MODULE_12__base_positions__["a" /* default */]) {
+          for (var y in __WEBPACK_IMPORTED_MODULE_12__base_positions__["a" /* default */][x]) {
+            if (_this.workExperienceData.position_type == y) {
+              _this.position = __WEBPACK_IMPORTED_MODULE_12__base_positions__["a" /* default */][x][y];
+              return;
+            }
+          }
+        }
+      }
+    });
   },
 
   methods: {
@@ -46569,23 +46440,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       if (!values[1]) {
         this.workExperienceData.start_time = values[0];
       } else {
-        this.workExperienceData.start_time = values[0] + '.' + (values[1] < 10 ? '0' + values[1] : values[1]);
+        this.workExperienceData.start_time = values[0] + '-' + (values[1] < 10 ? '0' + values[1] : values[1]);
       }
     },
     endPickerConfirm: function endPickerConfirm(values) {
       if (!values[1]) {
-        this.workExperienceData.end_time = values[0];
+        this.workExperienceData.end_time = -1;
       } else {
-        this.workExperienceData.end_time = values[0] + '.' + (values[1] < 10 ? '0' + values[1] : values[1]);
+        this.workExperienceData.end_time = values[0] + '-' + (values[1] < 10 ? '0' + values[1] : values[1]);
       }
     },
     positionSelected: function positionSelected(value) {
-      var _this = this;
-
       this.position = value.name;
       this.workExperienceData.position_type = value.id;
-      Object(__WEBPACK_IMPORTED_MODULE_8_Api_position_skill__["a" /* getPositionSkill */])(value.id.substr(0, 4) + '00').then(function (response) {
-        _this.positionSkills = response;
+      this._getPositionSkill(value.id.substr(0, 4) + '00');
+      this.workEmphasisArr = [];
+    },
+    _getPositionSkill: function _getPositionSkill(positonLv2) {
+      var _this2 = this;
+
+      Object(__WEBPACK_IMPORTED_MODULE_10_Api_position_skill__["a" /* getPositionSkill */])(positonLv2).then(function (response) {
+        _this2.positionSkills = response;
       }).catch(function (error) {
         console.log(error);
       });
@@ -46604,8 +46479,46 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     responsibilityOnValueChange: function responsibilityOnValueChange(value) {
       this.workExperienceData.responsibility = value;
     },
+    exampleShowFlagChange: function exampleShowFlagChange(showFlag) {
+      var _this3 = this;
+
+      if (showFlag) {
+        this.$nextTick(function () {
+          //            this.$refs.main.style.transition = 'all .3s'
+          _this3.$refs.main.scrollTop = 9999;
+        });
+      }
+    },
+    responsibilityTextareaFocus: function responsibilityTextareaFocus() {
+      this.$refs.responsibilityTextarea.textareaFoucs();
+    },
     save: function save() {
-      console.log(this.workExperienceData);
+      if (this._checkData()) {
+        this.submit();
+      }
+    },
+    submit: function submit() {
+      var _this4 = this;
+
+      var handle = void 0;
+      if (this.workExperienceData.id) {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_11_Api_work_experience__["c" /* updateWorkExperience */])(this.workExperienceData);
+      } else {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_11_Api_work_experience__["a" /* createdWorkExperience */])(this.workExperienceData);
+      }
+      this.spinner = true;
+      handle.then(function (response) {
+        _this4.spinner = false;
+        if (response.code === __WEBPACK_IMPORTED_MODULE_9_Api_config__["a" /* ERR_OK */]) {
+          _this4.$router.push({ 'name': 'job-education' });
+        }
+      }).catch(function (error) {
+        _this4.spinning = false;
+        if (!error.success && error.code === __WEBPACK_IMPORTED_MODULE_9_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
+          _this4.message = error.message;
+          _this4.$refs.message.show();
+        }
+      });
     },
     _checkData: function _checkData() {
       if (!this.workExperienceData.company_name) {
@@ -46622,7 +46535,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.message = '工作内容的描述很重要，请务必填写。';
       } else if (this.workExperienceData.responsibility.length <= 20) {
         this.$refs.responsibilityMessage.show();
+        return false;
+      } else {
+        return true;
       }
+      this.$refs.message.show();
+      return false;
     }
   },
   watch: {
@@ -46640,8 +46558,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     message: __WEBPACK_IMPORTED_MODULE_4_Base_message_message___default.a,
     messageBox: __WEBPACK_IMPORTED_MODULE_3_Base_message_message_box___default.a,
     picker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_picker___default.a,
-    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_6__base_position_type_select___default.a,
-    positionSkillCheckbox: __WEBPACK_IMPORTED_MODULE_7__base_position_skill_checkbox___default.a
+    spinner: __WEBPACK_IMPORTED_MODULE_6_Base_spinner_spinner___default.a,
+    positionTypeSelect: __WEBPACK_IMPORTED_MODULE_7__base_position_type_select___default.a,
+    positionSkillCheckbox: __WEBPACK_IMPORTED_MODULE_8__base_position_skill_checkbox___default.a
   }
 });
 
@@ -50518,6 +50437,48 @@ function getPositionSkill(position) {
 
 /***/ }),
 /* 193 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = getWorkExperience;
+/* harmony export (immutable) */ __webpack_exports__["a"] = createdWorkExperience;
+/* harmony export (immutable) */ __webpack_exports__["c"] = updateWorkExperience;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+function getWorkExperience() {
+  var url = 'api/me/work_experience';
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+function createdWorkExperience(requestData) {
+  var url = 'api/work_experiences';
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, requestData).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+function updateWorkExperience(requestData) {
+  var url = 'api/work_experiences/' + requestData.id;
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(url, requestData).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+/***/ }),
+/* 194 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -50532,10 +50493,10 @@ var render = function() {
         _c("dkf-header", {
           staticClass: "header-wrapper",
           attrs: { title: "创建微简历", nextIcon: "icon-correct" },
-          on: { left: _vm.showFriendlyReminderMessage, right: _vm.submit }
+          on: { left: _vm.showFriendlyReminderMessage, right: _vm.save }
         }),
         _vm._v(" "),
-        _c("main", [
+        _c("main", { ref: "main" }, [
           _c("div", { staticClass: "work-experience" }, [
             _c("div", { staticClass: "recent-work-experience" }, [
               _c("h3", [_vm._v("最近一份工作经历")]),
@@ -50569,7 +50530,10 @@ var render = function() {
                         _vm._v(
                           _vm._s(
                             _vm.workExperienceData.start_time
-                              ? _vm.workExperienceData.start_time
+                              ? _vm.workExperienceData.start_time.replace(
+                                  /-/,
+                                  "."
+                                )
                               : "请选择"
                           )
                         )
@@ -50579,8 +50543,8 @@ var render = function() {
                     _c("span", { on: { click: _vm.showEndTimePicker } }, [
                       _vm._v(
                         _vm._s(
-                          _vm.workExperienceData.end_time
-                            ? _vm.workExperienceData.end_time
+                          _vm.workExperienceData.end_time != -1
+                            ? _vm.workExperienceData.end_time.replace(/-/, ".")
                             : "至今"
                         )
                       )
@@ -50631,13 +50595,17 @@ var render = function() {
               { staticClass: "work-content" },
               [
                 _c("dkf-textarea", {
+                  ref: "responsibilityTextarea",
                   attrs: {
                     title: "工作内容",
                     placeholder: _vm.placeholder,
                     "max-length": 1600,
                     examples: _vm.examples
                   },
-                  on: { onValueChange: _vm.responsibilityOnValueChange },
+                  on: {
+                    onValueChange: _vm.responsibilityOnValueChange,
+                    exampleShowFlagChange: _vm.exampleShowFlagChange
+                  },
                   model: {
                     value: _vm.workExperienceData.responsibility,
                     callback: function($$v) {
@@ -50658,7 +50626,7 @@ var render = function() {
           ])
         ]),
         _vm._v(" "),
-        _c("message", { ref: "message", attrs: { message: "message" } }),
+        _c("message", { ref: "message", attrs: { message: _vm.message } }),
         _vm._v(" "),
         _c("message-box", {
           ref: "messageBox",
@@ -50730,7 +50698,14 @@ var render = function() {
         _vm._v(" "),
         _c("position-type-select", {
           ref: "positionTypeSelect",
-          on: { selected: _vm.positionSelected }
+          on: { selected: _vm.positionSelected },
+          model: {
+            value: _vm.workExperienceData.position_type,
+            callback: function($$v) {
+              _vm.$set(_vm.workExperienceData, "position_type", $$v)
+            },
+            expression: "workExperienceData.position_type"
+          }
         }),
         _vm._v(" "),
         _c("position-skill-checkbox", {
@@ -50744,6 +50719,18 @@ var render = function() {
             },
             expression: "workEmphasisArr"
           }
+        }),
+        _vm._v(" "),
+        _c("spinner", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.spinner,
+              expression: "spinner"
+            }
+          ],
+          attrs: { text: "保存中" }
         })
       ],
       1
@@ -50761,7 +50748,7 @@ if (false) {
 }
 
 /***/ }),
-/* 194 */
+/* 195 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
@@ -51609,7 +51596,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 195 */
+/* 196 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -61506,19 +61493,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(196);
+module.exports = __webpack_require__(197);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(197);
+module.exports = __webpack_require__(198);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(198);
+module.exports = __webpack_require__(199);
 
 /***/ },
 /* 202 */
@@ -61531,7 +61518,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 196 */
+/* 197 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -61563,7 +61550,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 197 */
+/* 198 */
 /***/ (function(module, exports) {
 
 /*
@@ -61610,7 +61597,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 198 */
+/* 199 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -61622,13 +61609,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 199 */
+/* 200 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(200);
+var content = __webpack_require__(201);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -61653,7 +61640,7 @@ if(false) {
 }
 
 /***/ }),
-/* 200 */
+/* 201 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -61667,10 +61654,177 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 201 */
+/* 202 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 203 */,
+/* 204 */,
+/* 205 */,
+/* 206 */,
+/* 207 */,
+/* 208 */,
+/* 209 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(210);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("7a59425e", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-2212a4c8\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./dkf-textarea.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 210 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.dkf-textarea[data-v-2212a4c8] {\n  width: 100%;\n  font-size: .37rem;\n}\n.dkf-textarea .title[data-v-2212a4c8] {\n    height: 40px;\n    line-height: 40px;\n    padding-left: 10px;\n    color: rgba(0, 0, 0, 0.5);\n}\n.dkf-textarea .text[data-v-2212a4c8] {\n    padding: 10px 10px 0;\n    background: #ffffff;\n}\n.dkf-textarea .text textarea[data-v-2212a4c8] {\n      width: 100%;\n      height: 150px;\n      font-size: .37rem;\n      color: rgba(0, 0, 0, 0.5);\n      border: none;\n      outline: none;\n      resize: none;\n      padding: 0;\n      border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .text textarea[data-v-2212a4c8] {\n          border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .text textarea[data-v-2212a4c8] {\n          border-bottom: 0.33333px solid #e9efef;\n}\n}\n.dkf-textarea .text textarea[data-v-2212a4c8]::-webkit-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea[data-v-2212a4c8]:-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea[data-v-2212a4c8]::-ms-input-placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text textarea[data-v-2212a4c8]::placeholder {\n        color: #bdbdbd;\n}\n.dkf-textarea .text .text-bottom[data-v-2212a4c8] {\n      height: 45px;\n      line-height: 45px;\n      color: #53CAC3;\n      background: #fff;\n}\n.dkf-textarea .text .text-bottom .input-num[data-v-2212a4c8] {\n        font-size: .3rem;\n}\n.dkf-textarea .text .text-bottom .input-num .max-length[data-v-2212a4c8] {\n          color: #999;\n}\n.dkf-textarea .text .text-bottom .input-num.exceed[data-v-2212a4c8] {\n          color: red;\n}\n.dkf-textarea .example[data-v-2212a4c8] {\n    color: #ffffff;\n    background: #53CAC3;\n    opacity: 0.8;\n    border-radius: .1rem;\n    padding: 10px 10px 0;\n    margin: 20px 10px 30px;\n}\n.dkf-textarea .example[data-v-2212a4c8]:before {\n      position: absolute;\n      display: block;\n      width: 0;\n      height: 0;\n      border: 10px solid transparent;\n      pointer-events: none;\n      content: \"\";\n      border-bottom-color: #53CAC3;\n      -webkit-transform: translate3d(5px, -150%, 0);\n              transform: translate3d(5px, -150%, 0);\n}\n.dkf-textarea .example .example-header[data-v-2212a4c8] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      height: 25px;\n      line-height: 25px;\n      border-bottom: 1px solid #ffffff;\n      padding-bottom: 5px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dkf-textarea .example .example-header[data-v-2212a4c8] {\n          border-bottom: 0.5px solid #ffffff;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dkf-textarea .example .example-header[data-v-2212a4c8] {\n          border-bottom: 0.33333px solid #ffffff;\n}\n}\n.dkf-textarea .example .example-header .left[data-v-2212a4c8] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        height: 25px;\n        text-align: center;\n}\n.dkf-textarea .example .example-header .left .position[data-v-2212a4c8] {\n          display: block;\n          padding: 10px;\n}\n.dkf-textarea .example .example-header .avatar[data-v-2212a4c8] {\n        border-radius: 50%;\n}\n.dkf-textarea .example .example-content[data-v-2212a4c8] {\n      font-size: .3rem;\n      line-height: .4rem;\n      padding: .4rem 0 .4rem;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 211 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "dkf-textarea" },
+    [
+      _vm.title
+        ? _c("h3", { staticClass: "title" }, [_vm._v(_vm._s(_vm.title))])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("div", { staticClass: "text" }, [
+        _c("textarea", {
+          directives: [
+            {
+              name: "model",
+              rawName: "v-model",
+              value: _vm.currentValue,
+              expression: "currentValue"
+            }
+          ],
+          ref: "dkfTextarea",
+          staticClass: "item-value",
+          attrs: {
+            maxlength: _vm.maxLength !== -1 ? _vm.maxLength : "",
+            mixlength: "2",
+            placeholder: _vm.placeholder
+          },
+          domProps: { value: _vm.currentValue },
+          on: {
+            input: function($event) {
+              if ($event.target.composing) {
+                return
+              }
+              _vm.currentValue = $event.target.value
+            }
+          }
+        }),
+        _vm._v(" "),
+        _c("p", { staticClass: "text-bottom" }, [
+          _vm.examples.length
+            ? _c("span", { on: { click: _vm.toggleExampleShowFlag } }, [
+                _vm._v("看看别人怎么写")
+              ])
+            : _vm._e(),
+          _vm._v(" "),
+          _c(
+            "span",
+            {
+              staticClass: "input-num right-float",
+              class: { exceed: _vm.isExceed }
+            },
+            [
+              _vm._v(_vm._s(_vm.currentValue.length) + "/"),
+              _c("span", { staticClass: "max-length" }, [
+                _vm._v(_vm._s(_vm.maxLength))
+              ])
+            ]
+          )
+        ])
+      ]),
+      _vm._v(" "),
+      _vm._l(_vm.examples, function(example, index) {
+        return _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: index === _vm.currentExampleIndex && _vm.exampleShowFlag,
+                expression: "index === currentExampleIndex && exampleShowFlag"
+              }
+            ],
+            staticClass: "example"
+          },
+          [
+            _c("div", { staticClass: "example-header" }, [
+              _c("div", { staticClass: "left" }, [
+                _c("img", {
+                  staticClass: "avatar",
+                  attrs: { src: example.avatar, width: "24", height: "24" }
+                }),
+                _vm._v(" "),
+                _c("span", { staticClass: "position" }, [
+                  _vm._v(_vm._s(example.position))
+                ])
+              ]),
+              _vm._v(" "),
+              _c("span", { staticClass: "replace", on: { click: _vm.next } }, [
+                _vm._v("换一个")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "example-content" }, [
+              _vm._v(
+                "\n            " + _vm._s(example.advantage) + "\n        "
+              )
+            ])
+          ]
+        )
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-2212a4c8", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

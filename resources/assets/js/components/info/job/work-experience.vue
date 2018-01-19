@@ -1,33 +1,34 @@
 <template>
     <transition name="slide">
         <div class="work-experience-wrapper">
-            <dkf-header title="创建微简历" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="submit" class="header-wrapper"></dkf-header>
-            <main>
+            <dkf-header title="创建微简历" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="save" class="header-wrapper"></dkf-header>
+            <main ref="main">
                 <div class="work-experience">
                     <div class="recent-work-experience">
                         <h3>最近一份工作经历</h3>
                         <ul class="recent-work-experience-items cell">
                             <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
-                            <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time ? workExperienceData.end_time : '至今' }}</span></div></li>
+                            <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time.replace(/-/, '.') : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time != -1 ? workExperienceData.end_time.replace(/-/, '.') : '至今' }}</span></div></li>
                             <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
                             <li @click="positionSkillClick" class="active"><label>技能标签</label><span class="item-value">{{ workEmphasisArr.length ? workEmphasisArr.length + '个标签' : '' }}<i class="icon icon-right"></i></span></li>
                         </ul>
                     </div>
                     <div class="work-content">
-                        <dkf-textarea v-model="workExperienceData.responsibility" @onValueChange="responsibilityOnValueChange" title="工作内容" :placeholder="placeholder" :max-length="1600" :examples="examples"></dkf-textarea>
+                        <dkf-textarea v-model="workExperienceData.responsibility" @onValueChange="responsibilityOnValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="工作内容" :placeholder="placeholder" :max-length="1600" :examples="examples" ref="responsibilityTextarea"></dkf-textarea>
                     </div>
                     <div class="theme-button" @click="save">下一步</div>
                 </div>
             </main>
-            <message message="message" ref="message"></message>
+            <message :message="message" ref="message"></message>
             <message-box :message="messageBoxText" ref="messageBox"></message-box>
             <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
             <message-box message="直聘君建议" description="清晰有条理的工作内容，可获得更多的高薪职位！" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="responsibilityTextareaFocus" ref="responsibilityMessage"></message-box>
             <full-screen-input v-model="workExperienceData.company_name" @saveValue="saveCompanyName" title="公司名称" ref="companyNameInput"></full-screen-input>
             <picker title="时间段" :slots="startTimePickerSlots" :showToolbar="true" ref="startTimePicker" @onValuesChange="startOnValuesChange" @confirm="startPickerConfirm"></picker>
             <picker title="时间段" :slots="endTimePickerSlots" :showToolbar="true" ref="endTimePicker" @onValuesChange="endOnValuesChange" @confirm="endPickerConfirm"></picker>
-            <position-type-select @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
+            <position-type-select v-model="workExperienceData.position_type" @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
             <position-skill-checkbox @save="savePositionSkill" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
+            <spinner text="保存中" v-show="spinner"></spinner>
         </div>
     </transition>
 </template>
@@ -39,9 +40,13 @@
   import messageBox from 'Base/message/message-box'
   import message from 'Base/message/message'
   import picker from 'Base/picker/picker'
+  import spinner from 'Base/spinner/spinner'
   import positionTypeSelect from '../base/position-type-select'
   import positionSkillCheckbox from '../base/position-skill-checkbox'
+  import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
   import {getPositionSkill} from 'Api/position-skill'
+  import {getWorkExperience, updateWorkExperience, createdWorkExperience} from 'Api/work-experience'
+  import POSITION_TYPE from '../base/positions'
 
   export default {
     data() {
@@ -49,7 +54,7 @@
         workExperienceData: {
           company_name: '', // 公司名称
           start_time: '', // 开始时间
-          end_time: '至今', // 结束时间
+          end_time: -1, // 结束时间
           position_type: '', // 职位类型
           work_emphasis: '', // 技能
           responsibility: '' // 工作内容
@@ -84,6 +89,7 @@
         messageBoxText: '',
         positionSkills: [],
         workEmphasisArr: [],
+        spinner: false,
         placeholder: '1、主要负责新员工入职培训；                          2、分析制定员工每月个人销售业绩；                                    3、帮助员工提高每日客单价，整体店面管理等工作。',
         examples: [ // 我的优势例子
           {
@@ -116,6 +122,23 @@
     },
     created() {
       this.init()
+      // 请求当前登录用户的教育经历
+      getWorkExperience().then(response => {
+        if (response.code === ERR_OK) {
+          this.workExperienceData = response.data
+          this.workEmphasisArr = this.workExperienceData.work_emphasis.split('・')
+          this._getPositionSkill(this.workExperienceData.position_type.toString().substr(0, 4) + '00')
+          // 查询position_type index对应的职位类型名称
+          for (let x in POSITION_TYPE) {
+            for (let y in POSITION_TYPE[x]) {
+              if (this.workExperienceData.position_type == y) {
+                this.position = POSITION_TYPE[x][y]
+                return
+              }
+            }
+          }
+        }
+      })
     },
     methods: {
       init() {
@@ -176,20 +199,24 @@
         if (!values[1]) {
           this.workExperienceData.start_time = values[0]
         } else {
-          this.workExperienceData.start_time = values[0] + '.' + (values[1] < 10 ? '0' + values[1] : values[1])
+          this.workExperienceData.start_time = values[0] + '-' + (values[1] < 10 ? '0' + values[1] : values[1])
         }
       },
       endPickerConfirm(values) {
         if (!values[1]) {
-          this.workExperienceData.end_time = values[0]
+          this.workExperienceData.end_time = -1
         } else {
-          this.workExperienceData.end_time = values[0] + '.' + (values[1] < 10 ? '0' + values[1] : values[1])
+          this.workExperienceData.end_time = values[0] + '-' + (values[1] < 10 ? '0' + values[1] : values[1])
         }
       },
       positionSelected(value) {
         this.position = value.name
         this.workExperienceData.position_type = value.id
-        getPositionSkill(value.id.substr(0, 4) + '00').then(response => {
+        this._getPositionSkill(value.id.substr(0, 4) + '00')
+        this.workEmphasisArr = []
+      },
+      _getPositionSkill(positonLv2) {
+        getPositionSkill(positonLv2).then(response => {
           this.positionSkills = response
         }).catch(error => {
           console.log(error)
@@ -209,8 +236,42 @@
       responsibilityOnValueChange(value) {
         this.workExperienceData.responsibility = value
       },
+      exampleShowFlagChange(showFlag) {
+        if (showFlag) {
+          this.$nextTick(() => {
+//            this.$refs.main.style.transition = 'all .3s'
+            this.$refs.main.scrollTop = 9999
+          })
+        }
+      },
+      responsibilityTextareaFocus() {
+        this.$refs.responsibilityTextarea.textareaFoucs()
+      },
       save() {
-        console.log(this.workExperienceData)
+        if (this._checkData()) {
+          this.submit()
+        }
+      },
+      submit() {
+        let handle
+        if (this.workExperienceData.id) {
+          handle = updateWorkExperience(this.workExperienceData)
+        } else {
+          handle = createdWorkExperience(this.workExperienceData)
+        }
+        this.spinner = true
+        handle.then(response => {
+          this.spinner = false
+          if (response.code === ERR_OK) {
+            this.$router.push({'name': 'job-education'})
+          }
+        }).catch(error => {
+          this.spinning = false
+          if (!error.success && error.code === ERR_UNPROCESSABLE_ENTITY) {
+            this.message = error.message
+            this.$refs.message.show()
+          }
+        })
       },
       _checkData() {
         if (!this.workExperienceData.company_name) {
@@ -227,7 +288,12 @@
           this.message = '工作内容的描述很重要，请务必填写。'
         } else if (this.workExperienceData.responsibility.length <= 20) {
           this.$refs.responsibilityMessage.show()
+          return false
+        } else {
+          return true
         }
+        this.$refs.message.show()
+        return false
       }
     },
     watch: {
@@ -245,6 +311,7 @@
       message,
       messageBox,
       picker,
+      spinner,
       positionTypeSelect,
       positionSkillCheckbox
     }
@@ -309,8 +376,8 @@
                     margin-top: 20px
                     margin-bottom: 20px
 
-    /*.slide-enter-active, .slide-leave-active*/
-        /*transition: all .3s*/
-    /*.slide-enter, .slide-leave-to*/
-        /*transform: translate3d(100%, 0, 0)*/
+    .slide-enter-active, .slide-leave-active
+        transition: all .3s
+    .slide-enter, .slide-leave-to
+        transform: translate3d(100%, 0, 0)
 </style>

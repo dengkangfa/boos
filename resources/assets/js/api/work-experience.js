@@ -1,7 +1,7 @@
 import axios from 'axios'
 
-export function getEducationExperience() {
-  const url = 'api/me/education_infos'
+export function getWorkExperience() {
+  const url = 'api/me/work_experience'
 
   return axios.get(url).then(response => {
     return Promise.resolve(response.data)
@@ -10,8 +10,8 @@ export function getEducationExperience() {
   })
 }
 
-export function createdEducationExperience(requestData) {
-  const url = 'api/education_infos'
+export function createdWorkExperience(requestData) {
+  let url = 'api/work_experiences'
 
   return axios.post(url, requestData).then(response => {
     return Promise.resolve(response.data)
@@ -20,8 +20,8 @@ export function createdEducationExperience(requestData) {
   })
 }
 
-export function updateEducationExperience(requestData) {
-  const url = 'api/education_infos/' + requestData.id
+export function updateWorkExperience(requestData) {
+  let url = 'api/work_experiences/' + requestData.id
 
   return axios.put(url, requestData).then(response => {
     return Promise.resolve(response.data)

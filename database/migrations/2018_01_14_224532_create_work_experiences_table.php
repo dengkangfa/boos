@@ -17,8 +17,8 @@ class CreateWorkExperiencesTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned()->index();
             $table->string('company_name');
-            $table->dateTime('start_time');
-            $table->dateTime('end_time');
+            $table->date('start_time');
+            $table->date('end_time')->nullable();
             $table->integer('position_type')->unsigned();
             $table->string('work_emphasis');
             $table->text('responsibility');

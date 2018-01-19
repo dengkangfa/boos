@@ -54,9 +54,6 @@
         currentExampleIndex: -1
       }
     },
-    created() {
-      this.currentValue = this.value
-    },
     methods: {
       toggleExampleShowFlag() {
         this.exampleShowFlag = !this.exampleShowFlag
@@ -84,6 +81,9 @@
       }
     },
     watch: {
+      value(value) {
+        this.currentValue = value
+      },
       currentValue(value) {
         this.$emit('onValueChange', value)
       }
@@ -91,7 +91,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 

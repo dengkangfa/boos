@@ -4,7 +4,7 @@
             <dkf-header title="我的优势" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="submit" class="header-wrapper"></dkf-header>
             <main>
                 <div class="advantage-content">
-                    <dkf-textarea v-model="advantage" :examples="examples" @onValueChange="onValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
+                    <dkf-textarea v-model="user.advantage" :examples="examples" @onValueChange="onValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
                     <div class="submit-button-group" :class="{'add-margin-top': !exampleShowFlag}">
                         <div class="theme-button" @click="submit">完成</div>
                         <div class="micro-resume"><span @click="submitToMicroResume">继续完善微简历></span></div>
@@ -63,9 +63,6 @@
         ],
         exampleShowFlag: false
       }
-    },
-    created() {
-      this.advantage = this.user.advantage
     },
     methods: {
       // 显示建议消息框
@@ -139,7 +136,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass" scoped="">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 

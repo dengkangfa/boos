@@ -37,6 +37,11 @@ class User extends Authenticatable
         return $this->hasMany(EducationInfo::class);
     }
 
+    public function workExperiences()
+    {
+        return $this->hasMany(WorkExperience::class);
+    }
+
     public function setJobDateAttribute($value)
     {
         if ($value == '应届生') {

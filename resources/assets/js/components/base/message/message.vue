@@ -40,7 +40,7 @@
         z-index: 998
         top: 42%
         left: 50%
-        padding: 0.4rem 0
+        padding: 0.4rem
         width: 60%
         transform: translate(-50%, -50%)
         background: rgba(0, 0, 0, 0.7)

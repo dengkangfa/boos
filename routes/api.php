@@ -31,3 +31,7 @@ Route::post('education_infos', 'Api\EducationInfoController@store');
 Route::put('education_infos/{id}', 'Api\EducationInfoController@update');
 
 Route::get('positionSkill', 'Api\PositionSkillController@index');
+
+Route::get('me/work_experience', 'Api\WorkExperienceController@me');
+Route::post('work_experiences', 'Api\WorkExperienceController@store');
+Route::put('work_experiences/{id}', 'Api\WorkExperienceController@update');
