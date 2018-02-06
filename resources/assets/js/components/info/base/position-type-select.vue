@@ -1,7 +1,9 @@
 <template>
     <transition name="slide">
         <div class="position-type-select-wrapper" v-show="showFlag">
-            <dkf-header title="选择职位类型" @left="hide" class="header-wrapper"></dkf-header>
+            <dkf-header title="选择职位类型">
+                <div slot="left" @click="hide" fixed><i class="icon-left" style="padding: 0.3rem;"></i></div>
+            </dkf-header>
             <div class="search">
                 <div class="search-label" :class="{'left': searchInputLeft}" @click="searchInputFocus"><i class="icon icon-sousuo" ref="searchIcon"></i> <span>{{ searchPlaceholder }}</span></div>
                 <input id="searchInput" type="text" class="search-input" v-model="searchValue" @focus="searchInputFocusEvent" @blur="searchInputBlurEvent">

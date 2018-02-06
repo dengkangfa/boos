@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="position-skill-wrapper" v-show="showFlag">
-            <dkf-header title="技能标签" nextText="确定" @left="cancel" @right="confirm"></dkf-header>
+            <dkf-header title="技能标签">
+                <div slot="left" @click="cancel"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="confirm" style="padding-right: .3rem;">确定</div>
+            </dkf-header>
             <div class="main">
                 <div class="content">
                     <div class="disc">

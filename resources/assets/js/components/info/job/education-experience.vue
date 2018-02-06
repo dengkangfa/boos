@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="education-experience-wrapper">
-            <dkf-header title="教育经历" nextText="下一步" class="header-wrapper" @left="showFriendlyReminderMessage" @right="next"></dkf-header>
+            <dkf-header title="教育经历" fixed>
+                <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="next" style="padding-right: .3rem;">下一步</div>
+            </dkf-header>
             <main>
                 <div class="education-experience-content">
                 <div class="education-experience">

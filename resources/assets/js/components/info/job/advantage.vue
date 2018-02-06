@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="advantage-wrapper">
-            <dkf-header title="我的优势" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="submit" class="header-wrapper"></dkf-header>
+            <dkf-header title="我的优势" fixed>
+                <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="submit"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
+            </dkf-header>
             <main>
                 <div class="advantage-content">
                     <dkf-textarea v-model="user.advantage" :examples="examples" @onValueChange="onValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
@@ -15,6 +18,7 @@
             <message-box message="直聘君建议" description="文字可以再修饰一下，可加深Boos对你的印象" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @confirm="advantageTextareaFocus" @cancel="request" ref="suggestMessage"></message-box>
             <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
             <spinner text="保存中" v-show="spinner"></spinner>
+            <router-view></router-view>
         </div>
     </transition>
 </template>
@@ -116,7 +120,7 @@
         this.spinner = true
         this.$store.dispatch('updateAdvantage', {'advantage': this.advantage}).then(response => {
           this.spinner = false
-          return true
+          this.$router.push({name: 'job-expect-position'})
         })
         return false
       }

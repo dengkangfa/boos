@@ -11,6 +11,7 @@ import basicInfo from '../components/info/job/basic-info.vue'
 import educationExperience from '../components/info/job/education-experience.vue'
 import Advantage from '../components/info/job/advantage.vue'
 import workExperience from '../components/info/job/work-experience.vue'
+import expectPosition from '../components/info/job/expect-position.vue'
 
 Vue.use(VueRouter)
 
@@ -63,7 +64,15 @@ let routes = [
                 path: '/job/advantage',
                 name: 'job-advantage',
                 component: Advantage,
-                meta: {requiresAuth: true, autoFrom: ['job-education']}
+                meta: {requiresAuth: true, autoFrom: ['job-education']},
+                children: [
+                  {
+                    path: '/job/expect-position',
+                    name: 'job-expect-position',
+                    component: expectPosition,
+                    meta: {requiresAuth: true}
+                  }
+                ]
               }
             ]
           },

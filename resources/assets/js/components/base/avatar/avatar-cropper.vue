@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="cropper-wrapper">
-            <dkf-header title="选择显示区域" nextText="保存" @left="cancel" @right="save"></dkf-header>
+            <dkf-header title="选择显示区域">
+                <div slot="left" @click="cancel"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="save" style="padding-right: .3rem;">保存</div>
+            </dkf-header>
             <div class="cropper">
                 <img id="cropImage" width="100%" :src="image.url" ref="cropperImg">
             </div>

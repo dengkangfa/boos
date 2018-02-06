@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="work-experience-wrapper">
-            <dkf-header title="创建微简历" nextIcon="icon-correct" @left="showFriendlyReminderMessage" @right="save" class="header-wrapper"></dkf-header>
+            <dkf-header title="创建微简历" fixed>
+                <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="save"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
+            </dkf-header>
             <main ref="main">
                 <div class="work-experience">
                     <div class="recent-work-experience">
@@ -29,6 +32,7 @@
             <position-type-select v-model="workExperienceData.position_type" @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
             <position-skill-checkbox @save="savePositionSkill" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
             <spinner text="保存中" v-show="spinner"></spinner>
+            <router-view></router-view>
         </div>
     </transition>
 </template>
@@ -325,12 +329,6 @@
     .work-experience-wrapper
         @include allCover()
         background: $bc
-        .header-wrapper
-            position: fixed
-            width: 100%
-            height: 50px
-            right: 0
-            top: 0
         main
             position: absolute
             top: 50px

@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="name-wrapper" v-if="showFlag" @click.stop.prevent>
-            <dkf-header :title="title" nextIcon="icon-correct" backIcon="icon-close"  @left="cancel" @right="confirm"></dkf-header>
+            <dkf-header :title="title">
+                <div slot="left" @click="cancel"><i class="icon-close" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="confirm"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
+            </dkf-header>
             <div>
                 <input type="text" v-model="newValue" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
                 <div style="text-align: right;padding: 0.4rem 0.2rem;" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ maxLength }}</span></div>

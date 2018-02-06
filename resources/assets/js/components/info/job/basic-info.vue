@@ -1,7 +1,10 @@
 <template>
     <transition name="slide">
         <div class="basic-info">
-            <dkf-header title="个人信息" @left="back" nextText="下一步" @right="next"></dkf-header>
+            <dkf-header title="个人信息">
+                <div slot="left" @click="back"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="next">下一步</div>
+            </dkf-header>
             <div class="avatar-wrapper active" @click="showAvatarDriver">
                 <div class="img-wrapper">
                     <img :src="user.avatar ? user.avatar : 'images/default.png'" class="avatar">

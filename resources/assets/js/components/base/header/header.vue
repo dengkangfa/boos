@@ -1,40 +1,20 @@
 <template>
-    <div>
-        <header class="header">
-            <div class="back" @click.stop="left"><p><i class="icon" :class="backIcon"></i></p></div>
-            <span class="title">{{ title }}</span>
-            <div class="next" @click.stop="right" style="text-align: right"><p><i class="icon" :class="nextIcon"></i>{{ nextText }}</p></div>
-        </header>
-    </div>
+    <header class="dkf-header" :class="{ 'is-fixed': fixed }">
+        <div class="dkf-header-button left">
+            <slot name="left"></slot>
+        </div>
+        <h1 class="dkf-header-title" v-text="title"></h1>
+        <div class="dkf-header-button right">
+            <slot name="right"></slot>
+        </div>
+    </header>
 </template>
 
 <script type="text/ecmascript-6">
   export default {
     props: {
-      title: {
-        type: String,
-        default: ''
-      },
-      backIcon: {
-        type: String,
-        default: 'icon-left'
-      },
-      nextText: {
-        type: String,
-        default: ''
-      },
-      nextIcon: {
-        type: String,
-        default: ''
-      }
-    },
-    methods: {
-      left() {
-        this.$emit('left')
-      },
-      right() {
-        this.$emit('right')
-      }
+      fixed: Boolean,
+      title: String
     }
   }
 </script>
@@ -43,7 +23,7 @@
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 
-    .header
+    header
         display: flex
         justify-content: center
         font-size: 0.4rem
@@ -52,15 +32,20 @@
         color: $color-text
         background: $color-theme
         padding: 0.35rem 0.2rem 0 0.2rem
-        div
-            width: 2rem
-            p
-                padding: 0.3rem
-        .title
+        line-height: 1rem
+        position: relative
+        text-align: center
+        white-space: nowrap
+        &.is-fixed
+            position: fixed 0 0 * 0
+        .dkf-header-title
+            font-size: inherit
+            font-weight: normal
             flex: 1
-            text-align: center
-        [class^="icon-"], [class*=" icon-"]
-            font-weight: bold
-        .icon-correct
-            font-size: 0.5rem
+        .dkf-header-button
+            flex: .5
+            &.left
+                text-align: left
+            &.right
+                text-align: right
 </style>

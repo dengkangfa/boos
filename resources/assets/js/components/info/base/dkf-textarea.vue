@@ -54,6 +54,9 @@
         currentExampleIndex: -1
       }
     },
+    created() {
+      this.currentValue = this.value
+    },
     methods: {
       toggleExampleShowFlag() {
         this.exampleShowFlag = !this.exampleShowFlag
