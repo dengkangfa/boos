@@ -238,6 +238,8 @@
                         color: $color-text-l
                         @include border-bottom-1px($color-text-d)
                         box-sizing: border-box
+                        &:last-child
+                            border-bottom: none
                         &.active
                             color: $color-theme
                     .industrys-list

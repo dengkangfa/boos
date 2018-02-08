@@ -36,7 +36,8 @@
         })
       },
       selectJob() {
-        this.$router.push({'name': 'job-basic-info'})
+//        this.$router.push({'name': 'job-basic-info'})
+        this.$router.push({'name': 'job-expect-position'})
       }
     },
     components: {

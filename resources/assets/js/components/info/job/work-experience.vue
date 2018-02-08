@@ -343,7 +343,6 @@
                 font-size: .3rem
                 color: rgba(0,0,0,.5)
             .work-experience
-                height: 100%
                 .recent-work-experience .recent-work-experience-items
                     li
                         display: flex
