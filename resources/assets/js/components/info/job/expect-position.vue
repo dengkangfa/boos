@@ -7,8 +7,8 @@
                     <ul>
                         <li @click="showApplyStatusSelector"><label>求职状态</label><span>{{ applyStatusDisplayName }} <i class="icon icon-right"></i></span></li>
                         <li @click="showPositionTypeSelector"><label>期望职位</label><span>{{ position }} <i class="icon icon-right"></i></span></li>
-                        <li><label>期望行业</label><span>不限 <i class="icon icon-right"></i></span></li>
-                        <li><label>工作城市</label><span>湛江 <i class="icon icon-right"></i></span></li>
+                        <li @click="showIndustryCheckbox"><label>期望行业</label><span>不限 <i class="icon icon-right"></i></span></li>
+                        <li @click="showDistpicker"><label>工作城市</label><span>{{ expectPositionData.locationName }} <i class="icon icon-right"></i></span></li>
                         <li><label>薪资要求</label></li>
                     </ul>
                 </div>
@@ -21,6 +21,8 @@
             </main>
             <job-search-status-select @select="updateApplyStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
+            <distpicker @selected="distPickerSelected" ref="distpicker"></distpicker>
+            <industry-checkbox ref="industryCheckbox"></industry-checkbox>
         </div>
     </transition>
 </template>
@@ -29,6 +31,8 @@
   import dkfHeader from 'Base/header/header'
   import jobSearchStatusSelect from '../base/apply-status-select'
   import positionTypeSelect from '../base/position-type-select'
+  import distpicker from 'Base/picker/distpicker'
+  import industryCheckbox from '../base/industry-checkbox'
 
   const applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗']
 
@@ -38,7 +42,8 @@
         position: '',
         expectPositionData: {
           applyStatus: '',
-          position_type: ''
+          position_type: '',
+          locationName: ''
         }
       }
     },
@@ -49,12 +54,21 @@
       showPositionTypeSelector() {
         this.$refs.positionTypeSelector.show()
       },
+      showDistpicker() {
+        this.$refs.distpicker.show()
+      },
+      showIndustryCheckbox() {
+        this.$refs.industryCheckbox.show()
+      },
       updateApplyStatus(value) {
         this.expectPositionData.applyStatus = value
       },
       positionSelected(value) {
         this.position = value.name
         this.expectPositionData.position_type = value.id
+      },
+      distPickerSelected(value) {
+        this.expectPositionData.locationName = value
       }
     },
     computed: {
@@ -65,7 +79,9 @@
     components: {
       dkfHeader,
       jobSearchStatusSelect,
-      positionTypeSelect
+      positionTypeSelect,
+      distpicker,
+      industryCheckbox
     }
   }
 </script>
