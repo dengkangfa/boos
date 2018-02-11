@@ -37,7 +37,10 @@
         text-align: center
         white-space: nowrap
         &.is-fixed
-            position: fixed 0 0 * 0
+            position: fixed
+            top: 0
+            left: 0
+            right: 0
         .dkf-header-title
             font-size: inherit
             font-weight: normal

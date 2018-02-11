@@ -7,9 +7,9 @@
                     <ul>
                         <li @click="showApplyStatusSelector"><label>求职状态</label><span>{{ applyStatusDisplayName }} <i class="icon icon-right"></i></span></li>
                         <li @click="showPositionTypeSelector"><label>期望职位</label><span>{{ position }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showIndustryCheckbox"><label>期望行业</label><span>不限 <i class="icon icon-right"></i></span></li>
+                        <li @click="showIndustryCheckbox"><label>期望行业</label><span>{{ industryArr.length ? industryArr.length + '个标签' : '不限' }} <i class="icon icon-right"></i></span></li>
                         <li @click="showDistpicker"><label>工作城市</label><span>{{ expectPositionData.locationName }} <i class="icon icon-right"></i></span></li>
-                        <li><label>薪资要求</label></li>
+                        <li @click="showSalaryPicker"><label>薪资要求</label><span>{{ expectPositionData.lowSalary ? expectPositionData.lowSalary + 'k-' + expectPositionData.highSalary + 'k' : '' }}<i class="icon icon-right"></i></span></li>
                     </ul>
                 </div>
                 <div class="expect-position-remind">
@@ -22,7 +22,8 @@
             <job-search-status-select @select="updateApplyStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
             <distpicker @selected="distPickerSelected" ref="distpicker"></distpicker>
-            <industry-checkbox ref="industryCheckbox"></industry-checkbox>
+            <industry-checkbox @checked="selectedIndustry" ref="industryCheckbox"></industry-checkbox>
+            <salary-picker @selected="selectedSalary" ref="salaryPicker"></salary-picker>
         </div>
     </transition>
 </template>
@@ -33,6 +34,7 @@
   import positionTypeSelect from '../base/position-type-select'
   import distpicker from 'Base/picker/distpicker'
   import industryCheckbox from '../base/industry-checkbox'
+  import salaryPicker from 'Base/picker/salary-picker'
 
   const applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗']
 
@@ -40,10 +42,13 @@
     data() {
       return {
         position: '',
+        industryArr: '',
         expectPositionData: {
           applyStatus: '',
           position_type: '',
-          locationName: ''
+          locationName: '',
+          lowSalary: '',
+          highSalary: ''
         }
       }
     },
@@ -60,6 +65,9 @@
       showIndustryCheckbox() {
         this.$refs.industryCheckbox.show()
       },
+      showSalaryPicker() {
+        this.$refs.salaryPicker.show()
+      },
       updateApplyStatus(value) {
         this.expectPositionData.applyStatus = value
       },
@@ -69,6 +77,13 @@
       },
       distPickerSelected(value) {
         this.expectPositionData.locationName = value
+      },
+      selectedIndustry(industry) {
+        this.industryArr = industry
+      },
+      selectedSalary(value) {
+        this.expectPositionData.lowSalary = value[0]
+        this.expectPositionData.highSalary = value[1]
       }
     },
     computed: {
@@ -76,12 +91,18 @@
         return this.expectPositionData.applyStatus !== '' ? applyStatus[this.expectPositionData.applyStatus] : ''
       }
     },
+    watch: {
+      industryArr(value) {
+        this.expectPositionData.industry = value.join('・')
+      }
+    },
     components: {
       dkfHeader,
       jobSearchStatusSelect,
       positionTypeSelect,
       distpicker,
-      industryCheckbox
+      industryCheckbox,
+      salaryPicker
     }
   }
 </script>
