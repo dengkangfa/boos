@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide">
+    <transition name="vertical-slide">
         <div class="name-wrapper" v-if="showFlag" @click.stop.prevent>
             <dkf-header :title="title">
                 <div slot="left" @click="cancel"><i class="icon-close" style="padding: 0.3rem;"></i></div>
@@ -137,9 +137,4 @@
                 color: $color-theme
                 &.exceed
                     color: red
-
-    .slide-enter-active, .slide-leave-active
-        transition: all 0.3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(0, 100%, 0)
 </style>

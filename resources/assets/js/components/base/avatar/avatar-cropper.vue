@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide">
+    <transition name="vertical-slide">
         <div class="cropper-wrapper">
             <dkf-header title="选择显示区域">
                 <div slot="left" @click="cancel"><i class="icon-left" style="padding: 0.3rem;"></i></div>
@@ -77,10 +77,4 @@
             margin-top: 1.5rem
             .cropper-drag-box
                 opacity: 0.5
-
-
-    .slide-enter-active, .slide-leave-active
-        transition: all 0.3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(0, 100%, 0)
 </style>

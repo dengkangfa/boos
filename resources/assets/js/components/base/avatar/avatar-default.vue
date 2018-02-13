@@ -1,6 +1,6 @@
 <template>
     <div>
-        <transition name="slide">
+        <transition name="vertical-slide">
             <div class="avatar-default-wrapper" v-show="showFlag">
                 <div class="avatar-default-items">
                     <div class="box">
@@ -117,13 +117,6 @@
                 background: $color-theme
                 padding: .35rem
                 margin: .8rem auto .55rem
-
-
-    .slide-enter-active, .slide-leave-active
-        transition: all 0.3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(0, 100%, 0)
-
     .list-mask
         position: fixed
         top: 0

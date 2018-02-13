@@ -1,15 +1,15 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="work-experience-wrapper">
-            <dkf-header title="创建微简历" fixed>
+            <dkf-header title="创建微简历" class="_effect" :class="{'_effect--50': decline}" fixed>
                 <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right" @click="save"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
             </dkf-header>
-            <main ref="main">
+            <main class="_effect" :class="{'_effect--30': decline}" ref="main">
                 <div class="work-experience">
-                    <div class="recent-work-experience">
+                    <div>
                         <h3>最近一份工作经历</h3>
-                        <ul class="recent-work-experience-items cell">
+                        <ul class="cell">
                             <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
                             <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time.replace(/-/, '.') : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time != -1 ? workExperienceData.end_time.replace(/-/, '.') : '至今' }}</span></div></li>
                             <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
@@ -32,7 +32,7 @@
             <position-type-select v-model="workExperienceData.position_type" @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
             <position-skill-checkbox @save="savePositionSkill" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
             <spinner text="保存中" v-show="spinner"></spinner>
-            <router-view></router-view>
+            <router-view @routePipe="routePipe"></router-view>
         </div>
     </transition>
 </template>
@@ -55,6 +55,7 @@
   export default {
     data() {
       return {
+        decline: false,
         workExperienceData: {
           company_name: '', // 公司名称
           start_time: '', // 开始时间
@@ -124,6 +125,12 @@
         ]
       }
     },
+    beforeMount() {
+      this.$emit('routePipe', true)
+    },
+    beforeDestroy() {
+      this.$emit('routePipe', false)
+    },
     created() {
       this.init()
       // 请求当前登录用户的教育经历
@@ -145,6 +152,10 @@
       })
     },
     methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+        this.$emit('routePipe', _decline)
+      },
       init() {
         this.initPeriodSlots()
       },
@@ -342,39 +353,15 @@
                 padding-left: 10px
                 font-size: .3rem
                 color: rgba(0,0,0,.5)
-            .work-experience
-                .recent-work-experience .recent-work-experience-items
-                    li
-                        display: flex
-                        justify-content: space-between
-                        height: 45px
-                        line-height: 45px
-                        @include border-top-1px($bc)
-                        padding: 0 0.3rem
-                        background: #ffffff
-                        &.active:active
-                            background: #d9d9d9
-                        &.period
-                            .item-value span
-                                display: inline-block
-                                width: 50px
-                                padding: 0 10px
-                                &.start-time
-                                    width: 70px
-                                    text-align: right
-                        .item-value
-                            color: $color-text-l
-                            &.placeholder
-                                color: $color-text-d
-                        i.icon
-                            font-size: .3rem
-                            color: $color-theme
-                div.theme-button
-                    margin-top: 20px
-                    margin-bottom: 20px
-
-    .slide-enter-active, .slide-leave-active
-        transition: all .3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(100%, 0, 0)
+            .period
+                .item-value span
+                    display: inline-block
+                    width: 50px
+                    padding: 0 10px
+                    &.start-time
+                        width: 70px
+                        text-align: right
+            .theme-button
+                margin-top: 20px
+                margin-bottom: 20px
 </style>

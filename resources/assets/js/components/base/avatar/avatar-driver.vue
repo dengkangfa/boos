@@ -1,6 +1,6 @@
 <template>
         <div>
-            <transition name="slide">
+            <transition name="vertical-slide">
                 <div class="avatar-driver" v-show="showFlag">
                     <div class="avatar-driver-items">
                         <div>
@@ -116,11 +116,6 @@
             text-align: center
             font-size: 0.4rem
             padding: 0.5rem 0
-
-        &.slide-enter-active, &.slide-leave-active
-            transition: all 0.3s
-        &.slide-enter, &.slide-leave-to
-            transform: translate3d(0, 100%, 0)
 
     .list-mask
         position: fixed

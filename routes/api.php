@@ -37,3 +37,5 @@ Route::post('work_experiences', 'Api\WorkExperienceController@store');
 Route::put('work_experiences/{id}', 'Api\WorkExperienceController@update');
 
 Route::get('industry', 'Api\IndustryController@index');
+
+Route::post('expect_positions', 'Api\ExpectPositionController@store');

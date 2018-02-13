@@ -1,28 +1,30 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="basic-info">
-            <dkf-header title="个人信息">
-                <div slot="left" @click="back"><i class="icon-left" style="padding: 0.3rem;"></i></div>
-                <div slot="right" @click="next">下一步</div>
-            </dkf-header>
-            <div class="avatar-wrapper active" @click="showAvatarDriver">
-                <div class="img-wrapper">
-                    <img :src="user.avatar ? user.avatar : 'images/default.png'" class="avatar">
-                    <i class="icon icon-camera-outline" v-show="!user.avatar"></i>
-                    <div class="tooltip" v-show="!user.avatar">
-                        上传真实头像，<br>职位查看率增加20%
+            <div class="_effect" :class="{'_effect--30': decline}" style="height: 100%;">
+                <dkf-header title="个人信息">
+                    <div slot="left" @click="back"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                    <div slot="right" @click="next">下一步</div>
+                </dkf-header>
+                <div class="avatar-wrapper active" @click="showAvatarDriver">
+                    <div class="img-wrapper">
+                        <img :src="user.avatar ? user.avatar : 'images/default.png'" class="avatar">
+                        <i class="icon icon-camera-outline" v-show="!user.avatar"></i>
+                        <div class="tooltip" v-show="!user.avatar">
+                            上传真实头像，<br>职位查看率增加20%
+                        </div>
                     </div>
                 </div>
-            </div>
-            <ul class="basic-info-items">
-                <li class="active" @click="showNameInput"><label class="item-name">姓名</label><span class="item-value">{{ userData.name }} <i class="icon icon-right"></i></span></li>
-                <li><label class="item-name">性别</label><div class="radio-group"><sex-radio v-model="userData.gender" @change="genderChange"></sex-radio> </div></li>
-                <li class="active" @click="showJobDatePicker"><label class="item-name">参加工作时间</label><span class="item-value">{{ userData.job_date }} <i class="icon icon-right"></i></span></li>
-                <li class="active" @click="showBirthDatePicker"><label class="item-name">出生年月</label><span class="item-value">{{ userData.birth_date }} <i class="icon icon-right"></i></span></li>
-            </ul>
-            <div class="basic-info-bottom">
-                <span class="disc">创建一份微简历，高薪职位触手可得</span>
-                <div class="basic-info-next" @click="next">下一步</div>
+                <ul class="cell">
+                    <li class="active" @click="showNameInput"><label class="item-name">姓名</label><span class="item-value">{{ userData.name }} <i class="icon icon-right"></i></span></li>
+                    <li><label class="item-name">性别</label><div class="radio-group"><sex-radio v-model="userData.gender" @change="genderChange"></sex-radio> </div></li>
+                    <li class="active" @click="showJobDatePicker"><label class="item-name">参加工作时间</label><span class="item-value">{{ userData.job_date }} <i class="icon icon-right"></i></span></li>
+                    <li class="active" @click="showBirthDatePicker"><label class="item-name">出生年月</label><span class="item-value">{{ userData.birth_date }} <i class="icon icon-right"></i></span></li>
+                </ul>
+                <div class="basic-info-bottom">
+                    <span class="disc">创建一份微简历，高薪职位触手可得</span>
+                    <div class="basic-info-next" @click="next">下一步</div>
+                </div>
             </div>
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="showDefaultAvatarDriver" ref="avatarDriver"></avatar-driver>
             <avatar-cropper  :image="cropImage" @cancel="hideCropper"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
@@ -32,7 +34,7 @@
             <birth-date-picker v-model="userData.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
             <spinner :text="spinnerText" v-show="spinner"></spinner>
             <message :message="message" ref="message"></message>
-            <router-view></router-view>
+            <router-view @routePipe="routePipe"></router-view>
         </div>
     </transition>
 </template>
@@ -54,6 +56,7 @@
   export default {
     data() {
       return {
+        decline: false,
         userData: {
           name: '',
           gender: '',
@@ -67,6 +70,12 @@
         message: '',
         defaultAvatarType: 1
       }
+    },
+    beforeMount() {
+      this.$emit('routePipe', true)
+    },
+    beforeDestroy() {
+      this.$emit('routePipe', false)
     },
     created() {
       if (!this.user.authenticated) {
@@ -83,6 +92,9 @@
       })
     },
     methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+      },
       init() {
         this.userData.name = this.user.name
         this.userData.gender = this.user.gender
@@ -210,7 +222,7 @@
     @import "../../../../sass/mixin"
 
     .basic-info
-        @include allCover()
+        @include allCover
         font-size: .35rem
         background: $bc
         .active:active
@@ -264,18 +276,6 @@
                         border-right-color: #7f7f7f
                         transform: translate3d(-100%, -50%, 0)
                         top: 50%
-        .basic-info-items
-            li
-                display: flex
-                justify-content: space-between
-                @include border-top-1px($bc)
-                padding: 0.45rem 0.3rem
-                background: #ffffff
-                .item-value
-                    color: $color-text-d
-                i.icon
-                    font-size: .3rem
-                    color: $color-theme
         .basic-info-bottom
             position: absolute
             width: 100%
@@ -294,9 +294,4 @@
                 color: $color-text
                 padding: 15px 0
                 margin: 0 auto 0.7rem
-
-    .slide-enter-active, .slide-leave-active
-        transition: all 0.3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(100%, 0, 0)
 </style>

@@ -1,32 +1,32 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="education-experience-wrapper">
-            <dkf-header title="教育经历" fixed>
+            <dkf-header title="教育经历" class="_effect" :class="{'_effect--50': decline}" fixed>
                 <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right" @click="next" style="padding-right: .3rem;">下一步</div>
             </dkf-header>
-            <main>
+            <main class="_effect" :class="{'_effect--30': decline}">
                 <div class="education-experience-content">
-                <div class="education-experience">
-                    <h1>教育经历</h1>
-                    <ul class="education-experience-items">
-                        <li @click="showSchoolInput"><label>学校</label><span class="item-value" :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showMajorInput"><label>专业</label><span class="item-value" :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}} <i class="icon icon-right"></i></span></li>
-                        <li @click="showDegreePicker"><label>学历</label><span class="item-value" :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }} <i class="icon icon-right"></i></span></li>
-                    </ul>
-                </div>
-                <!-- 在校经历文本输入框 -->
-                <div class="at-school-experience">
-                    <h3>在校经历</h3>
-                    <div class="text">
-                        <textarea class="item-value" v-model="educationData.edu_description"  maxlength="300" mixlength="2" ref="edu_descriptionTextarea" placeholder="作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."></textarea>
-                        <p class="text-num"><span class="input-num"  :class="{'exceed': isExceed}">{{ descriptionLength }}</span>/{{ length }}</p>
+                    <div class="education-experience">
+                        <h1>教育经历</h1>
+                        <ul class="cell">
+                            <li @click="showSchoolInput"><label>学校</label><span class="item-value" :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }} <i class="icon icon-right"></i></span></li>
+                            <li @click="showMajorInput"><label>专业</label><span class="item-value" :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}} <i class="icon icon-right"></i></span></li>
+                            <li @click="showDegreePicker"><label>学历</label><span class="item-value" :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }} <i class="icon icon-right"></i></span></li>
+                            <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }} <i class="icon icon-right"></i></span></li>
+                        </ul>
                     </div>
+                    <!-- 在校经历文本输入框 -->
+                    <div class="at-school-experience">
+                        <h3>在校经历</h3>
+                        <div class="text">
+                            <textarea class="item-value" v-model="educationData.edu_description"  maxlength="300" mixlength="2" ref="edu_descriptionTextarea" placeholder="作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."></textarea>
+                            <p class="text-num"><span class="input-num"  :class="{'exceed': isExceed}">{{ descriptionLength }}</span>/{{ length }}</p>
+                        </div>
+                    </div>
+                    <!-- 在校经历文本输入框END -->
+                    <div class="next-button" @click.stop="next">下一步</div>
                 </div>
-                <!-- 在校经历文本输入框END -->
-                <div class="next-button" @click.stop="next">下一步</div>
-            </div>
             </main>
             <message-box :message="message" ref="message"></message-box>
             <message-box message="直聘君建议" description="突出在校经历，<br>可以弥补工作经历不足的缺点，也可获得更多工作机会" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @cancel="submit" @confirm="eduDescriptionTextareaFocus" ref="eduDescriptionMessage"></message-box>
@@ -40,7 +40,7 @@
             <!-- 学历选择器 -->
             <picker title="学历" :slots="degreePicker" @onValuesChange="degreePickerOnValuesChange" @confirm="degreePickerSelectHandle" ref="degreePicker"></picker>
             <spinner :text="spinnerText" v-show="spinner"></spinner>
-            <router-view></router-view>
+            <router-view @routePipe="routePipe"></router-view>
         </div>
     </transition>
 </template>
@@ -58,6 +58,7 @@
   export default {
     data() {
       return {
+        decline: false,
         educationData: {
           school: '', // 学校
           major: '', // 专业
@@ -88,6 +89,10 @@
       })
     },
     methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+        this.$emit('routePipe', _decline)
+      },
       back() {
         this.hideFriendlyReminderMessage()
         this.$router.back()
@@ -252,22 +257,6 @@
                         padding-left: 10px
                         font-size: .3rem
                         color: rgba(0,0,0,.5)
-                .education-experience .education-experience-items
-                    li
-                        display: flex
-                        justify-content: space-between
-                        height: 45px
-                        line-height: 45px
-                        @include border-top-1px($bc)
-                        padding: 0 0.3rem
-                        background: #ffffff
-                        .item-value
-                            color: $color-text-l
-                            &.placeholder
-                                color: $color-text-d
-                        i.icon
-                            font-size: .3rem
-                            color: $color-theme
                 .at-school-experience
                     width: 100%
                     margin-bottom: 1rem
@@ -305,9 +294,4 @@
                     border-radius: 0.15rem
                     color: $color-text
                     margin: 10px
-
-    .slide-enter-active, .slide-leave-active
-        transition: all .3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(100%, 0, 0)
 </style>

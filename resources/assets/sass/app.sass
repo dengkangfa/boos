@@ -11,6 +11,35 @@
 
 @import "base"
 
+.horizontal-slide-enter-active, .horizontal-slide-leave-active
+  transition: all .3s
+.horizontal-slide-enter, .horizontal-slide-leave-to
+  transform: translate3d(100%, 0, 0)
+
+.vertical-slide-enter-active, .vertical-slide-leave-active
+  transition: all .3s
+.vertical-slide-enter, .vertical-slide-leave-to
+  transform: translate3d(0, 100%, 0)
+
+.cell
+  li
+    display: flex
+    justify-content: space-between
+    height: 45px
+    line-height: 45px
+    @include border-top-1px($bc)
+    padding: 0 0.3rem
+    background: #ffffff
+    &.active:active
+      background: #d9d9d9
+    .item-value
+      color: $color-text-l
+      &.placeholder
+        color: $color-text-d
+    i.icon
+      font-size: .3rem
+      color: $color-theme
+
 .theme-button
   height: 50px
   line-height: 50px
@@ -23,3 +52,14 @@
 
 .right-float
   float: right
+
+._effect
+  opacity: 1
+  transition: .3s all ease
+
+._effect--30
+  transform: translate3d(-30%, 0, 0)
+
+._effect--50
+  opacity: 0
+  transform: translate3d(-50%, 0, 0)

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <transition name="slide">
+        <transition name="vertical-slide">
             <div class="apply-status-wrapper" v-show="showFlag">
                 <ul class="apply-status-list">
                     <li class="apply-status-list-header">求职状态</li>
@@ -40,7 +40,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 
@@ -73,12 +73,6 @@
             background: #fff
             border-radius: .3rem
             margin-top: 8px
-
-    .slide-enter-active, .slide-leave-active
-        transition: all .3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(0, 100%, 0)
-
     .list-mask
         @include allCover()
         z-index: 40

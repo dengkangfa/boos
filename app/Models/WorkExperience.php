@@ -18,7 +18,7 @@ class WorkExperience extends Model
 
     public function positionType()
     {
-        $this->belongsTo(PositionType::class);
+        $this->belongsTo(PositionType::class, 'position_type');
     }
 
     public function setEndTimeAttribute($value)

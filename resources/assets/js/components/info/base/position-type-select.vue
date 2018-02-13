@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="position-type-select-wrapper" v-show="showFlag">
             <dkf-header title="选择职位类型">
                 <div slot="left" @click="hide" fixed><i class="icon-left" style="padding: 0.3rem;"></i></div>
@@ -289,10 +289,4 @@
                         transition: all 0.5s
                     &.fade-enter, &.fade-leave-to
                         opacity: 0
-
-
-    .slide-enter-active, .slide-leave-active
-        transition: all .3s
-    .slide-enter, .slide-leave-to
-        transform: translate3d(100%, 0, 0)
 </style>

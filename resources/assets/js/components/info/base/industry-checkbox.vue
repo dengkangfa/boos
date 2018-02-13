@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="industry-checkbox-wrapper" v-show="showFlag">
             <div>
                 <dkf-header title="选择行业">
@@ -145,8 +145,4 @@
                     margin: 15px 8px 0 0
                     &.checked
                         background: #ebebeb
-        &.slide-enter-active, &.slide-leave-active
-            transition: all .3s
-        &.slide-enter, &.slide-leave-to
-            transform: translate3d(100%, 0, 0)
 </style>

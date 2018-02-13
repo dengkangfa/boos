@@ -4,14 +4,15 @@ import Store from '../store/index'
 import jwtToken from '../helpers/jwt'
 
 import verifycodeLogin from '../components/auth/verifycodeLogin/verifycode-login'
-import passwordLogin from '../components/auth/passwordLogin/password-login.vue'
-import resetPassword from '../components/auth/resetPassword/resetPassword.vue'
-import identitySelect from '../components/info/identity/identity-select.vue'
-import basicInfo from '../components/info/job/basic-info.vue'
-import educationExperience from '../components/info/job/education-experience.vue'
-import Advantage from '../components/info/job/advantage.vue'
-import workExperience from '../components/info/job/work-experience.vue'
-import expectPosition from '../components/info/job/expect-position.vue'
+import passwordLogin from '../components/auth/passwordLogin/password-login'
+import resetPassword from '../components/auth/resetPassword/resetPassword'
+import identitySelect from '../components/info/identity/identity-select'
+import basicInfo from '../components/info/job/basic-info'
+import educationExperience from '../components/info/job/education-experience'
+import Advantage from '../components/info/job/advantage'
+import workExperience from '../components/info/job/work-experience'
+import expectPosition from '../components/info/job/expect-position'
+import microResume from '../components/info/job/micro-resume'
 
 Vue.use(VueRouter)
 
@@ -70,6 +71,12 @@ let routes = [
                     path: '/job/expect-position',
                     name: 'job-expect-position',
                     component: expectPosition,
+                    meta: {requiresAuth: true}
+                  },
+                  {
+                    path: '/job/micro-resume',
+                    name: 'job-micro-resume',
+                    component: microResume,
                     meta: {requiresAuth: true}
                   }
                 ]

@@ -1,23 +1,25 @@
 <template>
-    <div class="identity-wrapper">
-        <div class="job-wrapper">
-            <div class="identity-img job-img"></div>
-            <button class="identity-button job-btn" @click.prevnet="selectJob">我要找工作</button>
+    <div>
+        <div class="identity-wrapper _effect" :class="{'_effect--30': decline}">
+            <div class="job-wrapper">
+                <div class="identity-img job-img"></div>
+                <button class="identity-button job-btn" @click.prevnet="selectJob">我要找工作</button>
+            </div>
+            <div class="or">
+                <div class="line"></div>
+                <div class="text">或者</div>
+                <div class="line"></div>
+            </div>
+            <div class="hiring-wrapper">
+                <div class="identity-img hiring-img"></div>
+                <button class="identity-button hiring-btn">我要找工作</button>
+            </div>
+            <div class="logout">
+                <a @click.prevent="logout">退出登录</a>
+            </div>
+            <message-box message="确定退出登录？" :showConfirmButton="true" @confirm="confirm" ref="messageBox"></message-box>
         </div>
-        <div class="or">
-            <div class="line"></div>
-            <div class="text">或者</div>
-            <div class="line"></div>
-        </div>
-        <div class="hiring-wrapper">
-            <div class="identity-img hiring-img"></div>
-            <button class="identity-button hiring-btn">我要找工作</button>
-        </div>
-        <div class="logout">
-            <a @click.prevent="logout">退出登录</a>
-        </div>
-        <message-box message="确定退出登录？" :showConfirmButton="true" @confirm="confirm" ref="messageBox"></message-box>
-        <router-view></router-view>
+        <router-view @routePipe="routePipe"></router-view>
     </div>
 </template>
 
@@ -25,7 +27,15 @@
   import messageBox from 'Base/message/message-box'
 
   export default {
+    data() {
+      return {
+        decline: false
+      }
+    },
     methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+      },
       logout() {
         this.$refs.messageBox.show()
       },
@@ -37,7 +47,7 @@
       },
       selectJob() {
 //        this.$router.push({'name': 'job-basic-info'})
-        this.$router.push({'name': 'job-expect-position'})
+        this.$router.push({'name': 'job-advantage'})
       }
     },
     components: {

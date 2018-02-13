@@ -1,6 +1,6 @@
 <template>
     <div @click.stop @touchmove.prevent>
-        <transition name="slide">
+        <transition name="vertical-slide">
             <mint-picker :slots="slots" :showToolbar="showToolbar" v-show="showFlag" class="picker" @change="onValuesChange" ref="picker">
                 <div class="header">
                     <div class="cancel" @click.stop="cancel"><i class="icon icon-close"></i></div>
@@ -96,10 +96,6 @@
                 font-size: 0.5rem
             .confirm
                 width: 1.5rem
-        &.slide-enter-active, .slide-leave-active
-            transition: all 0.3s
-        &.slide-enter, .slide-leave-to
-            transform: translate3d(0, 100%, 0)
     .list-mask
         position: absolute
         /*top: 0*/

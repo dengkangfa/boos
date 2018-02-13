@@ -1,5 +1,5 @@
 <template>
-    <transition name="slide">
+    <transition name="horizontal-slide">
         <div class="position-skill-wrapper" v-show="showFlag">
             <dkf-header title="技能标签">
                 <div slot="left" @click="cancel"><i class="icon-left" style="padding: 0.3rem;"></i></div>
