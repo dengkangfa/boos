@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use App\Http\Controllers\Controller;
+use League\Fractal\Resource\Collection;
 
 class ApiController extends Controller
 {
@@ -58,6 +59,22 @@ class ApiController extends Controller
     public function respondWithItem($item, $callback)
     {
         $resource = new Item($item, $callback);
+
+        $rootScope = $this->fractal->createData($resource);
+
+        return $this->respondWithArray(array_merge($rootScope->toArray(), ['success' => true, 'code' => $this->code]));
+    }
+
+    /**
+     * Respond the collection data.
+     *
+     * @param $collection
+     * @param $callback
+     * @return mixed
+     */
+    public function respondWithCollection($collection, $callback)
+    {
+        $resource = new Collection($collection, $callback);
 
         $rootScope = $this->fractal->createData($resource);
 

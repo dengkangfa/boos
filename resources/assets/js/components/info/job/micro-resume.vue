@@ -8,18 +8,18 @@
                 <div class="info">
                     <div>
                         <ul>
-                            <li class="info-item"><label>广东岭南职业技术学院</label><span class="item-value">2012-2015<i class="icon icon-right"></i></span></li>
+                            <li class="info-item" @click="editEducationInfo(item)" v-for="item in educationData"><label>{{ item.school }}</label><span class="item-value">{{ item.start_year + '-' + item.end_year }}<i class="icon icon-right"></i></span></li>
                             <li class="add-item"><i class="icon-jiahao"></i> 教育经历</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
-                            <li class="add-item"><i class="icon-jiahao"></i> 教育经历</li>
+                            <li class="add-item"><i class="icon-jiahao"></i> 实习经历</li>
                         </ul>
                     </div>
                     <div>
                         <ul>
-                            <li class="add-item"><i class="icon-jiahao"></i> 教育经历</li>
+                            <li class="add-item"><i class="icon-jiahao"></i> 项目经验</li>
                         </ul>
                     </div>
                     <div>
@@ -32,22 +32,50 @@
                     完成
                 </div>
             </div>
+            <education-form v-model="educationInfo" v-if="educationFormShowFlag" @abandon="abandon"></education-form>
         </div>
     </transition>
 </template>
 
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
+  import educationForm from '../base/education-form'
+  import {ERR_OK} from 'Api/config'
+  import {getCurrentUserAllEducationExperience} from 'Api/education-experience'
 
   export default {
+    data() {
+      return {
+        educationFormShowFlag: false,
+        educationData: [],
+        educationInfo: {}
+      }
+    },
+    created() {
+      getCurrentUserAllEducationExperience().then(response => {
+        if (response.code === ERR_OK) {
+          this.educationData = response.data
+        }
+      })
+    },
     beforeMount() {
       this.$emit('routePipe', true)
     },
     beforeDestroy() {
       this.$emit('routePipe', false)
     },
+    methods: {
+      editEducationInfo(educationInfo) {
+        this.educationInfo = educationInfo
+        this.educationFormShowFlag = true
+      },
+      abandon() {
+        this.educationFormShowFlag = false
+      }
+    },
     components: {
-      dkfHeader
+      dkfHeader,
+      educationForm
     }
   }
 </script>

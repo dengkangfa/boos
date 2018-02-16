@@ -26,7 +26,8 @@ Route::post('user/crop/avatar', 'Api\UsersController@cropAvatar');
 Route::patch('user/profile', 'Api\UsersController@updateProfile');
 Route::patch('user/advantage', 'Api\UsersController@updateAdvantage');
 
-Route::get('me/education_infos', 'Api\EducationInfoController@index');
+Route::get('me/education_info', 'Api\EducationInfoController@currentUserFirstEducation');
+Route::get('me/education_infos', 'Api\EducationInfoController@currentUserAllEducation');
 Route::post('education_infos', 'Api\EducationInfoController@store');
 Route::put('education_infos/{id}', 'Api\EducationInfoController@update');
 

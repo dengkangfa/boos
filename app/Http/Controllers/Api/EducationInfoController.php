@@ -24,14 +24,24 @@ class EducationInfoController extends ApiController
         $this->educationInfo = $educationInfo;
     }
 
-    public function index()
+    public function currentUserFirstEducation()
     {
-        $educationInfos = Auth::user()->educationInfos()->first();
+        $educationInfo = Auth::user()->educationInfos()->first();
 
-        if (is_null($educationInfos)) {
+        if (is_null($educationInfo)) {
             return $this->noContent();
         }
-        return $this->respondWithItem($educationInfos, new EducationInfoTransformer);
+        return $this->respondWithItem($educationInfo, new EducationInfoTransformer);
+    }
+
+    public function currentUserAllEducation()
+    {
+        $educationInfos = Auth::user()->educationInfos;
+
+        if (!count($educationInfos)) {
+            return $this->noContent();
+        }
+        return $this->respondWithCollection($educationInfos, new EducationInfoTransformer);
     }
 
     public function store(Request $request)

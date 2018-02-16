@@ -15383,7 +15383,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(34);
-module.exports = __webpack_require__(226);
+module.exports = __webpack_require__(231);
 
 
 /***/ }),
@@ -15400,12 +15400,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__App_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__App_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__router__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__store_index__ = __webpack_require__(25);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(219);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick__ = __webpack_require__(224);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_fastclick___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_fastclick__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__helpers_jwt__ = __webpack_require__(15);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(220);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui__ = __webpack_require__(225);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_mint_ui___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_mint_ui__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__ = __webpack_require__(229);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_mint_ui_lib_style_css__);
 __webpack_require__(35);
 
@@ -33873,7 +33873,7 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__components_info_job_work_experience___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11__components_info_job_work_experience__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_info_job_expect_position__ = __webpack_require__(193);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__components_info_job_expect_position___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_12__components_info_job_expect_position__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_info_job_micro_resume__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_info_job_micro_resume__ = __webpack_require__(219);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__components_info_job_micro_resume___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_13__components_info_job_micro_resume__);
 
 
@@ -46144,19 +46144,19 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(157)
+  __webpack_require__(248)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(159)
 /* template */
-var __vue_template__ = __webpack_require__(164)
+var __vue_template__ = __webpack_require__(250)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-56fd15d6"
+var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -46189,117 +46189,23 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 157 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(158);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("4d877863", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56fd15d6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-experience.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56fd15d6\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-experience.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 158 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.education-experience-wrapper[data-v-56fd15d6] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-56fd15d6] {\n    position: fixed;\n    height: 50px;\n    left: 0;\n    right: 0;\n    top: 0;\n}\n.education-experience-wrapper main[data-v-56fd15d6] {\n    position: absolute;\n    top: 50px;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper main .education-experience-content[data-v-56fd15d6] {\n      width: 100%;\n}\n.education-experience-wrapper main .education-experience-content .education-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .education-experience h3[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h1[data-v-56fd15d6], .education-experience-wrapper main .education-experience-content .at-school-experience h3[data-v-56fd15d6] {\n        height: 40px;\n        line-height: 40px;\n        padding-left: 10px;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience[data-v-56fd15d6] {\n        width: 100%;\n        margin-bottom: 1rem;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text[data-v-56fd15d6] {\n          padding: 10px 10px 0;\n          background: #ffffff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n            width: 100%;\n            height: 150px;\n            font-size: .37rem;\n            color: rgba(0, 0, 0, 0.5);\n            border: none;\n            outline: none;\n            resize: none;\n            padding: 0;\n            border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6] {\n                border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-webkit-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]:-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-56fd15d6]::placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num[data-v-56fd15d6] {\n            height: 45px;\n            line-height: 45px;\n            text-align: right;\n            font-size: .3rem;\n            background: #fff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num[data-v-56fd15d6] {\n              color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num.exceed[data-v-56fd15d6] {\n                color: red;\n}\n.education-experience-wrapper main .education-experience-content .next-button[data-v-56fd15d6] {\n        height: 50px;\n        line-height: 50px;\n        font-size: 0.45rem;\n        text-align: center;\n        background: #53CAC3;\n        border-radius: 0.15rem;\n        color: #fff;\n        margin: 10px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
+/* 157 */,
+/* 158 */,
 /* 159 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker__ = __webpack_require__(160);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_config__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_education_experience__ = __webpack_require__(163);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_education_form__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__base_education_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__base_education_form__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Api_config__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Api_education_experience__ = __webpack_require__(163);
 //
 //
 //
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-
-
 
 
 
@@ -46308,184 +46214,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      decline: false,
-      educationData: {
-        school: '', // 学校
-        major: '', // 专业
-        degree: '', // 学历
-        start_year: '', // 在校时间段开始时间
-        end_year: '', // 在校时间段结束时间
-        edu_description: '' // 在校经历
-      },
-      length: 300,
-      message: '', // 提示消息
-      spinnerText: '', // spinner提示消息
-      spinner: false, // 用于控制spinner显示与否
-      degreePicker: [{ // 学历选择框可选值
-        flex: 1,
-        values: ['中专及以下', '高中', '大专', '本科', '硕士', '博士'],
-        defaultIndex: 3
-      }],
-      degreePickerValue: '' // 用于临时记录用户学历选择值
+      educationData: {}
     };
   },
   created: function created() {
     var _this = this;
 
     // 请求当前登录用户的教育经历
-    Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["b" /* getEducationExperience */])().then(function (response) {
-      if (response.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["a" /* ERR_OK */]) {
+    Object(__WEBPACK_IMPORTED_MODULE_2_Api_education_experience__["c" /* getCurrentUserFirstEducationExperience */])().then(function (response) {
+      if (response.code === __WEBPACK_IMPORTED_MODULE_1_Api_config__["a" /* ERR_OK */]) {
         _this.educationData = response.data;
-        _this.degreePicker[0].defaultIndex = _this.degreePicker[0].values.indexOf(response.data.degree);
       }
     });
   },
 
   methods: {
-    routePipe: function routePipe(_decline) {
-      this.decline = _decline;
-      this.$emit('routePipe', _decline);
-    },
-    back: function back() {
-      this.hideFriendlyReminderMessage();
-      this.$router.back();
-    },
-
-    // 显示学校名称输入框
-    showSchoolInput: function showSchoolInput() {
-      this.$refs.schoolInput.show();
-    },
-
-    // 显示专业名称输入框
-    showMajorInput: function showMajorInput() {
-      this.$refs.majorInput.show();
-    },
-
-    // 显示学历选择框
-    showDegreePicker: function showDegreePicker() {
-      this.$refs.degreePicker.show();
-    },
-
-    // 显示在校时间段选择框
-    showPeriodPicker: function showPeriodPicker() {
-      this.$refs.periodPicker.show();
-    },
-
-    // 显示友情提示消息框
-    showFriendlyReminderMessage: function showFriendlyReminderMessage() {
-      this.$refs.friendlyReminderMessage.show();
-    },
-
-    // 隐藏友情提示消息框
-    hideFriendlyReminderMessage: function hideFriendlyReminderMessage() {
-      this.$refs.friendlyReminderMessage.hide();
-    },
-
-    // 学校名称保存函数
-    saveSchoolValue: function saveSchoolValue(value) {
-      this.educationData.school = value;
-    },
-
-    // 专业名称保存函数
-    saveMajorValue: function saveMajorValue(value) {
-      this.educationData.major = value;
-    },
-
-    // 学历选择框值发送变化触发函数
-    degreePickerOnValuesChange: function degreePickerOnValuesChange(picker, values) {
-      this.degreePickerValue = values[0];
-    },
-
-    // 学历选择框确定选择回调
-    degreePickerSelectHandle: function degreePickerSelectHandle() {
-      this.educationData.degree = this.degreePickerValue;
-      this.$refs.degreePicker.hide();
-    },
-
-    // 在校时间段选择框值发送变化触发函数
-    PeriodPickerSelectHandle: function PeriodPickerSelectHandle(values) {
-      this.educationData.start_year = values[0];
-      this.educationData.end_year = values[1];
-    },
-
-    // 触发在校经历获取焦点
-    eduDescriptionTextareaFocus: function eduDescriptionTextareaFocus() {
-      this.$refs.edu_descriptionTextarea.focus();
-    },
-    checkDate: function checkDate() {
-      if (!this.educationData.school) {
-        this.message = '请填写学校名称';
-      } else if (!this.educationData.major) {
-        this.message = '请填写所学专业';
-      } else if (!this.educationData.degree) {
-        this.message = '请选择学历';
-      } else if (!this.educationData.start_year || !this.educationData.end_year) {
-        this.message = '请选择在校时间段';
-      } else if (!this.educationData.edu_description) {
-        this.$refs.eduDescriptionMessage.show();
-        return false;
-      } else {
-        return true;
-      }
-      this.$refs.message.show();
-      return false;
-    },
-    next: function next() {
-      if (this.checkDate()) {
-        this.submit();
-      }
-    },
-
-    // 保存操作
     submit: function submit() {
-      var _this2 = this;
-
-      this.spinnerText = '保存中';
-      this.spinner = true;
-      var handle = void 0;
-      if (this.educationData.id) {
-        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["c" /* updateEducationExperience */])(this.educationData);
-      } else {
-        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["a" /* createdEducationExperience */])(this.educationData);
-      }
-      handle.then(function (response) {
-        _this2.spinner = false;
-        if (response.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["a" /* ERR_OK */]) {
-          _this2.$router.push({ 'name': 'job-advantage' });
-        }
-      }).catch(function (error) {
-        _this2.spinner = false;
-        if (error.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
-          _this2.message = error.message;
-          _this2.$refs.message.show();
-        }
-      });
-    }
-  },
-  computed: {
-    atSchoolPeriod: function atSchoolPeriod() {
-      if (this.educationData.start_year && this.educationData.end_year) {
-        return this.educationData.start_year + '-' + this.educationData.end_year;
-      }
-      return '';
+      this.$router.push({ 'name': 'job-advantage' });
     },
-    descriptionLength: function descriptionLength() {
-      return this.educationData.edu_description.length;
-    },
-    isExceed: function isExceed() {
-      return this.educationData.edu_description.length > this.length;
-    },
-    periodValue: function periodValue() {
-      return [this.educationData.start_year, this.educationData.end_year];
+    abandon: function abandon() {
+      this.$router.back();
     }
   },
   components: {
-    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
-    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a,
-    fullScreenInput: __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default.a,
-    periodPicker: __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker___default.a,
-    picker: __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default.a,
-    spinner: __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner___default.a
+    educationForm: __WEBPACK_IMPORTED_MODULE_0__base_education_form___default.a
   }
 });
 
@@ -46664,14 +46416,25 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["b"] = getEducationExperience;
+/* harmony export (immutable) */ __webpack_exports__["c"] = getCurrentUserFirstEducationExperience;
+/* harmony export (immutable) */ __webpack_exports__["b"] = getCurrentUserAllEducationExperience;
 /* harmony export (immutable) */ __webpack_exports__["a"] = createdEducationExperience;
-/* harmony export (immutable) */ __webpack_exports__["c"] = updateEducationExperience;
+/* harmony export (immutable) */ __webpack_exports__["d"] = updateEducationExperience;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
 
-function getEducationExperience() {
+function getCurrentUserFirstEducationExperience() {
+  var url = 'api/me/education_info';
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+function getCurrentUserAllEducationExperience() {
   var url = 'api/me/education_infos';
 
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
@@ -46702,310 +46465,7 @@ function updateEducationExperience(requestData) {
 }
 
 /***/ }),
-/* 164 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "horizontal-slide" } }, [
-    _c(
-      "div",
-      { staticClass: "education-experience-wrapper" },
-      [
-        _c(
-          "dkf-header",
-          {
-            staticClass: "_effect",
-            class: { "_effect--50": _vm.decline },
-            attrs: { title: "教育经历", fixed: "" }
-          },
-          [
-            _c(
-              "div",
-              {
-                attrs: { slot: "left" },
-                on: { click: _vm.showFriendlyReminderMessage },
-                slot: "left"
-              },
-              [
-                _c("i", {
-                  staticClass: "icon-left",
-                  staticStyle: { padding: "0.3rem" }
-                })
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticStyle: { "padding-right": ".3rem" },
-                attrs: { slot: "right" },
-                on: { click: _vm.next },
-                slot: "right"
-              },
-              [_vm._v("下一步")]
-            )
-          ]
-        ),
-        _vm._v(" "),
-        _c(
-          "main",
-          { staticClass: "_effect", class: { "_effect--30": _vm.decline } },
-          [
-            _c("div", { staticClass: "education-experience-content" }, [
-              _c("div", { staticClass: "education-experience" }, [
-                _c("h1", [_vm._v("教育经历")]),
-                _vm._v(" "),
-                _c("ul", { staticClass: "cell" }, [
-                  _c("li", { on: { click: _vm.showSchoolInput } }, [
-                    _c("label", [_vm._v("学校")]),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "item-value",
-                        class: { placeholder: !_vm.educationData.school }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm.educationData.school
-                              ? _vm.educationData.school
-                              : "中央美术学院"
-                          ) + " "
-                        ),
-                        _c("i", { staticClass: "icon icon-right" })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { on: { click: _vm.showMajorInput } }, [
-                    _c("label", [_vm._v("专业")]),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "item-value",
-                        class: { placeholder: !_vm.educationData.major }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm.educationData.major
-                              ? _vm.educationData.major
-                              : "产品设计"
-                          ) + " "
-                        ),
-                        _c("i", { staticClass: "icon icon-right" })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { on: { click: _vm.showDegreePicker } }, [
-                    _c("label", [_vm._v("学历")]),
-                    _c(
-                      "span",
-                      {
-                        staticClass: "item-value",
-                        class: { placeholder: !_vm.educationData.degree }
-                      },
-                      [
-                        _vm._v(
-                          _vm._s(
-                            _vm.educationData.degree
-                              ? _vm.educationData.degree
-                              : "本科"
-                          ) + " "
-                        ),
-                        _c("i", { staticClass: "icon icon-right" })
-                      ]
-                    )
-                  ]),
-                  _vm._v(" "),
-                  _c("li", { on: { click: _vm.showPeriodPicker } }, [
-                    _c("label", [_vm._v("时间段")]),
-                    _c("span", { staticClass: "item-value" }, [
-                      _vm._v(_vm._s(_vm.atSchoolPeriod) + " "),
-                      _c("i", { staticClass: "icon icon-right" })
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "at-school-experience" }, [
-                _c("h3", [_vm._v("在校经历")]),
-                _vm._v(" "),
-                _c("div", { staticClass: "text" }, [
-                  _c("textarea", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.educationData.edu_description,
-                        expression: "educationData.edu_description"
-                      }
-                    ],
-                    ref: "edu_descriptionTextarea",
-                    staticClass: "item-value",
-                    attrs: {
-                      maxlength: "300",
-                      mixlength: "2",
-                      placeholder:
-                        "作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."
-                    },
-                    domProps: { value: _vm.educationData.edu_description },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(
-                          _vm.educationData,
-                          "edu_description",
-                          $event.target.value
-                        )
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("p", { staticClass: "text-num" }, [
-                    _c(
-                      "span",
-                      {
-                        staticClass: "input-num",
-                        class: { exceed: _vm.isExceed }
-                      },
-                      [_vm._v(_vm._s(_vm.descriptionLength))]
-                    ),
-                    _vm._v("/" + _vm._s(_vm.length))
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "next-button",
-                  on: {
-                    click: function($event) {
-                      $event.stopPropagation()
-                      _vm.next($event)
-                    }
-                  }
-                },
-                [_vm._v("下一步")]
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("message-box", { ref: "message", attrs: { message: _vm.message } }),
-        _vm._v(" "),
-        _c("message-box", {
-          ref: "eduDescriptionMessage",
-          attrs: {
-            message: "直聘君建议",
-            description:
-              "突出在校经历，<br>可以弥补工作经历不足的缺点，也可获得更多工作机会",
-            confirmButtonText: "再改改",
-            cancelButtonText: "就这样",
-            showConfirmButton: true
-          },
-          on: { cancel: _vm.submit, confirm: _vm.eduDescriptionTextareaFocus }
-        }),
-        _vm._v(" "),
-        _c("message-box", {
-          ref: "friendlyReminderMessage",
-          attrs: {
-            message: "友情提示",
-            description: "离高薪职位只差一步，你确定放弃？",
-            confirmButtonText: "放弃",
-            cancelButtonText: "点错了",
-            showConfirmButton: true
-          },
-          on: { cancel: _vm.hideFriendlyReminderMessage, confirm: _vm.back }
-        }),
-        _vm._v(" "),
-        _c("full-screen-input", {
-          ref: "schoolInput",
-          attrs: {
-            id: "school",
-            title: "学校",
-            allowEmpty: true,
-            showValueLength: false
-          },
-          on: { saveValue: _vm.saveSchoolValue },
-          model: {
-            value: _vm.educationData.school,
-            callback: function($$v) {
-              _vm.$set(_vm.educationData, "school", $$v)
-            },
-            expression: "educationData.school"
-          }
-        }),
-        _vm._v(" "),
-        _c("full-screen-input", {
-          ref: "majorInput",
-          attrs: {
-            id: "major",
-            title: "专业",
-            allowEmpty: true,
-            showValueLength: false
-          },
-          on: { saveValue: _vm.saveMajorValue },
-          model: {
-            value: _vm.educationData.major,
-            callback: function($$v) {
-              _vm.$set(_vm.educationData, "major", $$v)
-            },
-            expression: "educationData.major"
-          }
-        }),
-        _vm._v(" "),
-        _c("period-picker", {
-          ref: "periodPicker",
-          attrs: { period: _vm.periodValue },
-          on: { select: _vm.PeriodPickerSelectHandle }
-        }),
-        _vm._v(" "),
-        _c("picker", {
-          ref: "degreePicker",
-          attrs: { title: "学历", slots: _vm.degreePicker },
-          on: {
-            onValuesChange: _vm.degreePickerOnValuesChange,
-            confirm: _vm.degreePickerSelectHandle
-          }
-        }),
-        _vm._v(" "),
-        _c("spinner", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.spinner,
-              expression: "spinner"
-            }
-          ],
-          attrs: { text: _vm.spinnerText }
-        }),
-        _vm._v(" "),
-        _c("router-view", { on: { routePipe: _vm.routePipe } })
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-56fd15d6", module.exports)
-  }
-}
-
-/***/ }),
+/* 164 */,
 /* 165 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -51417,13 +50877,13 @@ var applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑�
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(243)
+  __webpack_require__(198)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
 var __vue_script__ = __webpack_require__(200)
 /* template */
-var __vue_template__ = __webpack_require__(245)
+var __vue_template__ = __webpack_require__(201)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -51462,8 +50922,46 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 198 */,
-/* 199 */,
+/* 198 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(199);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("c7095564", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feea9098\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./apply-status-select.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feea9098\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./apply-status-select.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 199 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.apply-status-wrapper[data-v-feea9098] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 50;\n  font-size: .55rem;\n  text-align: center;\n  color: #1885ff;\n  margin: 10px;\n}\n.apply-status-wrapper .apply-status-list[data-v-feea9098] {\n    border-radius: .3rem;\n    background: #ffffff;\n}\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:first-child {\n      height: 1.2rem;\n      line-height: 1.2rem;\n      color: rgba(0, 0, 0, 0.5);\n      font-size: .35rem;\n}\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n      height: 1.5rem;\n      line-height: 1.5rem;\n      border-top: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n          border-top: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n          border-top: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.apply-status-wrapper .cancel-button[data-v-feea9098] {\n    height: 1.5rem;\n    line-height: 1.5rem;\n    font-weight: 700;\n    background: #fff;\n    border-radius: .3rem;\n    margin-top: 8px;\n}\n.list-mask[data-v-feea9098] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 40;\n  opacity: 1;\n  background: rgba(0, 0, 0, 0.3);\n}\n.list-mask.fade-enter-active[data-v-feea9098], .list-mask.fade-leave-active[data-v-feea9098] {\n    -webkit-transition: all .5s;\n    transition: all .5s;\n}\n.list-mask.fade-enter[data-v-feea9098], .list-mask.fade-leave-to[data-v-feea9098] {\n    opacity: 0;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
 /* 200 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -51512,7 +51010,123 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 201 */,
+/* 201 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c("transition", { attrs: { name: "vertical-slide" } }, [
+        _c(
+          "div",
+          {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.showFlag,
+                expression: "showFlag"
+              }
+            ],
+            staticClass: "apply-status-wrapper"
+          },
+          [
+            _c("ul", { staticClass: "apply-status-list" }, [
+              _c("li", { staticClass: "apply-status-list-header" }, [
+                _vm._v("求职状态")
+              ]),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.select(0)
+                    }
+                  }
+                },
+                [_vm._v("离职-随时到岗")]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.select(1)
+                    }
+                  }
+                },
+                [_vm._v("在职-暂不考虑")]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.select(2)
+                    }
+                  }
+                },
+                [_vm._v("在职-考虑机会")]
+              ),
+              _vm._v(" "),
+              _c(
+                "li",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.select(3)
+                    }
+                  }
+                },
+                [_vm._v("在职-月内到岗")]
+              )
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "cancel-button", on: { click: _vm.hide } },
+              [_vm._v("取消")]
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("transition", { attrs: { name: "fade" } }, [
+        _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.showFlag,
+              expression: "showFlag"
+            }
+          ],
+          staticClass: "list-mask",
+          on: { click: _vm.hide }
+        })
+      ])
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-feea9098", module.exports)
+  }
+}
+
+/***/ }),
 /* 202 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -56547,6 +56161,330 @@ if (false) {
 /* 219 */
 /***/ (function(module, exports, __webpack_require__) {
 
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(220)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(222)
+/* template */
+var __vue_template__ = __webpack_require__(223)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-3bdc023c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\info\\job\\micro-resume.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3bdc023c", Component.options)
+  } else {
+    hotAPI.reload("data-v-3bdc023c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 220 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(221);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("79308d32", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bdc023c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./micro-resume.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bdc023c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./micro-resume.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 221 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.my-resume-wrapper[data-v-3bdc023c] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.my-resume-wrapper .main .info div[data-v-3bdc023c] {\n    width: 100%;\n    background: #ffffff;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    padding: 0 10px;\n    margin-bottom: 10px;\n}\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n      height: 1.5rem;\n      line-height: 1.5rem;\n      text-align: center;\n      border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n          border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n          border-bottom: 0.33333px solid #e9efef;\n}\n}\n.my-resume-wrapper .main .info div ul li.add-item[data-v-3bdc023c] {\n        color: #53CAC3;\n        font-size: .4rem;\n}\n.my-resume-wrapper .main .info div ul li.info-item[data-v-3bdc023c] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n}\n.my-resume-wrapper .main .info div ul li.info-item .item-value[data-v-3bdc023c] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.my-resume-wrapper .main .info div ul li.info-item i.icon[data-v-3bdc023c] {\n          font-size: .3rem;\n          color: #53CAC3;\n          margin-left: .3rem;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 222 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_education_form__ = __webpack_require__(242);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__base_education_form___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__base_education_form__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Api_config__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Api_education_experience__ = __webpack_require__(163);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      educationFormShowFlag: false,
+      educationData: [],
+      educationInfo: {}
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Object(__WEBPACK_IMPORTED_MODULE_3_Api_education_experience__["b" /* getCurrentUserAllEducationExperience */])().then(function (response) {
+      if (response.code === __WEBPACK_IMPORTED_MODULE_2_Api_config__["a" /* ERR_OK */]) {
+        _this.educationData = response.data;
+      }
+    });
+  },
+  beforeMount: function beforeMount() {
+    this.$emit('routePipe', true);
+  },
+  beforeDestroy: function beforeDestroy() {
+    this.$emit('routePipe', false);
+  },
+
+  methods: {
+    editEducationInfo: function editEducationInfo(educationInfo) {
+      this.educationInfo = educationInfo;
+      this.educationFormShowFlag = true;
+    },
+    abandon: function abandon() {
+      this.educationFormShowFlag = false;
+    }
+  },
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
+    educationForm: __WEBPACK_IMPORTED_MODULE_1__base_education_form___default.a
+  }
+});
+
+/***/ }),
+/* 223 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "horizontal-slide" } }, [
+    _c(
+      "div",
+      { staticClass: "my-resume-wrapper" },
+      [
+        _c("dkf-header", { attrs: { title: "我的简历" } }, [
+          _c(
+            "div",
+            {
+              attrs: { slot: "left" },
+              on: {
+                click: function($event) {
+                  _vm.$router.back()
+                }
+              },
+              slot: "left"
+            },
+            [
+              _c("i", {
+                staticClass: "icon-left",
+                staticStyle: { padding: "0.3rem" }
+              })
+            ]
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "main" }, [
+          _c("div", { staticClass: "info" }, [
+            _c("div", [
+              _c(
+                "ul",
+                [
+                  _vm._l(_vm.educationData, function(item) {
+                    return _c(
+                      "li",
+                      {
+                        staticClass: "info-item",
+                        on: {
+                          click: function($event) {
+                            _vm.editEducationInfo(item)
+                          }
+                        }
+                      },
+                      [
+                        _c("label", [_vm._v(_vm._s(item.school))]),
+                        _c("span", { staticClass: "item-value" }, [
+                          _vm._v(_vm._s(item.start_year + "-" + item.end_year)),
+                          _c("i", { staticClass: "icon icon-right" })
+                        ])
+                      ]
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c("li", { staticClass: "add-item" }, [
+                    _c("i", { staticClass: "icon-jiahao" }),
+                    _vm._v(" 教育经历")
+                  ])
+                ],
+                2
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("ul", [
+                _c("li", { staticClass: "add-item" }, [
+                  _c("i", { staticClass: "icon-jiahao" }),
+                  _vm._v(" 实习经历")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("ul", [
+                _c("li", { staticClass: "add-item" }, [
+                  _c("i", { staticClass: "icon-jiahao" }),
+                  _vm._v(" 项目经验")
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c("ul", [
+                _c("li", { staticClass: "info-item" }, [
+                  _c("label", [_vm._v("社交主页")]),
+                  _c("span", { staticClass: "item-value" }, [
+                    _c("i", { staticClass: "icon icon-right" })
+                  ])
+                ])
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            {
+              staticClass: "theme-button",
+              staticStyle: { "margin-top": "70px" }
+            },
+            [_vm._v("\n                完成\n            ")]
+          )
+        ]),
+        _vm._v(" "),
+        _vm.educationFormShowFlag
+          ? _c("education-form", {
+              on: { abandon: _vm.abandon },
+              model: {
+                value: _vm.educationInfo,
+                callback: function($$v) {
+                  _vm.educationInfo = $$v
+                },
+                expression: "educationInfo"
+              }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-3bdc023c", module.exports)
+  }
+}
+
+/***/ }),
+/* 224 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 	'use strict';
 
@@ -57392,7 +57330,7 @@ var __WEBPACK_AMD_DEFINE_RESULT__;;(function () {
 
 
 /***/ }),
-/* 220 */
+/* 225 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports =
@@ -67289,19 +67227,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 /* 199 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(221);
+module.exports = __webpack_require__(226);
 
 /***/ },
 /* 200 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(222);
+module.exports = __webpack_require__(227);
 
 /***/ },
 /* 201 */
 /***/ function(module, exports) {
 
-module.exports = __webpack_require__(223);
+module.exports = __webpack_require__(228);
 
 /***/ },
 /* 202 */
@@ -67314,7 +67252,7 @@ module.exports = __webpack_require__(14);
 /******/ ]);
 
 /***/ }),
-/* 221 */
+/* 226 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -67346,7 +67284,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 222 */
+/* 227 */
 /***/ (function(module, exports) {
 
 /*
@@ -67393,7 +67331,7 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 223 */
+/* 228 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -67405,13 +67343,13 @@ module.exports = function (arr, predicate, ctx) {
 
 
 /***/ }),
-/* 224 */
+/* 229 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(225);
+var content = __webpack_require__(230);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -67436,7 +67374,7 @@ if(false) {
 }
 
 /***/ }),
-/* 225 */
+/* 230 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(undefined);
@@ -67450,42 +67388,41 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 
 
 /***/ }),
-/* 226 */
+/* 231 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 227 */,
-/* 228 */,
-/* 229 */,
-/* 230 */,
-/* 231 */,
 /* 232 */,
 /* 233 */,
 /* 234 */,
 /* 235 */,
 /* 236 */,
 /* 237 */,
-/* 238 */
+/* 238 */,
+/* 239 */,
+/* 240 */,
+/* 241 */,
+/* 242 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(239)
+  __webpack_require__(243)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(241)
+var __vue_script__ = __webpack_require__(245)
 /* template */
-var __vue_template__ = __webpack_require__(242)
+var __vue_template__ = __webpack_require__(246)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3bdc023c"
+var __vue_scopeId__ = "data-v-5973ad46"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -67496,7 +67433,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "resources\\assets\\js\\components\\info\\job\\micro-resume.vue"
+Component.options.__file = "resources\\assets\\js\\components\\info\\base\\education-form.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -67505,9 +67442,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3bdc023c", Component.options)
+    hotAPI.createRecord("data-v-5973ad46", Component.options)
   } else {
-    hotAPI.reload("data-v-3bdc023c", Component.options)
+    hotAPI.reload("data-v-5973ad46", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -67516,215 +67453,6 @@ if (false) {(function () {
 
 module.exports = Component.exports
 
-
-/***/ }),
-/* 239 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(240);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(2)("79308d32", content, false);
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bdc023c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./micro-resume.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3bdc023c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./micro-resume.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 240 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n.my-resume-wrapper[data-v-3bdc023c] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.my-resume-wrapper .main .info div[data-v-3bdc023c] {\n    width: 100%;\n    background: #ffffff;\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n    padding: 0 10px;\n    margin-bottom: 10px;\n}\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n      height: 1.5rem;\n      line-height: 1.5rem;\n      text-align: center;\n      border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n          border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.my-resume-wrapper .main .info div ul li[data-v-3bdc023c] {\n          border-bottom: 0.33333px solid #e9efef;\n}\n}\n.my-resume-wrapper .main .info div ul li.add-item[data-v-3bdc023c] {\n        color: #53CAC3;\n        font-size: .4rem;\n}\n.my-resume-wrapper .main .info div ul li.info-item[data-v-3bdc023c] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n}\n.my-resume-wrapper .main .info div ul li.info-item .item-value[data-v-3bdc023c] {\n          color: rgba(0, 0, 0, 0.5);\n}\n.my-resume-wrapper .main .info div ul li.info-item i.icon[data-v-3bdc023c] {\n          font-size: .3rem;\n          color: #53CAC3;\n          margin-left: .3rem;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 241 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  beforeMount: function beforeMount() {
-    this.$emit('routePipe', true);
-  },
-  beforeDestroy: function beforeDestroy() {
-    this.$emit('routePipe', false);
-  },
-
-  components: {
-    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a
-  }
-});
-
-/***/ }),
-/* 242 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("transition", { attrs: { name: "horizontal-slide" } }, [
-    _c(
-      "div",
-      { staticClass: "my-resume-wrapper" },
-      [
-        _c("dkf-header", { attrs: { title: "我的简历" } }, [
-          _c(
-            "div",
-            {
-              attrs: { slot: "left" },
-              on: {
-                click: function($event) {
-                  _vm.$router.back()
-                }
-              },
-              slot: "left"
-            },
-            [
-              _c("i", {
-                staticClass: "icon-left",
-                staticStyle: { padding: "0.3rem" }
-              })
-            ]
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "main" }, [
-          _c("div", { staticClass: "info" }, [
-            _c("div", [
-              _c("ul", [
-                _c("li", { staticClass: "info-item" }, [
-                  _c("label", [_vm._v("广东岭南职业技术学院")]),
-                  _c("span", { staticClass: "item-value" }, [
-                    _vm._v("2012-2015"),
-                    _c("i", { staticClass: "icon icon-right" })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("li", { staticClass: "add-item" }, [
-                  _c("i", { staticClass: "icon-jiahao" }),
-                  _vm._v(" 教育经历")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("ul", [
-                _c("li", { staticClass: "add-item" }, [
-                  _c("i", { staticClass: "icon-jiahao" }),
-                  _vm._v(" 教育经历")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("ul", [
-                _c("li", { staticClass: "add-item" }, [
-                  _c("i", { staticClass: "icon-jiahao" }),
-                  _vm._v(" 教育经历")
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c("ul", [
-                _c("li", { staticClass: "info-item" }, [
-                  _c("label", [_vm._v("社交主页")]),
-                  _c("span", { staticClass: "item-value" }, [
-                    _c("i", { staticClass: "icon icon-right" })
-                  ])
-                ])
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "theme-button",
-              staticStyle: { "margin-top": "70px" }
-            },
-            [_vm._v("\n                完成\n            ")]
-          )
-        ])
-      ],
-      1
-    )
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3bdc023c", module.exports)
-  }
-}
 
 /***/ }),
 /* 243 */
@@ -67737,13 +67465,13 @@ var content = __webpack_require__(244);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(2)("c7095564", content, false);
+var update = __webpack_require__(2)("155f20d9", content, false);
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feea9098\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./apply-status-select.vue", function() {
-     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-feea9098\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./apply-status-select.vue");
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5973ad46\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-form.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5973ad46\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-form.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -67761,13 +67489,622 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.apply-status-wrapper[data-v-feea9098] {\n  position: fixed;\n  left: 0;\n  right: 0;\n  bottom: 0;\n  z-index: 50;\n  font-size: .55rem;\n  text-align: center;\n  color: #1885ff;\n  margin: 10px;\n}\n.apply-status-wrapper .apply-status-list[data-v-feea9098] {\n    border-radius: .3rem;\n    background: #ffffff;\n}\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:first-child {\n      height: 1.2rem;\n      line-height: 1.2rem;\n      color: rgba(0, 0, 0, 0.5);\n      font-size: .35rem;\n}\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n      height: 1.5rem;\n      line-height: 1.5rem;\n      border-top: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n          border-top: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.apply-status-wrapper .apply-status-list li[data-v-feea9098]:not(:first-child) {\n          border-top: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.apply-status-wrapper .cancel-button[data-v-feea9098] {\n    height: 1.5rem;\n    line-height: 1.5rem;\n    font-weight: 700;\n    background: #fff;\n    border-radius: .3rem;\n    margin-top: 8px;\n}\n.list-mask[data-v-feea9098] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 40;\n  opacity: 1;\n  background: rgba(0, 0, 0, 0.3);\n}\n.list-mask.fade-enter-active[data-v-feea9098], .list-mask.fade-leave-active[data-v-feea9098] {\n    -webkit-transition: all .5s;\n    transition: all .5s;\n}\n.list-mask.fade-enter[data-v-feea9098], .list-mask.fade-leave-to[data-v-feea9098] {\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.education-experience-wrapper[data-v-5973ad46] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  width: 100%;\n  height: 100%;\n  font-size: .35rem;\n  background: #e9efef;\n  overflow-y: auto;\n  -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper .header-wrapper[data-v-5973ad46] {\n    position: fixed;\n    height: 50px;\n    left: 0;\n    right: 0;\n    top: 0;\n}\n.education-experience-wrapper main[data-v-5973ad46] {\n    position: absolute;\n    top: 50px;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    overflow-y: scroll;\n    -webkit-overflow-scrolling: touch;\n}\n.education-experience-wrapper main .education-experience-content[data-v-5973ad46] {\n      width: 100%;\n}\n.education-experience-wrapper main .education-experience-content .education-experience h1[data-v-5973ad46], .education-experience-wrapper main .education-experience-content .education-experience h3[data-v-5973ad46], .education-experience-wrapper main .education-experience-content .at-school-experience h1[data-v-5973ad46], .education-experience-wrapper main .education-experience-content .at-school-experience h3[data-v-5973ad46] {\n        height: 40px;\n        line-height: 40px;\n        padding-left: 10px;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.5);\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience[data-v-5973ad46] {\n        width: 100%;\n        margin-bottom: 1rem;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text[data-v-5973ad46] {\n          padding: 10px 10px 0;\n          background: #ffffff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46] {\n            width: 100%;\n            height: 150px;\n            font-size: .37rem;\n            color: rgba(0, 0, 0, 0.5);\n            border: none;\n            outline: none;\n            resize: none;\n            padding: 0;\n            border-bottom: 1px solid #e9efef;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46] {\n                border-bottom: 0.5px solid #e9efef;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46] {\n                border-bottom: 0.33333px solid #e9efef;\n}\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46]::-webkit-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46]:-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46]::-ms-input-placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text textarea[data-v-5973ad46]::placeholder {\n              color: #999;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num[data-v-5973ad46] {\n            height: 45px;\n            line-height: 45px;\n            text-align: right;\n            font-size: .3rem;\n            background: #fff;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num[data-v-5973ad46] {\n              color: #53CAC3;\n}\n.education-experience-wrapper main .education-experience-content .at-school-experience .text .text-num .input-num.exceed[data-v-5973ad46] {\n                color: red;\n}\n.education-experience-wrapper main .education-experience-content .next-button[data-v-5973ad46] {\n        height: 50px;\n        line-height: 50px;\n        font-size: 0.45rem;\n        text-align: center;\n        background: #53CAC3;\n        border-radius: 0.15rem;\n        color: #fff;\n        margin: 10px;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 245 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_header_header__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_message_message_box__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__ = __webpack_require__(18);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__base_full_screen_input__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker__ = __webpack_require__(160);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__ = __webpack_require__(9);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_Base_picker_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_config__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Api_education_experience__ = __webpack_require__(163);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    value: {
+      type: Object,
+      default: {}
+    }
+  },
+  data: function data() {
+    return {
+      decline: false,
+      length: 300,
+      message: '', // 提示消息
+      spinnerText: '', // spinner提示消息
+      spinner: false, // 用于控制spinner显示与否
+      educationData: {
+        school: '', // 学校
+        major: '', // 专业
+        degree: '', // 学历
+        start_year: '', // 在校时间段开始时间
+        end_year: '', // 在校时间段结束时间
+        edu_description: '' // 在校经历
+      },
+      degreePicker: [{ // 学历选择框可选值
+        flex: 1,
+        values: ['中专及以下', '高中', '大专', '本科', '硕士', '博士'],
+        defaultIndex: 3
+      }],
+      degreePickerValue: '' // 用于临时记录用户学历选择值
+    };
+  },
+  created: function created() {
+    this.degreePicker[0].defaultIndex = this.degreePicker[0].values.indexOf(this.educationData.degree);
+  },
+
+  methods: {
+    routePipe: function routePipe(_decline) {
+      this.decline = _decline;
+      this.$emit('routePipe', _decline);
+    },
+    abandon: function abandon() {
+      this.hideFriendlyReminderMessage();
+      this.$emit('abandon');
+    },
+
+    // 显示学校名称输入框
+    showSchoolInput: function showSchoolInput() {
+      this.$refs.schoolInput.show();
+    },
+
+    // 显示专业名称输入框
+    showMajorInput: function showMajorInput() {
+      this.$refs.majorInput.show();
+    },
+
+    // 显示学历选择框
+    showDegreePicker: function showDegreePicker() {
+      this.$refs.degreePicker.show();
+    },
+
+    // 显示在校时间段选择框
+    showPeriodPicker: function showPeriodPicker() {
+      this.$refs.periodPicker.show();
+    },
+
+    // 显示友情提示消息框
+    showFriendlyReminderMessage: function showFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.show();
+    },
+
+    // 隐藏友情提示消息框
+    hideFriendlyReminderMessage: function hideFriendlyReminderMessage() {
+      this.$refs.friendlyReminderMessage.hide();
+    },
+
+    // 学校名称保存函数
+    saveSchoolValue: function saveSchoolValue(value) {
+      this.educationData.school = value;
+    },
+
+    // 专业名称保存函数
+    saveMajorValue: function saveMajorValue(value) {
+      this.educationData.major = value;
+    },
+
+    // 学历选择框值发送变化触发函数
+    degreePickerOnValuesChange: function degreePickerOnValuesChange(picker, values) {
+      this.degreePickerValue = values[0];
+    },
+
+    // 学历选择框确定选择回调
+    degreePickerSelectHandle: function degreePickerSelectHandle() {
+      this.educationData.degree = this.degreePickerValue;
+      this.$refs.degreePicker.hide();
+    },
+
+    // 在校时间段选择框值发送变化触发函数
+    PeriodPickerSelectHandle: function PeriodPickerSelectHandle(values) {
+      this.educationData.start_year = values[0];
+      this.educationData.end_year = values[1];
+    },
+
+    // 触发在校经历获取焦点
+    eduDescriptionTextareaFocus: function eduDescriptionTextareaFocus() {
+      this.$refs.edu_descriptionTextarea.focus();
+    },
+    checkDate: function checkDate() {
+      if (!this.educationData.school) {
+        this.message = '请填写学校名称';
+      } else if (!this.educationData.major) {
+        this.message = '请填写所学专业';
+      } else if (!this.educationData.degree) {
+        this.message = '请选择学历';
+      } else if (!this.educationData.start_year || !this.educationData.end_year) {
+        this.message = '请选择在校时间段';
+      } else if (!this.educationData.edu_description) {
+        this.$refs.eduDescriptionMessage.show();
+        return false;
+      } else {
+        return true;
+      }
+      this.$refs.message.show();
+      return false;
+    },
+    next: function next() {
+      if (this.checkDate()) {
+        this.submit();
+      }
+    },
+
+    // 保存操作
+    submit: function submit() {
+      var _this = this;
+
+      this.spinnerText = '保存中';
+      this.spinner = true;
+      var handle = void 0;
+      if (this.educationData.id) {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["d" /* updateEducationExperience */])(this.educationData);
+      } else {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_7_Api_education_experience__["a" /* createdEducationExperience */])(this.educationData);
+      }
+      handle.then(function (response) {
+        _this.spinner = false;
+        if (response.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["a" /* ERR_OK */]) {
+          _this.$emit('submit', response.data);
+        }
+      }).catch(function (error) {
+        _this.spinner = false;
+        if (error.code === __WEBPACK_IMPORTED_MODULE_6_Api_config__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
+          _this.message = error.message;
+          _this.$refs.message.show();
+        }
+      });
+    }
+  },
+  computed: {
+    atSchoolPeriod: function atSchoolPeriod() {
+      if (this.educationData.start_year && this.educationData.end_year) {
+        return this.educationData.start_year + '-' + this.educationData.end_year;
+      }
+      return '';
+    },
+    descriptionLength: function descriptionLength() {
+      return this.educationData.edu_description ? this.educationData.edu_description.length : 0;
+    },
+    isExceed: function isExceed() {
+      return this.educationData.edu_description ? this.educationData.edu_description.length > this.length : false;
+    },
+    periodValue: function periodValue() {
+      return [this.educationData.start_year, this.educationData.end_year];
+    }
+  },
+  watch: {
+    value: function value(newValue) {
+      newValue ? this.educationData = newValue : '';
+    }
+  },
+  components: {
+    dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
+    messageBox: __WEBPACK_IMPORTED_MODULE_1_Base_message_message_box___default.a,
+    fullScreenInput: __WEBPACK_IMPORTED_MODULE_2__base_full_screen_input___default.a,
+    periodPicker: __WEBPACK_IMPORTED_MODULE_3_Base_picker_period_picker___default.a,
+    picker: __WEBPACK_IMPORTED_MODULE_4_Base_picker_picker___default.a,
+    spinner: __WEBPACK_IMPORTED_MODULE_5_Base_spinner_spinner___default.a
+  }
+});
+
+/***/ }),
+/* 246 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("transition", { attrs: { name: "horizontal-slide" } }, [
+    _c(
+      "div",
+      { staticClass: "education-experience-wrapper" },
+      [
+        _c(
+          "dkf-header",
+          {
+            staticClass: "_effect",
+            class: { "_effect--50": _vm.decline },
+            attrs: { title: "教育经历", fixed: "" }
+          },
+          [
+            _c(
+              "div",
+              {
+                attrs: { slot: "left" },
+                on: { click: _vm.showFriendlyReminderMessage },
+                slot: "left"
+              },
+              [
+                _c("i", {
+                  staticClass: "icon-left",
+                  staticStyle: { padding: "0.3rem" }
+                })
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticStyle: { "padding-right": ".3rem" },
+                attrs: { slot: "right" },
+                on: { click: _vm.next },
+                slot: "right"
+              },
+              [_vm._v("下一步")]
+            )
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "main",
+          { staticClass: "_effect", class: { "_effect--30": _vm.decline } },
+          [
+            _c("div", { staticClass: "education-experience-content" }, [
+              _c("div", { staticClass: "education-experience" }, [
+                _c("h1", [_vm._v("教育经历")]),
+                _vm._v(" "),
+                _c("ul", { staticClass: "cell" }, [
+                  _c("li", { on: { click: _vm.showSchoolInput } }, [
+                    _c("label", [_vm._v("学校")]),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "item-value",
+                        class: { placeholder: !_vm.educationData.school }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm.educationData.school
+                              ? _vm.educationData.school
+                              : "中央美术学院"
+                          ) + " "
+                        ),
+                        _c("i", { staticClass: "icon icon-right" })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.showMajorInput } }, [
+                    _c("label", [_vm._v("专业")]),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "item-value",
+                        class: { placeholder: !_vm.educationData.major }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm.educationData.major
+                              ? _vm.educationData.major
+                              : "产品设计"
+                          ) + " "
+                        ),
+                        _c("i", { staticClass: "icon icon-right" })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.showDegreePicker } }, [
+                    _c("label", [_vm._v("学历")]),
+                    _c(
+                      "span",
+                      {
+                        staticClass: "item-value",
+                        class: { placeholder: !_vm.educationData.degree }
+                      },
+                      [
+                        _vm._v(
+                          _vm._s(
+                            _vm.educationData.degree
+                              ? _vm.educationData.degree
+                              : "本科"
+                          ) + " "
+                        ),
+                        _c("i", { staticClass: "icon icon-right" })
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("li", { on: { click: _vm.showPeriodPicker } }, [
+                    _c("label", [_vm._v("时间段")]),
+                    _c("span", { staticClass: "item-value" }, [
+                      _vm._v(_vm._s(_vm.atSchoolPeriod) + " "),
+                      _c("i", { staticClass: "icon icon-right" })
+                    ])
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "at-school-experience" }, [
+                _c("h3", [_vm._v("在校经历")]),
+                _vm._v(" "),
+                _c("div", { staticClass: "text" }, [
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.educationData.edu_description,
+                        expression: "educationData.edu_description"
+                      }
+                    ],
+                    ref: "edu_descriptionTextarea",
+                    staticClass: "item-value",
+                    attrs: {
+                      maxlength: "300",
+                      mixlength: "2",
+                      placeholder:
+                        "作为班级团支书主要负责团队、党员的                                                                            学习工作、积极分子的发展                                                         评估，负责班级的团费、党费管理..."
+                    },
+                    domProps: { value: _vm.educationData.edu_description },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.educationData,
+                          "edu_description",
+                          $event.target.value
+                        )
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "text-num" }, [
+                    _c(
+                      "span",
+                      {
+                        staticClass: "input-num",
+                        class: { exceed: _vm.isExceed }
+                      },
+                      [_vm._v(_vm._s(_vm.descriptionLength))]
+                    ),
+                    _vm._v("/" + _vm._s(_vm.length))
+                  ])
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "next-button",
+                  on: {
+                    click: function($event) {
+                      $event.stopPropagation()
+                      _vm.next($event)
+                    }
+                  }
+                },
+                [_vm._v("下一步")]
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c("message-box", { ref: "message", attrs: { message: _vm.message } }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "eduDescriptionMessage",
+          attrs: {
+            message: "直聘君建议",
+            description:
+              "突出在校经历，<br>可以弥补工作经历不足的缺点，也可获得更多工作机会",
+            confirmButtonText: "再改改",
+            cancelButtonText: "就这样",
+            showConfirmButton: true
+          },
+          on: { cancel: _vm.submit, confirm: _vm.eduDescriptionTextareaFocus }
+        }),
+        _vm._v(" "),
+        _c("message-box", {
+          ref: "friendlyReminderMessage",
+          attrs: {
+            message: "友情提示",
+            description: "离高薪职位只差一步，你确定放弃？",
+            confirmButtonText: "放弃",
+            cancelButtonText: "点错了",
+            showConfirmButton: true
+          },
+          on: { cancel: _vm.hideFriendlyReminderMessage, confirm: _vm.abandon }
+        }),
+        _vm._v(" "),
+        _c("full-screen-input", {
+          ref: "schoolInput",
+          attrs: {
+            id: "school",
+            title: "学校",
+            allowEmpty: true,
+            showValueLength: false
+          },
+          on: { saveValue: _vm.saveSchoolValue },
+          model: {
+            value: _vm.educationData.school,
+            callback: function($$v) {
+              _vm.$set(_vm.educationData, "school", $$v)
+            },
+            expression: "educationData.school"
+          }
+        }),
+        _vm._v(" "),
+        _c("full-screen-input", {
+          ref: "majorInput",
+          attrs: {
+            id: "major",
+            title: "专业",
+            allowEmpty: true,
+            showValueLength: false
+          },
+          on: { saveValue: _vm.saveMajorValue },
+          model: {
+            value: _vm.educationData.major,
+            callback: function($$v) {
+              _vm.$set(_vm.educationData, "major", $$v)
+            },
+            expression: "educationData.major"
+          }
+        }),
+        _vm._v(" "),
+        _c("period-picker", {
+          ref: "periodPicker",
+          attrs: { period: _vm.periodValue },
+          on: { select: _vm.PeriodPickerSelectHandle }
+        }),
+        _vm._v(" "),
+        _c("picker", {
+          ref: "degreePicker",
+          attrs: { title: "学历", slots: _vm.degreePicker },
+          on: {
+            onValuesChange: _vm.degreePickerOnValuesChange,
+            confirm: _vm.degreePickerSelectHandle
+          }
+        }),
+        _vm._v(" "),
+        _c("spinner", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.spinner,
+              expression: "spinner"
+            }
+          ],
+          attrs: { text: _vm.spinnerText }
+        }),
+        _vm._v(" "),
+        _c("router-view", { on: { routePipe: _vm.routePipe } })
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-5973ad46", module.exports)
+  }
+}
+
+/***/ }),
+/* 247 */,
+/* 248 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(249);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("52b97e24", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56fd15d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-experience.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-56fd15d6\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../../../node_modules/stylus-loader/index.js!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./education-experience.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 249 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/***/ }),
+/* 250 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -67777,98 +68114,16 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("transition", { attrs: { name: "vertical-slide" } }, [
-        _c(
-          "div",
-          {
-            directives: [
-              {
-                name: "show",
-                rawName: "v-show",
-                value: _vm.showFlag,
-                expression: "showFlag"
-              }
-            ],
-            staticClass: "apply-status-wrapper"
+      _c("education-form", {
+        on: { submit: _vm.submit, abandon: _vm.abandon },
+        model: {
+          value: _vm.educationData,
+          callback: function($$v) {
+            _vm.educationData = $$v
           },
-          [
-            _c("ul", { staticClass: "apply-status-list" }, [
-              _c("li", { staticClass: "apply-status-list-header" }, [
-                _vm._v("求职状态")
-              ]),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.select(0)
-                    }
-                  }
-                },
-                [_vm._v("离职-随时到岗")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.select(1)
-                    }
-                  }
-                },
-                [_vm._v("在职-暂不考虑")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.select(2)
-                    }
-                  }
-                },
-                [_vm._v("在职-考虑机会")]
-              ),
-              _vm._v(" "),
-              _c(
-                "li",
-                {
-                  on: {
-                    click: function($event) {
-                      _vm.select(3)
-                    }
-                  }
-                },
-                [_vm._v("在职-月内到岗")]
-              )
-            ]),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "cancel-button", on: { click: _vm.hide } },
-              [_vm._v("取消")]
-            )
-          ]
-        )
-      ]),
-      _vm._v(" "),
-      _c("transition", { attrs: { name: "fade" } }, [
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.showFlag,
-              expression: "showFlag"
-            }
-          ],
-          staticClass: "list-mask",
-          on: { click: _vm.hide }
-        })
-      ])
+          expression: "educationData"
+        }
+      })
     ],
     1
   )
@@ -67879,7 +68134,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-feea9098", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-56fd15d6", module.exports)
   }
 }
 
