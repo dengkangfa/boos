@@ -2,18 +2,34 @@
     <transition name="horizontal-slide">
         <div class="education-experience-wrapper">
             <dkf-header title="教育经历" class="_effect" :class="{'_effect--50': decline}" fixed>
-                <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
-                <div slot="right" @click="next" style="padding-right: .3rem;">下一步</div>
+                <div slot="left" @click="remind ? showFriendlyReminderMessage() : $emit('abandon')"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="next" style="padding-right: .3rem;">{{ headerRightButtonText }}</div>
             </dkf-header>
             <main class="_effect" :class="{'_effect--30': decline}">
                 <div class="education-experience-content">
                     <div class="education-experience">
                         <h1>教育经历</h1>
                         <ul class="cell">
-                            <li @click="showSchoolInput"><label>学校</label><span class="item-value" :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }} <i class="icon icon-right"></i></span></li>
-                            <li @click="showMajorInput"><label>专业</label><span class="item-value" :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}} <i class="icon icon-right"></i></span></li>
-                            <li @click="showDegreePicker"><label>学历</label><span class="item-value" :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }} <i class="icon icon-right"></i></span></li>
-                            <li @click="showPeriodPicker"><label>时间段</label><span class="item-value">{{ atSchoolPeriod }} <i class="icon icon-right"></i></span></li>
+                            <li @click="showSchoolInput">
+                                <div class="cell-title"><span>学校</span></div>
+                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
+                            <li @click="showMajorInput">
+                                <div class="cell-title"><span>专业</span></div>
+                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
+                            <li @click="showDegreePicker">
+                                <div class="cell-title"><span>学历</span></div>
+                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
+                            <li @click="showPeriodPicker">
+                                <div class="cell-title"><span>时间段</span></div>
+                                <div class="cell-value is-link"><span class="item-value">{{ atSchoolPeriod }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
                         </ul>
                     </div>
                     <!-- 在校经历文本输入框 -->
@@ -36,7 +52,7 @@
             <!-- 专业名称输入框 -->
             <full-screen-input v-model="educationData.major" id="major" title="专业" :allowEmpty="true" :showValueLength="false" @saveValue="saveMajorValue" ref="majorInput"></full-screen-input>
             <!-- 在校时间段选择器 -->
-            <period-picker :period="periodValue" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
+            <period-picker v-model="periodValue" @select="PeriodPickerSelectHandle" ref="periodPicker"></period-picker>
             <!-- 学历选择器 -->
             <picker title="学历" :slots="degreePicker" @onValuesChange="degreePickerOnValuesChange" @confirm="degreePickerSelectHandle" ref="degreePicker"></picker>
             <spinner :text="spinnerText" v-show="spinner"></spinner>
@@ -59,7 +75,15 @@
     props: {
       value: {
         type: Object,
-        default: {}
+        default: () => {}
+      },
+      headerRightButtonText: {
+        type: String,
+        default: '下一步'
+      },
+      remind: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
@@ -86,7 +110,12 @@
       }
     },
     created() {
-      this.degreePicker[0].defaultIndex = this.degreePicker[0].values.indexOf(this.educationData.degree)
+      console.log(this.value)
+      console.log('education')
+      if (JSON.stringify(this.value) !== '{}') {
+        this.educationData = Object.assign({}, this.value)
+        this.degreePicker[0].defaultIndex = this.degreePicker[0].values.indexOf(this.educationData.degree)
+      }
     },
     methods: {
       routePipe(_decline) {
@@ -183,7 +212,7 @@
         handle.then(response => {
           this.spinner = false
           if (response.code === ERR_OK) {
-            this.$emit('submit', response.data)
+            this.$emit('complete', response.data)
           }
         }).catch(error => {
           this.spinner = false
@@ -208,12 +237,16 @@
         return this.educationData.edu_description ? this.educationData.edu_description.length > this.length : false
       },
       periodValue() {
-        return [this.educationData.start_year, this.educationData.end_year]
+        return this.educationData.start_year ? [this.educationData.start_year, this.educationData.end_year] : []
       }
     },
     watch: {
       value(newValue) {
-          newValue ? this.educationData = newValue : ''
+        console.log(222)
+        if (JSON.stringify(newValue) !== '{}') {
+          this.educationData = Object.assign({}, newValue)
+          this.degreePicker[0].defaultIndex = this.degreePicker[0].values.indexOf(this.educationData.degree)
+        }
       }
     },
     components: {

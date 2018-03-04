@@ -4,10 +4,10 @@
             <div>
                 <dkf-header title="选择行业">
                     <div slot="left" @click="hide"><i class="icon-left" style="padding: 0.3rem;"></i></div>
-                    <div slot="right" @click="save"><span style="padding: 0.3rem;">保存</span></div>
+                    <div slot="right" @click="save" v-if="type === 'checkbox'"><span style="padding: 0.3rem;">保存</span></div>
                 </dkf-header>
             </div>
-            <div class="selected">
+            <div class="selected" v-if="type === 'checkbox'">
                 <div class="selected-top">
                     <div class="title">已选行业</div>
                     <div><span class="count">{{ selectedIndustry.length }}</span>/3</div>
@@ -43,6 +43,12 @@
   import message from 'Base/message/message'
 
   export default {
+    props: {
+      type: {
+        type: String,
+        default: 'checkbox'
+      },
+    },
     data() {
       return {
         showFlag: false,
@@ -63,13 +69,19 @@
         this.showFlag = false
       },
       checked(item) {
-        let index = this.selectedIndustry.indexOf(item)
-        if (index > -1) {
-          this.selectedIndustry.splice(index, 1)
-        } else if (this.selectedIndustry.length < 3) {
-          this.selectedIndustry.push(item)
+        if (this.type === 'checkbox') {
+          let index = this.selectedIndustry.indexOf(item)
+          if (index > -1) {
+            this.selectedIndustry.splice(index, 1)
+          } else if (this.selectedIndustry.length < 3) {
+            this.selectedIndustry.push(item)
+          } else {
+            this.$refs.message.show()
+          }
         } else {
-          this.$refs.message.show()
+          this.selectedIndustry = []
+          this.selectedIndustry.push(item)
+          this.save()
         }
       },
       deleteIndustry(item) {

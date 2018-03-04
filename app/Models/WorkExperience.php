@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WorkExperience extends Model
 {
-    protected $fillable = ['user_id', 'company_name', 'start_time', 'end_time', 'position_type', 'work_emphasis', 'responsibility'];
+    protected $fillable = ['user_id', 'company_name', 'start_time', 'end_time', 'position_type', 'position_name', 'industry', 'work_emphasis', 'subordinate', 'responsibility', 'performance', 'veiled'];
 
     protected $dates = ['created_at', 'updated_at', 'start_time', 'end_time'];
 

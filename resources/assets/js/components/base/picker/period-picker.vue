@@ -1,6 +1,6 @@
 <template>
     <div>
-        <picker title="在校时间" :slots="periodSlots" ref="picker" @onValuesChange="onValuesChange" @confirm="confirm"></picker>
+        <picker title="在校时间" :slots="periodSlots" ref="picker" @input="currentValueChange" @onValuesChange="onValuesChange" @confirm="confirm"></picker>
     </div>
 </template>
 
@@ -8,9 +8,9 @@
   import picker from 'Base/picker/picker'
   export default {
     props: {
-      period: {
+      value: {
         type: Array,
-        default: []
+        default: () => []
       }
     },
     data() {
@@ -34,6 +34,13 @@
     created() {
       this.init()
     },
+    mounted() {
+      if (this.value.length) {
+        this.startYear = this.value[0]
+        this.$refs.picker.setSlotValues(1, this.getEndData(this.value[0]))
+        this.$refs.picker.setValues(this.value)
+      }
+    },
     methods: {
       show() {
         this.$refs.picker.show()
@@ -49,6 +56,9 @@
         this.periodSlots[0].values = startYears
         this.periodSlots[1].values = this.getEndData(startYears[5])
       },
+      currentValueChange(currentValue) {
+        this.currentValue = currentValue
+      },
       onValuesChange(picker, values) {
         this.values = values
         if (this.startYear !== values[0]) {
@@ -59,7 +69,7 @@
       },
       getEndData(currentStartData) {
         let endYears = []
-        if (currentStartData === '1990以前') {
+        if (currentStartData === '1990年以前') {
           endYears = ['1997', '1996', '1995', '1994', '1993', '1992', '1991', '1990']
           return endYears
         }
@@ -74,10 +84,10 @@
       }
     },
     watch: {
-      period(value) {
-        this.startYear = value[0]
-        this.$refs.picker.setSlotValues(1, this.getEndData(value[0]))
-        this.$refs.picker.setValues(value)
+      value(newValue) {
+        this.startYear = newValue[0]
+        this.$refs.picker.setSlotValues(1, this.getEndData(newValue[0]))
+        this.$refs.picker.setValues(newValue)
       }
     },
     components: {

@@ -3,7 +3,7 @@
         <div class="advantage-wrapper">
             <dkf-header class="_effect" :class="{'_effect--50': decline}" title="我的优势" fixed>
                 <div slot="left" @click="showFriendlyReminderMessage"><i class="icon-left" style="padding: 0.3rem;"></i></div>
-                <div slot="right" @click="submit"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
+                <div slot="right" @click="submit('job-expect-position')"><i class="icon-correct" style="padding: 0.3rem;"></i></div>
             </dkf-header>
             <main class="_effect" :class="{'_effect--30': decline}">
                 <div class="advantage-content">
@@ -35,7 +35,6 @@
     data() {
       return {
         decline: false,
-        advantage: '',
         message: '',
         routerName: '',
         spinner: false,
@@ -94,7 +93,7 @@
       },
       // 文本框值发送改变将触发该函数
       onValueChange(value) {
-        this.advantage = value
+        this.user.advantage = value
       },
       exampleShowFlagChange(value) {
         this.exampleShowFlag = value
@@ -105,10 +104,10 @@
         this.$refs.advantageTextarea.textareaFoucs()
       },
       checkData() {
-        if (!this.advantage) {
+        if (!this.user.advantage) {
           this.message = '请填写您的个人优势'
           this.$refs.message.show()
-        } else if (this.advantage.length <= 20) {
+        } else if (this.user.advantage.length <= 20) {
           this.$refs.suggestMessage.show()
         } else {
           return true
@@ -124,7 +123,7 @@
       // 发出请求
       request() {
         this.spinner = true
-        this.$store.dispatch('updateAdvantage', {'advantage': this.advantage}).then(response => {
+        this.$store.dispatch('updateAdvantage', {'advantage': this.user.advantage}).then(response => {
           this.spinner = false
           this.$router.push({'name': this.routerName})
         })

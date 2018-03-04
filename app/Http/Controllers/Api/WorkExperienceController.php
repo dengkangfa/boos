@@ -19,7 +19,7 @@ class WorkExperienceController extends ApiController
         $this->workExperience = $workExperience;
     }
 
-    public function me()
+    public function currentUserFirstWorkExperience()
     {
         $workExperiences = Auth::user()->workExperiences()->first();
 
@@ -27,6 +27,16 @@ class WorkExperienceController extends ApiController
             return $this->noContent();
         }
         return $this->respondWithItem($workExperiences, new WorkExperienceTransformer);
+    }
+
+    public function currentUserAllWorkExperience()
+    {
+        $workExperiences = Auth::user()->workExperiences->sortByDesc('start_time');
+
+        if (!count($workExperiences)) {
+            return $this->noContent();
+        }
+        return $this->respondWithCollection($workExperiences, new WorkExperienceTransformer);
     }
 
     public function store(Request $request)

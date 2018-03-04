@@ -20,8 +20,13 @@ class CreateWorkExperiencesTable extends Migration
             $table->date('start_time');
             $table->date('end_time')->nullable();
             $table->integer('position_type')->unsigned();
+            $table->string('position_name')->nullable();
+            $table->string('industry')->nullable();
             $table->string('work_emphasis');
+            $table->string('subordinate')->nullable();
             $table->text('responsibility');
+            $table->text('performance')->nullable();
+            $table->boolean('veiled')->default(true);
             $table->timestamps();
         });
     }

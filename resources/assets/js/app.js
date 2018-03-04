@@ -10,7 +10,9 @@ import jwtToken from './helpers/jwt'
 
 import { Picker } from 'mint-ui'
 import 'mint-ui/lib/style.css'
+import { Switch } from 'mint-ui';
 Vue.component('mint-picker', Picker)
+Vue.component('mint-switch', Switch);
 
 fastclick.attach(document.body)
 

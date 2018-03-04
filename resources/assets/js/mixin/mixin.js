@@ -69,7 +69,7 @@ export const verifycodeMixin = {
     sendVerifyCode() {
       if (this.checkMobileRegex()) {
         this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
-        this.loadingText = '正在发送中'
+        this.spinnerText = '正在发送中'
         this.spinning = true // 显示正在发送的loading
         sendVerifyCode({'mobile': this.userules.mobile, 'mobile_rule': this.mobileRule}).then(response => {
           this.spinning = false // 隐藏正在发送的loading

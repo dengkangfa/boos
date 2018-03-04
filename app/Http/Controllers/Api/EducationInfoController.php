@@ -36,7 +36,7 @@ class EducationInfoController extends ApiController
 
     public function currentUserAllEducation()
     {
-        $educationInfos = Auth::user()->educationInfos;
+        $educationInfos = Auth::user()->educationInfos->sortByDesc('end_year');
 
         if (!count($educationInfos)) {
             return $this->noContent();

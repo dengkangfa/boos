@@ -37,7 +37,7 @@
             <div class="back" @click="back">
                 <i class="icon-left"></i>
             </div>
-            <message-box :message="message" cancelButtonText="好" @confirm="confirm" ref="message"></message-box>
+            <message-box :message="message" cancelButtonText="好" @cancel="jump" ref="message"></message-box>
             <spinner :text="spinnerText" v-show="spinning"></spinner>
         </div>
     </transition>
@@ -122,7 +122,7 @@
           })
         }
       },
-      confirm() {
+      jump() {
         this.route ? this.$router.push(this.route) : ''
       },
       mobileInputBlur() {

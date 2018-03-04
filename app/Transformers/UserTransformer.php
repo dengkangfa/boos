@@ -15,9 +15,9 @@ class UserTransformer extends TransformerAbstract
             'name'       => $user->name,
             'mobile'     => $user->mobile,
             'gender'     => $user->gender,
-            'advantage'  => $user->advantage,
+            'advantage'  => $user->advantage ?? '',
             'job_date'   => $user->job_date ? ($user->job_date->format('Y-m') !== '1989-11' ? $user->job_date->format('Y-m') : '1990年以前') : '应届生',
-            'birth_date' => $user->birth_date->format('Y-m')
+            'birth_date' => $user->birth_date ? $user->birth_date->format('Y-m') : ''
         ];
     }
 }

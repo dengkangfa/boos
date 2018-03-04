@@ -20,7 +20,7 @@
                             <li v-for="item in searchArr" @click="chooseSkill(item['skills'], item['index']), searchArr = [], searchValue = ''"><div><p class="title" v-html="searchResultFormat(item['skills'])"></p><p class="disc">{{ item['industrys'] + ' - ' + item['directions'] }}</p></div></li>
                         </ul>
                     </div>
-                    <transition name="slide">
+                    <transition name="horizontal-slide">
                         <div class="child-position-type" v-if="childPositionTypeShowFlag"  @touchmove.prevent>
                             <scroll :data="directions" :probeType="3" :listenScroll="true" style="width: 50%;" @scroll="searchInputBlur">
                                 <ul>
@@ -90,6 +90,7 @@
         this.getSkills(index)
       },
       chooseSkill(searchValue, index) {
+        console.log(222)
         this.$emit('selected', {'id': index, 'name': searchValue})
         this.hide()
       },

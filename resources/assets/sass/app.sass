@@ -24,7 +24,7 @@
 .cell
   li
     display: flex
-    justify-content: space-between
+    align-items: center
     height: 45px
     line-height: 45px
     @include border-top-1px($bc)
@@ -32,10 +32,18 @@
     background: #ffffff
     &.active:active
       background: #d9d9d9
-    .item-value
+    div.cell-value
       color: $color-text-l
+      max-width: 60%
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
       &.placeholder
         color: $color-text-d
+      &.is-link
+        margin-right: 5px
+    div.cell-title
+      flex: 1
     i.icon
       font-size: .3rem
       color: $color-theme
@@ -63,3 +71,7 @@
 ._effect--50
   opacity: 0
   transform: translate3d(-50%, 0, 0)
+
+.mint-switch-input:checked + .mint-switch-core
+  border-color: #53CAC3 !important
+  background-color: #53CAC3 !important

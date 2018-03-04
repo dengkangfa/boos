@@ -1,7 +1,7 @@
 <template>
     <transition name="message-fade">
         <div class="message" @click.stop v-show="showFlag">
-            <p class="text">{{ message }}</p>
+            <p class="text" v-html="message"></p>
         </div>
     </transition>
 </template>

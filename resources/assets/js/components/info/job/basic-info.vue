@@ -16,10 +16,25 @@
                     </div>
                 </div>
                 <ul class="cell">
-                    <li class="active" @click="showNameInput"><label class="item-name">姓名</label><span class="item-value">{{ userData.name }} <i class="icon icon-right"></i></span></li>
-                    <li><label class="item-name">性别</label><div class="radio-group"><sex-radio v-model="userData.gender" @change="genderChange"></sex-radio> </div></li>
-                    <li class="active" @click="showJobDatePicker"><label class="item-name">参加工作时间</label><span class="item-value">{{ userData.job_date }} <i class="icon icon-right"></i></span></li>
-                    <li class="active" @click="showBirthDatePicker"><label class="item-name">出生年月</label><span class="item-value">{{ userData.birth_date }} <i class="icon icon-right"></i></span></li>
+                    <li class="active" @click="showNameInput">
+                        <div class="cell-title"><span>姓名</span></div>
+                        <div class="cell-value is-link"><span>{{ userData.name }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li>
+                        <div class="cell-title"><span>性别</span></div>
+                        <div class="radio-group"><sex-radio v-model="userData.gender" @change="genderChange"></sex-radio> </div>
+                    </li>
+                    <li class="active" @click="showJobDatePicker">
+                        <div class="cell-title"><span>参加工作时间</span></div>
+                        <div class="cell-value is-link"><span>{{ userData.job_date }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li class="active" @click="showBirthDatePicker">
+                        <div class="cell-title"><span>出生年月</span></div>
+                        <div class="cell-value is-link"><span>{{ userData.birth_date }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
                 </ul>
                 <div class="basic-info-bottom">
                     <span class="disc">创建一份微简历，高薪职位触手可得</span>
@@ -96,7 +111,7 @@
         this.decline = _decline
       },
       init() {
-        this.userData.name = this.user.name
+        this.userData.name = this.user.name === null ? '' : this.user.name
         this.userData.gender = this.user.gender
         this.userData.job_date = this.user.job_date
         this.userData.birth_date = this.user.birth_date

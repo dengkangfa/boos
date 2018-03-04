@@ -3,7 +3,7 @@
         <div class="identity-wrapper _effect" :class="{'_effect--30': decline}">
             <div class="job-wrapper">
                 <div class="identity-img job-img"></div>
-                <button class="identity-button job-btn" @click.prevnet="selectJob">我要找工作</button>
+                <button class="identity-button job-btn" @click.prevnet="findJob">我要找工作</button>
             </div>
             <div class="or">
                 <div class="line"></div>
@@ -45,9 +45,9 @@
           this.$router.push({'name': 'login'})
         })
       },
-      selectJob() {
-//        this.$router.push({'name': 'job-basic-info'})
-        this.$router.push({'name': 'job-advantage'})
+      findJob() {
+        this.$router.push({'name': 'job-basic-info'})
+//        this.$router.push({'name': 'job-advantage'})
       }
     },
     components: {

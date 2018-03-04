@@ -10,10 +10,25 @@
                     <div>
                         <h3>最近一份工作经历</h3>
                         <ul class="cell">
-                            <li @click="showCompanyNameInput" class="active"><label>公司名称</label><span class="item-value">{{ workExperienceData.company_name }} <i class="icon icon-right"></i></span></li>
-                            <li class="period"><label>时间段</label><div class="item-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time.replace(/-/, '.') : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time != -1 ? workExperienceData.end_time.replace(/-/, '.') : '至今' }}</span></div></li>
-                            <li @click="showPositionTypeSelect" class="active"><label>职位类型</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
-                            <li @click="positionSkillClick" class="active"><label>技能标签</label><span class="item-value">{{ workEmphasisArr.length ? workEmphasisArr.length + '个标签' : '' }}<i class="icon icon-right"></i></span></li>
+                            <li @click="showCompanyNameInput" class="active">
+                                <div class="cell-title"><span>公司名称</span></div>
+                                <div class="cell-value is-link"><span>{{ workExperienceData.company_name }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
+                            <li class="period">
+                                <div class="cell-title"><span>时间段</span></div>
+                                <div class="cell-value"><span class="start-time" @click="showStartTimePicker">{{ workExperienceData.start_time ? workExperienceData.start_time.replace(/-/, '.') : '请选择'}}</span>至<span @click="showEndTimePicker">{{ workExperienceData.end_time != -1 ? workExperienceData.end_time.replace(/-/, '.') : '至今' }}</span></div>
+                            </li>
+                            <li @click="showPositionTypeSelect" class="active">
+                                <div class="cell-title"><span>职位类型</span></div>
+                                <div class="cell-value is-link"><span>{{ workExperienceData.position_name }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
+                            <li @click="positionSkillClick" class="active">
+                                <div class="cell-title"><span>技能标签</span></div>
+                                <div class="cell-value is-link"><span class="item-value">{{ workEmphasisArr.length ? workEmphasisArr.length + '个标签' : '' }}</span></div>
+                                <i class="icon icon-right"></i>
+                            </li>
                         </ul>
                     </div>
                     <div class="work-content">
@@ -49,7 +64,7 @@
   import positionSkillCheckbox from '../base/position-skill-checkbox'
   import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
   import {getPositionSkill} from 'Api/position-skill'
-  import {getWorkExperience, updateWorkExperience, createdWorkExperience} from 'Api/work-experience'
+  import {getCurrentUserFirstWorkExperience, updateWorkExperience, createdWorkExperience} from 'Api/work-experience'
   import POSITION_TYPE from '../base/positions'
 
   export default {
@@ -61,6 +76,7 @@
           start_time: '', // 开始时间
           end_time: -1, // 结束时间
           position_type: '', // 职位类型
+          position_name: '',
           work_emphasis: '', // 技能
           responsibility: '' // 工作内容
         },
@@ -134,7 +150,7 @@
     created() {
       this.init()
       // 请求当前登录用户的教育经历
-      getWorkExperience().then(response => {
+      getCurrentUserFirstWorkExperience().then(response => {
         if (response.code === ERR_OK) {
           this.workExperienceData = response.data
           this.workEmphasisArr = this.workExperienceData.work_emphasis.split('・')
@@ -225,7 +241,7 @@
         }
       },
       positionSelected(value) {
-        this.position = value.name
+        this.workExperienceData.position_name = value.name
         this.workExperienceData.position_type = value.id
         this._getPositionSkill(value.id.substr(0, 4) + '00')
         this.workEmphasisArr = []
@@ -312,6 +328,11 @@
       }
     },
     watch: {
+      value(newValue) {
+        if (JSON.stringify(newValue) !== '{}') {
+          this.workExperienceData = Object.assign({}, newValue)
+        }
+      },
       position_type() {
         this.workEmphasisArr = []
       },
@@ -354,7 +375,7 @@
                 font-size: .3rem
                 color: rgba(0,0,0,.5)
             .period
-                .item-value span
+                .cell-value span
                     display: inline-block
                     width: 50px
                     padding: 0 10px

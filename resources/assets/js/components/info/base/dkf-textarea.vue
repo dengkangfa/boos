@@ -2,10 +2,10 @@
     <div class="dkf-textarea">
         <h3 class="title" v-if="title">{{ title }}</h3>
         <div class="text">
-            <textarea class="item-value" v-model="currentValue"  :maxlength="maxLength !== -1 ? maxLength : ''" mixlength="2" ref="dkfTextarea" :placeholder="placeholder"></textarea>
+            <textarea class="item-value" v-model="currentValue" :maxlength="maxLength !== -1 ? maxLength : ''" mixlength="2" :placeholder="placeholder"  @change="$emit('onValueChange', currentValue)" ref="dkfTextarea"></textarea>
             <p class="text-bottom">
                 <span @click="toggleExampleShowFlag" v-if="examples.length">看看别人怎么写</span>
-                <span class="input-num right-float"  :class="{'exceed': isExceed}">{{ currentValue.length }}/<span class="max-length">{{ maxLength }}</span></span>
+                <span class="input-num right-float" v-if="maxLength !== -1"  :class="{'exceed': isExceed}">{{ currentValue.length }}/<span class="max-length">{{ maxLength }}</span></span>
             </p>
         </div>
         <div class="example" v-for="(example, index) in examples" v-show="index === currentExampleIndex && exampleShowFlag">
@@ -50,18 +50,14 @@
     data() {
       return {
         exampleShowFlag: false,
-        currentValue: '',
         currentExampleIndex: -1
       }
-    },
-    created() {
-      this.currentValue = this.value
     },
     methods: {
       toggleExampleShowFlag() {
         this.exampleShowFlag = !this.exampleShowFlag
+        this.$emit('exampleShowFlagChange', this.exampleShowFlag)
         if (this.exampleShowFlag) {
-          this.$emit('exampleShowFlagChange', this.exampleShowFlag)
           this.next()
         }
       },
@@ -77,18 +73,18 @@
       }
     },
     computed: {
+      currentValue: {
+        get() {
+          return this.value;
+        },
+        set(val) {
+          this.$emit('input', val);
+        }
+      },
       isExceed() {
         if (this.maxLength !== -1) {
           return this.currentValue.length > this.maxLength
         }
-      }
-    },
-    watch: {
-      value(value) {
-        this.currentValue = value
-      },
-      currentValue(value) {
-        this.$emit('onValueChange', value)
       }
     }
   }

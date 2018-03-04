@@ -7,7 +7,7 @@
                     <ul class="cell">
                         <li @click="showApplyStatusSelector"><label>求职状态</label><span class="item-value">{{ applyStatusDisplayName }} <i class="icon icon-right"></i></span></li>
                         <li @click="showPositionTypeSelector"><label>期望职位</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showIndustryCheckbox"><label>期望行业</label><span class="item-value">{{ industryArr.length ? industryArr.length + '个标签' : '不限' }} <i class="icon icon-right"></i></span></li>
+                        <li @click="showIndustrySelect"><label>期望行业</label><span class="item-value">{{ industryArr.length ? industryArr.length + '个标签' : '不限' }} <i class="icon icon-right"></i></span></li>
                         <li @click="showDistpicker"><label>工作城市</label><span class="item-value">{{ expectPositionData.locationName }} <i class="icon icon-right"></i></span></li>
                         <li @click="showSalaryPicker"><label>薪资要求</label><span class="item-value">{{ expectPositionData.lowSalary ? expectPositionData.lowSalary === '面议' ? '面议' : expectPositionData.lowSalary + 'k-' + expectPositionData.highSalary + 'k' : '' }}<i class="icon icon-right"></i></span></li>
                     </ul>
@@ -22,7 +22,7 @@
             <job-search-status-select @select="updateApplyStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
             <distpicker @selected="distPickerSelected" ref="distpicker"></distpicker>
-            <industry-checkbox @checked="selectedIndustry" ref="industryCheckbox"></industry-checkbox>
+            <industry-select type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
             <salary-picker @selected="selectedSalary" ref="salaryPicker"></salary-picker>
         </div>
     </transition>
@@ -33,7 +33,7 @@
   import jobSearchStatusSelect from '../base/apply-status-select'
   import positionTypeSelect from '../base/position-type-select'
   import distpicker from 'Base/picker/distpicker'
-  import industryCheckbox from '../base/industry-checkbox'
+  import industrySelect from '../base/industry-select'
   import salaryPicker from 'Base/picker/salary-picker'
   import {createdExpectPosition} from 'Api/expect-position'
 
@@ -69,7 +69,7 @@
       showDistpicker() {
         this.$refs.distpicker.show()
       },
-      showIndustryCheckbox() {
+      showIndustrySelect() {
         this.$refs.industryCheckbox.show()
       },
       showSalaryPicker() {
@@ -113,7 +113,7 @@
       jobSearchStatusSelect,
       positionTypeSelect,
       distpicker,
-      industryCheckbox,
+      industrySelect,
       salaryPicker
     }
   }
