@@ -242,7 +242,6 @@
     },
     watch: {
       value(newValue) {
-        console.log(222)
         if (JSON.stringify(newValue) !== '{}') {
           this.educationData = Object.assign({}, newValue)
           this.degreePicker[0].defaultIndex = this.degreePicker[0].values.indexOf(this.educationData.degree)

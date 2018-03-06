@@ -1,6 +1,6 @@
 <template>
     <div>
-        <education-form v-model="educationData" @submit="submit" @abandon="abandon" remind></education-form>
+        <education-form v-model="educationData" @complete="complete" @abandon="abandon" remind></education-form>
     </div>
 </template>
 
@@ -24,7 +24,7 @@
       })
     },
     methods: {
-      submit(newEducationData) {
+      complete(newEducationData) {
         this.educationData = newEducationData
         this.$router.push({'name': 'job-advantage'})
       },

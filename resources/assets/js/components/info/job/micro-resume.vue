@@ -25,7 +25,7 @@
                     </div>
                     <div>
                         <ul>
-                            <li class="info-item"><label>社交主页</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                            <li class="info-item" @click="showSocialHomePage"><label>社交主页</label><span class="item-value"><i class="icon icon-right"></i></span></li>
                         </ul>
                     </div>
                 </div>
@@ -35,6 +35,7 @@
             </div>
             <education-form v-model="educationInfo" headerRightButtonText="保存" v-if="educationFormShowFlag" @complete="educationFormSubmit" @abandon="abandon"></education-form>
             <work-experience-form v-model="workExperience" :title="workExperienceAlias" v-if="workExperienceFormShowFlag" @complete="workExperienceFormSubmit" @abandon="abandon"></work-experience-form>
+            <social-home-page ref="socialHomePage"></social-home-page>
         </div>
     </transition>
 </template>
@@ -43,6 +44,7 @@
   import dkfHeader from 'Base/header/header'
   import educationForm from '../base/education-form'
   import workExperienceForm from '../base/work-experience-form'
+  import socialHomePage from '../base/social-home-page'
   import {ERR_OK} from 'Api/config'
   import {getCurrentUserAllEducationExperience} from 'Api/education-experience'
   import {getCurrentUserAllWorkExperience} from 'Api/work-experience'
@@ -86,6 +88,9 @@
       }
     },
     methods: {
+      showSocialHomePage() {
+        this.$refs.socialHomePage.show()
+      },
       editOrAddEducationInfo(educationInfo) {
         this.educationInfo = educationInfo
         this.educationFormShowFlag = true
@@ -112,15 +117,24 @@
         this.educationFormShowFlag = false
       },
       workExperienceFormSubmit(workExperience) {
+        this.workExperienceData = this.workExperienceData.filter((value) => {
+          if (value.id === workExperience.id) {
+            return false
+          }
+          return true
+        })
         this.workExperienceData.push(workExperience)
+        this.workExperienceData.sort((a, b) => {
+          return a.start_time < b.start_time
+        })
         this.workExperienceFormShowFlag = false
       }
     },
     components: {
       dkfHeader,
       educationForm,
-      workExperienceForm
-
+      workExperienceForm,
+      socialHomePage
     }
   }
 </script>

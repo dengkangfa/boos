@@ -75,9 +75,9 @@
 
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
-  import fullScreenInput from '../base/full-screen-input'
-  import positionTypeSelect from '../base/position-type-select'
-  import positionSkillCheckbox from '../base/position-skill-checkbox'
+  import fullScreenInput from './full-screen-input'
+  import positionTypeSelect from './position-type-select'
+  import positionSkillCheckbox from './position-skill-checkbox'
   import picker from 'Base/picker/picker'
   import industrySelect from './industry-select'
   import messageBox from 'Base/message/message-box'
@@ -85,7 +85,8 @@
   import {getPositionSkill} from 'Api/position-skill'
   import {createdWorkExperience, updateWorkExperience} from 'Api/work-experience'
   import {ERR_OK, ERR_UNPROCESSABLE_ENTITY} from 'Api/config'
-  import workContent from '../base/work-content'
+  import workContent from './work-content'
+  import POSITION_TYPE from './positions'
 
   export default {
     props: {
@@ -104,6 +105,7 @@
         messageBoxText: '',
         spinnerText: '', // spinner提示消息
         spinner: false, // 用于控制spinner显示与否
+        originalValue: {},
         position: '',
         positionSkills: [],
         workEmphasisArr: [],
@@ -116,7 +118,7 @@
           work_emphasis: '', // 技能标签
           start_time: '', // 开始时间
           end_time: -1, // 结束时间
-          subordinate: '', //所属部门
+          subordinate: '', // 所属部门
           responsibility: '', // 工作内容
           performance: '', // 工作业绩
           veiled: true // 是否隐藏
@@ -145,15 +147,20 @@
             defaultIndex: 0
           }
         ],
-        monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1],
+        monthListDate: [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
       }
     },
     created() {
       if (JSON.stringify(this.value) !== '{}') {
         this.workExperienceData = Object.assign({}, this.value)
-        this.position = this.workExperienceData.position_name
+        this.originalValue = this.workExperienceData
+        // 获取职位code对应的职位名称
+        this.position = this.getPositionName(this.workExperienceData.position_type)
+        // 获取当前职位对应的所有技能标签
         this._getPositionSkill(this.workExperienceData.position_type.toString().substr(0, 4) + '00')
+        // 当前已选的技能标签
         this.workEmphasisArr = this.workExperienceData.work_emphasis.split('・')
+        // 是否对该公司隐藏信息
         this.veiled = this.workExperienceData.veiled
       }
       this.init()
@@ -175,6 +182,7 @@
       init() {
         this.initPeriodSlots()
       },
+      // 初始化时间段Slots数据
       initPeriodSlots() {
         let startTimeList = []
         let endTimeList = ['至今']
@@ -188,29 +196,36 @@
         this.startTimePickerSlots[0].values = startTimeList
         this.endTimePickerSlots[0].values = endTimeList
       },
+      // 初始化当前时间段
       initPeriodDefaultIndex() {
-        let start_times = this.workExperienceData.start_time.split('-')
-        this.$refs.startTimePicker.setValues([parseInt(start_times[0]), parseInt(start_times[1])])
+        let startTimes = this.workExperienceData.start_time.split('-')
+        this.$refs.startTimePicker.setValues([parseInt(startTimes[0]), parseInt(startTimes[1])])
         if (this.workExperienceData.end_time !== -1) {
-          let end_times = this.workExperienceData.end_time.split('-')
-          this.$refs.endTimePicker.setValues([parseInt(end_times[0]), parseInt(end_times[1])])
+          let endTimes = this.workExperienceData.end_time.split('-')
+          this.$refs.endTimePicker.setValues([parseInt(endTimes[0]), parseInt(endTimes[1])])
         }
       },
+      // 显示职位类型选择器
       showPositionTypeSelect() {
         this.$refs.positionTypeSelect.show()
       },
+      // 显示职位名称输入控件
       showPositionNameInput() {
         this.$refs.positionNameInput.show()
       },
+      // 显示公司名称输入控件
       showCompanyNameInput() {
         this.$refs.companyNameInput.show()
       },
+      // 显示开始时间的时间选择器
       showStartTimePicker() {
         this.$refs.startTimePicker.show()
       },
+      // 显示结束时间的时间选择器
       showEndTimePicker() {
         this.$refs.endTimePicker.show()
       },
+      // 显示公司行业选择器
       showIndustrySelect() {
         this.$refs.industrySelect.show()
       },
@@ -234,6 +249,7 @@
       positionSelected(value) {
         this.position = value.name
         this.workExperienceData.position_type = value.id
+        this.workExperienceData.position_name = value.name
         this._getPositionSkill(value.id.substr(0, 4) + '00')
         this.workEmphasisArr = []
       },
@@ -243,6 +259,15 @@
         }).catch(error => {
           console.log(error)
         })
+      },
+      getPositionName(code) {
+        for (let x in POSITION_TYPE) {
+          for (let y in POSITION_TYPE[x]) {
+            if (code == y) {
+              return POSITION_TYPE[x][y]
+            }
+          }
+        }
       },
       savePositionName(value) {
         this.workExperienceData.position_name = value
@@ -294,7 +319,6 @@
         this.workExperienceData.responsibility = workContent
       },
       saveIsvisible(checked) {
-        console.log(checked)
         this.workExperienceData.veiled = !checked
       },
       checkDate() {
@@ -318,9 +342,8 @@
         this.$refs.messageBox.show()
         return false
       },
-      _compareDate(d1,d2)
-      {
-        return ((new Date(d1.replace(/-/g,"\/"))) > (new Date(d2.replace(/-/g,"\/"))));
+      _compareDate(d1, d2) {
+        return ((new Date(d1.replace(/-/g,"\/"))) > (new Date(d2.replace(/-/g,"\/"))))
       },
       save() {
         if (this.checkDate()) {
