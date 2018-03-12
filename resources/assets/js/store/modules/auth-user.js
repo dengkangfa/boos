@@ -9,7 +9,8 @@ export default {
     gender: '',
     advantage: '',
     job_date: '',
-    birth_date: ''
+    birth_date: '',
+    homepages: []
   },
   mutations: {
     [types.SET_AUTH_USER](state, payload) {
@@ -20,6 +21,7 @@ export default {
       state.advantage = payload.user.advantage
       state.job_date = payload.user.job_date
       state.birth_date = payload.user.birth_date
+      state.homepages = payload.user.homepages
     },
     [types.UNSET_AUTH_USER](state) {
       state.authenticated = false
@@ -39,6 +41,9 @@ export default {
     },
     [types.SET_USER_ADVANTAGE](state, payload) {
       state.advantage = payload.advantage
+    },
+    [types.SET_USER_HOMEPAGES](state, payload) {
+      state.homepages = payload.homepages
     }
   },
   actions: {
@@ -80,10 +85,17 @@ export default {
     },
     updateAdvantage({commit}, data) {
       return axios.patch('api/user/advantage', data).then(response => {
-        console.log(response)
         commit({
           type: types.SET_USER_ADVANTAGE,
           advantage: response.data.advantage
+        })
+      })
+    },
+    updateHomepages({commit}, data) {
+      return axios.patch('api/user/homepages', data).then(response => {
+        commit({
+          type: types.SET_USER_HOMEPAGES,
+          homepages: response.data.homepages
         })
       })
     },

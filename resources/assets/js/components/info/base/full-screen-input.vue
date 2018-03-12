@@ -13,6 +13,7 @@
                 </div>
                 <div v-if="wordCountPosition === 'bottom'" style="text-align: right;padding: 0.4rem 0.2rem;" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ maxLength }}</span></div>
             </div>
+            <message-box cancelButtonText="好" :message="filterMessage" ref="filterMessageBox"></message-box>
             <message-box confirmButtonText="放弃"  :cancelButtonText="cancelButtonText" :showConfirmButton="showConfirmButton" :message="message" @confirm="messageBoxConfirm" ref="messageBox"></message-box>
         </div>
     </transition>
@@ -21,6 +22,10 @@
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
   import messageBox from 'Base/message/message-box'
+
+  const reg = {
+    url: [/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/, '请输入合法的网站地址']
+  }
 
   export default {
     props: {
@@ -52,6 +57,10 @@
       wordCountPosition: {
         type: String,
         default: 'bottom'
+      },
+      filter: {
+        type: String,
+        default: ''
       }
     },
     data() {
@@ -59,6 +68,7 @@
         showFlag: false,
         newValue: '', // 旧姓名
         message: '',
+        filterMessage: '',
         showConfirmButton: false,
         cancelButtonText: '取消'
       }
@@ -104,6 +114,11 @@
           this.cancelButtonText = '好'
           this.showConfirmButton = false
           this.$refs.messageBox.show()
+          return
+        }
+        if (this.filter && !reg[this.filter][0].test(this.newValue)) {
+          this.filterMessage = reg[this.filter][1]
+          this.$refs.filterMessageBox.show()
           return
         }
         if (this.newValue.length > this.maxLength) {

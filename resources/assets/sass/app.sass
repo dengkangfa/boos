@@ -44,6 +44,9 @@
         margin-right: 5px
     div.cell-title
       flex: 1
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
     i.icon
       font-size: .3rem
       color: $color-theme
@@ -75,3 +78,10 @@
 .mint-switch-input:checked + .mint-switch-core
   border-color: #53CAC3 !important
   background-color: #53CAC3 !important
+
+.icon-lofter:before
+  content: 'L'
+  color: #ffffff
+  background: #346061
+  border-radius: 50%
+  padding: 5px 8px

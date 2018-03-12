@@ -6,26 +6,32 @@
             </dkf-header>
             <div class="main">
                 <div class="info">
-                    <div>
+                    <div class="info-item-wrapper">
                         <ul>
                             <li class="info-item" @click="editOrAddEducationInfo(item)" v-for="item in educationData"><label>{{ item.school }}</label><span class="item-value">{{ item.start_year + '-' + item.end_year }}<i class="icon icon-right"></i></span></li>
                             <li @click="editOrAddEducationInfo({})" class="add-item"><i class="icon-jiahao"></i> 教育经历</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="info-item-wrapper">
                         <ul>
                             <li class="info-item" @click="editOrAddWorkExperience(item)" v-for="item in workExperienceData"><label>{{ item.company_name }}</label><span class="item-value">{{ item.start_time.replace(/-/, '.') + '-' + (item.end_time !== -1 ? item.end_time.replace(/-/, '.') : '至今') }}<i class="icon icon-right"></i></span></li>
                             <li @click="editOrAddWorkExperience({})" class="add-item"><i class="icon-jiahao"></i> {{ workExperienceAlias }}</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="info-item-wrapper">
                         <ul>
-                            <li class="add-item"><i class="icon-jiahao"></i> 项目经验</li>
+                            <li class="add-item" @click="showProjectExperience"><i class="icon-jiahao"></i> 项目经验</li>
                         </ul>
                     </div>
-                    <div>
+                    <div class="info-item-wrapper">
                         <ul>
-                            <li class="info-item" @click="showSocialHomePage"><label>社交主页</label><span class="item-value"><i class="icon icon-right"></i></span></li>
+                            <li class="info-item" @click="showSocialHomePage">
+                                <label>社交主页</label>
+                                <div class="item-value">
+                                    <span><i v-for="homepage in user.homepages" style="margin-left: 5px" :class="$refs.socialHomePage.className(homepage)"></i></span>
+                                    <i class="icon icon-right"></i>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -35,7 +41,7 @@
             </div>
             <education-form v-model="educationInfo" headerRightButtonText="保存" v-if="educationFormShowFlag" @complete="educationFormSubmit" @abandon="abandon"></education-form>
             <work-experience-form v-model="workExperience" :title="workExperienceAlias" v-if="workExperienceFormShowFlag" @complete="workExperienceFormSubmit" @abandon="abandon"></work-experience-form>
-            <social-home-page ref="socialHomePage"></social-home-page>
+            <social-home-page v-model="user.homepages" @complete="HomepageFormSubmit" ref="socialHomePage"></social-home-page>
         </div>
     </transition>
 </template>
@@ -85,11 +91,14 @@
       }),
       workExperienceAlias() {
         return this.user.job_date === '应届生' ? '实习经历' : '工作经历'
-      }
+      },
     },
     methods: {
       showSocialHomePage() {
         this.$refs.socialHomePage.show()
+      },
+      showProjectExperience() {
+        this.$refs.projectExperience.show()
       },
       editOrAddEducationInfo(educationInfo) {
         this.educationInfo = educationInfo
@@ -128,6 +137,9 @@
           return a.start_time < b.start_time
         })
         this.workExperienceFormShowFlag = false
+      },
+      HomepageFormSubmit(homepages) {
+        this.homepages = homepages
       }
     },
     components: {
@@ -154,7 +166,7 @@
             overflow-y: scroll
             -webkit-overflow-scrolling: touch
             .info
-                div
+                .info-item-wrapper
                     width: 100%
                     background: #ffffff
                     box-sizing: border-box

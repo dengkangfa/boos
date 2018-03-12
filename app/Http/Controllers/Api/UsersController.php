@@ -133,4 +133,19 @@ class UsersController extends ApiController
 
         return $this->respondWithArray(['advantage' => $request->advantage, 'success' => true, 'code' => 0]);
     }
+
+    public function updateHomepage(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'homepages' => 'required|max:185',
+        ]);
+
+        if ($validator->fails()) {
+            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
+        }
+
+        $this->user->updateColumn(Auth::id(), $request->all());
+
+        return $this->respondWithArray(['homepages' => array_slice(explode('・', $request->homepages), 0, 3), 'success' => true, 'code' => 0]);
+    }
 }

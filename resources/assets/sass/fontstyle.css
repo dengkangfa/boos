@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url('fonts/icomoon.eot?6ket7t');
-  src:  url('fonts/icomoon.eot?6ket7t#iefix') format('embedded-opentype'),
-    url('fonts/icomoon.ttf?6ket7t') format('truetype'),
-    url('fonts/icomoon.woff?6ket7t') format('woff'),
-    url('fonts/icomoon.svg?6ket7t#icomoon') format('svg');
+  src:  url('fonts/icomoon.eot?de4org');
+  src:  url('fonts/icomoon.eot?de4org#iefix') format('embedded-opentype'),
+  url('fonts/icomoon.ttf?de4org') format('truetype'),
+  url('fonts/icomoon.woff?de4org') format('woff'),
+  url('fonts/icomoon.svg?de4org#icomoon') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -24,162 +24,181 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-portrait:before {
-  content: "\e915";
-}
-.icon-camera-outline:before {
-  content: "\e912";
-}
-.icon-image:before {
-  content: "\e913";
-}
-.icon-camera:before {
-  content: "\e914";
-}
-.icon-smartphone:before {
-  content: "\e910";
-}
-.icon-phone:before {
-  content: "\e911";
-}
-.icon-mobile:before {
-  content: "\e911";
-}
-.icon-contact:before {
-  content: "\e911";
-}
-.icon-telephone:before {
-  content: "\e911";
-}
-.icon-lock:before {
-  content: "\e90f";
-}
-.icon-eye-view:before {
-  content: "\e900";
-}
 .icon-x:before {
   content: "\78";
-}
-.icon-qiwanggongzuo:before {
-  content: "\e65c";
-}
-.icon-fenxiang:before {
-  content: "\e64b";
-}
-.icon-shangcheng:before {
-  content: "\e77c";
-}
-.icon-gongzuojingli:before {
-  content: "\e61a";
-}
-.icon-liwuhe:before {
-  content: "\e619";
-}
-.icon-qian:before {
-  content: "\e605";
-}
-.icon-jiahao:before {
-  content: "\e665";
-}
-.icon-tongzhi:before {
-  content: "\e60e";
-}
-.icon-fenxiang1:before {
-  content: "\e65a";
-}
-.icon-correct:before {
-  content: "\e6a1";
-}
-.icon-shangquanguimo:before {
-  content: "\e6fe";
-}
-.icon-correct-filling:before {
-  content: "\e604";
-}
-.icon-loading:before {
-  content: "\e648";
-}
-.icon-ditie:before {
-  content: "\e606";
-}
-.icon-jianli:before {
-  content: "\e707";
-}
-.icon-xiaoxi:before {
-  content: "\e6ad";
-}
-.icon-hot:before {
-  content: "\e701";
-}
-.icon-v:before {
-  content: "\e681";
 }
 .icon-weixiao:before {
   content: "\e603";
 }
-.icon-saomiao:before {
-  content: "\e699";
+.icon-correct-filling:before {
+  content: "\e604";
 }
-.icon-sousuo:before {
-  content: "\e641";
+.icon-qian:before {
+  content: "\e605";
 }
-.icon-shezhi:before {
-  content: "\e661";
+.icon-ditie:before {
+  content: "\e606";
+}
+.icon-tongzhi:before {
+  content: "\e60e";
 }
 .icon-qianbao:before {
   content: "\e614";
 }
-.icon-aixin:before {
-  content: "\e6a2";
+.icon-liwuhe:before {
+  content: "\e619";
 }
-.icon-gongsi:before {
-  content: "\e744";
+.icon-gongzuojingli:before {
+  content: "\e61a";
 }
 .icon-yinsi1:before {
   content: "\e626";
 }
-.icon-close:before {
+.icon-sousuo:before {
+  content: "\e641";
+}
+.icon-loading:before {
+  content: "\e648";
+}
+.icon-fenxiang:before {
+  content: "\e64b";
+}
+.icon-fenxiang1:before {
+  content: "\e65a";
+}
+.icon-qiwanggongzuo:before {
+  content: "\e65c";
+}
+.icon-shezhi:before {
+  content: "\e661";
+}
+.icon-jiahao:before {
+  content: "\e665";
+}
+.icon-v:before {
+  content: "\e681";
+}
+.icon-saomiao:before {
+  content: "\e699";
+}
+.icon-correct:before {
+  content: "\e6a1";
+}
+.icon-aixin:before {
+  content: "\e6a2";
+}
+.icon-xiaoxi:before {
+  content: "\e6ad";
+}
+.icon-shangquanguimo:before {
+  content: "\e6fe";
+}
+.icon-hot:before {
+  content: "\e701";
+}
+.icon-jianli:before {
+  content: "\e707";
+}
+.icon-gongsi:before {
+  content: "\e744";
+}
+.icon-shangcheng:before {
+  content: "\e77c";
+}
+.icon-home:before {
+  content: "\e900";
+  color: #ffffff;
+  background: #53CAC3;
+  border-radius: 50%;
+  padding: 5px;
+}
+.icon-eye-view:before {
   content: "\e901";
 }
-.icon-company:before {
+.icon-close:before {
   content: "\e902";
 }
-.icon-down:before {
+.icon-company:before {
   content: "\e903";
 }
-.icon-earth:before {
+.icon-down:before {
   content: "\e904";
 }
-.icon-education:before {
-  content: "\e906";
-}
-.icon-left:before {
+.icon-earth:before {
   content: "\e905";
 }
-.icon-love:before {
+.icon-left:before {
+  content: "\e906";
+}
+.icon-education:before {
   content: "\e907";
 }
-.icon-me:before {
+.icon-love:before {
   content: "\e908";
 }
-.icon-message:before {
+.icon-me:before {
   content: "\e909";
 }
-.icon-position:before {
+.icon-message:before {
   content: "\e90a";
 }
-.icon-right:before {
+.icon-position:before {
   content: "\e90b";
 }
-.icon-seniority:before {
+.icon-right:before {
   content: "\e90c";
 }
-.icon-top:before {
+.icon-seniority:before {
   content: "\e90d";
 }
-.icon-circle-with-cross:before {
+.icon-top:before {
   content: "\e90e";
+}
+.icon-circle-with-cross:before {
+  content: "\e90f";
+}
+.icon-lock:before {
+  content: "\e910";
+}
+.icon-smartphone:before {
+  content: "\e911";
+}
+.icon-phone:before {
+  content: "\e912";
+}
+.icon-camera-outline:before {
+  content: "\e913";
+}
+.icon-image:before {
+  content: "\e914";
+}
+.icon-camera:before {
+  content: "\e915";
+}
+.icon-portrait:before {
+  content: "\e916";
 }
 .icon-eye-blocked:before {
   content: "\e9d1";
+}
+.icon-sina-weibo:before {
+  content: "\ea9a";
+  color: #ffffff;
+  background: #e65555;
+  border-radius: 50%;
+  padding: 5px;
+}
+.icon-dribbble:before {
+  content: "\eaa7";
+  color: #ffffff;
+  background: #fbb2d2;
+  border-radius: 50%;
+  padding: 5px;
+}
+.icon-github:before {
+  content: "\eab0";
+  color: #fff;
+  background: #a59898;
+  border-radius: 50%;
+  padding: 5px;
 }

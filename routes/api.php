@@ -25,6 +25,7 @@ Route::patch('user/avatar', 'Api\UsersController@defaultAvatar');
 Route::post('user/crop/avatar', 'Api\UsersController@cropAvatar');
 Route::patch('user/profile', 'Api\UsersController@updateProfile');
 Route::patch('user/advantage', 'Api\UsersController@updateAdvantage');
+Route::patch('user/homepages', 'Api\UsersController@updateHomepage');
 
 Route::get('me/education_info', 'Api\EducationInfoController@currentUserFirstEducation');
 Route::get('me/education_infos', 'Api\EducationInfoController@currentUserAllEducation');
@@ -41,3 +42,4 @@ Route::put('work_experiences/{id}', 'Api\WorkExperienceController@update');
 Route::get('industry', 'Api\IndustryController@index');
 
 Route::post('expect_positions', 'Api\ExpectPositionController@store');
+
