@@ -42,6 +42,17 @@ class User extends Authenticatable
         return $this->hasMany(WorkExperience::class);
     }
 
+    public function projectExperiences()
+    {
+        return $this->hasMany(projectExperience::class);
+    }
+
+    public function isAuthorOf($model)
+    {
+        var_dump($model->user_id);
+        return $model->user_id == $this->id;
+    }
+
     public function setJobDateAttribute($value)
     {
         if ($value == '应届生') {

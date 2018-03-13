@@ -43,3 +43,8 @@ Route::get('industry', 'Api\IndustryController@index');
 
 Route::post('expect_positions', 'Api\ExpectPositionController@store');
 
+Route::post('project_experiences', 'Api\ProjectExperiencesController@store');
+Route::put('project_experiences/{id}', 'Api\ProjectExperiencesController@update');
+Route::delete('project_experiences/{projectExperience}', 'Api\ProjectExperiencesController@destroy');
+Route::get('me/project_experiences', 'Api\ProjectExperiencesController@currentUserAllProjectExperience');
+

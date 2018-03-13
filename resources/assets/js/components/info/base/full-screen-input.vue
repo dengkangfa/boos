@@ -138,7 +138,7 @@
     },
     watch: {
       showFlag() {
-        this.newValue = this.value
+        this.newValue = this.value !== null ? this.value : ''
       }
     },
     components: {

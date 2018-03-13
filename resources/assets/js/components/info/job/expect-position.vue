@@ -5,11 +5,31 @@
             <main>
                 <div>
                     <ul class="cell">
-                        <li @click="showApplyStatusSelector"><label>求职状态</label><span class="item-value">{{ applyStatusDisplayName }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showPositionTypeSelector"><label>期望职位</label><span class="item-value">{{ position }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showIndustrySelect"><label>期望行业</label><span class="item-value">{{ industryArr.length ? industryArr.length + '个标签' : '不限' }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showDistpicker"><label>工作城市</label><span class="item-value">{{ expectPositionData.locationName }} <i class="icon icon-right"></i></span></li>
-                        <li @click="showSalaryPicker"><label>薪资要求</label><span class="item-value">{{ expectPositionData.lowSalary ? expectPositionData.lowSalary === '面议' ? '面议' : expectPositionData.lowSalary + 'k-' + expectPositionData.highSalary + 'k' : '' }}<i class="icon icon-right"></i></span></li>
+                        <li @click="showApplyStatusSelector">
+                            <div class="cell-title"><span>求职状态</span></div>
+                            <div class="cell-value is-link"><span>{{ applyStatusDisplayName }}</span></div>
+                            <i class="icon icon-right"></i>
+                        </li>
+                        <li @click="showPositionTypeSelector">
+                            <div class="cell-title"><span>期望职位</span></div>
+                            <div class="cell-value is-link"><span>{{ position }}</span></div>
+                            <i class="icon icon-right"></i>
+                        </li>
+                        <li @click="showIndustrySelect">
+                            <div class="cell-title"><span>期望行业</span></div>
+                            <div class="cell-value is-link"><span>{{ industryArr.length ? industryArr.length + '个标签' : '不限' }}</span></div>
+                            <i class="icon icon-right"></i>
+                        </li>
+                        <li @click="showDistpicker">
+                            <div class="cell-title"><span>工作城市</span></div>
+                            <div class="cell-value is-link"><span>{{ expectPositionData.locationName }}</span></div>
+                            <i class="icon icon-right"></i>
+                        </li>
+                        <li @click="showSalaryPicker">
+                            <div class="cell-title"><span>薪资要求</span></div>
+                            <div class="cell-value is-link"><span>{{ expectPositionData.lowSalary ? expectPositionData.lowSalary === '面议' ? '面议' : expectPositionData.lowSalary + 'k-' + expectPositionData.highSalary + 'k' : '' }}</span></div>
+                            <i class="icon icon-right"></i>
+                        </li>
                     </ul>
                 </div>
                 <div class="expect-position-remind">
