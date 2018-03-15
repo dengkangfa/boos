@@ -22,12 +22,12 @@
                         </li>
                         <li @click="showDistpicker">
                             <div class="cell-title"><span>工作城市</span></div>
-                            <div class="cell-value is-link"><span>{{ expectPositionData.locationName }}</span></div>
+                            <div class="cell-value is-link"><span>{{ expectPositionData.location_name }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                         <li @click="showSalaryPicker">
                             <div class="cell-title"><span>薪资要求</span></div>
-                            <div class="cell-value is-link"><span>{{ expectPositionData.lowSalary ? expectPositionData.lowSalary === '面议' ? '面议' : expectPositionData.lowSalary + 'k-' + expectPositionData.highSalary + 'k' : '' }}</span></div>
+                            <div class="cell-value is-link"><span>{{ expectPositionData.low_salary ? expectPositionData.low_salary === -1 ? '面议' : expectPositionData.low_salary + 'k-' + expectPositionData.high_salary + 'k' : '' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                     </ul>
@@ -65,11 +65,12 @@
         position: '',
         industryArr: '',
         expectPositionData: {
-          applyStatus: '',
+          apply_status: 2,
           position_type: '',
-          locationName: '',
-          lowSalary: '',
-          highSalary: ''
+          industry: '',
+          location_name: '',
+          low_salary: '',
+          high_salary: ''
         }
       }
     },
@@ -96,21 +97,22 @@
         this.$refs.salaryPicker.show()
       },
       updateApplyStatus(value) {
-        this.expectPositionData.applyStatus = value
+        this.expectPositionData.apply_status = value
       },
       positionSelected(value) {
         this.position = value.name
         this.expectPositionData.position_type = value.id
       },
       distPickerSelected(value) {
-        this.expectPositionData.locationName = value
+        this.expectPositionData.location_name = value
       },
       selectedIndustry(industry) {
         this.industryArr = industry
+        this.expectPositionData.industry = industry.join('・')
       },
       selectedSalary(value) {
-        this.expectPositionData.lowSalary = value[0]
-        this.expectPositionData.highSalary = value[1]
+        this.expectPositionData.low_salary = value[0]
+        this.expectPositionData.high_salary = value[1]
       },
       submit() {
         createdExpectPosition(this.expectPositionData).then(response => {
@@ -120,7 +122,7 @@
     },
     computed: {
       applyStatusDisplayName() {
-        return this.expectPositionData.applyStatus !== '' ? applyStatus[this.expectPositionData.applyStatus] : ''
+        return this.expectPositionData.apply_status !== '' ? applyStatus[this.expectPositionData.apply_status] : ''
       }
     },
     watch: {

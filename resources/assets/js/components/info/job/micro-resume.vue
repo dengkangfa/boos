@@ -36,7 +36,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="theme-button" style="margin-top: 70px">
+                <div class="theme-button" @click="$router.push({'name': 'job-expect-position'})" style="margin-top: 70px">
                     完成
                 </div>
             </div>

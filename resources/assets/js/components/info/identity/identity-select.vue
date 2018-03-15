@@ -46,8 +46,8 @@
         })
       },
       findJob() {
-//        this.$router.push({'name': 'job-basic-info'})
-        this.$router.push({'name': 'job-advantage'})
+        this.$router.push({'name': 'job-basic-info'})
+//        this.$router.push({'name': 'job-advantage'})
       }
     },
     components: {

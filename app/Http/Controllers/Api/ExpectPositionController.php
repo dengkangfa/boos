@@ -2,38 +2,42 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Models\ExpectPosition;
+use App\Transformers\ExpectPositionsTransformer;
 use Illuminate\Http\Request;
 use Validator;
 
 class ExpectPositionController extends ApiController
 {
-    public function store(Request $request)
+    public function store(Request $request, ExpectPosition $expectPosition)
     {
         $validator = $this->validateExpectPosition($request);
 
         if ($validator->fails()) {
             return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
         }
-        $data = $request->all();
-        $data['user_id'] = Auth::id();
-        $educationInfo = $this->educationInfo->store($data);
-        return $this->respondWithItem($educationInfo, new EducationInfoTransformer);
+
+        $expectPosition->fill($request->all());
+        $expectPosition->user_id = \Auth::id();
+        $expectPosition->save();
+
+        return $this->respondWithItem($expectPosition, new ExpectPositionsTransformer());
     }
 
     public function validateExpectPosition(Request $request)
     {
         return Validator::make($request->all(), [
-            'school'     => 'required',
-            'major'      => 'required',
-            'degree'     => 'required',
-            'start_year' => 'required|date_format:Y',
-            'end_year'   => 'required|date_format:Y|after:start_year'
+            'apply_status'     => 'required|numeric|in:0,1,2,3',
+            'position_type'      => 'required|exists:position_types,id',
+            'location_name'     => 'required',
         ], [
-            'school.required' => '请填写学校名称',
-            'major.required' => '请填写所学专业',
-            'degree.required' => '请选择学历',
-            'start_year.required' => '请选择在校时间段',
-            'end_year.required' => '请选择在校时间段'
+            'apply_status.required' => '请填写学校名称',
+            'position_type.required' => '请选择期待职位',
+            'position_type.exists' => '该职位不存在',
+        ], [
+            'apply_status' => '求职状态',
+            'position_type' => '期待职位',
+            'location_name' => '工作城市'
         ]);
     }
 }

@@ -66,7 +66,7 @@
         this.data = values
         if (values[0] === '面议') {
           picker.setSlotValues(1, [])
-          this.data[1] = '面议'
+          this.data = [-1, -1]
         } else {
           picker.setSlotValues(1, this._getHighSalary(values[0]))
         }

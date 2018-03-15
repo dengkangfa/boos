@@ -8,11 +8,14 @@ import store from './store/index'
 import fastclick from 'fastclick'
 import jwtToken from './helpers/jwt'
 
-import { Picker } from 'mint-ui'
+import { Picker, Switch } from 'mint-ui'
 import 'mint-ui/lib/style.css'
-import { Switch } from 'mint-ui';
 Vue.component('mint-picker', Picker)
-Vue.component('mint-switch', Switch);
+Vue.component('mint-switch', Switch)
+
+// 引入vue-amap
+import AMap from 'vue-amap'
+Vue.use(AMap)
 
 fastclick.attach(document.body)
 

@@ -15,12 +15,12 @@ class CreateExpectPositionsTable extends Migration
     {
         Schema::create('expect_positions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id')->unsigned()->index();
             $table->enum('apply_status', [0, 1, 2, 3]);
             $table->integer('position_type')->unsigned();
             $table->string('location_name');
             $table->integer('low_salary');
             $table->integer('high_salary');
-            $table->integer('user_id')->unsigned();
             $table->timestamps();
         });
     }
