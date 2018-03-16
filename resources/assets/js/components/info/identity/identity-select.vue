@@ -3,7 +3,7 @@
         <div class="identity-wrapper _effect" :class="{'_effect--30': decline}">
             <div class="job-wrapper">
                 <div class="identity-img job-img"></div>
-                <button class="identity-button job-btn" @click.prevnet="findJob">我要找工作</button>
+                <button class="identity-button job-btn" @click.prevnet="cutRole('applicant')">我要找工作</button>
             </div>
             <div class="or">
                 <div class="line"></div>
@@ -12,12 +12,13 @@
             </div>
             <div class="hiring-wrapper">
                 <div class="identity-img hiring-img"></div>
-                <button class="identity-button hiring-btn">我要找工作</button>
+                <button class="identity-button hiring-btn" @click.prevnet="cutRole('recruiter')">我要招人</button>
             </div>
             <div class="logout">
                 <a @click.prevent="logout">退出登录</a>
             </div>
             <message-box message="确定退出登录？" :showConfirmButton="true" @confirm="confirm" ref="messageBox"></message-box>
+            <spinner text="身份切换中" v-show="spinnerShowFalg"></spinner>
         </div>
         <router-view @routePipe="routePipe"></router-view>
     </div>
@@ -25,11 +26,13 @@
 
 <script type="text/ecmascript-6">
   import messageBox from 'Base/message/message-box'
+  import spinner from 'Base/spinner/spinner'
 
   export default {
     data() {
       return {
-        decline: false
+        decline: false,
+        spinnerShowFalg: false
       }
     },
     methods: {
@@ -45,13 +48,22 @@
           this.$router.push({'name': 'login'})
         })
       },
-      findJob() {
-        this.$router.push({'name': 'job-basic-info'})
+      cutRole(role) {
+        this.spinnerShowFalg = true
+        this.$store.dispatch('cutRole', {role}).then(response => {
+          this.spinnerShowFalg = false
+          if (role === 'recruiter') {
+            this.$router.push({'name': 'boss-basic-info'})
+          } else {
+            this.$router.push({'name': 'job-basic-info'})
+          }
+        })
 //        this.$router.push({'name': 'job-advantage'})
       }
     },
     components: {
-      messageBox
+      messageBox,
+      spinner
     }
   }
 </script>

@@ -4,6 +4,7 @@ import * as types from './../mutation-types'
 export default {
   state: {
     authenticated: false,
+    roles: [],
     name: '',
     avatar: '',
     gender: '',
@@ -15,6 +16,7 @@ export default {
   mutations: {
     [types.SET_AUTH_USER](state, payload) {
       state.authenticated = true
+      state.roles = payload.user.roles
       state.avatar = payload.user.avatar
       state.name = payload.user.name
       state.gender = payload.user.gender
@@ -25,6 +27,9 @@ export default {
     },
     [types.UNSET_AUTH_USER](state) {
       state.authenticated = false
+    },
+    [types.UPDATE_USER_ROLE](state, payload) {
+      state.roles = payload.roles
     },
     [types.SET_USER_AVATAR](state, payload) {
       state.avatar = payload.avatar
@@ -55,6 +60,14 @@ export default {
         })
       }).catch(() => {
         dispatch('refreshToken')
+      })
+    },
+    cutRole({commit}, data) {
+      return axios.patch('api/user/role', data).then(response => {
+        commit({
+          type: types.UPDATE_USER_ROLE,
+          roles: response.data.roles
+        })
       })
     },
     uploadAvatar({commit}, data) {

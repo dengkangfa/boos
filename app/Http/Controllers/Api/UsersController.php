@@ -8,6 +8,7 @@ use App\Transformers\UserTransformer;
 use Auth;
 use DB;
 use Image;
+use Spatie\Permission\Models\Role;
 use Validator;
 use Illuminate\Http\Request;
 use App\Services\UploadManager;
@@ -147,5 +148,16 @@ class UsersController extends ApiController
         $this->user->updateColumn(Auth::id(), $request->all());
 
         return $this->respondWithArray(['homepages' => array_slice(explode('・', $request->homepages), 0, 3), 'success' => true, 'code' => 0]);
+    }
+
+    public function updateRole(Request $request)
+    {
+        if (!in_array($request->role, ['recruiter', 'applicant'])) {
+            return $this->errorUnprocessableEntity();
+        }
+
+        $user = \Auth::user();
+        $user->syncRoles($request->role);
+        return $this->respondWithArray(['roles' => $user->getRoleNames(), 'success' => true, 'code' => 0]);
     }
 }

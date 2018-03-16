@@ -44156,6 +44156,9 @@ if (false) {
 
 
 
+
+
+
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var routes = [{
@@ -44216,6 +44219,11 @@ var routes = [{
       component: __WEBPACK_IMPORTED_MODULE_11__components_info_job_work_experience___default.a,
       meta: { requiresAuth: true, autoFrom: ['job-basic-info'] }
     }]
+  }, {
+    path: '/boss/basicinfo',
+    name: 'boss-basic-info',
+    component: __WEBPACK_IMPORTED_MODULE_8__components_info_job_basic_info___default.a,
+    meta: { requiresAuth: true }
   }]
 }, {
   path: '*',
@@ -46946,6 +46954,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ __webpack_exports__["a"] = ({
   state: {
     authenticated: false,
+    roles: [],
     name: '',
     avatar: '',
     gender: '',
@@ -46956,6 +46965,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mutations: (_mutations = {}, _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["a" /* SET_AUTH_USER */], function (state, payload) {
     state.authenticated = true;
+    state.roles = payload.user.roles;
     state.avatar = payload.user.avatar;
     state.name = payload.user.name;
     state.gender = payload.user.gender;
@@ -46965,6 +46975,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     state.homepages = payload.user.homepages;
   }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["f" /* UNSET_AUTH_USER */], function (state) {
     state.authenticated = false;
+  }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["h" /* UPDATE_USER_ROLE */], function (state, payload) {
+    state.roles = payload.roles;
   }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["c" /* SET_USER_AVATAR */], function (state, payload) {
     state.avatar = payload.avatar;
   }), _defineProperty(_mutations, __WEBPACK_IMPORTED_MODULE_1__mutation_types__["g" /* UPDATE_USER_DEFAULT_AVATAR */], function (state, payload) {
@@ -46994,8 +47006,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         dispatch('refreshToken');
       });
     },
-    uploadAvatar: function uploadAvatar(_ref2, data) {
+    cutRole: function cutRole(_ref2, data) {
       var commit = _ref2.commit;
+
+      return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/role', data).then(function (response) {
+        commit({
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["h" /* UPDATE_USER_ROLE */],
+          roles: response.data.roles
+        });
+      });
+    },
+    uploadAvatar: function uploadAvatar(_ref3, data) {
+      var commit = _ref3.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/user/crop/avatar', data).then(function (response) {
         commit({
@@ -47004,8 +47026,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateDefaultAvatar: function updateDefaultAvatar(_ref3, data) {
-      var commit = _ref3.commit;
+    updateDefaultAvatar: function updateDefaultAvatar(_ref4, data) {
+      var commit = _ref4.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/api/user/avatar', data).then(function (response) {
         commit({
@@ -47014,8 +47036,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateProflie: function updateProflie(_ref4, data) {
-      var commit = _ref4.commit;
+    updateProflie: function updateProflie(_ref5, data) {
+      var commit = _ref5.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/api/user/profile', data).then(function (response) {
         commit({
@@ -47026,8 +47048,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Promise.reject(error.response.data);
       });
     },
-    updateAdvantage: function updateAdvantage(_ref5, data) {
-      var commit = _ref5.commit;
+    updateAdvantage: function updateAdvantage(_ref6, data) {
+      var commit = _ref6.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/advantage', data).then(function (response) {
         commit({
@@ -47036,8 +47058,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateHomepages: function updateHomepages(_ref6, data) {
-      var commit = _ref6.commit;
+    updateHomepages: function updateHomepages(_ref7, data) {
+      var commit = _ref7.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/homepages', data).then(function (response) {
         commit({
@@ -47046,16 +47068,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    unsetAuthUser: function unsetAuthUser(_ref7) {
-      var commit = _ref7.commit;
+    unsetAuthUser: function unsetAuthUser(_ref8) {
+      var commit = _ref8.commit;
 
       commit({
         type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["f" /* UNSET_AUTH_USER */]
       });
     },
-    refreshToken: function refreshToken(_ref8) {
-      var commit = _ref8.commit,
-          dispatch = _ref8.dispatch;
+    refreshToken: function refreshToken(_ref9) {
+      var commit = _ref9.commit,
+          dispatch = _ref9.dispatch;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/token/refresh').then(function (response) {
         dispatch('loginSuccess', response.data);
@@ -47073,6 +47095,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SET_AUTH_USER; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return UNSET_AUTH_USER; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return UPDATE_USER_ROLE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return SET_USER_AVATAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return UPDATE_USER_DEFAULT_AVATAR; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return SET_USER_PROFILE; });
@@ -47080,6 +47103,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return SET_USER_HOMEPAGES; });
 var SET_AUTH_USER = 'SET_AUTH_USER';
 var UNSET_AUTH_USER = 'UNSET_AUTH_USER';
+var UPDATE_USER_ROLE = 'UPDATE_USER_ROLE';
 var SET_USER_AVATAR = 'SET_USER_AVATAR';
 var UPDATE_USER_DEFAULT_AVATAR = 'UPDATE_USER_DEFAULT_AVATAR';
 var SET_USER_PROFILE = 'SET_USER_PROFILE';
@@ -49513,6 +49537,8 @@ module.exports = "/images/hiring.jpg?9f6db81fcb6b3e4dc96fc6100134355e";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_message_message_box__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner__);
 //
 //
 //
@@ -49538,13 +49564,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      decline: false
+      decline: false,
+      spinnerShowFalg: false
     };
   },
 
@@ -49563,13 +49592,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this.$router.push({ 'name': 'login' });
       });
     },
-    findJob: function findJob() {
-      this.$router.push({ 'name': 'job-basic-info' });
+    cutRole: function cutRole(role) {
+      var _this2 = this;
+
+      this.spinnerShowFalg = true;
+      this.$store.dispatch('cutRole', { role: role }).then(function (response) {
+        _this2.spinnerShowFalg = false;
+        if (role === 'recruiter') {
+          _this2.$router.push({ 'name': 'boss-basic-info' });
+        } else {
+          _this2.$router.push({ 'name': 'job-basic-info' });
+        }
+      });
       //        this.$router.push({'name': 'job-advantage'})
     }
   },
   components: {
-    messageBox: __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box___default.a
+    messageBox: __WEBPACK_IMPORTED_MODULE_0_Base_message_message_box___default.a,
+    spinner: __WEBPACK_IMPORTED_MODULE_1_Base_spinner_spinner___default.a
   }
 });
 
@@ -49606,7 +49646,7 @@ var render = function() {
                     ) {
                       return null
                     }
-                    _vm.findJob($event)
+                    _vm.cutRole("applicant")
                   }
                 }
               },
@@ -49616,7 +49656,28 @@ var render = function() {
           _vm._v(" "),
           _vm._m(0),
           _vm._v(" "),
-          _vm._m(1),
+          _c("div", { staticClass: "hiring-wrapper" }, [
+            _c("div", { staticClass: "identity-img hiring-img" }),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "identity-button hiring-btn",
+                on: {
+                  click: function($event) {
+                    if (
+                      !("button" in $event) &&
+                      _vm._k($event.keyCode, "prevnet", undefined, $event.key)
+                    ) {
+                      return null
+                    }
+                    _vm.cutRole("recruiter")
+                  }
+                }
+              },
+              [_vm._v("我要招人")]
+            )
+          ]),
           _vm._v(" "),
           _c("div", { staticClass: "logout" }, [
             _c(
@@ -49637,6 +49698,18 @@ var render = function() {
             ref: "messageBox",
             attrs: { message: "确定退出登录？", showConfirmButton: true },
             on: { confirm: _vm.confirm }
+          }),
+          _vm._v(" "),
+          _c("spinner", {
+            directives: [
+              {
+                name: "show",
+                rawName: "v-show",
+                value: _vm.spinnerShowFalg,
+                expression: "spinnerShowFalg"
+              }
+            ],
+            attrs: { text: "身份切换中" }
           })
         ],
         1
@@ -49658,18 +49731,6 @@ var staticRenderFns = [
       _c("div", { staticClass: "text" }, [_vm._v("或者")]),
       _vm._v(" "),
       _c("div", { staticClass: "line" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "hiring-wrapper" }, [
-      _c("div", { staticClass: "identity-img hiring-img" }),
-      _vm._v(" "),
-      _c("button", { staticClass: "identity-button hiring-btn" }, [
-        _vm._v("我要找工作")
-      ])
     ])
   }
 ]
