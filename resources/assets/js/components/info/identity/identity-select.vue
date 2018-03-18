@@ -27,6 +27,7 @@
 <script type="text/ecmascript-6">
   import messageBox from 'Base/message/message-box'
   import spinner from 'Base/spinner/spinner'
+  import {mapState} from 'vuex'
 
   export default {
     data() {
@@ -34,6 +35,17 @@
         decline: false,
         spinnerShowFalg: false
       }
+    },
+    created() {
+      if (!this.user.authenticated) {
+        this.$store.dispatch('setAuthUser').then(response => {
+        })
+      }
+    },
+    computed: {
+      ...mapState({
+        user: state => state.AuthUser
+      })
     },
     methods: {
       routePipe(_decline) {
@@ -49,6 +61,14 @@
         })
       },
       cutRole(role) {
+        if (this.user.roles.indexOf(role) > -1) {
+          if (role === 'recruiter') {
+            this.$router.push({'name': 'boss-basic-info'})
+          } else {
+            this.$router.push({'name': 'job-basic-info'})
+          }
+          return
+        }
         this.spinnerShowFalg = true
         this.$store.dispatch('cutRole', {role}).then(response => {
           this.spinnerShowFalg = false
@@ -58,7 +78,6 @@
             this.$router.push({'name': 'job-basic-info'})
           }
         })
-//        this.$router.push({'name': 'job-advantage'})
       }
     },
     components: {

@@ -15,7 +15,7 @@ import workExperience from '../components/info/job/work-experience'
 import expectPosition from '../components/info/job/expect-position'
 import microResume from '../components/info/job/micro-resume'
 
-import bossBasicInfo from '../components/info/job/basic-info'
+import bossBasicInfo from '../components/info/boss/basic-info'
 
 Vue.use(VueRouter)
 

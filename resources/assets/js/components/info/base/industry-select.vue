@@ -103,7 +103,7 @@
   }
 </script>
 
-<style lang="sass" rel="stylesheet/sass">
+<style lang="sass" rel="stylesheet/sass" scoped>
     @import "../../../../sass/variables"
     @import "../../../../sass/mixin"
 

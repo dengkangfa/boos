@@ -7,7 +7,7 @@
             </dkf-header>
             <div>
                 <div v-if="wordCountPosition === 'top'" class="top-word-count-wrapper" v-show="showValueLength"><span class="word-count"><p class="current-length" :class="{'exceed': isExceed}">{{ valueLength }}</p>/{{ maxLength }}</span></div>
-                <input v-if="type === 'input'" type="text" v-model="newValue" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
+                <input v-if="type === 'input'" type="text" v-model="newValue" :placeholder="placeholder" class="name-input" ref="nameInput" @keyup.13="confirm" v-focus>
                 <div class="textarea-wrapper" v-else>
                     <textarea v-model="newValue"  :maxlength="maxLength !== -1 ? maxLength : ''" mixlength="2" ref="nameInput" :placeholder="placeholder" v-focus></textarea>
                 </div>
@@ -59,6 +59,10 @@
         default: 'bottom'
       },
       filter: {
+        type: String,
+        default: ''
+      },
+      placeholder: {
         type: String,
         default: ''
       }

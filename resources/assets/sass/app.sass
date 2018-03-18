@@ -25,11 +25,12 @@
   li
     display: flex
     align-items: center
-    height: 45px
+    min-height: 45px
     line-height: 45px
-    @include border-top-1px($bc)
     padding: 0 0.3rem
     background: #ffffff
+    &:not(:first-child)
+      @include border-top-1px($bc)
     &.active:active
       background: #d9d9d9
     div.cell-value
