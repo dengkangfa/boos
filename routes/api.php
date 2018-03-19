@@ -49,3 +49,5 @@ Route::put('project_experiences/{id}', 'Api\ProjectExperiencesController@update'
 Route::delete('project_experiences/{projectExperience}', 'Api\ProjectExperiencesController@destroy');
 Route::get('me/project_experiences', 'Api\ProjectExperiencesController@currentUserAllProjectExperience');
 
+Route::post('companys', 'Api\CompanyController@store');
+

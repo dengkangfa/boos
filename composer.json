@@ -16,7 +16,8 @@
         "overtrue/laravel-lang": "~3.0",
         "predis/predis": "^1.1",
         "spatie/laravel-permission": "~2.7",
-        "toplan/laravel-sms": "~2.6"
+        "toplan/laravel-sms": "~2.6",
+        "dingo/api": "2.0.0-alpha1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
