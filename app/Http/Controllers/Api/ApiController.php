@@ -6,6 +6,7 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use App\Http\Controllers\Controller;
 use League\Fractal\Resource\Collection;
+use League\Fractal\Serializer\ArraySerializer;
 
 class ApiController extends Controller
 {
@@ -22,6 +23,11 @@ class ApiController extends Controller
     public function __construct()
     {
         $this->fractal = new Manager;
+//        $this->fractal->setSerializer(new ArraySerializer());
+
+        if (isset($_GET['include'])) {
+            $this->fractal->parseIncludes($_GET['include']);
+        }
     }
 
     public function setStatusCode($statusCode)

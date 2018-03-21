@@ -24,7 +24,7 @@
                     <div v-for="item in industry">
                         <span class="industry-categories">{{ item['name'] }}</span>
                         <div class="industry-items">
-                            <span @click="checked(industry['name'])" v-for="industry in item['subLevelModelList']" :class="{'checked': inArray(industry['name']) }">
+                            <span @click="checked(industry['name'], industry['code'])" v-for="industry in item['subLevelModelList']" :class="{'checked': inArray(industry['name']) }">
                                 {{ industry['name'] }}
                             </span>
                         </div>
@@ -68,7 +68,7 @@
       hide() {
         this.showFlag = false
       },
-      checked(item) {
+      checked(item, code) {
         if (this.type === 'checkbox') {
           let index = this.selectedIndustry.indexOf(item)
           if (index > -1) {
@@ -80,7 +80,7 @@
           }
         } else {
           this.selectedIndustry = []
-          this.selectedIndustry.push(item)
+          this.selectedIndustry.push({'name': item, 'code': code})
           this.save()
         }
       },

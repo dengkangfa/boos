@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Requests\Api\UserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use App\Transformers\UserTransformer;
@@ -102,18 +103,18 @@ class UsersController extends ApiController
         return response()->json($currentImage);
     }
 
-    public function updateProfile(Request $request)
+    public function updateProfile(UserRequest $request)
     {
-        $validator = Validator::make($request->all(), [
-            'name' => 'required|max:12',
-            'gender' => 'required',
-            'job_date' => 'required',
-            'birth_date' => 'required|date'
-        ]);
-
-        if ($validator->fails()) {
-            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
-        }
+//        $validator = Validator::make($request->all(), [
+//            'name' => 'required|max:12',
+//            'gender' => 'required',
+//            'job_date' => 'required',
+//            'birth_date' => 'required|date'
+//        ]);
+//
+//        if ($validator->fails()) {
+//            return $this->errorUnprocessableEntity($validator->getMessageBag()->first());
+//        }
 
         $result = $this->user->update(Auth::id(), $request->all());
 

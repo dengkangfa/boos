@@ -22,19 +22,19 @@
                     <ul class="cell">
                         <li @click="$refs.myCompany.show()">
                             <div class="cell-title"><span>我的公司</span></div>
-                            <div class="cell-value is-link"><span>您当前就职的公司</span></div>
+                            <div class="cell-value is-link"><span>{{ company.id ? company.abbreviation + '(' + company.industry_str + ')' : '您当前就职的公司' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                     </ul>
                     <ul class="cell">
-                        <li>
+                        <li @click="$refs.positionNameFullScreenInput.show()">
                             <div class="cell-title"><span>我的职务</span></div>
-                            <div class="cell-value is-link"><span>您在公司内担任的职务</span></div>
+                            <div class="cell-value is-link"><span>{{ user.pos_name ? user.pos_name : '您在公司内担任的职务' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li>
+                        <li @click="$refs.emailFullScreenInput.show()">
                             <div class="cell-title"><span>我的邮箱（接收简历用）</span></div>
-                            <div class="cell-value is-link"><span>选填，您...</span></div>
+                            <div class="cell-value email is-link"><span>{{ user.email ? user.email : '选填，您的邮箱' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                     </ul>
@@ -46,8 +46,9 @@
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="$refs.avatarDefault.show()" ref="avatarDriver"></avatar-driver>
             <avatar-cropper  :image="cropImage" @cancel="cropperShowFlag = false"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
             <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>
-            <full-screen-input :maxLength="12" v-model="user.name" @saveValue="user.name = arguments[0]" ref="nameFullScreenInput"></full-screen-input>
-            <full-screen-input :maxLength="12" v-model="user.name" @saveValue="user.name = arguments[0]" ref="nameFullScreenInput"></full-screen-input>
+            <full-screen-input title="姓名" :maxLength="12" v-model="user.name" @saveValue="user.name = arguments[0]" ref="nameFullScreenInput"></full-screen-input>
+            <full-screen-input title="我的职务" :maxLength="12" v-model="user.pos_name" @saveValue="user.pos_name = arguments[0]" ref="positionNameFullScreenInput"></full-screen-input>
+            <full-screen-input title="接收简历邮箱" :maxLength="64" filter="email" v-model="user.email" @saveValue="user.email = arguments[0]" ref="emailFullScreenInput"></full-screen-input>
             <my-company :maxLength="46" ref="myCompany"></my-company>
             <spinner :text="spinnerText" v-if="spinnerShowFlag"></spinner>
             <message :message="message" ref="message"></message>
@@ -66,6 +67,8 @@
   import message from 'Base/message/message'
   import myCompany from './my-company/my-company'
 
+  const keys = ['name', 'company_id', 'pos_name', 'email']
+
   export default {
     data() {
       return {
@@ -79,15 +82,14 @@
       }
     },
     created() {
-      if (!this.user.authenticated) {
-        this.$store.dispatch('setAuthUser').then(response => {
+      this.$store.dispatch('setAuthUserWithCompany').then(response => {
 
-        })
-      }
+      })
     },
     computed: {
       ...mapState({
-        user: state => state.AuthUser
+        user: state => state.AuthUser,
+        company: state => state.Company
       })
     },
     methods: {
@@ -115,8 +117,21 @@
       },
       complete() {
         if (this._checkData()) {
-
+          this.spinnerText = '保存中'
+          this.spinnerShowFlag = true
+          this.$store.dispatch('updateProflie', this._formatUser(this.user)).then(response => {
+            this.spinnerShowFlag = false
+          })
         }
+      },
+      _formatUser(data) {
+        let newData = {}
+        for (let key in data) {
+          if (keys.indexOf(key) >= 0) {
+            newData[key] = data[key]
+          }
+        }
+        return newData
       },
       _checkData() {
         if (!this.user.avatar) {
@@ -125,10 +140,12 @@
           this.message = '姓名不能为空'
         } else if (!this.company) {
           this.message = '当前公司不能为空'
+        } else if (!this.user.pos_name) {
+          this.message = '我的职务不能为空'
         } else {
           return true
         }
-        this.$refs.messageBox.show()
+        this.$refs.message.show()
         return false
       }
     },
@@ -156,15 +173,18 @@
             padding: 0 10px
             background-color: #ffffff
             margin-top: 10px
-            .cell-value.img-wrapper
-                display: flex
-                img
-                    width: 1.2rem
-                    height: 1.2rem
-                    border: 2px solid #eeeeee
-                    border-radius: 50%
-                    box-sizing: border-box
-                    margin: 10px 0
+            .cell-value
+                &.img-wrapper
+                    display: flex
+                    img
+                        width: 1.2rem
+                        height: 1.2rem
+                        border: 2px solid #eeeeee
+                        border-radius: 50%
+                        box-sizing: border-box
+                        margin: 10px 0
+                &.email
+                    max-width: 25%
 
 
 </style>

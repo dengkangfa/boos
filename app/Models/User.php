@@ -8,8 +8,9 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Laravel\Passport\HasApiTokens;
 use phpseclib\Crypt\Hash;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable
+class User extends Authenticatable implements JWTSubject
 {
     use HasApiTokens, Notifiable, HasRoles;
 
@@ -19,7 +20,8 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'mobile', 'gender', 'advantage', 'job_date', 'birth_date', 'homepages'
+        'name', 'email', 'password', 'mobile', 'gender', 'advantage', 'company_id',
+        'pos_name', 'job_date', 'birth_date', 'homepages'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'disabled_at', 'job_date', 'birth_date'];
@@ -48,6 +50,11 @@ class User extends Authenticatable
     public function projectExperiences()
     {
         return $this->hasMany(projectExperience::class);
+    }
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
     }
 
     public function isAuthorOf($model)
@@ -102,5 +109,25 @@ class User extends Authenticatable
         }
         return true;
         return Hash::check($password, $this->getAuthPassword());
+    }
+
+    /**
+     * Get the identifier that will be stored in the subject claim of the JWT.
+     *
+     * @return mixed
+     */
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    /**
+     * Return a key value array, containing any custom claims to be added to the JWT.
+     *
+     * @return array
+     */
+    public function getJWTCustomClaims()
+    {
+        return [];
     }
 }

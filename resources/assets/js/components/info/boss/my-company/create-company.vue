@@ -7,7 +7,7 @@
                 <div slot="right" @click="$refs.joinCompany.show()" v-else>完成</div>
             </dkf-header>
             <div class="caveat">
-                公司信息将被审核，请问=确保您输入的信息真实有效
+                公司信息将被审核，请确保您输入的信息真实有效
             </div>
             <div class="main">
                 <ul class="cell">
@@ -22,20 +22,20 @@
                     </li>
                     <li @click="$refs.industrySelect.show()">
                         <div class="cell-title"><span>公司行业</span></div>
-                        <div class="cell-value is-link" :class="{'color-theme': !companyData.industry}"><span>{{ companyData.industry ? companyData.industry : '请填写'}}</span></div>
+                        <div class="cell-value is-link" :class="{'color-theme': !companyData.industry_str}"><span>{{ companyData.industry_str ? companyData.industry_str : '请填写'}}</span></div>
                         <i class="icon icon-right"></i>
                     </li>
                     <li @click="$refs.peoplePicker.show()">
                         <div class="cell-title"><span>人员规模</span></div>
-                        <div class="cell-value is-link" :class="{'color-theme': !companyData.people}"><span>{{ companyData.people ? companyData.people : '请填写'}}</span></div>
+                        <div class="cell-value is-link" :class="{'color-theme': companyData.people < 0}"><span>{{ companyData.people >= 0 ? peoplePickerSlots[0].values[companyData.people] : '请填写'}}</span></div>
                         <i class="icon icon-right"></i>
                     </li>
                 </ul>
             </div>
             <company-abbreviation  @saveEvent="companyData.abbreviation = arguments[0]" ref="companyAbbreviation"></company-abbreviation>
-            <join-company :company="companyData" ref="joinCompany"></join-company>
-            <industry-select type="radio" @checked="companyData.industry = arguments[0][0]" ref="industrySelect"></industry-select>
-            <picker title="人员规模" :slots="peoplePickerSlots" :showToolbar="true" ref="peoplePicker" @confirm="companyData.people = arguments[0][0]"></picker>
+            <join-company :company="companyData" @hide="hide(), $emit('hide')" ref="joinCompany"></join-company>
+            <industry-select type="radio" @checked="industryChecked" ref="industrySelect"></industry-select>
+            <picker title="人员规模" :slots="peoplePickerSlots" :showToolbar="true" ref="peoplePicker" @confirm="saveCompanyPeople"></picker>
         </div>
     </transition>
 </template>
@@ -67,8 +67,9 @@
         companyData: {
           name: '',
           abbreviation: '',
-          industry: '',
-          people: ''
+          industry_str: '',
+          industry_code: -1,
+          people: -1
         }
       }
     },
@@ -88,6 +89,13 @@
       },
       hide() {
         this.showFlag = false
+      },
+      saveCompanyPeople(value) {
+        this.companyData.people = this.peoplePickerSlots[0].values.indexOf(value[0])
+      },
+      industryChecked(industry) {
+        this.companyData.industry_str = industry[0]['name']
+        this.companyData.industry_code = industry[0]['code']
       }
     },
     watch: {
@@ -115,12 +123,14 @@
         .caveat
             color: #d6bd7c
             background: #fff4c7
-            font-size: .30rem
+            font-size: .35rem
             text-align: center
             padding: 15px 5px
         .cell
             li:first-child
                 margin: 20px 0
+            .cell-title
+                font-size: .35rem
             .cell-value.color-theme
                 color: $color-theme
 </style>

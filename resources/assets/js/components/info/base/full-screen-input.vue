@@ -24,7 +24,8 @@
   import messageBox from 'Base/message/message-box'
 
   const reg = {
-    url: [/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/, '请输入合法的网站地址']
+    url: [/[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\.?/, '请输入合法的网站地址'],
+    email: [/^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/, '你输入的邮箱格式有误']
   }
 
   export default {

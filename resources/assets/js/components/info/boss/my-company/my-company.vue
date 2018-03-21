@@ -4,14 +4,14 @@
             <dkf-header title="输入公司全称">
                 <div slot="left" @click="hide"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right" style="color: #cccccc" v-if="currentValue.length < 5">下一步</div>
-                <div slot="right" @click="$refs.createdCompany.show()" v-else>下一步</div>
+                <div slot="right" @click="searchCompany" v-else>下一步</div>
             </dkf-header>
             <div class="main">
                 <div class="input-wrapper">
-                    <input v-model="currentValue" type="text" class="company-name-input" v-focus>
+                    <input v-model="currentValue" @input="search" type="text" class="company-name-input" v-focus>
                     <div class="work-count-wrapper"><span class="work-count" :class="{'exceed': isExceed}">{{ currentValue.length }}</span>/{{ maxLength }}</div>
                 </div>
-                <div class="prompt">
+                <div class="prompt" v-if="!searchResult.length">
                     <div class="media">
                         <img class="media-figure" src="./bulb.jpg" width="40" alt="">
                         <div class="media-body">
@@ -20,8 +20,17 @@
                         </div>
                     </div>
                 </div>
+                <div class="search-result" v-else>
+                    <ul class="cell">
+                        <li v-for="item in searchResult">
+                            <div class="cell-title" @click="searchCompany(item.name)" v-html="searchResultFormat(item.name)"></div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <create-company :companyName="currentValue" ref="createdCompany"></create-company>
+            <create-company :companyName="currentValue" @hide="hide" ref="createCompany"></create-company>
+            <select-company :companies="companies" ref="selectCompany"></select-company>
+            <spinner text="加载中" v-show="spinnerShowFlag"></spinner>
         </div>
     </transition>
 </template>
@@ -29,6 +38,12 @@
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
   import createCompany from './create-company'
+  import selectCompany from './select-company'
+  import {search, searchByName} from 'Api/company.js'
+  import spinner from 'Base/spinner/spinner'
+
+  // 正则无用字符
+  const INVALID = /[°"§%()\[\]\*{}=\\?´`'#<>|,;.:+_-]+/g
 
   export default {
     props: {
@@ -44,7 +59,10 @@
     data() {
       return {
         showFlag: false,
-        currentValue: ''
+        currentValue: '',
+        searchResult: [],
+        companies: [],
+        spinnerShowFlag: false
       }
     },
     directives: {
@@ -67,11 +85,42 @@
       },
       hide() {
         this.showFlag = false
+      },
+      search() {
+        clearTimeout(this.t)
+        this.t = setTimeout(() => {
+          if (this.currentValue !== '') {
+            searchByName(this.currentValue).then(response => {
+              this.searchResult = response.data
+            })
+          } else {
+            this.searchResult = []
+          }
+        }, 200)
+      },
+      searchResultFormat(searchResultItem) {
+        let searchValue = this.currentValue.replace(INVALID, '')
+        return searchResultItem.replace(new RegExp(searchValue, 'i'), '<span style="color: #53CAC3">' + searchResultItem.substr(searchResultItem.search(new RegExp(searchValue, 'i')), searchValue.length) + '</span>')
+      },
+      searchCompany(wk) {
+        this.spinnerShowFlag = true
+        let searchField = typeof wk === 'undefined' ? {'name': wk} : {'name': this.currentValue}
+        search(searchField).then(response => {
+          this.spinnerShowFlag = false
+          this.companies = response.data
+          if (this.companies.length) {
+            this.$refs.selectCompany.show()
+          } else {
+            this.$refs.createCompany.show()
+          }
+        })
       }
     },
     components: {
       dkfHeader,
-      createCompany
+      createCompany,
+      selectCompany,
+      spinner
     },
     watch: {
       value(newValue) {
@@ -126,4 +175,7 @@
                 .media-body
                     flex: 1
                     padding: 10px 20px 0 0
+        .search-result
+            li:first-child
+                @include border-top-1px($color-text-d)
 </style>

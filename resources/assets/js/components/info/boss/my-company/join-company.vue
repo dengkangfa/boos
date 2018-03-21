@@ -11,7 +11,7 @@
                 <div class="media">
                     <img src="./company.jpg" width="70">
                     <div class="media-body">
-                        <h3>{{ company.abbreviation }} | {{ company.industry }}</h3>
+                        <h3>{{ company.abbreviation }} | {{ company.industry_str }}</h3>
                         <p class="company-name">{{ company.name }}</p>
                         <span class="boss-count">0个Boss</span>
                     </div>
@@ -20,11 +20,13 @@
                     <div class="submit-btn" @click="submit">确认加入</div>
                 </div>
             </div>
+            <spinner text="加载中" v-show="spinnerShowFlag"></spinner>
         </div>
     </transition>
 </template>
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
+  import spinner from 'Base/spinner/spinner'
 
   export default {
     props: {
@@ -34,7 +36,8 @@
     },
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        spinnerShowFlag: false
       }
     },
     methods: {
@@ -43,10 +46,23 @@
       },
       hide() {
         this.showFlag = false
+      },
+      submit() {
+        if (this.company.id) {
+
+        } else {
+          this.spinnerShowFlag = true
+          this.$store.dispatch('createCompany', this.company).then(response => {
+            this.spinnerShowFlag = false
+            this.hide()
+            this.$emit('hide')
+          })
+        }
       }
     },
     components: {
-      dkfHeader
+      dkfHeader,
+      spinner
     }
   }
 </script>
@@ -83,7 +99,7 @@
                 .company-name
                     font-size: .35rem
                 .boss-count
-                    font-size: .2rem
+                    font-size: .3rem
         .join-company-footer
             position: absolute
             left: 0

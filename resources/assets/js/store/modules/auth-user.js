@@ -7,8 +7,11 @@ export default {
     roles: [],
     name: '',
     avatar: '',
+    email: '',
     gender: '',
     advantage: '',
+    pos_name: '',
+    company_id: '',
     job_date: '',
     birth_date: '',
     homepages: []
@@ -21,6 +24,7 @@ export default {
       state.name = payload.user.name
       state.gender = payload.user.gender
       state.advantage = payload.user.advantage
+      state.company_id = payload.user.company_id
       state.job_date = payload.user.job_date
       state.birth_date = payload.user.birth_date
       state.homepages = payload.user.homepages
@@ -58,6 +62,17 @@ export default {
           type: types.SET_AUTH_USER,
           user: response.data.data
         })
+      }).catch(() => {
+        dispatch('refreshToken')
+      })
+    },
+    setAuthUserWithCompany({commit, dispatch}) {
+      return axios.get('/api/user?include=company').then(response => {
+        commit({
+          type: types.SET_AUTH_USER,
+          user: response.data.data
+        })
+        dispatch('setMyCompany', response.data.data.company.data)
       }).catch(() => {
         dispatch('refreshToken')
       })

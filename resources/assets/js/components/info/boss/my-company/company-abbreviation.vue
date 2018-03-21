@@ -1,7 +1,7 @@
 <template>
     <transition name="horizontal-slide">
         <div v-if="showFlag" class="my-company-wrapper">
-            <dkf-header title="输入公司全称">
+            <dkf-header title="公司简称">
                 <div slot="left" @click="hide"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right" style="color: #cccccc" v-if="!currentValue">保存</div>
                 <div slot="right" @click="save" v-else>保存</div>
