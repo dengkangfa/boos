@@ -6,7 +6,7 @@
             </dkf-header>
             <div class="main">
                 <div class="media-wrapper">
-                    <div class="media" v-for="company in companies">
+                    <div class="media" v-for="company in companies" @click="currentCompany = company, $refs.joinCompany.show()">
                         <img class="pic" :src="company.pic ? company.pic : '/images/company.jpg'">
                         <div class="media-body">
                             <h3>{{ company.abbreviation }} | {{ company.industry_str }}</h3>
@@ -21,6 +21,7 @@
                 </div>
             </div>
             <create-company :companyName="companies[0].name" ref="createCompany"></create-company>
+            <join-company :company="currentCompany" @hide="hide(), $emit('hide')" ref="joinCompany"></join-company>
         </div>
     </transition>
 </template>
@@ -28,6 +29,7 @@
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
   import createCompany from './create-company'
+  import joinCompany from './join-company'
 
   export default {
     props: {
@@ -38,7 +40,8 @@
     },
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        currentCompany: {}
       }
     },
     methods: {
@@ -51,7 +54,8 @@
     },
     components: {
       dkfHeader,
-      createCompany
+      createCompany,
+      joinCompany
     }
   }
 </script>

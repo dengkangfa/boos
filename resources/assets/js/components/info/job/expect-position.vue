@@ -41,7 +41,7 @@
             </main>
             <job-search-status-select @select="updateApplyStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
-            <distpicker @selected="distPickerSelected" ref="distpicker"></distpicker>
+            <distpicker title="工作城市" @selected="distPickerSelected" ref="distpicker"></distpicker>
             <industry-select type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
             <salary-picker @selected="selectedSalary" ref="salaryPicker"></salary-picker>
         </div>
@@ -104,7 +104,7 @@
         this.expectPositionData.position_type = value.id
       },
       distPickerSelected(value) {
-        this.expectPositionData.location_name = value
+        this.expectPositionData.location_name = value[1]
       },
       selectedIndustry(industry) {
         this.industryArr = industry

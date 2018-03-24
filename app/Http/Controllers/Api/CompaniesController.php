@@ -21,7 +21,7 @@ class CompaniesController extends ApiController
     {
         $company->fill($request->all());
         $company->save();
-        $company->boss()->save(\Auth()->user());
+        $company->boss()->save(\Auth::user());
 
         return $this->setStatusCode(201)->respondWithItem($company, new CompanyTransformer());
     }
@@ -39,5 +39,12 @@ class CompaniesController extends ApiController
         $companies = $company->where($query)->get();
 
         return $this->respondWithCollection($companies, new CompanyTransformer());
+    }
+
+    public function user(Request $request, Company $company)
+    {
+        $company->boss()->save(\Auth::user());
+
+        return $this->respondWithItem($company, new CompanyTransformer());
     }
 }

@@ -76,4 +76,6 @@ Route::get('companies/search/{field}/like', 'Api\CompaniesController@searchWithL
     ->name('api.companies.searchWithLike');
 Route::get('companies/search', 'Api\CompaniesController@search')
     ->name('api.companies.search');
+Route::get('companies/{company}/user', 'Api\CompaniesController@user')
+    ->name('api.companies.user.store');
 

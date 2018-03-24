@@ -17,6 +17,16 @@ Vue.component('mint-switch', Switch)
 import AMap from 'vue-amap'
 Vue.use(AMap)
 
+// 初始化vue-amap
+AMap.initAMapApiLoader({
+  // 高德的key
+  key: '4929bb0beb0dd7cbe45c4b1f84dc1930',
+  // 插件集合
+  plugin: ['AMap.Geolocation', 'AMap.Geocoder', 'AMap.Autocomplete'],
+
+  v: '1.4.4'
+})
+
 fastclick.attach(document.body)
 
 axios.interceptors.request.use(config => {

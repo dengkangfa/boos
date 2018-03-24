@@ -1,6 +1,6 @@
 <template>
     <div>
-        <picker title="工作城市" :slots="districtsSlots" @onValuesChange="onValuesChange" @confirm="confirm" ref="picker"></picker>
+        <picker :title="title" :slots="districtsSlots" @onValuesChange="onValuesChange" @confirm="confirm" ref="picker"></picker>
     </div>
 </template>
 
@@ -11,30 +11,22 @@
   const DEFAULT_CODE = 100000
 
   export default {
+    props: {
+      province: { type: [String, Number], default: '北京市' },
+      city: { type: [String, Number], default: '北京城区' },
+      area: { type: [String, Number], default: '东城区' },
+      depth: { type: Number, default: 2 },
+      title: ''
+    },
     data() {
       return {
         showFlag: false,
         values: [],
-        districtsSlots: [
-          {
-            flex: 1,
-            values: []
-          },
-          {
-            flex: 1,
-            values: [],
-            defaultIndex: 0
-          }
-        ]
+        currentProvince: this.determineType(this.province),
+        currentCity: this.determineType(this.city),
+        currentArea: this.determineType(this.area),
+        districtsSlots: this.formatDistricts()
       }
-    },
-    created() {
-      let provinces = []
-      for (let i in DISTRICTS[DEFAULT_CODE]) {
-        provinces.push(DISTRICTS[DEFAULT_CODE][i])
-      }
-      this.districtsSlots[0].values = provinces
-      this.districtsSlots[1].values = this._getCity(this._getAreas(provinces[0]))
     },
     methods: {
       show() {
@@ -43,16 +35,37 @@
       hide() {
         this.$refs.picker.hide()
       },
+      formatDistricts(code = DEFAULT_CODE) {
+        let districts = []
+        let provinces = this.getDistricts(code)
+        districts.push({flex: 1, values: provinces, defaultIndex: provinces.indexOf(this.determineType(this.province))})
+        let citys = this.getDistricts(this.getAreaCode(this.determineType(this.province)))
+        districts.push({flex: 1, values: citys, defaultIndex: citys.indexOf(this.determineType(this.city))})
+        if (this.depth === 3) {
+          let areas = this.getDistricts(this.getAreaCode(this.determineType(this.city)))
+          districts.push({flex: 1, values: areas, defaultIndex: areas.indexOf(this.determineType(this.area))})
+        }
+        return districts
+      },
       onValuesChange(picker, values) {
         this.values = values
-        let provinceKey = this._getAreas(values[0])
-        picker.setSlotValues(1, this._getCity(provinceKey))
+        picker.setSlotValues(1, this.getDistricts(this.getAreaCode(values[0])))
+        if (this.depth === 3) {
+          picker.setSlotValues(2, this.getDistricts(this.getAreaCode(values[1])))
+        }
       },
       confirm() {
-        this.$emit('selected', this.values[1])
+        this.$emit('selected', this.values)
         this.hide()
       },
-      _getAreas(name) {
+      getDistricts(x = DEFAULT_CODE) {
+        let districts = []
+        for (let y in DISTRICTS[x]) {
+          districts.push(DISTRICTS[x][y])
+        }
+        return districts
+      },
+      getAreaCode(name) {
         for (let x in DISTRICTS) {
           for (let y in DISTRICTS[x]) {
             if (DISTRICTS[x][y] === name) {
@@ -61,16 +74,30 @@
           }
         }
       },
-      _getCity(provinceKey) {
-        let citys = []
-        for (let cityKey in DISTRICTS[provinceKey]) {
-          citys.push(DISTRICTS[provinceKey][cityKey])
+      getCodeValue(code) {
+        for (let x in DISTRICTS) {
+          for (let y in DISTRICTS[x]) {
+            if (code === parseInt(y)) {
+              return DISTRICTS[x][y]
+            }
+          }
         }
-        return citys
+      },
+      determineType(value) {
+        if (typeof value === 'number') {
+          return this.getCodeValue(value)
+        }
+
+        return value
       }
     },
     components: {
       picker
+    },
+    watch: {
+      province() {
+        this.districtsSlots = this.formatDistricts()
+      }
     }
   }
 </script>

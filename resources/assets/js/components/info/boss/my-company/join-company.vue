@@ -13,7 +13,7 @@
                     <div class="media-body">
                         <h3>{{ company.abbreviation }} | {{ company.industry_str }}</h3>
                         <p class="company-name">{{ company.name }}</p>
-                        <span class="boss-count">0个Boss</span>
+                        <span class="boss-count">{{ company.boss_count + '个Boss' }}</span>
                     </div>
                 </div>
                 <div class="join-company-footer">
@@ -49,7 +49,12 @@
       },
       submit() {
         if (this.company.id) {
-
+          this.spinnerShowFlag = true
+          this.$store.dispatch('joinCompany', this.company.id).then(response => {
+            this.spinnerShowFlag = false
+            this.hide()
+            this.$emit('hide')
+          })
         } else {
           this.spinnerShowFlag = true
           this.$store.dispatch('createCompany', this.company).then(response => {

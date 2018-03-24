@@ -26,16 +26,18 @@
     header
         display: flex
         justify-content: center
-        font-size: 0.4rem
         align-items: center
-        height: 1rem
+        width: 100%
+        height: 50px
+        font-size: 0.4rem
         color: $color-text
         background: $color-theme
-        padding: 0.35rem 0.2rem 0 0.2rem
-        line-height: 1rem
-        position: relative
         text-align: center
+        overflow: hidden
         white-space: nowrap
+        text-overflow: ellipsis
+        box-sizing: border-box
+        padding: 0.35rem 0.2rem 0 0.2rem
         &.is-fixed
             position: fixed
             top: 0

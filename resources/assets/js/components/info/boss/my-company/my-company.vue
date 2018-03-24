@@ -4,7 +4,7 @@
             <dkf-header title="输入公司全称">
                 <div slot="left" @click="hide"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right" style="color: #cccccc" v-if="currentValue.length < 5">下一步</div>
-                <div slot="right" @click="searchCompany" v-else>下一步</div>
+                <div slot="right" @click="searchCompany(currentValue)" v-else>下一步</div>
             </dkf-header>
             <div class="main">
                 <div class="input-wrapper">
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <create-company :companyName="currentValue" @hide="hide" ref="createCompany"></create-company>
-            <select-company :companies="companies" ref="selectCompany"></select-company>
+            <select-company :companies="companies" @hide="hide" ref="selectCompany"></select-company>
             <spinner text="加载中" v-show="spinnerShowFlag"></spinner>
         </div>
     </transition>
@@ -104,7 +104,7 @@
       },
       searchCompany(wk) {
         this.spinnerShowFlag = true
-        let searchField = typeof wk === 'undefined' ? {'name': wk} : {'name': this.currentValue}
+        let searchField = {'name': wk}
         search(searchField).then(response => {
           this.spinnerShowFlag = false
           this.companies = response.data

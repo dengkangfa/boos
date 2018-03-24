@@ -21,10 +21,12 @@ export default {
       state.authenticated = true
       state.roles = payload.user.roles
       state.avatar = payload.user.avatar
+      state.email = payload.user.email
       state.name = payload.user.name
       state.gender = payload.user.gender
       state.advantage = payload.user.advantage
       state.company_id = payload.user.company_id
+      state.pos_name = payload.user.pos_name
       state.job_date = payload.user.job_date
       state.birth_date = payload.user.birth_date
       state.homepages = payload.user.homepages
@@ -53,7 +55,7 @@ export default {
     },
     [types.SET_USER_HOMEPAGES](state, payload) {
       state.homepages = payload.homepages
-    }
+    },
   },
   actions: {
     setAuthUser({commit, dispatch}) {

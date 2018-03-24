@@ -42,6 +42,14 @@ export default {
           company: response.data.data
         })
       })
+    },
+    joinCompany({commit}, id) {
+      return axios.get(`api/companies/${id}/user`).then(response => {
+        commit({
+          type: types.SET_COMPANY,
+          company: response.data.data
+        })
+      })
     }
   }
 }

@@ -503,6 +503,10 @@ textarea {
   margin-right: 5px;
 }
 
+.cell li div.cell-value.theme-color {
+  color: #53CAC3;
+}
+
 .cell li div.cell-title {
   -webkit-box-flex: 1;
       -ms-flex: 1;

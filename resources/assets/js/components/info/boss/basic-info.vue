@@ -52,6 +52,7 @@
             <my-company :maxLength="46" ref="myCompany"></my-company>
             <spinner :text="spinnerText" v-if="spinnerShowFlag"></spinner>
             <message :message="message" ref="message"></message>
+            <router-view></router-view>
         </div>
     </transition>
 </template>
@@ -117,10 +118,11 @@
       },
       complete() {
         if (this._checkData()) {
-          this.spinnerText = '保存中'
+          this.spinnerText = '发布中'
           this.spinnerShowFlag = true
           this.$store.dispatch('updateProflie', this._formatUser(this.user)).then(response => {
             this.spinnerShowFlag = false
+            this.$router.push({'name': 'boss-post-job'})
           })
         }
       },

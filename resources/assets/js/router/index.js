@@ -16,6 +16,7 @@ import expectPosition from '../components/info/job/expect-position'
 import microResume from '../components/info/job/micro-resume'
 
 import bossBasicInfo from '../components/info/boss/basic-info'
+import postJob from '../components/info/boss/post-job/post-job'
 
 Vue.use(VueRouter)
 
@@ -99,6 +100,14 @@ let routes = [
         name: 'boss-basic-info',
         component: bossBasicInfo,
         meta: {requiresAuth: true},
+        children: [
+          {
+            path: '/boss/postjob',
+            name: 'boss-post-job',
+            component: postJob,
+            meta: {requiresAuth: true}
+          }
+        ]
       }
     ]
   },
