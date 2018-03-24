@@ -9,15 +9,15 @@
                 <div class="advantage-content">
                     <dkf-textarea v-model="user.advantage" :examples="examples" @onValueChange="onValueChange" @exampleShowFlagChange="exampleShowFlagChange" title="我的优势" :maxLength="140" :placeholder="placeholder" ref="advantageTextarea"></dkf-textarea>
                     <div class="submit-button-group" :class="{'add-margin-top': !exampleShowFlag}">
-                        <div class="theme-button" @click="submit('job-expect-position')">完成</div>
-                        <div class="micro-resume"><span @click="submit('job-micro-resume')">继续完善微简历></span></div>
+                        <div class="theme-button" @click="submit('job-expect-position'), spinnerText = '发布中'">完成</div>
+                        <div class="micro-resume"><span @click="submit('job-micro-resume'), spinnerText = '保存中'">继续完善微简历></span></div>
                     </div>
                 </div>
             </main>
             <message :message="message" ref="message"></message>
             <message-box message="直聘君建议" description="文字可以再修饰一下，可加深Boos对你的印象" confirmButtonText="再改改" cancelButtonText="就这样" :showConfirmButton="true" @confirm="advantageTextareaFocus" @cancel="request" ref="suggestMessage"></message-box>
             <message-box message="友情提示" description="离高薪职位只差一步，你确定放弃？" confirmButtonText="放弃" cancelButtonText="点错了" :showConfirmButton="true" @cancel="hideFriendlyReminderMessage" @confirm="back" ref="friendlyReminderMessage"></message-box>
-            <spinner text="保存中" v-show="spinner"></spinner>
+            <spinner :text="spinnerText" v-show="spinner"></spinner>
             <router-view @routePipe="routePipe"></router-view>
         </div>
     </transition>
@@ -38,6 +38,7 @@
         message: '',
         routerName: '',
         spinner: false,
+        spinnerText: '',
         placeholder: '两年UI设计经验，                                                         熟悉iOS和Android的界面设计规范,                                                        对产品本色有独特见解，有一定的手绘基础。                            不少于20字',
         examples: [ // 我的优势例子
           {

@@ -49,7 +49,7 @@
                         </li>
                         <li @click="$refs.salaryPicker.show()">
                             <div class="cell-title"><span>薪资范围</span></div>
-                            <div class="cell-value is-link" :class="{'theme-color': !positionData.low_salary || !positionData.high_salary}"><span>{{ positionData.low_salary ? positionData.low_salary + 'k-' + positionData.high_salary + 'k' : '请选择' }}</span></div>
+                            <div class="cell-value is-link" :class="{'theme-color': !positionData.low_salary || !positionData.high_salary}"><span>{{ positionData.low_salary ? positionData.low_salary > -1 ? positionData.low_salary + 'k-' + positionData.high_salary + 'k' : '面议' : '请选择' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                     </ul>
@@ -77,7 +77,7 @@
                     <p>发布职位即表示你已同意遵守 <span>《Boss直聘职位信息发布规则》</span></p>
                     <p>所以职位均有专人审核，禁止发布手机兼职、淘宝兼职等职位</p>
                 </div>
-                <div class="theme-button">发布</div>
+                <div @click="release" class="theme-button">发布</div>
             </div>
             <position-type-select v-model="positionData.type" @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
             <position-skill-checkbox @save="workEmphasisArr = arguments[0]" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
@@ -90,6 +90,7 @@
             <full-screent-textarea v-model="positionData.description" ref="descriptionInput"></full-screent-textarea>
             <message :message="message" ref="message"></message>
             <message-box :message="messageBoxText" cancelButtonText="好" ref="messageBox"></message-box>
+            <spinner text="努力发布中" v-show="spinnerShowFlag"></spinner>
         </div>
     </transition>
 </template>
@@ -106,8 +107,10 @@
   import dkfTextarea from '../../base/dkf-textarea'
   import message from 'Base/message/message'
   import messageBox from 'Base/message/message-box'
+  import spinner from 'Base/spinner/spinner'
   import {mapState} from 'vuex'
   import {getPositionSkill} from 'Api/position-skill'
+  import {createJob} from 'Api/job'
 
   export default {
     data() {
@@ -118,11 +121,11 @@
         workEmphasisArr: [],
         positionSkills: [],
         jobPlaceShowFlag: false,
+        spinnerShowFlag: false,
         natureSlots: [{values: ['全职', '兼职', '实习']}],
         senioritySlots: [{values: ['不限', '应届生', '一年以内', '1-3年', '3-5年', '5-10年', '10年以上'], defaultIndex: 2}],
         educationSlots: [{values: ['不限', '中专及以下', '高中', '大专', '本科', '硕士', '博士'], defaultIndex: 4}],
         positionData: {
-          company_id: '', // 公司id
           type_str: '', // 职位类型
           type_code: '', // 职位类型 code
           name: '', // 职位名称
@@ -169,7 +172,10 @@
       },
       release() {
         if (this._checkData()) {
-
+          this.spinnerShowFlag = true
+          createJob(this.company.id, this.positionData).then(response => {
+            this.spinnerShowFlag = false
+          })
         }
       },
       _getPositionSkill(positonLv2) {
@@ -180,10 +186,16 @@
         })
       },
       _checkData() {
-        if (!this.positionData.type) {
+        if (!this.positionData.type_str) {
           this.message = '请您选择职位类型'
         } else if (!this.positionData.place) {
           this.message = '请您选择工作城市'
+        } else if (!this.positionData.work_emphasis) {
+          this.message = '请您填写技能要求'
+        } else if (!this.positionData.low_salary || !this.positionData.high_salary) {
+          this.message = '请您填写正确薪资'
+        } else if (!this.positionData.description) {
+          this.message = '请填写职位描述'
         } else {
           return true
         }
@@ -202,7 +214,8 @@
       picker,
       dkfTextarea,
       message,
-      messageBox
+      messageBox,
+      spinner
     },
     watch: {
       company(newCompany) {

@@ -48220,6 +48220,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       message: '',
       routerName: '',
       spinner: false,
+      spinnerText: '',
       placeholder: '两年UI设计经验，                                                         熟悉iOS和Android的界面设计规范,                                                        对产品本色有独特见解，有一定的手绘基础。                            不少于20字',
       examples: [// 我的优势例子
       {
@@ -48691,7 +48692,8 @@ var render = function() {
                         staticClass: "theme-button",
                         on: {
                           click: function($event) {
-                            _vm.submit("job-expect-position")
+                            _vm.submit("job-expect-position"),
+                              (_vm.spinnerText = "发布中")
                           }
                         }
                       },
@@ -48704,7 +48706,8 @@ var render = function() {
                         {
                           on: {
                             click: function($event) {
-                              _vm.submit("job-micro-resume")
+                              _vm.submit("job-micro-resume"),
+                                (_vm.spinnerText = "保存中")
                             }
                           }
                         },
@@ -48754,7 +48757,7 @@ var render = function() {
               expression: "spinner"
             }
           ],
-          attrs: { text: "保存中" }
+          attrs: { text: _vm.spinnerText }
         }),
         _vm._v(" "),
         _c("router-view", { on: { routePipe: _vm.routePipe } })
@@ -63544,8 +63547,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_9_Base_message_message__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_Base_message_message_box__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_Base_message_message_box___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_10_Base_message_message_box__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_vuex__ = __webpack_require__(12);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_Api_position_skill__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Base_spinner_spinner__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_11_Base_spinner_spinner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_vuex__ = __webpack_require__(12);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_Api_position_skill__ = __webpack_require__(24);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14_Api_job__ = __webpack_require__(335);
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 //
@@ -63644,6 +63650,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 //
 //
+//
+
+
 
 
 
@@ -63668,11 +63677,11 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       workEmphasisArr: [],
       positionSkills: [],
       jobPlaceShowFlag: false,
+      spinnerShowFlag: false,
       natureSlots: [{ values: ['全职', '兼职', '实习'] }],
       senioritySlots: [{ values: ['不限', '应届生', '一年以内', '1-3年', '3-5年', '5-10年', '10年以上'], defaultIndex: 2 }],
       educationSlots: [{ values: ['不限', '中专及以下', '高中', '大专', '本科', '硕士', '博士'], defaultIndex: 4 }],
       positionData: {
-        company_id: '', // 公司id
         type_str: '', // 职位类型
         type_code: '', // 职位类型 code
         name: '', // 职位名称
@@ -63688,7 +63697,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     };
   },
 
-  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_11_vuex__["b" /* mapState */])({
+  computed: _extends({}, Object(__WEBPACK_IMPORTED_MODULE_12_vuex__["b" /* mapState */])({
     company: function company(state) {
       return state.Company;
     }
@@ -63720,22 +63729,35 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       this.$refs.positionSkillCheckbox.show();
     },
     release: function release() {
-      if (this._checkData()) {}
-    },
-    _getPositionSkill: function _getPositionSkill(positonLv2) {
       var _this = this;
 
-      Object(__WEBPACK_IMPORTED_MODULE_12_Api_position_skill__["a" /* getPositionSkill */])(positonLv2).then(function (response) {
-        _this.positionSkills = response;
+      if (this._checkData()) {
+        this.spinnerShowFlag = true;
+        Object(__WEBPACK_IMPORTED_MODULE_14_Api_job__["a" /* createJob */])(this.company.id, this.positionData).then(function (response) {
+          _this.spinnerShowFlag = false;
+        });
+      }
+    },
+    _getPositionSkill: function _getPositionSkill(positonLv2) {
+      var _this2 = this;
+
+      Object(__WEBPACK_IMPORTED_MODULE_13_Api_position_skill__["a" /* getPositionSkill */])(positonLv2).then(function (response) {
+        _this2.positionSkills = response;
       }).catch(function (error) {
         console.log(error);
       });
     },
     _checkData: function _checkData() {
-      if (!this.positionData.type) {
+      if (!this.positionData.type_str) {
         this.message = '请您选择职位类型';
       } else if (!this.positionData.place) {
         this.message = '请您选择工作城市';
+      } else if (!this.positionData.work_emphasis) {
+        this.message = '请您填写技能要求';
+      } else if (!this.positionData.low_salary || !this.positionData.high_salary) {
+        this.message = '请您填写正确薪资';
+      } else if (!this.positionData.description) {
+        this.message = '请填写职位描述';
       } else {
         return true;
       }
@@ -63754,7 +63776,8 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     picker: __WEBPACK_IMPORTED_MODULE_7_Base_picker_picker___default.a,
     dkfTextarea: __WEBPACK_IMPORTED_MODULE_8__base_dkf_textarea___default.a,
     message: __WEBPACK_IMPORTED_MODULE_9_Base_message_message___default.a,
-    messageBox: __WEBPACK_IMPORTED_MODULE_10_Base_message_message_box___default.a
+    messageBox: __WEBPACK_IMPORTED_MODULE_10_Base_message_message_box___default.a,
+    spinner: __WEBPACK_IMPORTED_MODULE_11_Base_spinner_spinner___default.a
   },
   watch: {
     company: function company(newCompany) {
@@ -63852,7 +63875,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.dispicker-wrapper[data-v-0a6aecba] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.dispicker-wrapper .main .province[data-v-0a6aecba] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    font-size: .4rem;\n    background: #fff;\n    padding: 15px;\n    margin: 15px 0;\n}\n.dispicker-wrapper .main .province .value[data-v-0a6aecba] {\n      color: #53CAC3;\n}\n.dispicker-wrapper .main .province .value span[data-v-0a6aecba] {\n        margin-right: 5px;\n}\n.dispicker-wrapper .main .province .value span.color-d[data-v-0a6aecba] {\n          color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .province .value .icon[data-v-0a6aecba] {\n        font-size: .3rem;\n}\n.dispicker-wrapper .main .area[data-v-0a6aecba] {\n    background: #ffffff;\n}\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n      margin: 0 15px;\n      border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n          border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n          border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box[data-v-0a6aecba] {\n      position: relative;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper[data-v-0a6aecba] {\n        position: absolute;\n        top: 100%;\n        width: 100%;\n        overflow-y: scroll;\n        background: #ffffff;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results[data-v-0a6aecba] {\n          padding-left: 15px;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n            border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n            padding: 15px 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li .icon[data-v-0a6aecba] {\n              color: #53CAC3;\n              padding-right: 5px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper[data-v-0a6aecba] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      padding: 15px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n        border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n        padding: 15px 0;\n        margin: 0 15px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n            border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n            border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .input-group-wrapper label[data-v-0a6aecba] {\n        font-size: .4rem;\n        display: inline-block;\n        width: 90px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        -webkit-box-flex: 1;\n            -ms-flex: 1;\n                flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group input[data-v-0a6aecba] {\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group .icon[data-v-0a6aecba] {\n          color: rgba(0, 0, 0, 0.3);\n          margin-left: 10px;\n}\n.dispicker-wrapper .main .location[data-v-0a6aecba] {\n    line-height: .6rem;\n    background: #fff;\n    border-radius: .1rem;\n    padding: 10px;\n    margin: 10px;\n}\n.dispicker-wrapper .main .location .map[data-v-0a6aecba] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n}\n.dispicker-wrapper .main .location .map .color-theme[data-v-0a6aecba] {\n        color: #53CAC3;\n}\n.dispicker-wrapper .main .location .name[data-v-0a6aecba] {\n      line-height: .45rem;\n      color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .dispicker-footer[data-v-0a6aecba] {\n    position: absolute;\n    bottom: 0;\n    width: 100%;\n    height: 40px;\n    line-height: 40px;\n    color: #ffffff;\n    background: rgba(0, 0, 0, 0.3);\n    text-align: center;\n}\n.dispicker-wrapper .main .dispicker-footer.bc-theme[data-v-0a6aecba] {\n      background: #53CAC3;\n}\n", ""]);
+exports.push([module.i, "\n.dispicker-wrapper[data-v-0a6aecba] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.dispicker-wrapper .main[data-v-0a6aecba] {\n    overflow: hidden;\n}\n.dispicker-wrapper .main .province[data-v-0a6aecba] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: .4rem;\n      background: #fff;\n      padding: 15px;\n      margin: 15px 0;\n}\n.dispicker-wrapper .main .province .value[data-v-0a6aecba] {\n        color: #53CAC3;\n}\n.dispicker-wrapper .main .province .value span[data-v-0a6aecba] {\n          margin-right: 5px;\n}\n.dispicker-wrapper .main .province .value span.color-d[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .province .value .icon[data-v-0a6aecba] {\n          font-size: .3rem;\n}\n.dispicker-wrapper .main .area[data-v-0a6aecba] {\n      background: #ffffff;\n}\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n        margin: 0 15px;\n        border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box[data-v-0a6aecba] {\n        position: relative;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper[data-v-0a6aecba] {\n          position: absolute;\n          top: 100%;\n          width: 100%;\n          overflow-y: scroll;\n          background: #ffffff;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results[data-v-0a6aecba] {\n            padding-left: 15px;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n              border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n              padding: 15px 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li .icon[data-v-0a6aecba] {\n                color: #53CAC3;\n                padding-right: 5px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        padding: 15px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n          border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n          padding: 15px 0;\n          margin: 0 15px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .input-group-wrapper label[data-v-0a6aecba] {\n          font-size: .4rem;\n          display: inline-block;\n          width: 90px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group[data-v-0a6aecba] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group input[data-v-0a6aecba] {\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group .icon[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n            margin-left: 10px;\n}\n.dispicker-wrapper .main .location[data-v-0a6aecba] {\n      line-height: .6rem;\n      background: #fff;\n      border-radius: .1rem;\n      padding: 10px;\n      margin: 10px;\n}\n.dispicker-wrapper .main .location .map[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n}\n.dispicker-wrapper .main .location .map .color-theme[data-v-0a6aecba] {\n          color: #53CAC3;\n}\n.dispicker-wrapper .main .location .name[data-v-0a6aecba] {\n        line-height: .45rem;\n        color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .dispicker-footer[data-v-0a6aecba] {\n      position: absolute;\n      bottom: 0;\n      width: 100%;\n      height: 40px;\n      line-height: 40px;\n      color: #ffffff;\n      background: rgba(0, 0, 0, 0.3);\n      text-align: center;\n}\n.dispicker-wrapper .main .dispicker-footer.bc-theme[data-v-0a6aecba] {\n        background: #53CAC3;\n}\n", ""]);
 
 // exports
 
@@ -80408,10 +80431,12 @@ var render = function() {
                             _vm._v(
                               _vm._s(
                                 _vm.positionData.low_salary
-                                  ? _vm.positionData.low_salary +
-                                    "k-" +
-                                    _vm.positionData.high_salary +
-                                    "k"
+                                  ? _vm.positionData.low_salary > -1
+                                    ? _vm.positionData.low_salary +
+                                      "k-" +
+                                      _vm.positionData.high_salary +
+                                      "k"
+                                    : "面议"
                                   : "请选择"
                               )
                             )
@@ -80521,7 +80546,11 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "theme-button" }, [_vm._v("发布")])
+              _c(
+                "div",
+                { staticClass: "theme-button", on: { click: _vm.release } },
+                [_vm._v("发布")]
+              )
             ]),
             _vm._v(" "),
             _c("position-type-select", {
@@ -80641,6 +80670,18 @@ var render = function() {
             _c("message-box", {
               ref: "messageBox",
               attrs: { message: _vm.messageBoxText, cancelButtonText: "好" }
+            }),
+            _vm._v(" "),
+            _c("spinner", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.spinnerShowFlag,
+                  expression: "spinnerShowFlag"
+                }
+              ],
+              attrs: { text: "努力发布中" }
             })
           ],
           1
@@ -80656,6 +80697,26 @@ if (false) {
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-2158530d", module.exports)
   }
+}
+
+/***/ }),
+/* 335 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = createJob;
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+
+
+function createJob(companyId, data) {
+  var url = 'api/companies/' + companyId + '/jobs';
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, data).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
 }
 
 /***/ })

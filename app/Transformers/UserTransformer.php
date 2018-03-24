@@ -24,7 +24,9 @@ class UserTransformer extends TransformerAbstract
             'job_date'   => $user->job_date ? ($user->job_date->format('Y-m') !== '1989-11' ? $user->job_date->format('Y-m') : '1990年以前') : '应届生',
             'birth_date' => $user->birth_date ? $user->birth_date->format('Y-m') : '',
             'homepages'  => array_slice(explode('・', $user->homepages), 0, 3),
-            'roles' => $user->getRoleNames()
+            'roles' => $user->getRoleNames(),
+            'created_at' => $user->created_at->toDateTimeString(),
+            'updated_at' => $user->updated_at->toDateTimeString()
         ];
     }
 

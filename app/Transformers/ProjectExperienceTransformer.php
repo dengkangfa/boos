@@ -18,6 +18,8 @@ class ProjectExperienceTransformer extends TransformerAbstract
             'performance' => $projectExperience->performance,
             'start_time' => $projectExperience->start_time->format('Y-m'),
             'end_time' => is_null($projectExperience->end_time) ? -1 : $projectExperience->end_time->format('Y-m'),
+            'created_at' => $projectExperience->created_at->toDateTimeString(),
+            'updated_at' => $projectExperience->updated_at->toDateTimeString()
         ];
     }
 }

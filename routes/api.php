@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-//$api = app('Dingo\Api\Routing\Router');
+//$api = app('Dingo\Routing\Router');
 //
 //$api->version('v1', [
 //    'namespace' => 'App\Http\Controllers\Api',
@@ -39,43 +39,48 @@ Route::post('logout', 'Auth\LoginController@logout');
 Route::post('token/refresh', 'Auth\LoginController@refresh');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('user', 'Api\UsersController@me');
-Route::post('user/avatar', 'Api\UsersController@uploadAvatar');
-Route::get('user/avatar', 'Api\UsersController@avatar');
-Route::patch('user/avatar', 'Api\UsersController@defaultAvatar');
-Route::post('user/crop/avatar', 'Api\UsersController@cropAvatar');
-Route::patch('user/profile', 'Api\UsersController@updateProfile');
-Route::patch('user/advantage', 'Api\UsersController@updateAdvantage');
-Route::patch('user/homepages', 'Api\UsersController@updateHomepage');
-Route::patch('user/role', 'Api\UsersController@updateRole');
+Route::namespace('Api')->group(function () {
+    Route::get('user', 'UsersController@me');
+    Route::post('user/avatar', 'UsersController@uploadAvatar');
+    Route::get('user/avatar', 'UsersController@avatar');
+    Route::patch('user/avatar', 'UsersController@defaultAvatar');
+    Route::post('user/crop/avatar', 'UsersController@cropAvatar');
+    Route::patch('user/profile', 'UsersController@updateProfile');
+    Route::patch('user/advantage', 'UsersController@updateAdvantage');
+    Route::patch('user/homepages', 'UsersController@updateHomepage');
+    Route::patch('user/role', 'UsersController@updateRole');
 
-Route::get('me/education_info', 'Api\EducationInfoController@currentUserFirstEducation');
-Route::get('me/education_infos', 'Api\EducationInfoController@currentUserAllEducation');
-Route::post('education_infos', 'Api\EducationInfoController@store');
-Route::put('education_infos/{id}', 'Api\EducationInfoController@update');
+    Route::get('me/education_info', 'EducationInfoController@currentUserFirstEducation');
+    Route::get('me/education_infos', 'EducationInfoController@currentUserAllEducation');
+    Route::post('education_infos', 'EducationInfoController@store');
+    Route::put('education_infos/{id}', 'EducationInfoController@update');
 
-Route::get('positionSkill', 'Api\PositionSkillController@index');
+    Route::get('positionSkill', 'PositionSkillController@index');
 
-Route::get('me/work_experience', 'Api\WorkExperienceController@currentUserFirstWorkExperience');
-Route::get('me/work_experiences', 'Api\WorkExperienceController@currentUserAllWorkExperience');
-Route::post('work_experiences', 'Api\WorkExperienceController@store');
-Route::put('work_experiences/{id}', 'Api\WorkExperienceController@update');
+    Route::get('me/work_experience', 'WorkExperienceController@currentUserFirstWorkExperience');
+    Route::get('me/work_experiences', 'WorkExperienceController@currentUserAllWorkExperience');
+    Route::post('work_experiences', 'WorkExperienceController@store');
+    Route::put('work_experiences/{id}', 'WorkExperienceController@update');
 
-Route::get('industry', 'Api\IndustryController@index');
+    Route::get('industry', 'IndustryController@index');
 
-Route::post('expect_positions', 'Api\ExpectPositionController@store');
+    Route::post('expect_positions', 'ExpectPositionController@store');
 
-Route::post('project_experiences', 'Api\ProjectExperiencesController@store');
-Route::put('project_experiences/{id}', 'Api\ProjectExperiencesController@update');
-Route::delete('project_experiences/{projectExperience}', 'Api\ProjectExperiencesController@destroy');
-Route::get('me/project_experiences', 'Api\ProjectExperiencesController@currentUserAllProjectExperience');
+    Route::post('project_experiences', 'ProjectExperiencesController@store');
+    Route::put('project_experiences/{id}', 'ProjectExperiencesController@update');
+    Route::delete('project_experiences/{projectExperience}', 'ProjectExperiencesController@destroy');
+    Route::get('me/project_experiences', 'ProjectExperiencesController@currentUserAllProjectExperience');
 
-Route::post('companies', 'Api\CompaniesController@store')
-    ->name('api.companies.store');
-Route::get('companies/search/{field}/like', 'Api\CompaniesController@searchWithLike')
-    ->name('api.companies.searchWithLike');
-Route::get('companies/search', 'Api\CompaniesController@search')
-    ->name('api.companies.search');
-Route::get('companies/{company}/user', 'Api\CompaniesController@user')
-    ->name('api.companies.user.store');
+    Route::post('companies', 'CompaniesController@store')
+        ->name('api.companies.store');
+    Route::get('companies/search/{field}/like', 'CompaniesController@searchWithLike')
+        ->name('api.companies.searchWithLike');
+    Route::get('companies/search', 'CompaniesController@search')
+        ->name('api.companies.search');
+    Route::get('companies/{company}/user', 'CompaniesController@user')
+        ->name('api.companies.user.store');
+
+    Route::post('companies/{company}/jobs', 'JobController@store')
+        ->name('api.companies.job.store');
+});
 

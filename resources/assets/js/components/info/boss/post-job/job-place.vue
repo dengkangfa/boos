@@ -226,6 +226,7 @@
         @include allCover
         background: $bc
         .main
+            overflow: hidden
             .province
                 display: flex
                 justify-content: space-between

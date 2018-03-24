@@ -57,6 +57,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsTo(Company::class);
     }
 
+    public function jobs()
+    {
+        return $this->hasMany(Job::class);
+    }
+
     public function isAuthorOf($model)
     {
         var_dump($model->user_id);
