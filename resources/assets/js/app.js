@@ -8,17 +8,18 @@ import store from './store/index'
 import fastclick from 'fastclick'
 import jwtToken from './helpers/jwt'
 
-import { Picker, Switch } from 'mint-ui'
+import { Picker, Switch, Spinner } from 'mint-ui'
 import 'mint-ui/lib/style.css'
 Vue.component('mint-picker', Picker)
 Vue.component('mint-switch', Switch)
+Vue.component('mint-spinner', Spinner)
 
 // 引入vue-amap
-import AMap from 'vue-amap'
-Vue.use(AMap)
+import VMap from 'vue-amap'
+Vue.use(VMap)
 
 // 初始化vue-amap
-AMap.initAMapApiLoader({
+VMap.initAMapApiLoader({
   // 高德的key
   key: '4929bb0beb0dd7cbe45c4b1f84dc1930',
   // 插件集合

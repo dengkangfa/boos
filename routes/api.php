@@ -79,8 +79,11 @@ Route::namespace('Api')->group(function () {
         ->name('api.companies.search');
     Route::get('companies/{company}/user', 'CompaniesController@user')
         ->name('api.companies.user.store');
-
+    // 发布工作
     Route::post('companies/{company}/jobs', 'JobController@store')
         ->name('api.companies.job.store');
+    // 获取工作列表
+    Route::get('jobs', 'JobController@index')
+        ->name('api.jobs.index');
 });
 

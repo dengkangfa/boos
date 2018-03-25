@@ -226,6 +226,7 @@
         @include allCover
         background: $bc
         .main
+            height: 100%
             overflow: hidden
             .province
                 display: flex

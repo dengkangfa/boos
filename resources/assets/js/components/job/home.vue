@@ -1,0 +1,60 @@
+<template>
+    <div id="home">
+        <transition>
+            <router-view></router-view>
+        </transition>
+        <!--组件的应用-->
+        <div class="navbar flex_parent">
+            <router-link to="/home" class="flex_child"><span class="icon-earth"></span><span>职位</span></router-link>
+            <router-link to="/company" class="flex_child"><span class="icon-company"></span><span>公司</span></router-link>
+            <router-link to="/message" class="flex_child"><span class="icon-message"></span><span>消息</span></router-link>
+            <router-link to="/aboutme" class="flex_child"><span class="icon-me"></span><span>我的</span></router-link>
+        </div>
+    </div>
+</template>
+
+<script>
+  export default {
+    data () {
+      return {
+      }
+    },
+//    watch: {
+//      '$route' (to, from) {
+//        const toDepth = to.path.split('/').length
+//        const fromDepth = from.path.split('/').length
+//        this.transitionName = toDepth < fromDepth ? 'slide-right' : 'slide-left'
+//      }
+//    }
+  }
+
+</script>
+
+<style lang="sass" scoped scoped>
+    @import "../../../sass/variables"
+    @import "../../../sass/mixin"
+
+    #home
+        @include allCover()
+        background: #f7f7f7
+        .navbar
+            width: 100%
+            position: fixed
+            left: 0
+            bottom: 0
+            background: #fff
+            z-index: 10
+            @include border-top-1px($color-text-d)
+            box-sizing: border-box
+            a
+                color: #808080
+                padding: .18rem 0
+                transition: all .5s
+                text-align: center
+                span
+                    display: block
+                [class^="icon-"], [class*=" icon-"]
+                    font-size: .6rem
+                &.router-link-active
+                    color: $color-theme
+</style>

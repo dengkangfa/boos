@@ -1054,9 +1054,12 @@ module.exports = Component.exports
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ERR_OK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ERR_REGISTER_CODE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ERR_UNPROCESSABLE_ENTITY; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return JOB_PREPAGE; });
 var ERR_OK = 0;
 var ERR_REGISTER_CODE = 10201;
 var ERR_UNPROCESSABLE_ENTITY = 10422;
+
+var JOB_PREPAGE = 10;
 
 /***/ }),
 /* 11 */
@@ -16150,6 +16153,7 @@ __webpack_require__(51);
 
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('mint-picker', __WEBPACK_IMPORTED_MODULE_7_mint_ui__["Picker"]);
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('mint-switch', __WEBPACK_IMPORTED_MODULE_7_mint_ui__["Switch"]);
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.component('mint-spinner', __WEBPACK_IMPORTED_MODULE_7_mint_ui__["Spinner"]);
 
 // 引入vue-amap
 
@@ -34623,6 +34627,13 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__components_info_boss_basic_info___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_14__components_info_boss_basic_info__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_info_boss_post_job_post_job__ = __webpack_require__(286);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__components_info_boss_post_job_post_job___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_15__components_info_boss_post_job_post_job__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_job_home__ = __webpack_require__(348);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__components_job_home___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_16__components_job_home__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_job_joblist__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_job_joblist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__components_job_joblist__);
+
+
+
 
 
 
@@ -34646,10 +34657,23 @@ if (false) {
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]);
 
 var routes = [{
-  path: '/',
-  name: 'index',
-  redirect: { 'name': 'select-identity' },
-  meta: { requiresAuth: true }
+  path: '/home',
+  component: __WEBPACK_IMPORTED_MODULE_16__components_job_home___default.a,
+  meta: { requiresAuth: true },
+  children: [{
+    path: '/',
+    name: 'joblist',
+    component: __WEBPACK_IMPORTED_MODULE_17__components_job_joblist___default.a,
+    meta: { requiresAuth: true }
+  }, {
+    path: '/company',
+    name: 'company'
+  }, {
+    path: '/message'
+  }, {
+    path: '/aboutme',
+    name: 'me'
+  }]
 }, {
   path: '/login',
   name: 'login',
@@ -34717,7 +34741,7 @@ var routes = [{
   }]
 }, {
   path: '*',
-  redirect: '/'
+  redirect: '/home'
 }];
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
@@ -34726,11 +34750,11 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
 
 router.beforeEach(function (to, from, next) {
   // 路由来源限制
-  // if (to.meta.autoFrom) {
-  //   if (to.meta.autoFrom.indexOf(from.name) === -1) {
-  //     return next({'name': 'select-identity'})
-  //   }
-  // }
+  if (to.meta.autoFrom) {
+    if (to.meta.autoFrom.indexOf(from.name) === -1) {
+      return next({ 'name': 'select-identity' });
+    }
+  }
   if (to.meta.requiresAuth) {
     if (__WEBPACK_IMPORTED_MODULE_2__store_index__["a" /* default */].state.AuthUser.authenticated || __WEBPACK_IMPORTED_MODULE_3__helpers_jwt__["a" /* default */].getToken()) {
       return next();
@@ -34740,7 +34764,7 @@ router.beforeEach(function (to, from, next) {
   }
   if (to.meta.requiresGuest) {
     if (__WEBPACK_IMPORTED_MODULE_2__store_index__["a" /* default */].state.AuthUser.authenticated || __WEBPACK_IMPORTED_MODULE_3__helpers_jwt__["a" /* default */].getToken()) {
-      return next({ 'name': 'index' });
+      return next({ 'name': 'home' });
     } else {
       return next();
     }
@@ -39120,7 +39144,7 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       this.$store.dispatch('loginRequest', data).then(function (response) {
         _this2.spinning = false;
         __WEBPACK_IMPORTED_MODULE_4_Helpers_avatar__["a" /* default */].removeAvatar(_this2.userules.mobile);
-        _this2.$router.push({ 'name': 'index' });
+        _this2.$router.push({ 'name': 'home' });
       }).catch(function (error) {
         _this2.spinning = false;
         if (error.response.data.success === false) {
@@ -49509,7 +49533,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: true
     },
     data: {
-      type: Object,
+      type: Array,
       default: null
     },
     listenScroll: {
@@ -49517,6 +49541,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       default: false
     },
     pullUp: {
+      type: Boolean,
+      default: false
+    },
+    pullDown: {
       type: Boolean,
       default: false
     },
@@ -49553,10 +49581,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         });
       }
 
+      if (this.pullDown) {
+        this.scroll.on('scroll', function () {
+          console.log(_this.scroll.y);
+          if (_this.scroll.y > 10) {
+            _this.$emit('scrollTop');
+          }
+        });
+      }
+
       // 滚动至底部
       if (this.pullUp) {
         this.scroll.on('scrollEnd', function () {
-          if (_this.scroll.y <= _this.scroll.maxScrollY + 50) {
+          if (_this.scroll.y <= _this.scroll.maxScrollY + 250) {
             _this.$emit('scrollToEnd');
           }
         });
@@ -52285,6 +52322,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_salary_picker__ = __webpack_require__(44);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_salary_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_salary_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_expect_position__ = __webpack_require__(227);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_message_message__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_Base_message_message___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_Base_message_message__);
 //
 //
 //
@@ -52335,6 +52376,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
+
 
 
 
@@ -52351,11 +52396,15 @@ var applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑�
     return {
       position: '',
       industryArr: '',
+      province: '广东省',
+      city: '广州市',
+      spinnerShowFlag: false,
+      message: '',
       expectPositionData: {
-        apply_status: 2,
+        apply_status: 0,
         position_type: '',
         industry: '',
-        location_name: '',
+        location_name: '广州市',
         low_salary: '',
         high_salary: ''
       }
@@ -52402,10 +52451,34 @@ var applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑�
       this.expectPositionData.low_salary = value[0];
       this.expectPositionData.high_salary = value[1];
     },
+    complete: function complete() {
+      if (this._checkData()) {
+        this.submit();
+      }
+    },
     submit: function submit() {
+      var _this = this;
+
+      this.spinnerShowFlag = true;
       Object(__WEBPACK_IMPORTED_MODULE_6_Api_expect_position__["a" /* createdExpectPosition */])(this.expectPositionData).then(function (response) {
-        console.log(response);
+        _this.spinnerShowFlag = false;
+        _this.$router.push({ 'name': 'host' });
+      }).catch(function (error) {
+        _this.spinnerShowFlag = false;
       });
+    },
+    _checkData: function _checkData() {
+      if (!this.expectPositionData.position_type) {
+        this.message = '请选择期待职业';
+      } else if (!this.expectPositionData.low_salary) {
+        this.message = '请选择薪资要求';
+      } else if (!this.expectPositionData.high_salary) {
+        this.message = '请选择薪资要求';
+      } else {
+        return true;
+      }
+      this.$refs.message.show();
+      return false;
     }
   },
   computed: {
@@ -52424,7 +52497,9 @@ var applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑�
     positionTypeSelect: __WEBPACK_IMPORTED_MODULE_2__base_position_type_select___default.a,
     distpicker: __WEBPACK_IMPORTED_MODULE_3_Base_picker_distpicker___default.a,
     industrySelect: __WEBPACK_IMPORTED_MODULE_4__base_industry_select___default.a,
-    salaryPicker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_salary_picker___default.a
+    salaryPicker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_salary_picker___default.a,
+    spinner: __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner___default.a,
+    message: __WEBPACK_IMPORTED_MODULE_8_Base_message_message___default.a
   }
 });
 
@@ -52748,8 +52823,8 @@ var DEFAULT_CODE = 100000;
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     province: { type: [String, Number], default: '北京市' },
-    city: { type: [String, Number], default: '北京城区' },
-    area: { type: [String, Number], default: '东城区' },
+    city: { type: [String, Number], default: '' },
+    area: { type: [String, Number], default: '' },
     depth: { type: Number, default: 2 },
     title: ''
   },
@@ -57597,7 +57672,7 @@ var render = function() {
           _c("div", { staticClass: "expect-position-footer" }, [
             _c(
               "div",
-              { staticClass: "submit-btn", on: { click: _vm.submit } },
+              { staticClass: "submit-btn", on: { click: _vm.complete } },
               [_vm._v("完成")]
             )
           ])
@@ -57615,7 +57690,7 @@ var render = function() {
         _vm._v(" "),
         _c("distpicker", {
           ref: "distpicker",
-          attrs: { title: "工作城市" },
+          attrs: { title: "工作城市", province: _vm.province, city: _vm.city },
           on: { selected: _vm.distPickerSelected }
         }),
         _vm._v(" "),
@@ -57628,7 +57703,21 @@ var render = function() {
         _c("salary-picker", {
           ref: "salaryPicker",
           on: { selected: _vm.selectedSalary }
-        })
+        }),
+        _vm._v(" "),
+        _c("spinner", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.spinnerShowFlag,
+              expression: "spinnerShowFlag"
+            }
+          ],
+          attrs: { text: "提交中" }
+        }),
+        _vm._v(" "),
+        _c("message", { ref: "message", attrs: { message: _vm.message } })
       ],
       1
     )
@@ -63875,7 +63964,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.dispicker-wrapper[data-v-0a6aecba] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.dispicker-wrapper .main[data-v-0a6aecba] {\n    overflow: hidden;\n}\n.dispicker-wrapper .main .province[data-v-0a6aecba] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: .4rem;\n      background: #fff;\n      padding: 15px;\n      margin: 15px 0;\n}\n.dispicker-wrapper .main .province .value[data-v-0a6aecba] {\n        color: #53CAC3;\n}\n.dispicker-wrapper .main .province .value span[data-v-0a6aecba] {\n          margin-right: 5px;\n}\n.dispicker-wrapper .main .province .value span.color-d[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .province .value .icon[data-v-0a6aecba] {\n          font-size: .3rem;\n}\n.dispicker-wrapper .main .area[data-v-0a6aecba] {\n      background: #ffffff;\n}\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n        margin: 0 15px;\n        border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box[data-v-0a6aecba] {\n        position: relative;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper[data-v-0a6aecba] {\n          position: absolute;\n          top: 100%;\n          width: 100%;\n          overflow-y: scroll;\n          background: #ffffff;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results[data-v-0a6aecba] {\n            padding-left: 15px;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n              border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n              padding: 15px 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li .icon[data-v-0a6aecba] {\n                color: #53CAC3;\n                padding-right: 5px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        padding: 15px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n          border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n          padding: 15px 0;\n          margin: 0 15px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .input-group-wrapper label[data-v-0a6aecba] {\n          font-size: .4rem;\n          display: inline-block;\n          width: 90px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group[data-v-0a6aecba] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group input[data-v-0a6aecba] {\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group .icon[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n            margin-left: 10px;\n}\n.dispicker-wrapper .main .location[data-v-0a6aecba] {\n      line-height: .6rem;\n      background: #fff;\n      border-radius: .1rem;\n      padding: 10px;\n      margin: 10px;\n}\n.dispicker-wrapper .main .location .map[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n}\n.dispicker-wrapper .main .location .map .color-theme[data-v-0a6aecba] {\n          color: #53CAC3;\n}\n.dispicker-wrapper .main .location .name[data-v-0a6aecba] {\n        line-height: .45rem;\n        color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .dispicker-footer[data-v-0a6aecba] {\n      position: absolute;\n      bottom: 0;\n      width: 100%;\n      height: 40px;\n      line-height: 40px;\n      color: #ffffff;\n      background: rgba(0, 0, 0, 0.3);\n      text-align: center;\n}\n.dispicker-wrapper .main .dispicker-footer.bc-theme[data-v-0a6aecba] {\n        background: #53CAC3;\n}\n", ""]);
+exports.push([module.i, "\n.dispicker-wrapper[data-v-0a6aecba] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #e9efef;\n}\n.dispicker-wrapper .main[data-v-0a6aecba] {\n    height: 100%;\n    overflow: hidden;\n}\n.dispicker-wrapper .main .province[data-v-0a6aecba] {\n      display: -webkit-box;\n      display: -ms-flexbox;\n      display: flex;\n      -webkit-box-pack: justify;\n          -ms-flex-pack: justify;\n              justify-content: space-between;\n      -webkit-box-align: center;\n          -ms-flex-align: center;\n              align-items: center;\n      font-size: .4rem;\n      background: #fff;\n      padding: 15px;\n      margin: 15px 0;\n}\n.dispicker-wrapper .main .province .value[data-v-0a6aecba] {\n        color: #53CAC3;\n}\n.dispicker-wrapper .main .province .value span[data-v-0a6aecba] {\n          margin-right: 5px;\n}\n.dispicker-wrapper .main .province .value span.color-d[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .province .value .icon[data-v-0a6aecba] {\n          font-size: .3rem;\n}\n.dispicker-wrapper .main .area[data-v-0a6aecba] {\n      background: #ffffff;\n}\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n        margin: 0 15px;\n        border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area div.line[data-v-0a6aecba] {\n            border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box[data-v-0a6aecba] {\n        position: relative;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper[data-v-0a6aecba] {\n          position: absolute;\n          top: 100%;\n          width: 100%;\n          overflow-y: scroll;\n          background: #ffffff;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results[data-v-0a6aecba] {\n            padding-left: 15px;\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n              border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n              padding: 15px 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li[data-v-0a6aecba] {\n                  border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .search-box .search-results-wrapper .search-results li .icon[data-v-0a6aecba] {\n                color: #53CAC3;\n                padding-right: 5px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        padding: 15px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n          border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n          padding: 15px 0;\n          margin: 0 15px;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.dispicker-wrapper .main .area .input-group-wrapper.first-input-group[data-v-0a6aecba] {\n              border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.dispicker-wrapper .main .area .input-group-wrapper label[data-v-0a6aecba] {\n          font-size: .4rem;\n          display: inline-block;\n          width: 90px;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group[data-v-0a6aecba] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          -webkit-box-flex: 1;\n              -ms-flex: 1;\n                  flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group input[data-v-0a6aecba] {\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n}\n.dispicker-wrapper .main .area .input-group-wrapper .input-group .icon[data-v-0a6aecba] {\n            color: rgba(0, 0, 0, 0.3);\n            margin-left: 10px;\n}\n.dispicker-wrapper .main .location[data-v-0a6aecba] {\n      line-height: .6rem;\n      background: #fff;\n      border-radius: .1rem;\n      padding: 10px;\n      margin: 10px;\n}\n.dispicker-wrapper .main .location .map[data-v-0a6aecba] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n}\n.dispicker-wrapper .main .location .map .color-theme[data-v-0a6aecba] {\n          color: #53CAC3;\n}\n.dispicker-wrapper .main .location .name[data-v-0a6aecba] {\n        line-height: .45rem;\n        color: rgba(0, 0, 0, 0.3);\n}\n.dispicker-wrapper .main .dispicker-footer[data-v-0a6aecba] {\n      position: absolute;\n      bottom: 0;\n      width: 100%;\n      height: 40px;\n      line-height: 40px;\n      color: #ffffff;\n      background: rgba(0, 0, 0, 0.3);\n      text-align: center;\n}\n.dispicker-wrapper .main .dispicker-footer.bc-theme[data-v-0a6aecba] {\n        background: #53CAC3;\n}\n", ""]);
 
 // exports
 
@@ -80704,10 +80793,26 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (immutable) */ __webpack_exports__["b"] = jobList;
 /* harmony export (immutable) */ __webpack_exports__["a"] = createJob;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(10);
 
+
+
+function jobList() {
+  var perpage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_1__config__["d" /* JOB_PREPAGE */];
+  var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  var url = 'api/jobs?include=user,company&perpage=' + perpage + '&page=' + page;
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
 
 function createJob(companyId, data) {
   var url = 'api/companies/' + companyId + '/jobs';
@@ -80717,6 +80822,944 @@ function createJob(companyId, data) {
   }).catch(function (error) {
     return Promise.reject(error.response.data);
   });
+}
+
+/***/ }),
+/* 336 */,
+/* 337 */,
+/* 338 */,
+/* 339 */,
+/* 340 */,
+/* 341 */,
+/* 342 */,
+/* 343 */,
+/* 344 */,
+/* 345 */,
+/* 346 */,
+/* 347 */,
+/* 348 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(349)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(351)
+/* template */
+var __vue_template__ = __webpack_require__(352)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-594f6cf5"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\job\\home.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-594f6cf5", Component.options)
+  } else {
+    hotAPI.reload("data-v-594f6cf5", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 349 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(350);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("0e9a5588", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-594f6cf5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./home.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-594f6cf5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./home.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 350 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#home[data-v-594f6cf5] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  background: #f7f7f7;\n}\n#home .navbar[data-v-594f6cf5] {\n    width: 100%;\n    position: fixed;\n    left: 0;\n    bottom: 0;\n    background: #fff;\n    z-index: 10;\n    border-top: 1px solid rgba(0, 0, 0, 0.3);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n#home .navbar[data-v-594f6cf5] {\n        border-top: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n#home .navbar[data-v-594f6cf5] {\n        border-top: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n#home .navbar a[data-v-594f6cf5] {\n      color: #808080;\n      padding: .18rem 0;\n      -webkit-transition: all .5s;\n      transition: all .5s;\n      text-align: center;\n}\n#home .navbar a span[data-v-594f6cf5] {\n        display: block;\n}\n#home .navbar a [class^=\"icon-\"][data-v-594f6cf5], #home .navbar a [class*=\" icon-\"][data-v-594f6cf5] {\n        font-size: .6rem;\n}\n#home .navbar a.router-link-active[data-v-594f6cf5] {\n        color: #53CAC3;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 351 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {};
+  }
+});
+
+/***/ }),
+/* 352 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { attrs: { id: "home" } },
+    [
+      _c("transition", [_c("router-view")], 1),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "navbar flex_parent" },
+        [
+          _c(
+            "router-link",
+            { staticClass: "flex_child", attrs: { to: "/home" } },
+            [
+              _c("span", { staticClass: "icon-earth" }),
+              _c("span", [_vm._v("职位")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "flex_child", attrs: { to: "/company" } },
+            [
+              _c("span", { staticClass: "icon-company" }),
+              _c("span", [_vm._v("公司")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "flex_child", attrs: { to: "/message" } },
+            [
+              _c("span", { staticClass: "icon-message" }),
+              _c("span", [_vm._v("消息")])
+            ]
+          ),
+          _vm._v(" "),
+          _c(
+            "router-link",
+            { staticClass: "flex_child", attrs: { to: "/aboutme" } },
+            [
+              _c("span", { staticClass: "icon-me" }),
+              _c("span", [_vm._v("我的")])
+            ]
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-594f6cf5", module.exports)
+  }
+}
+
+/***/ }),
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(360)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(356)
+/* template */
+var __vue_template__ = __webpack_require__(357)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-20b5c596"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\job\\joblist.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-20b5c596", Component.options)
+  } else {
+    hotAPI.reload("data-v-20b5c596", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 354 */,
+/* 355 */,
+/* 356 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Api_job__ = __webpack_require__(335);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slideTabComp__ = __webpack_require__(362);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__slideTabComp___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__slideTabComp__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_scroll_scroll__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Base_scroll_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_Base_scroll_scroll__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Api_config__ = __webpack_require__(10);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      navlist: [{
+        title: '推荐',
+        isSelected: false
+      }, {
+        title: '上海',
+        isSelected: false
+      }, {
+        title: '公司',
+        isSelected: false
+      }, {
+        title: '要求',
+        isSelected: false
+      }],
+      jobs: [],
+      slideIndex: -1,
+      slideData: [[{
+        name: '推荐',
+        hadSelested: true
+      }, {
+        name: '最新',
+        hadSelested: false
+      }],
+      // 城市选择这项数据太多没用父子通信传递数据
+      [0, 1], [{
+        title: '融资规模',
+        isCheckbox: true,
+        list: ['全部', '未融资', '天使轮', 'A轮', 'B轮', 'C轮', 'D轮及以上', '已上市', '不需要融资']
+      }, {
+        title: '团队规模',
+        isCheckbox: true,
+        list: ['全部', '0-20人', '20-99人', '100-499人', '500-999人', '1000-9999人', '10000人以上']
+      }, {
+        title: '行业',
+        isCheckbox: true,
+        list: ['全部', '非互联网行业', '健康医疗', '生活服务', '旅游', '金融', '信息安全', '广告营销', '数据服务', '智能硬件', '文化娱乐', '网络招聘', '分类信息', '电子商务', '移动互联网', '企业服务', '社交网络', '教育培训', 'O2O', '游戏', '互联网', '媒体', 'IT软件']
+      }], [{
+        title: '最低学历',
+        isCheckbox: true,
+        list: ['全部', '中专及以下', '高中', '大专', '本科', '硕士', '博士']
+      }, {
+        title: '经验',
+        isCheckbox: true,
+        list: ['全部', '应届生', '1年以内', '1-3年', '3-5年', '5-10年', '10年以上']
+      }, {
+        title: '薪资(单选)',
+        isCheckbox: false,
+        list: ['全部', '3k以下', '3k-5k', '5k-10k', '10k-20k', '20k-50k', '50k以上']
+      }]],
+      loading: false,
+      loadings: false,
+      page: 1,
+      hasMore: true
+    };
+  },
+  created: function created() {
+    this.request();
+  },
+
+  methods: {
+    hide: function hide() {
+      this.navlist.filter(function (value) {
+        value.isSelected = false;
+      });
+    },
+    typeChange: function typeChange(value) {
+      this.navlist[0].title = value;
+      this.hide();
+    },
+    changeColor: function changeColor(nav, index) {
+      this.slideIndex = index;
+      this.slideTemp = this.slideData[index];
+      if (nav.isSelected) {
+        nav.isSelected = false;
+      } else {
+        // 先清空所有选中效果
+        this.navlist.filter(function (value) {
+          value.isSelected = false;
+        });
+        // 设置当前选中效果
+        nav.isSelected = true;
+      }
+    },
+    request: function request() {
+      var _this = this;
+
+      this.loading = true;
+      Object(__WEBPACK_IMPORTED_MODULE_0_Api_job__["b" /* jobList */])().then(function (response) {
+        _this.loading = false;
+        _this.jobs = response.data;
+        _this.$nextTick(function () {
+          _this.$refs.scroll.refresh();
+        });
+      }).catch(function () {
+        _this.loading = false;
+      });
+    },
+    requestMore: function requestMore() {
+      var _this2 = this;
+
+      if (!this.hasMore) {
+        return;
+      }
+      this.page++;
+      this.loadings = true;
+      Object(__WEBPACK_IMPORTED_MODULE_0_Api_job__["b" /* jobList */])(__WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* JOB_PREPAGE */], this.page).then(function (res) {
+        _this2.loadings = false;
+        if (res.code === __WEBPACK_IMPORTED_MODULE_3_Api_config__["a" /* ERR_OK */]) {
+          _this2.jobs = _this2.jobs.concat(res.data);
+          _this2._checkMore(res.meta.pagination);
+        }
+      });
+    },
+    _checkMore: function _checkMore(pagination) {
+      if (this.page >= pagination.total_pages || this.page * __WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* JOB_PREPAGE */] >= pagination.total) {
+        this.hasMore = false;
+      }
+    }
+  },
+  components: {
+    slideTabComp: __WEBPACK_IMPORTED_MODULE_1__slideTabComp___default.a,
+    scroll: __WEBPACK_IMPORTED_MODULE_2_Base_scroll_scroll___default.a
+  }
+});
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "main" } }, [
+    _c("div", { staticClass: "main_fixed_top" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "job_nav" },
+        [
+          _c(
+            "ul",
+            { staticClass: "flex_parent" },
+            _vm._l(_vm.navlist, function(nav, index) {
+              return _c(
+                "li",
+                {
+                  staticClass: "flex_child",
+                  class: { selected: nav.isSelected },
+                  on: {
+                    click: function($event) {
+                      _vm.changeColor(nav, index)
+                    }
+                  }
+                },
+                [
+                  _vm._v("\n                    " + _vm._s(nav.title)),
+                  _c("span", { staticClass: "icon-down" })
+                ]
+              )
+            })
+          ),
+          _vm._v(" "),
+          _c(
+            "keep-alive",
+            [
+              _vm.slideIndex === 0
+                ? _c("slideTabComp", {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.navlist[0].isSelected,
+                        expression: "navlist[0].isSelected"
+                      }
+                    ],
+                    attrs: { slideTemp: _vm.slideTemp },
+                    on: { change: _vm.typeChange, hide: _vm.hide }
+                  })
+                : _vm._e()
+            ],
+            1
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          ref: "wrapper",
+          staticClass: "job_content",
+          attrs: { id: "jobcontent" }
+        },
+        [
+          _c(
+            "scroll",
+            {
+              ref: "scroll",
+              staticClass: "job-lists-wrapper",
+              attrs: { data: _vm.jobs, pullDown: true, pullUp: true },
+              on: { scrollTop: _vm.request, scrollToEnd: _vm.requestMore }
+            },
+            [
+              _c(
+                "ul",
+                { staticClass: "page-infinite-list job_lists" },
+                [
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.loading,
+                          expression: "loading"
+                        }
+                      ],
+                      staticClass: "mint-spinner"
+                    },
+                    [
+                      _c("mint-spinner", {
+                        attrs: { color: "#53CAC3", type: "triple-bounce" }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm._l(_vm.jobs, function(job) {
+                    return _c(
+                      "li",
+                      [
+                        _c(
+                          "router-link",
+                          {
+                            attrs: { to: "home" },
+                            on: { click: function($event) {} }
+                          },
+                          [
+                            _c("h4", [
+                              _vm._v(_vm._s(job.name)),
+                              _c("span", [
+                                _vm._v(
+                                  _vm._s(
+                                    job.low_salary !== -1
+                                      ? job.low_salary +
+                                        "k-" +
+                                        job.high_salary +
+                                        "k"
+                                      : "面议"
+                                  )
+                                )
+                              ])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "company-info" }, [
+                              _vm._v(
+                                _vm._s(job.company.data.abbreviation) +
+                                  " 不需要融资"
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "claim" }, [
+                              _c("span", { staticClass: "icon-position" }),
+                              _c("span", [_vm._v(_vm._s(job.con_place))]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "icon-seniority" }),
+                              _c("span", [_vm._v(_vm._s(job.seniority))]),
+                              _vm._v(" "),
+                              _c("span", { staticClass: "icon-education" }),
+                              _c("span", [_vm._v(_vm._s(job.education))])
+                            ]),
+                            _vm._v(" "),
+                            _c("p", { staticClass: "title" }, [
+                              _c("img", {
+                                attrs: { src: job.user.data.avatar }
+                              }),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(
+                                  _vm._s(job.user.data.name) +
+                                    "・" +
+                                    _vm._s(job.user.data.pos_name)
+                                )
+                              ])
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.loadings,
+                          expression: "loadings"
+                        }
+                      ],
+                      staticClass: "page-infinite-loading mint-spinner"
+                    },
+                    [
+                      _c("mint-spinner", { attrs: { type: "fading-circle" } }),
+                      _vm._v("正在加载更多的数据...\n                    ")
+                    ],
+                    1
+                  )
+                ],
+                2
+              )
+            ]
+          )
+        ],
+        1
+      )
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "job_header" }, [
+      _c("div", { staticClass: "job_header_left" }, [
+        _c("span", [_vm._v("web前端")]),
+        _vm._v(" "),
+        _c("span", [_vm._v("HTML5")])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "job_header_icon" }, [
+        _c("span", [_c("i", { staticClass: "iconfont icon-jiahao" })]),
+        _vm._v(" "),
+        _c("b"),
+        _vm._v(" "),
+        _c("span", [_c("i", { staticClass: "iconfont icon-sousuo" })])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-20b5c596", module.exports)
+  }
+}
+
+/***/ }),
+/* 358 */,
+/* 359 */,
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(361);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("c9e8adb8", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-20b5c596\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./joblist.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-20b5c596\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./joblist.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#main .main_fixed_top[data-v-20b5c596] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  top: 0;\n  z-index: 100;\n}\n#main .main_fixed_top .job_header[data-v-20b5c596] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0.37rem 0;\n    background: #53CAC3;\n}\n#main .main_fixed_top .job_header .job_header_left[data-v-20b5c596] {\n      color: #FFF;\n      padding-left: .4rem;\n      font-size: .4rem;\n}\n#main .main_fixed_top .job_header .job_header_left span + span[data-v-20b5c596] {\n        margin-left: .3rem;\n}\n#main .main_fixed_top .job_header .job_header_icon[data-v-20b5c596] {\n      margin-right: .3rem;\n      position: relative;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_header .job_header_icon span[data-v-20b5c596] {\n        font-size: 0.48rem;\n        color: #fff;\n        margin-left: .6rem;\n}\n#main .main_fixed_top .job_header .job_header_icon b[data-v-20b5c596] {\n        display: block;\n        position: absolute;\n        width: 1px;\n        height: .48rem;\n        background: #fff;\n        margin: 0 .15rem;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        left: 1.2rem;\n}\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n    position: relative;\n    background: #fff;\n    border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n#main .main_fixed_top .job_nav ul[data-v-20b5c596] {\n      height: 1rem;\n      line-height: 1rem;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596] {\n        text-align: center;\n        color: #8D8D8D;\n        position: relative;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596]:after {\n          display: table;\n          content: '';\n          height: 60%;\n          border-right: 1px solid #E5E5E5;\n          position: absolute;\n          right: 0;\n          top: 50%;\n          -webkit-transform: translateY(-50%);\n                  transform: translateY(-50%);\n}\n#main .main_fixed_top .job_nav ul li.selected[data-v-20b5c596] {\n          color: #53CAC3;\n}\n#main .main_fixed_top .job_content[data-v-20b5c596] {\n    position: fixed;\n    top: 2.26rem;\n    bottom: 1.34rem;\n    width: 100%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper[data-v-20b5c596] {\n      height: 100%;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists[data-v-20b5c596] {\n        overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li[data-v-20b5c596] {\n          padding: 3% 6%;\n          background: #fff;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li + li[data-v-20b5c596] {\n            margin-top: 3%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a[data-v-20b5c596] {\n            display: block;\n            color: #808080;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4[data-v-20b5c596] {\n              display: -webkit-box;\n              display: -ms-flexbox;\n              display: flex;\n              -webkit-box-pack: justify;\n                  -ms-flex-pack: justify;\n                      justify-content: space-between;\n              font-weight: bold;\n              font-size: 0.4rem;\n              color: rgba(0, 0, 0, 0.8);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4 span[data-v-20b5c596] {\n                font-weight: 700;\n                color: #53CAC3;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p[data-v-20b5c596] {\n              margin-top: .15rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class^='icon-'][data-v-20b5c596], #main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class*=' icon-'][data-v-20b5c596] {\n                margin-right: .1rem;\n                margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p span[data-v-20b5c596]:nth-child(1) {\n                margin-left: 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.claim[data-v-20b5c596] {\n                color: rgba(0, 0, 0, 0.3);\n                padding: .15rem 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title[data-v-20b5c596] {\n                display: -webkit-box;\n                display: -ms-flexbox;\n                display: flex;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title span[data-v-20b5c596] {\n                  color: rgba(0, 0, 0, 0.5);\n                  height: .8rem;\n                  line-height: .8rem;\n                  margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title img[data-v-20b5c596] {\n                  width: .8rem;\n                  height: .8rem;\n                  border-radius: 50%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .mint-spinner[data-v-20b5c596] {\n          height: 45px;\n          line-height: 45px;\n          text-align: center;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading[data-v-20b5c596] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          color: rgba(0, 0, 0, 0.3);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading span[data-v-20b5c596] {\n            margin-right: 8px;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(363)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(365)
+/* template */
+var __vue_template__ = __webpack_require__(366)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-7a9e1169"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\job\\slideTabComp.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7a9e1169", Component.options)
+  } else {
+    hotAPI.reload("data-v-7a9e1169", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(364);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("16771c0a", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7a9e1169\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./slideTabComp.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7a9e1169\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./slideTabComp.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 364 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.slide_one[data-v-7a9e1169] {\n  position: absolute;\n  z-index: 100;\n  width: 100%;\n  background: #E9EFEF;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n  padding: .4rem .6rem;\n}\n.slide_one li[data-v-7a9e1169] {\n    line-height: 1.2rem;\n    color: #8D8D8D;\n    overflow: hidden;\n}\n.slide_one li i[data-v-7a9e1169] {\n      margin-left: .15rem;\n}\n.slide_one .selected[data-v-7a9e1169] {\n    color: #53CAC3;\n}\n.mask[data-v-7a9e1169] {\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  background: rgba(0, 0, 0, 0.5);\n  z-index: 99;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 365 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'slide',
+  props: {
+    slideTemp: {
+      type: Array,
+      default: []
+    }
+  },
+  data: function data() {
+    return {
+      msg: 'Welcome to Your Vue.js App'
+    };
+  },
+
+  watch: {},
+  computed: {},
+  methods: {
+    // 切换选择样式
+    toggleSelected: function toggleSelected(list) {
+      if (!list.hadSelested) {
+        this.slideTemp.filter(function (value) {
+          value.hadSelested = false;
+        });
+        list.hadSelested = true;
+        this.$emit('change', list.name);
+      }
+    }
+  }
+});
+
+/***/ }),
+/* 366 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "slide_tab" }, [
+    _c(
+      "ul",
+      { staticClass: "slide_one" },
+      _vm._l(_vm.slideTemp, function(list) {
+        return _c(
+          "li",
+          {
+            class: { selected: list.hadSelested },
+            on: {
+              click: function($event) {
+                _vm.toggleSelected(list)
+              }
+            }
+          },
+          [
+            _c("span", [_vm._v(_vm._s(list.name))]),
+            _vm._v(" "),
+            _c("i", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: list.hadSelested,
+                  expression: "list.hadSelested"
+                }
+              ],
+              staticClass: "iconfont icon-correct"
+            })
+          ]
+        )
+      })
+    ),
+    _vm._v(" "),
+    _c("div", {
+      staticClass: "mask",
+      attrs: { id: "mask" },
+      on: {
+        click: function($event) {
+          _vm.$emit("hide")
+        }
+      }
+    })
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-7a9e1169", module.exports)
+  }
 }
 
 /***/ })

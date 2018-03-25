@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use League\Fractal\Manager;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 use League\Fractal\Resource\Item;
 use App\Http\Controllers\Controller;
 use League\Fractal\Resource\Collection;
@@ -15,6 +16,7 @@ class ApiController extends Controller
     const CODE_NOT_FOUND = 10404;
     const CODE_NOT_ACCEPTABLE = 10406;
     const CODE_UNPROCESSABLE_ENTITY = 10422;
+    const CODE_FORBIDDEN = '10403';
 
     protected $code = 0;
 
@@ -87,6 +89,24 @@ class ApiController extends Controller
         return $this->respondWithArray(array_merge($rootScope->toArray(), ['success' => true, 'code' => $this->code]));
     }
 
+    /**
+     *  Respond the collection data with pagination.
+     *
+     * @param $paginator
+     * @param $callback
+     * @return mixed
+     */
+    public function respondWithPaginator($paginator, $callback)
+    {
+        $resource = new Collection($paginator->getCollection(), $callback);
+
+        $resource->setPaginator(new IlluminatePaginatorAdapter($paginator));
+
+        $rootScope = $this->fractal->createData($resource);
+
+        return $this->respondWithArray(array_merge($rootScope->toArray(), ['success' => true, 'code' => $this->code]));
+    }
+
     public function respondWithArray(array $array, array $header = [])
     {
         return response()->json($array, $this->statusCode, $header);
@@ -113,6 +133,18 @@ class ApiController extends Controller
             'message' => $message,
             'code' => $errorCode
         ]);
+    }
+
+    /**
+     * Respond the error of 'Forbidden'
+     *
+     * @param  string $message
+     * @return json
+     */
+    public function errorForbidden($message = 'Forbidden')
+    {
+        return $this->setStatusCode(403)
+            ->respondWithError($message, self::CODE_FORBIDDEN);
     }
 
     /**

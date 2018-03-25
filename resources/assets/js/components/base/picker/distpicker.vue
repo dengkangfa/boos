@@ -13,8 +13,8 @@
   export default {
     props: {
       province: { type: [String, Number], default: '北京市' },
-      city: { type: [String, Number], default: '北京城区' },
-      area: { type: [String, Number], default: '东城区' },
+      city: { type: [String, Number], default: '' },
+      area: { type: [String, Number], default: '' },
       depth: { type: Number, default: 2 },
       title: ''
     },

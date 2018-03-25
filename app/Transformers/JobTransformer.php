@@ -3,10 +3,13 @@
 namespace App\Transformers;
 
 use App\Models\Job;
+use App\Models\User;
 use League\Fractal\TransformerAbstract;
 
 class JobTransformer extends TransformerAbstract
 {
+    protected $availableIncludes = ['user', 'company'];
+
     public function transform(Job $job)
     {
         return [
@@ -26,5 +29,19 @@ class JobTransformer extends TransformerAbstract
             'created_at' => $job->created_at->toDateTimeString(),
             'updated_at' => $job->updated_at->toDateTimeString()
         ];
+    }
+
+    public function includeUser(Job $job)
+    {
+        $user = $job->user;
+
+        return $this->item($user, new UserTransformer());
+    }
+
+    public function includeCompany(Job $job)
+    {
+        $company = $job->company;
+
+        return $this->item($company, new CompanyTransformer());
     }
 }

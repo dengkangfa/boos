@@ -23,7 +23,7 @@
         default: true
       },
       data: {
-        type: Object,
+        type: Array,
         default: null
       },
       listenScroll: {
@@ -31,6 +31,10 @@
         default: false
       },
       pullUp: {
+        type: Boolean,
+        default: false
+      },
+      pullDown: {
         type: Boolean,
         default: false
       },
@@ -66,10 +70,19 @@
           })
         }
 
+        if (this.pullDown) {
+          this.scroll.on('scroll', () => {
+            console.log(this.scroll.y)
+            if (this.scroll.y > 10) {
+              this.$emit('scrollTop')
+            }
+          })
+        }
+
         // 滚动至底部
         if (this.pullUp) {
           this.scroll.on('scrollEnd', () => {
-            if (this.scroll.y <= this.scroll.maxScrollY + 50) {
+            if (this.scroll.y <= this.scroll.maxScrollY + 250) {
               this.$emit('scrollToEnd')
             }
           })

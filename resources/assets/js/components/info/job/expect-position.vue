@@ -36,14 +36,16 @@
                     <div class="text">362个Boss正在路上，<br>填好求职意向，开始直接沟通</div>
                 </div>
                 <div class="expect-position-footer">
-                    <div class="submit-btn" @click="submit">完成</div>
+                    <div class="submit-btn" @click="complete">完成</div>
                 </div>
             </main>
             <job-search-status-select @select="updateApplyStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
-            <distpicker title="工作城市" @selected="distPickerSelected" ref="distpicker"></distpicker>
+            <distpicker title="工作城市" :province="province" :city="city" @selected="distPickerSelected" ref="distpicker"></distpicker>
             <industry-select type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
             <salary-picker @selected="selectedSalary" ref="salaryPicker"></salary-picker>
+            <spinner text="提交中" v-show="spinnerShowFlag"></spinner>
+            <message :message="message" ref="message"></message>
         </div>
     </transition>
 </template>
@@ -56,6 +58,8 @@
   import industrySelect from '../base/industry-select'
   import salaryPicker from 'Base/picker/salary-picker'
   import {createdExpectPosition} from 'Api/expect-position'
+  import spinner from 'Base/spinner/spinner'
+  import message from 'Base/message/message'
 
   const applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗']
 
@@ -64,11 +68,15 @@
       return {
         position: '',
         industryArr: '',
+        province: '广东省',
+        city: '广州市',
+        spinnerShowFlag: false,
+        message: '',
         expectPositionData: {
-          apply_status: 2,
+          apply_status: 0,
           position_type: '',
           industry: '',
-          location_name: '',
+          location_name: '广州市',
           low_salary: '',
           high_salary: ''
         }
@@ -114,10 +122,32 @@
         this.expectPositionData.low_salary = value[0]
         this.expectPositionData.high_salary = value[1]
       },
+      complete() {
+        if (this._checkData()) {
+          this.submit()
+        }
+      },
       submit() {
+        this.spinnerShowFlag = true
         createdExpectPosition(this.expectPositionData).then(response => {
-          console.log(response)
+          this.spinnerShowFlag = false
+          this.$router.push({'name': 'host'})
+        }).catch(error => {
+          this.spinnerShowFlag = false
         })
+      },
+      _checkData() {
+        if (!this.expectPositionData.position_type) {
+          this.message = '请选择期待职业'
+        } else if (!this.expectPositionData.low_salary) {
+          this.message = '请选择薪资要求'
+        } else if (!this.expectPositionData.high_salary) {
+          this.message = '请选择薪资要求'
+        } else {
+          return true
+        }
+        this.$refs.message.show()
+        return false
       }
     },
     computed: {
@@ -136,7 +166,9 @@
       positionTypeSelect,
       distpicker,
       industrySelect,
-      salaryPicker
+      salaryPicker,
+      spinner,
+      message
     }
   }
 </script>

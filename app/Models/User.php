@@ -52,6 +52,11 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(projectExperience::class);
     }
 
+    public function expectPosition()
+    {
+        return $this->hasOne(ExpectPosition::class);
+    }
+
     public function company()
     {
         return $this->belongsTo(Company::class);
