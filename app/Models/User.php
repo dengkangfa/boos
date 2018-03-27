@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\LastActivedAtHelper;
 use Carbon\Carbon;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -12,7 +13,7 @@ use Tymon\JWTAuth\Contracts\JWTSubject;
 
 class User extends Authenticatable implements JWTSubject
 {
-    use HasApiTokens, Notifiable, HasRoles;
+    use HasApiTokens, Notifiable, HasRoles, LastActivedAtHelper;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +22,10 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name', 'email', 'password', 'mobile', 'gender', 'advantage', 'company_id',
-        'pos_name', 'job_date', 'birth_date', 'homepages'
+        'pos_name', 'job_date', 'birth_date', 'homepages', 'last_actived_at'
     ];
 
-    protected $dates = ['created_at', 'updated_at', 'disabled_at', 'job_date', 'birth_date'];
+    protected $dates = ['created_at', 'updated_at', 'last_actived_at', 'disabled_at', 'job_date', 'birth_date'];
 
     /**
      * The attributes that should be hidden for arrays.

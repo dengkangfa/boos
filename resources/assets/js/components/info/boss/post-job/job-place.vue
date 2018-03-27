@@ -140,7 +140,7 @@
         this.currentCity = values[1] + values[2]
       },
       locate(location, name) {
-        this.location = [location.lat, location.lng]
+        this.location = [location.lng, location.lat]
         this.front_road = name
         this.location_status = 0
         this.searchData = []
@@ -152,7 +152,7 @@
         this.searchData = []
         this.roadInputBlur = true
         this.spinnerShowFlag = true
-        var geocoder = new AMap.Geocoder({
+        let geocoder = new AMap.Geocoder({
           radius: 1000,
           extensions: 'all'
         })
@@ -160,7 +160,7 @@
           self.spinnerShowFlag = false
           if (status === 'complete' && result.info === 'OK') {
             let locationTemp = result.geocodes[0].location
-            self.location = [locationTemp.lat, locationTemp.lng]
+            self.location = [locationTemp.lng, locationTemp.lat]
             self.location_status = 0
           } else {
             self.location_status = 1

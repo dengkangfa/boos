@@ -18,15 +18,16 @@ import microResume from '../components/info/job/micro-resume'
 import bossBasicInfo from '../components/info/boss/basic-info'
 import postJob from '../components/info/boss/post-job/post-job'
 
-import Home from '../components/job/home'
+import home from '../components/job/home'
 import jobList from '../components/job/joblist'
+import jobDetail from '../components/job/jobdetail'
 
 Vue.use(VueRouter)
 
 let routes = [
   {
     path: '/home',
-    component: Home,
+    component: home,
     meta: { requiresAuth: true },
     children: [
       {
@@ -34,6 +35,13 @@ let routes = [
         name: 'joblist',
         component: jobList,
         meta: { requiresAuth: true },
+        children: [
+          {
+            path: 'job/:id',
+            name: 'job-detail',
+            component: jobDetail
+          }
+        ]
       },
       {
         path: '/company',
@@ -144,11 +152,11 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   // 路由来源限制
-  if (to.meta.autoFrom) {
-    if (to.meta.autoFrom.indexOf(from.name) === -1) {
-      return next({'name': 'select-identity'})
-    }
-  }
+  // if (to.meta.autoFrom) {
+  //   if (to.meta.autoFrom.indexOf(from.name) === -1) {
+  //     return next({'name': 'select-identity'})
+  //   }
+  // }
   if (to.meta.requiresAuth) {
     if (Store.state.AuthUser.authenticated || jwtToken.getToken()) {
       return next()
@@ -158,7 +166,7 @@ router.beforeEach((to, from, next) => {
   }
   if (to.meta.requiresGuest) {
     if (Store.state.AuthUser.authenticated || jwtToken.getToken()) {
-      return next({'name': 'home'})
+      return next({'name': 'joblist'})
     } else {
       return next()
     }

@@ -11,6 +11,16 @@ export function jobList(perpage = JOB_PREPAGE, page = 1) {
   })
 }
 
+export function job(id) {
+  const url = `api/jobs/${id}?include=user,company`
+
+  return axios.get(url).then(response => {
+    return Promise.resolve(response.data)
+  }).catch(error => {
+    return Promise.reject(error.response.data)
+  })
+}
+
 export function createJob(companyId, data) {
   const url = `api/companies/${companyId}/jobs`
 

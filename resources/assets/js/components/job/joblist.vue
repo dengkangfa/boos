@@ -4,7 +4,7 @@
         <div class='main_fixed_top'>
             <div class='job_header'>
                 <div class='job_header_left'>
-                    <span>web前端</span>
+                    <span>PHP</span>
                     <span>HTML5</span>
                 </div>
                 <div class='job_header_icon'>
@@ -36,14 +36,14 @@
                             <mint-spinner color="#53CAC3" type="triple-bounce"></mint-spinner>
                         </div>
                         <li v-for='job in jobs'>
-                            <router-link @click='' to='home'>
+                            <router-link @click.native="selectJob(job)" :to="{ name: 'job-detail', params: { id: job.id }}">
                                 <h4>{{job.name}}<span>{{job.low_salary !== -1 ? job.low_salary + 'k-' + job.high_salary + 'k' : '面议'}}</span>
                                 </h4>
                                 <p class="company-info">{{job.company.data.abbreviation}} 不需要融资</p>
                                 <p class="claim">
-                                    <span class='icon-position'></span><span>{{job.con_place}}</span>
-                                    <span class='icon-seniority'></span><span>{{job.seniority}}</span>
-                                    <span class='icon-education'></span><span>{{job.education}}</span>
+                                    <span>广州 天河区</span>
+                                    <span>{{job.seniority}}</span>
+                                    <span>{{job.education}}</span>
                                 </p>
                                 <p class='title'>
                                     <img :src='job.user.data.avatar'>
@@ -58,6 +58,7 @@
                 </scroll>
             </div>
         </div>
+        <router-view :job="currentJob"></router-view>
     </div>
 </template>
 
@@ -89,6 +90,7 @@
           }
         ],
         jobs: [],
+        currentJob: {},
         slideIndex: -1,
         slideData: [
           [
@@ -149,6 +151,9 @@
       this.request()
     },
     methods: {
+      selectJob(job) {
+        this.currentJob = job
+      },
       hide() {
         this.navlist.filter(value => {
           value.isSelected = false
@@ -310,6 +315,8 @@
                                     &.claim
                                         color: $color-text-d
                                         padding: .15rem 0
+                                        span
+                                            margin-right: 20px
                                     &.title
                                         display: flex
                                         span

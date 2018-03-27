@@ -12,22 +12,35 @@ class CompanyTransformer extends TransformerAbstract
 
     private $validParams = ['limit'];
 
+    private $simple;
+
+    public function __construct($simple = false)
+    {
+        $this->simple = $simple;
+    }
+
     public function transform(Company $company)
     {
-        return [
-            'id' => $company->id,
-            'name' => $company->name,
-            'pic' => $company->pic,
-            'abbreviation' => $company->abbreviation,
-            'industry_str' => $company->industry_str,
-            'industry_code' => $company->industry_code,
-            'stock' => $company->stock,
-            'people' => (int) $company->people,
-            'detial' => $company->detial,
-            'boss_count' => $company->boss()->count(),
-            'created_at' => $company->created_at->toDateTimeString(),
-            'updated_at' => $company->updated_at->toDateTimeString()
-        ];
+        if ($this->simple) {
+            return [
+                'abbreviation' => $company->abbreviation,
+            ];
+        } else {
+            return [
+                'id' => $company->id,
+                'name' => $company->name,
+                'pic' => $company->pic,
+                'abbreviation' => $company->abbreviation,
+                'industry_str' => $company->industry_str,
+                'industry_code' => $company->industry_code,
+                'stock' => $company->stock,
+                'people' => (int) $company->people,
+                'detial' => $company->detial,
+                'boss_count' => $company->boss()->count(),
+                'created_at' => $company->created_at->toDateTimeString(),
+                'updated_at' => $company->updated_at->toDateTimeString()
+            ];
+        }
     }
 
     public function includeUser(Company $company, ParamBag $params = null)

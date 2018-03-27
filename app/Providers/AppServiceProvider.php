@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Toplan\Sms\SmsManager;
+use Carbon\Carbon;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(SmsManager $smsManager)
     {
+        Carbon::setLocale('zh');
+
         $smsManager->storeRule('mobile', 'mobile_exists', 'required|zh_mobile|exists:users,mobile');
     }
 

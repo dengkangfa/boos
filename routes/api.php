@@ -85,5 +85,7 @@ Route::namespace('Api')->group(function () {
     // 获取工作列表
     Route::get('jobs', 'JobController@index')
         ->name('api.jobs.index');
+    Route::get('jobs/{job}', 'JobController@show')
+        ->name('api.jobs.show');
 });
 

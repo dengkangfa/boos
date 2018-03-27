@@ -6,6 +6,7 @@
             </dkf-header>
             <div class="main">
                 <el-amap vid="amap" :center="location" :zooms="zooms">
+                    <el-amap-marker  :position="location"></el-amap-marker>
                 </el-amap>
             </div>
             <div class="map-footer">
@@ -27,14 +28,14 @@
       },
       location: {
         type: Array,
+        default: null,
         required: true
       }
     },
     data() {
       return {
         showFlag: false,
-        zooms: [12, 18],
-        center: [113.419982, 23.16852]
+        zooms: [12, 18]
       }
     },
     methods: {
@@ -47,14 +48,6 @@
     },
     components: {
       dkfHeader
-    },
-    watch: {
-      location(newValue) {
-        if (newValue.length) {
-          console.log(newValue)
-          this.center = [23.168296, 113.423278]
-        }
-      }
     }
   }
 </script>
@@ -66,12 +59,14 @@
     .map-wrapper
         @include allCover
         display: flex
+        flex-flow: column nowrap
         background: $bc
         .main
+            height: 100%
             flex: 1 1 auto
             overflow: auto
         .map-footer
-            position: absolute
+            position: fixed
             bottom: 0
             left: 0
             right: 0

@@ -28,7 +28,7 @@ class JobController extends ApiController
 
         $jobs = $query->take($request->page)->limit($request->prepage)->paginate(10);
 
-        return $this->respondWithPaginator($jobs, new JobTransformer());
+        return $this->respondWithPaginator($jobs, new JobTransformer(true));
     }
 
     public function store(JobRequest $request, Company $company, Job $job)
@@ -39,5 +39,10 @@ class JobController extends ApiController
         $job->save();
 
         return $this->setStatusCode(201)->respondWithItem($job, new JobTransformer());
+    }
+
+    public function show(Job $job)
+    {
+        return $this->respondWithItem($job, new JobTransformer());
     }
 }
