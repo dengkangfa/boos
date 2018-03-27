@@ -22,6 +22,7 @@ import home from '../components/job/home'
 import jobList from '../components/job/joblist'
 import jobDetail from '../components/job/jobdetail'
 import companyList from '../components/company/company-list'
+import myInfo from '../components/aboutme/myinfo'
 
 Vue.use(VueRouter)
 
@@ -49,14 +50,16 @@ let routes = [
         path: '/company',
         name: 'company',
         component: companyList,
-        meta: { requiresAuth: true },
+        meta: { requiresAuth: true }
       },
       {
         path: '/message',
       },
       {
         path: '/aboutme',
-        name: 'me'
+        name: 'me',
+        component: myInfo,
+        meta: { requiresAuth: true }
       }
     ]
   },
