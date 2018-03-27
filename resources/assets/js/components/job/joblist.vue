@@ -66,7 +66,7 @@
   import {jobList} from 'Api/job'
   import slideTabComp from './slideTabComp'
   import scroll from 'Base/scroll/scroll'
-  import {ERR_OK, JOB_PREPAGE} from 'Api/config'
+  import {ERR_OK, PERPAGE} from 'Api/config'
 
   export default {
     data() {
@@ -195,7 +195,7 @@
         }
         this.page++
         this.loadings = true
-        jobList(JOB_PREPAGE, this.page).then((res) => {
+        jobList(PERPAGE, this.page).then((res) => {
           this.loadings = false
           if (res.code === ERR_OK) {
             this.jobs = this.jobs.concat(res.data)
@@ -204,7 +204,7 @@
         })
       },
       _checkMore(pagination) {
-        if (this.page >= pagination.total_pages || this.page * JOB_PREPAGE >= pagination.total) {
+        if (this.page >= pagination.total_pages || this.page * PERPAGE >= pagination.total) {
           this.hasMore = false
         }
       }
@@ -316,7 +316,7 @@
                                         color: $color-text-d
                                         padding: .15rem 0
                                         span
-                                            margin-right: 20px
+                                            margin-right: 
                                     &.title
                                         display: flex
                                         span

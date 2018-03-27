@@ -1003,12 +1003,12 @@ module.exports = {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ERR_OK; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return ERR_REGISTER_CODE; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return ERR_UNPROCESSABLE_ENTITY; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return JOB_PREPAGE; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return PERPAGE; });
 var ERR_OK = 0;
 var ERR_REGISTER_CODE = 10201;
 var ERR_UNPROCESSABLE_ENTITY = 10422;
 
-var JOB_PREPAGE = 10;
+var PERPAGE = 10;
 
 /***/ }),
 /* 10 */
@@ -16123,7 +16123,7 @@ module.exports = Component.exports
 
 
 function jobList() {
-  var perpage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_1__config__["d" /* JOB_PREPAGE */];
+  var perpage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_1__config__["d" /* PERPAGE */];
   var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
 
   var url = 'api/jobs?include=user,company&perpage=' + perpage + '&page=' + page;
@@ -38775,6 +38775,9 @@ if (false) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__components_job_joblist___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_17__components_job_joblist__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_job_jobdetail__ = __webpack_require__(334);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__components_job_jobdetail___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_18__components_job_jobdetail__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_company_company_list__ = __webpack_require__(353);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__components_company_company_list___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_19__components_company_company_list__);
+
 
 
 
@@ -38813,11 +38816,14 @@ var routes = [{
     children: [{
       path: 'job/:id',
       name: 'job-detail',
-      component: __WEBPACK_IMPORTED_MODULE_18__components_job_jobdetail___default.a
+      component: __WEBPACK_IMPORTED_MODULE_18__components_job_jobdetail___default.a,
+      meta: { requiresAuth: true }
     }]
   }, {
     path: '/company',
-    name: 'company'
+    name: 'company',
+    component: __WEBPACK_IMPORTED_MODULE_19__components_company_company_list___default.a,
+    meta: { requiresAuth: true }
   }, {
     path: '/message'
   }, {
@@ -65429,7 +65435,7 @@ var INVALID = /[°"§%()\[\]\*{}=\\?´`'#<>|,;.:+_-]+/g;
       clearTimeout(this.t);
       this.t = setTimeout(function () {
         if (_this.currentValue !== '') {
-          Object(__WEBPACK_IMPORTED_MODULE_3_Api_company_js__["b" /* searchByName */])(_this.currentValue).then(function (response) {
+          Object(__WEBPACK_IMPORTED_MODULE_3_Api_company_js__["c" /* searchByName */])(_this.currentValue).then(function (response) {
             _this.searchResult = response.data;
           });
         } else {
@@ -65446,7 +65452,7 @@ var INVALID = /[°"§%()\[\]\*{}=\\?´`'#<>|,;.:+_-]+/g;
 
       this.spinnerShowFlag = true;
       var searchField = { 'name': wk };
-      Object(__WEBPACK_IMPORTED_MODULE_3_Api_company_js__["a" /* search */])(searchField).then(function (response) {
+      Object(__WEBPACK_IMPORTED_MODULE_3_Api_company_js__["b" /* search */])(searchField).then(function (response) {
         _this2.spinnerShowFlag = false;
         _this2.companies = response.data;
         if (_this2.companies.length) {
@@ -66770,11 +66776,14 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (immutable) */ __webpack_exports__["b"] = searchByName;
-/* harmony export (immutable) */ __webpack_exports__["a"] = search;
+/* harmony export (immutable) */ __webpack_exports__["c"] = searchByName;
+/* harmony export (immutable) */ __webpack_exports__["b"] = search;
 /* unused harmony export createCompany */
+/* harmony export (immutable) */ __webpack_exports__["a"] = companyList;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config__ = __webpack_require__(9);
+
 
 
 function searchByName(wk) {
@@ -66801,6 +66810,19 @@ function createCompany(data) {
   var url = 'api/companies';
 
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, data).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+function companyList() {
+  var perpage = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : __WEBPACK_IMPORTED_MODULE_1__config__["d" /* PERPAGE */];
+  var page = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 1;
+
+  var url = 'api/companies?perpage=' + perpage + '&page=' + page;
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.get(url).then(function (response) {
     return Promise.resolve(response.data);
   }).catch(function (error) {
     return Promise.reject(error.response.data);
@@ -70036,6 +70058,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -70055,7 +70079,7 @@ var render = function() {
     "div",
     { attrs: { id: "home" } },
     [
-      _c("transition", [_c("router-view")], 1),
+      _c("transition", [_c("keep-alive", [_c("router-view")], 1)], 1),
       _vm._v(" "),
       _c(
         "div",
@@ -70199,7 +70223,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#main .main_fixed_top[data-v-20b5c596] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  top: 0;\n  z-index: 100;\n}\n#main .main_fixed_top .job_header[data-v-20b5c596] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0.37rem 0;\n    background: #53CAC3;\n}\n#main .main_fixed_top .job_header .job_header_left[data-v-20b5c596] {\n      color: #FFF;\n      padding-left: .4rem;\n      font-size: .4rem;\n}\n#main .main_fixed_top .job_header .job_header_left span + span[data-v-20b5c596] {\n        margin-left: .3rem;\n}\n#main .main_fixed_top .job_header .job_header_icon[data-v-20b5c596] {\n      margin-right: .3rem;\n      position: relative;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_header .job_header_icon span[data-v-20b5c596] {\n        font-size: 0.48rem;\n        color: #fff;\n        margin-left: .6rem;\n}\n#main .main_fixed_top .job_header .job_header_icon b[data-v-20b5c596] {\n        display: block;\n        position: absolute;\n        width: 1px;\n        height: .48rem;\n        background: #fff;\n        margin: 0 .15rem;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        left: 1.2rem;\n}\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n    position: relative;\n    background: #fff;\n    border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n#main .main_fixed_top .job_nav ul[data-v-20b5c596] {\n      height: 1rem;\n      line-height: 1rem;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596] {\n        text-align: center;\n        color: #8D8D8D;\n        position: relative;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596]:after {\n          display: table;\n          content: '';\n          height: 60%;\n          border-right: 1px solid #E5E5E5;\n          position: absolute;\n          right: 0;\n          top: 50%;\n          -webkit-transform: translateY(-50%);\n                  transform: translateY(-50%);\n}\n#main .main_fixed_top .job_nav ul li.selected[data-v-20b5c596] {\n          color: #53CAC3;\n}\n#main .main_fixed_top .job_content[data-v-20b5c596] {\n    position: fixed;\n    top: 2.26rem;\n    bottom: 1.34rem;\n    width: 100%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper[data-v-20b5c596] {\n      height: 100%;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists[data-v-20b5c596] {\n        overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li[data-v-20b5c596] {\n          padding: 3% 6%;\n          background: #fff;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li + li[data-v-20b5c596] {\n            margin-top: 3%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a[data-v-20b5c596] {\n            display: block;\n            color: #808080;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4[data-v-20b5c596] {\n              display: -webkit-box;\n              display: -ms-flexbox;\n              display: flex;\n              -webkit-box-pack: justify;\n                  -ms-flex-pack: justify;\n                      justify-content: space-between;\n              font-weight: bold;\n              font-size: 0.4rem;\n              color: rgba(0, 0, 0, 0.8);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4 span[data-v-20b5c596] {\n                font-weight: 700;\n                color: #53CAC3;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p[data-v-20b5c596] {\n              margin-top: .15rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class^='icon-'][data-v-20b5c596], #main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class*=' icon-'][data-v-20b5c596] {\n                margin-right: .1rem;\n                margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p span[data-v-20b5c596]:nth-child(1) {\n                margin-left: 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.claim[data-v-20b5c596] {\n                color: rgba(0, 0, 0, 0.3);\n                padding: .15rem 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.claim span[data-v-20b5c596] {\n                  margin-right: 20px;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title[data-v-20b5c596] {\n                display: -webkit-box;\n                display: -ms-flexbox;\n                display: flex;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title span[data-v-20b5c596] {\n                  color: rgba(0, 0, 0, 0.5);\n                  height: .8rem;\n                  line-height: .8rem;\n                  margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title img[data-v-20b5c596] {\n                  width: .8rem;\n                  height: .8rem;\n                  border-radius: 50%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .mint-spinner[data-v-20b5c596] {\n          height: 45px;\n          line-height: 45px;\n          text-align: center;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading[data-v-20b5c596] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          color: rgba(0, 0, 0, 0.3);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading span[data-v-20b5c596] {\n            margin-right: 8px;\n}\n", ""]);
+exports.push([module.i, "\n#main .main_fixed_top[data-v-20b5c596] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  top: 0;\n  z-index: 100;\n}\n#main .main_fixed_top .job_header[data-v-20b5c596] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: justify;\n        -ms-flex-pack: justify;\n            justify-content: space-between;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    padding: 0.37rem 0;\n    background: #53CAC3;\n}\n#main .main_fixed_top .job_header .job_header_left[data-v-20b5c596] {\n      color: #FFF;\n      padding-left: .4rem;\n      font-size: .4rem;\n}\n#main .main_fixed_top .job_header .job_header_left span + span[data-v-20b5c596] {\n        margin-left: .3rem;\n}\n#main .main_fixed_top .job_header .job_header_icon[data-v-20b5c596] {\n      margin-right: .3rem;\n      position: relative;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_header .job_header_icon span[data-v-20b5c596] {\n        font-size: 0.48rem;\n        color: #fff;\n        margin-left: .6rem;\n}\n#main .main_fixed_top .job_header .job_header_icon b[data-v-20b5c596] {\n        display: block;\n        position: absolute;\n        width: 1px;\n        height: .48rem;\n        background: #fff;\n        margin: 0 .15rem;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        left: 1.2rem;\n}\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n    position: relative;\n    background: #fff;\n    border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n    -webkit-box-sizing: border-box;\n            box-sizing: border-box;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n#main .main_fixed_top .job_nav[data-v-20b5c596] {\n        border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n#main .main_fixed_top .job_nav ul[data-v-20b5c596] {\n      height: 1rem;\n      line-height: 1rem;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596] {\n        text-align: center;\n        color: #8D8D8D;\n        position: relative;\n}\n#main .main_fixed_top .job_nav ul li[data-v-20b5c596]:after {\n          display: table;\n          content: '';\n          height: 60%;\n          border-right: 1px solid #E5E5E5;\n          position: absolute;\n          right: 0;\n          top: 50%;\n          -webkit-transform: translateY(-50%);\n                  transform: translateY(-50%);\n}\n#main .main_fixed_top .job_nav ul li.selected[data-v-20b5c596] {\n          color: #53CAC3;\n}\n#main .main_fixed_top .job_content[data-v-20b5c596] {\n    position: fixed;\n    top: 2.26rem;\n    bottom: 1.34rem;\n    width: 100%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper[data-v-20b5c596] {\n      height: 100%;\n      overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists[data-v-20b5c596] {\n        overflow: hidden;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li[data-v-20b5c596] {\n          padding: 3% 6%;\n          background: #fff;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li + li[data-v-20b5c596] {\n            margin-top: 3%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a[data-v-20b5c596] {\n            display: block;\n            color: #808080;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4[data-v-20b5c596] {\n              display: -webkit-box;\n              display: -ms-flexbox;\n              display: flex;\n              -webkit-box-pack: justify;\n                  -ms-flex-pack: justify;\n                      justify-content: space-between;\n              font-weight: bold;\n              font-size: 0.4rem;\n              color: rgba(0, 0, 0, 0.8);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a h4 span[data-v-20b5c596] {\n                font-weight: 700;\n                color: #53CAC3;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p[data-v-20b5c596] {\n              margin-top: .15rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class^='icon-'][data-v-20b5c596], #main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p [class*=' icon-'][data-v-20b5c596] {\n                margin-right: .1rem;\n                margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p span[data-v-20b5c596]:nth-child(1) {\n                margin-left: 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.claim[data-v-20b5c596] {\n                color: rgba(0, 0, 0, 0.3);\n                padding: .15rem 0;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title[data-v-20b5c596] {\n                display: -webkit-box;\n                display: -ms-flexbox;\n                display: flex;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title span[data-v-20b5c596] {\n                  color: rgba(0, 0, 0, 0.5);\n                  height: .8rem;\n                  line-height: .8rem;\n                  margin-left: .3rem;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists li a p.title img[data-v-20b5c596] {\n                  width: .8rem;\n                  height: .8rem;\n                  border-radius: 50%;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .mint-spinner[data-v-20b5c596] {\n          height: 45px;\n          line-height: 45px;\n          text-align: center;\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading[data-v-20b5c596] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-pack: center;\n              -ms-flex-pack: center;\n                  justify-content: center;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          color: rgba(0, 0, 0, 0.3);\n}\n#main .main_fixed_top .job_content .job-lists-wrapper .job_lists .page-infinite-loading span[data-v-20b5c596] {\n            margin-right: 8px;\n}\n", ""]);
 
 // exports
 
@@ -70397,7 +70421,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       }
       this.page++;
       this.loadings = true;
-      Object(__WEBPACK_IMPORTED_MODULE_0_Api_job__["c" /* jobList */])(__WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* JOB_PREPAGE */], this.page).then(function (res) {
+      Object(__WEBPACK_IMPORTED_MODULE_0_Api_job__["c" /* jobList */])(__WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* PERPAGE */], this.page).then(function (res) {
         _this2.loadings = false;
         if (res.code === __WEBPACK_IMPORTED_MODULE_3_Api_config__["a" /* ERR_OK */]) {
           _this2.jobs = _this2.jobs.concat(res.data);
@@ -70406,7 +70430,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     _checkMore: function _checkMore(pagination) {
-      if (this.page >= pagination.total_pages || this.page * __WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* JOB_PREPAGE */] >= pagination.total) {
+      if (this.page >= pagination.total_pages || this.page * __WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* PERPAGE */] >= pagination.total) {
         this.hasMore = false;
       }
     }
@@ -71094,8 +71118,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       },
       jobDetail: {},
       y: 0,
-      tags: ['领导nice', '公司气氛好', '下午茶', '人性化管理', '美女如云', '帅哥如云'],
-      people: ['0-20人', '20-99人', '100-499人', '500-900人', '1000-9999人', '10000人以上']
+      tags: ['领导nice', '公司气氛好', '下午茶', '人性化管理', '美女如云', '帅哥如云']
     };
   },
   created: function created() {
@@ -71135,7 +71158,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         this.$refs.header.style.borderBottom = '';
       } else if (pos.y >= -100) {
         this.$refs.topName.style.opacity = pos.y * -1 * 0.01;
-        this.$refs.header.style.borderBottom = '1px solid rgba(0, 0, 0, ' + pos.y * -1 * 0.003 + ')';
+        this.$refs.header.style.borderBottom = '1px solid rgba(220, 220, 220, ' + pos.y * -1 * 0.01 + ')';
       }
     },
 
@@ -71391,9 +71414,7 @@ var render = function() {
                                       _vm._v(
                                         _vm._s(
                                           "不需要融资・" +
-                                            _vm.people[
-                                              _vm.jobDetail.company.data.people
-                                            ] +
+                                            _vm.jobDetail.company.data.people +
                                             "・" +
                                             _vm.jobDetail.company.data
                                               .industry_str
@@ -82407,6 +82428,565 @@ exports.push([module.i, "/* Cell Component */\n/* Header Component */\n/* Button
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 347 */,
+/* 348 */,
+/* 349 */,
+/* 350 */,
+/* 351 */,
+/* 352 */,
+/* 353 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(354)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(356)
+/* template */
+var __vue_template__ = __webpack_require__(357)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-a6865378"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\company\\company-list.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-a6865378", Component.options)
+  } else {
+    hotAPI.reload("data-v-a6865378", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 354 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(355);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("30e4090e", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a6865378\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./company-list.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-a6865378\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./company-list.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 355 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.company-list .top[data-v-a6865378] {\n  position: fixed;\n  top: 0;\n  width: 100%;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.company-list .top[data-v-a6865378] {\n      border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.company-list .top[data-v-a6865378] {\n      border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.company-list .top .head[data-v-a6865378] {\n    position: relative;\n    font-size: 0.48rem;\n    padding: 0.37rem 0;\n    background: #53CAC3;\n    text-align: center;\n    color: #FFFFFF;\n}\n.company-list .top .head .icon[data-v-a6865378] {\n      position: absolute;\n      right: 10px;\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n}\n.company-list .top .head-tab[data-v-a6865378] {\n    background: #fff;\n    color: #8D8D8D;\n    position: relative;\n}\n.company-list .top .head-tab ul[data-v-a6865378] {\n      list-style: none;\n      padding: 0.37037rem 0;\n}\n.company-list .top .head-tab ul li[data-v-a6865378] {\n        float: left;\n        width: 33.3%;\n        -webkit-box-sizing: border-box;\n                box-sizing: border-box;\n        text-align: center;\n        border-right: 1px solid #E5E5E5;\n}\n.company-list .top .head-tab ul li span[data-v-a6865378] {\n          vertical-align: middle;\n}\n.company-list .content[data-v-a6865378] {\n  position: fixed;\n  top: 2.32rem;\n  width: 100%;\n  bottom: 1.30rem;\n}\n.company-list .content .scroll-wrapper[data-v-a6865378] {\n    height: 100%;\n    overflow: hidden;\n}\n.company-list .content .scroll-wrapper li[data-v-a6865378] {\n      background: #fff;\n      padding: 0 6%;\n      margin-bottom: 5px;\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper[data-v-a6865378] {\n        background: #fff;\n        border-bottom: 1px solid rgba(0, 0, 0, 0.3);\n        padding: 20px 0;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.company-list .content .scroll-wrapper li .company-info-wrapper[data-v-a6865378] {\n            border-bottom: 0.5px solid rgba(0, 0, 0, 0.3);\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.company-list .content .scroll-wrapper li .company-info-wrapper[data-v-a6865378] {\n            border-bottom: 0.33333px solid rgba(0, 0, 0, 0.3);\n}\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .media[data-v-a6865378] {\n          display: -webkit-box;\n          display: -ms-flexbox;\n          display: flex;\n          -webkit-box-align: center;\n              -ms-flex-align: center;\n                  align-items: center;\n          margin-bottom: 20px;\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .media img[data-v-a6865378] {\n            margin-right: 10px;\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .media .media-body[data-v-a6865378] {\n            display: -webkit-box;\n            display: -ms-flexbox;\n            display: flex;\n            -webkit-box-pack: justify;\n                -ms-flex-pack: justify;\n                    justify-content: space-between;\n            -webkit-box-align: center;\n                -ms-flex-align: center;\n                    align-items: center;\n            -webkit-box-flex: 1;\n                -ms-flex: 1;\n                    flex: 1;\n            line-height: .5rem;\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .media .media-body .company .name[data-v-a6865378] {\n              font-weight: bold;\n              font-size: 0.4rem;\n              color: rgba(0, 0, 0, 0.8);\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .media .media-body .company .address[data-v-a6865378] {\n              color: rgba(0, 0, 0, 0.5);\n}\n.company-list .content .scroll-wrapper li .company-info-wrapper .tag span[data-v-a6865378] {\n          color: rgba(0, 0, 0, 0.3);\n          background: rgba(216, 216, 216, 0.1);\n          border-radius: .1rem;\n          padding: 2px 5px;\n          margin-right: 10px;\n}\n.company-list .content .scroll-wrapper li .option-info[data-v-a6865378] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: justify;\n            -ms-flex-pack: justify;\n                justify-content: space-between;\n        font-size: .3rem;\n        color: rgba(0, 0, 0, 0.3);\n        padding: 20px 0;\n}\n.company-list .content .scroll-wrapper li .option-info .theme-color[data-v-a6865378] {\n          color: #53CAC3;\n}\n.company-list .content .scroll-wrapper .mint-spinner[data-v-a6865378] {\n      height: 45px;\n      line-height: 45px;\n      text-align: center;\n}\n.company-list .content .scroll-wrapper .mint-spinner.page-infinite-loading[data-v-a6865378] {\n        display: -webkit-box;\n        display: -ms-flexbox;\n        display: flex;\n        -webkit-box-pack: center;\n            -ms-flex-pack: center;\n                justify-content: center;\n        -webkit-box-align: center;\n            -ms-flex-align: center;\n                align-items: center;\n        color: rgba(0, 0, 0, 0.3);\n}\n.company-list .content .scroll-wrapper .mint-spinner.page-infinite-loading span[data-v-a6865378] {\n          margin-right: 8px;\n}\n.company-list .content .scroll-wrapper .no-result-wrapper[data-v-a6865378] {\n      position: absolute;\n      width: 100%;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 356 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_scroll_scroll__ = __webpack_require__(16);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_Base_scroll_scroll___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_Base_scroll_scroll__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_no_result_no_result__ = __webpack_require__(358);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_Base_no_result_no_result___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_Base_no_result_no_result__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_Api_company__ = __webpack_require__(285);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_Api_config__ = __webpack_require__(9);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      titleData: [{ 'title': '融资' }, { 'title': '规模' }, { 'title': '行业' }],
+      people: ['0-20人', '20-99人', '100-499人', '500-900人', '1000-9999人', '10000人以上'],
+      loading: false,
+      loadings: false,
+      page: 1,
+      hasMore: true,
+      companies: []
+    };
+  },
+  created: function created() {
+    this.request();
+  },
+
+  methods: {
+    request: function request() {
+      var _this = this;
+
+      this.loading = true;
+      Object(__WEBPACK_IMPORTED_MODULE_2_Api_company__["a" /* companyList */])().then(function (response) {
+        _this.loading = false;
+        _this.companies = response.data;
+        _this.$nextTick(function () {
+          _this.$refs.scroll.refresh();
+        });
+      }).catch(function () {
+        _this.loading = false;
+      });
+    },
+    requestMore: function requestMore() {
+      var _this2 = this;
+
+      if (!this.hasMore) {
+        return;
+      }
+      this.page++;
+      this.loadings = true;
+      Object(__WEBPACK_IMPORTED_MODULE_2_Api_company__["a" /* companyList */])(__WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* PERPAGE */], this.page).then(function (res) {
+        _this2.loadings = false;
+        if (res.code === __WEBPACK_IMPORTED_MODULE_3_Api_config__["a" /* ERR_OK */]) {
+          _this2.companies = _this2.companies.concat(res.data);
+          _this2._checkMore(res.meta.pagination);
+        }
+      });
+    },
+    _checkMore: function _checkMore(pagination) {
+      if (this.page >= pagination.total_pages || this.page * __WEBPACK_IMPORTED_MODULE_3_Api_config__["d" /* PERPAGE */] >= pagination.total) {
+        this.hasMore = false;
+      }
+    }
+  },
+  components: {
+    scroll: __WEBPACK_IMPORTED_MODULE_0_Base_scroll_scroll___default.a,
+    noResult: __WEBPACK_IMPORTED_MODULE_1_Base_no_result_no_result___default.a
+  }
+});
+
+/***/ }),
+/* 357 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "company-list" }, [
+    _c("div", { staticClass: "top" }, [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { ref: "wrapper", staticClass: "head-tab" }, [
+        _c(
+          "ul",
+          { staticClass: "clear" },
+          _vm._l(_vm.titleData, function(item, index) {
+            return _c("li", { on: { click: function($event) {} } }, [
+              _vm._v(_vm._s(item.title)),
+              _c("span", { staticClass: "icon-down" })
+            ])
+          })
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c(
+      "div",
+      { staticClass: "content" },
+      [
+        _c(
+          "scroll",
+          {
+            ref: "scroll",
+            staticClass: "scroll-wrapper",
+            attrs: { data: _vm.companies, pullDown: true, pullUp: true },
+            on: { scrollTop: _vm.request, scrollToEnd: _vm.requestMore }
+          },
+          [
+            _c(
+              "ul",
+              [
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.loading,
+                        expression: "loading"
+                      }
+                    ],
+                    staticClass: "mint-spinner"
+                  },
+                  [
+                    _c("mint-spinner", {
+                      attrs: { color: "#53CAC3", type: "triple-bounce" }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.companies, function(item) {
+                  return _c(
+                    "router-link",
+                    {
+                      key: item.id,
+                      attrs: { tag: "li", to: { path: /comdetail/ + item.id } }
+                    },
+                    [
+                      _c("div", { staticClass: "company-info-wrapper" }, [
+                        _c("div", { staticClass: "media" }, [
+                          _c("img", {
+                            staticClass: "media-figure",
+                            attrs: {
+                              src: "images/company.jpg",
+                              width: "40",
+                              alt: ""
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "media-body" }, [
+                            _c("div", { staticClass: "company" }, [
+                              _c("span", { staticClass: "name" }, [
+                                _vm._v(_vm._s(item.name))
+                              ]),
+                              _vm._v(" "),
+                              _c("p", { staticClass: "address" }, [
+                                _vm._v("广州市天河区林和")
+                              ])
+                            ])
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "tag" }, [
+                          _c("span", [_vm._v("A轮")]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(item.people))]),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(item.industry_str))])
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "option-info" }, [
+                        _c("div", [
+                          _vm._v("热招: "),
+                          _c("span", { staticClass: "theme-color" }, [
+                            _vm._v("技术培训生")
+                          ]),
+                          _vm._v(" 等112个职位")
+                        ]),
+                        _vm._v(" "),
+                        _c("span", [_c("i", { staticClass: "icon-right" })])
+                      ])
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    directives: [
+                      {
+                        name: "show",
+                        rawName: "v-show",
+                        value: _vm.loadings,
+                        expression: "loadings"
+                      }
+                    ],
+                    staticClass: "page-infinite-loading mint-spinner"
+                  },
+                  [
+                    _c("mint-spinner", { attrs: { type: "fading-circle" } }),
+                    _vm._v("正在加载更多的数据...\n                ")
+                  ],
+                  1
+                )
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: !_vm.hasMore && !_vm.companies.length,
+                    expression: "!hasMore && !companies.length"
+                  }
+                ],
+                staticClass: "no-result-wrapper"
+              },
+              [_c("no-result", { attrs: { title: "抱歉，暂无搜索结果" } })],
+              1
+            )
+          ]
+        )
+      ],
+      1
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "head" }, [
+      _c("h3", [_vm._v("公司")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "icon" }, [
+        _c("span", { staticClass: "icon-sousuo" })
+      ])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-a6865378", module.exports)
+  }
+}
+
+/***/ }),
+/* 358 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(359)
+}
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(361)
+/* template */
+var __vue_template__ = __webpack_require__(362)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-4e354082"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources\\assets\\js\\components\\base\\no-result\\no-result.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4e354082", Component.options)
+  } else {
+    hotAPI.reload("data-v-4e354082", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 359 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(360);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("29591625", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e354082\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./no-result.vue", function() {
+     var newContent = require("!!../../../../../../node_modules/css-loader/index.js!../../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4e354082\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0&bustCache!./no-result.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 360 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(1)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.no-result[data-v-4e354082] {\n  text-align: center;\n}\n.no-result .no-result-icon[data-v-4e354082] {\n    width: 150px;\n    height: 150px;\n    margin: 0 auto;\n    background: url(" + __webpack_require__(363) + ");\n    background-size: 150px 150px;\n}\n.no-result .no-result-text[data-v-4e354082] {\n    margin-top: 30px;\n    font-size: .3rem;\n    color: rgba(0, 0, 0, 0.3);\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 361 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    title: {
+      type: String,
+      default: ''
+    }
+  }
+});
+
+/***/ }),
+/* 362 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "no-result" }, [
+    _c("div", { staticClass: "no-result-icon" }),
+    _vm._v(" "),
+    _c("p", { staticClass: "no-result-text" }, [_vm._v(_vm._s(_vm.title))])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4e354082", module.exports)
+  }
+}
+
+/***/ }),
+/* 363 */
+/***/ (function(module, exports) {
+
+module.exports = "/images/icon-page-error.png?5fff1987fed694b101f2fc3a413d33eb";
 
 /***/ })
 /******/ ]);

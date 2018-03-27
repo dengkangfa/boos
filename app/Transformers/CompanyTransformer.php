@@ -21,6 +21,7 @@ class CompanyTransformer extends TransformerAbstract
 
     public function transform(Company $company)
     {
+        $peopleArr = ['0-20人', '20-99人', '100-499人', '500-900人', '1000-9999人', '10000人以上'];
         if ($this->simple) {
             return [
                 'abbreviation' => $company->abbreviation,
@@ -34,7 +35,7 @@ class CompanyTransformer extends TransformerAbstract
                 'industry_str' => $company->industry_str,
                 'industry_code' => $company->industry_code,
                 'stock' => $company->stock,
-                'people' => (int) $company->people,
+                'people' => $peopleArr[$company->people],
                 'detial' => $company->detial,
                 'boss_count' => $company->boss()->count(),
                 'created_at' => $company->created_at->toDateTimeString(),

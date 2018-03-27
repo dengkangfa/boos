@@ -1,7 +1,9 @@
 <template>
     <div id="home">
         <transition>
-            <router-view></router-view>
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
         </transition>
         <!--组件的应用-->
         <div class="navbar flex_parent">

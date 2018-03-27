@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {JOB_PREPAGE} from './config'
+import {PERPAGE} from './config'
 
-export function jobList(perpage = JOB_PREPAGE, page = 1) {
+export function jobList(perpage = PERPAGE, page = 1) {
   const url = `api/jobs?include=user,company&perpage=${perpage}&page=${page}`
 
   return axios.get(url).then(response => {

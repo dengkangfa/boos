@@ -21,6 +21,7 @@ import postJob from '../components/info/boss/post-job/post-job'
 import home from '../components/job/home'
 import jobList from '../components/job/joblist'
 import jobDetail from '../components/job/jobdetail'
+import companyList from '../components/company/company-list'
 
 Vue.use(VueRouter)
 
@@ -39,13 +40,16 @@ let routes = [
           {
             path: 'job/:id',
             name: 'job-detail',
-            component: jobDetail
+            component: jobDetail,
+            meta: { requiresAuth: true },
           }
         ]
       },
       {
         path: '/company',
-        name: 'company'
+        name: 'company',
+        component: companyList,
+        meta: { requiresAuth: true },
       },
       {
         path: '/message',

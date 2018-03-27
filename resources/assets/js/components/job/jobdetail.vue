@@ -63,7 +63,7 @@
                                         <div class="media-body">
                                             <div class="info">
                                                 <p class="company-name">{{ jobDetail.company.data.name }}</p>
-                                                <p class="company-info">{{ '不需要融资・' + people[jobDetail.company.data.people] + '・' + jobDetail.company.data.industry_str }}</p>
+                                                <p class="company-info">{{ '不需要融资・' + jobDetail.company.data.people + '・' + jobDetail.company.data.industry_str }}</p>
                                             </div>
                                             <i class="icon icon-right"></i>
                                         </div>
@@ -124,8 +124,7 @@
         },
         jobDetail: {},
         y: 0,
-        tags: ['领导nice', '公司气氛好', '下午茶', '人性化管理', '美女如云', '帅哥如云'],
-        people: ['0-20人', '20-99人', '100-499人', '500-900人', '1000-9999人', '10000人以上']
+        tags: ['领导nice', '公司气氛好', '下午茶', '人性化管理', '美女如云', '帅哥如云']
       }
     },
     created() {
@@ -161,7 +160,7 @@
           this.$refs.header.style.borderBottom = ''
         } else if (pos.y >= -100) {
           this.$refs.topName.style.opacity = pos.y * -1 * 0.01
-          this.$refs.header.style.borderBottom = `1px solid rgba(0, 0, 0, ${pos.y * -1 * 0.003})`
+          this.$refs.header.style.borderBottom = `1px solid rgba(220, 220, 220, ${pos.y * -1 * 0.01})`
         }
       },
       // 获取当前位置经纬度

@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {PERPAGE} from './config'
 
 export function searchByName(wk) {
   const url = 'api/companies/search/name/like?wk=' + wk
@@ -24,6 +25,16 @@ export function createCompany(data) {
   let url = 'api/companies'
 
   return axios.post(url, data).then(response => {
+    return Promise.resolve(response.data)
+  }).catch(error => {
+    return Promise.reject(error.response.data)
+  })
+}
+
+export function companyList(perpage = PERPAGE, page = 1) {
+  let url = `api/companies?perpage=${perpage}&page=${page}`
+
+  return axios.get(url).then(response => {
     return Promise.resolve(response.data)
   }).catch(error => {
     return Promise.reject(error.response.data)

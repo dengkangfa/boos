@@ -71,6 +71,8 @@ Route::namespace('Api')->group(function () {
     Route::delete('project_experiences/{projectExperience}', 'ProjectExperiencesController@destroy');
     Route::get('me/project_experiences', 'ProjectExperiencesController@currentUserAllProjectExperience');
 
+    Route::get('companies', 'CompaniesController@index')
+        ->name('api.companies.index');
     Route::post('companies', 'CompaniesController@store')
         ->name('api.companies.store');
     Route::get('companies/search/{field}/like', 'CompaniesController@searchWithLike')
