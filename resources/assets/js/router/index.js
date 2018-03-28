@@ -23,6 +23,7 @@ import jobList from '../components/job/joblist'
 import jobDetail from '../components/job/jobdetail'
 import companyList from '../components/company/company-list'
 import myInfo from '../components/aboutme/myinfo'
+import message from '../components/message/message'
 
 Vue.use(VueRouter)
 
@@ -54,6 +55,13 @@ let routes = [
       },
       {
         path: '/message',
+        name: 'message',
+        component: message,
+        meta: { requiresAuth: true }
+      },
+      {
+        path: '/meschatDetail',
+        name: 'meschatDetail'
       },
       {
         path: '/aboutme',
