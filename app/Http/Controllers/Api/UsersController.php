@@ -9,6 +9,7 @@ use App\Transformers\UserTransformer;
 use Auth;
 use DB;
 use Image;
+use Ramsey\Uuid\Uuid;
 use Spatie\Permission\Models\Role;
 use Validator;
 use Illuminate\Http\Request;
@@ -160,5 +161,11 @@ class UsersController extends ApiController
         $user = \Auth::user();
         $user->syncRoles($request->role);
         return $this->respondWithArray(['roles' => $user->getRoleNames(), 'success' => true, 'code' => 0]);
+    }
+
+    public function contacts()
+    {
+        $user = \Auth::user();
+        return $this->respondWithCollection($user->contacts, new UserTransformer(true));
     }
 }

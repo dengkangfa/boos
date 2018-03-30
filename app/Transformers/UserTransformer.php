@@ -19,11 +19,16 @@ class UserTransformer extends TransformerAbstract
     public function transform(User $user)
     {
         if ($this->simple) {
-            return [
+            $result = [
+                'id'         => $user->id,
                 'avatar'     => $user->avatar,
                 'name'       => $user->name,
                 'pos_name'   => $user->pos_name
             ];
+            if (isset($user->pivot)) {
+                $result['chat_uuid'] = $user->pivot->chat_uuid;
+            }
+            return $result;
         } else {
             return [
                 'id'         => $user->id,

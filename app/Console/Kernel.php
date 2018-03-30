@@ -13,7 +13,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        Commands\GenerateToken::class
+        Commands\GenerateToken::class,
+        Commands\SendChatMessage::class
     ];
 
     /**

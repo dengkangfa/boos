@@ -9,19 +9,25 @@
                 <div class="meschat" v-show="currentIndex === 0">
                     <h4 class="title">联系人<span>查看新开聊(0)</span></h4>
                     <div class="chatlist">
-                        <ul>
-                            <router-link tag="li" :to="{path : 'meschatDetail'}" class="meschat-item">
+                        <div v-show="loading" class="mint-spinner">
+                            <mint-spinner color="#53CAC3" type="triple-bounce"></mint-spinner>
+                        </div>
+                        <ul v-show="contactList.length">
+                            <router-link tag="li" v-for="contact in contactList" @click.native="currentContact = contact" :key="contact.chat_uuid" :to="{name: 'meschatDetail', params: {'chat_uuid': contact.chat_uuid}}" class="meschat-item">
                                 <div class="info-left">
-                                    <img src="images/default.png" width="45" height="45">
+                                    <img :src="contact.avatar" width="45" height="45">
                                 </div>
                                 <div class="info-right">
-                                    <p class="user-name"><span class="name">道林</span><span class="time">昨天</span></p>
-                                    <p class="company-info"><span>分子遗产</span> | <span>HRM</span></p>
+                                    <p class="user-name"><span class="name">{{ contact.name }}</span><span class="time">昨天</span></p>
+                                    <p class="company-info"><span>{{ contact.company.data.abbreviation }}</span> | <span>{{ contact.pos_name }}</span></p>
                                     <p class="last-message">显示最后一条消息内容</p>
                                 </div>
                             </router-link>
                         </ul>
                     </div>
+                    <!--<keep-alive>-->
+                        <router-view :currentContact="currentContact"></router-view>
+                    <!--</keep-alive>-->
                 </div>
                 <div class="info-list" v-show="currentIndex === 1">
                     <div class="inter-header">
@@ -39,13 +45,14 @@
 
 <script type="text/ecmascript-6">
   import switches from 'Base/switches/switches'
+  import {contactList} from 'Api/communicate'
 
   export default {
     data() {
       return {
         switches: [{'name': '聊天'}, {'name': '互动'}],
         // 2、互动切换
-        listBar:[
+        listBar: [
           {
             title: '对我感兴趣',
             isHad: true
@@ -59,8 +66,18 @@
             isHad: false
           }
         ],
-        currentIndex: 0
+        contactList: [],
+        currentContact: null,
+        currentIndex: 0,
+        loading: false
       }
+    },
+    created() {
+      this.loading = true
+      contactList().then(response => {
+        this.loading = false
+        this.contactList = response.data
+      })
     },
     methods: {
       switchItem(index) {
@@ -68,7 +85,7 @@
       },
       toggleTab(item) {
         if (!item.isHad) {
-          this.listBar.filter(value=>{
+          this.listBar.filter(value => {
             value.isHad = false
           })
           item.isHad = true
@@ -141,6 +158,10 @@
                                 color: $color-text-l
                             .last-message
                                 color: $color-text-d
+                .mint-spinner
+                    height: 45px
+                    line-height: 45px
+                    text-align: center
         .info-list
             .inter-header
                 height: 1rem

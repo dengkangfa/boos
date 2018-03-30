@@ -4,6 +4,7 @@ import * as types from './../mutation-types'
 export default {
   state: {
     authenticated: false,
+    id: '',
     roles: [],
     name: '',
     avatar: '',
@@ -19,6 +20,7 @@ export default {
   mutations: {
     [types.SET_AUTH_USER](state, payload) {
       state.authenticated = true
+      state.id = payload.user.id
       state.roles = payload.user.roles
       state.avatar = payload.user.avatar
       state.email = payload.user.email

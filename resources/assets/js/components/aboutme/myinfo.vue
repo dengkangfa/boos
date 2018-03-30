@@ -2,7 +2,7 @@
     <div class="my-info-wrapper">
         <div class="top-tool">
             <span><i class="icon-saomiao"></i></span>
-            <span><i class="icon-shezhi"></i></span>
+            <span @click="$refs.setting.show()"><i class="icon-shezhi"></i></span>
         </div>
         <scroll class="my-info">
             <main>
@@ -85,12 +85,14 @@
                 </div>
             </main>
         </scroll>
+        <setting ref="setting"></setting>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex'
   import scroll from 'Base/scroll/scroll'
+  import setting from '../setting/setting'
 
   export default {
     created() {
@@ -105,7 +107,8 @@
       })
     },
     components: {
-      scroll
+      scroll,
+      setting
     }
   }
 </script>

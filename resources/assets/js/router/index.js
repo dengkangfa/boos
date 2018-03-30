@@ -24,6 +24,7 @@ import jobDetail from '../components/job/jobdetail'
 import companyList from '../components/company/company-list'
 import myInfo from '../components/aboutme/myinfo'
 import message from '../components/message/message'
+import meschatDetail from '../components/message/meschat-detail'
 
 Vue.use(VueRouter)
 
@@ -43,7 +44,7 @@ let routes = [
             path: 'job/:id',
             name: 'job-detail',
             component: jobDetail,
-            meta: { requiresAuth: true },
+            meta: { requiresAuth: true }
           }
         ]
       },
@@ -57,11 +58,15 @@ let routes = [
         path: '/message',
         name: 'message',
         component: message,
-        meta: { requiresAuth: true }
-      },
-      {
-        path: '/meschatDetail',
-        name: 'meschatDetail'
+        meta: { requiresAuth: true },
+        children: [
+          {
+            path: ':chat_uuid',
+            name: 'meschatDetail',
+            component: meschatDetail,
+            meta: { requiresAuth: true }
+          }
+        ]
       },
       {
         path: '/aboutme',

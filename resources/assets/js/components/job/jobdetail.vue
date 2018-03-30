@@ -1,16 +1,21 @@
 <template>
     <transition name="horizontal-slide">
         <div class="job-detail-wrapper">
-            <div v-if="job.name || jobDetail.name">
-                <div class="job-detail-header" ref="header">
-                    <span class="job-detail-header-left" @click="$router.back()"><i class="icon-left"></i></span>
-                    <p style="opacity: 0" ref="topName">{{ topName }}</p>
-                    <div class="job-detail-header-right">
-                        <span><i class="icon-star-empty"></i></span>
-                        <span><i class="icon-warning-outline"></i></span>
-                        <span><i class="icon-fenxiang-angle"></i></span>
-                    </div>
+            <div class="job-detail-header" ref="header">
+                <span class="job-detail-header-left" @click="$router.back()"><i class="icon-left"></i></span>
+                <p style="opacity: 0" ref="topName">{{ topName }}</p>
+                <div class="job-detail-header-right">
+                    <span><i class="icon-star-empty"></i></span>
+                    <span><i class="icon-warning-outline"></i></span>
+                    <span><i class="icon-fenxiang-angle"></i></span>
                 </div>
+            </div>
+            <div v-if="!job.name && !jobDetail.name">
+                <div class="mint-spinner loading-all">
+                    <mint-spinner color="#53CAC3" type="triple-bounce"></mint-spinner>
+                </div>
+            </div>
+            <div v-else>
                 <div class="main">
                     <scroll :data="jobDetail" class="scroll-wrapper" :probeType="3" :listenScroll="true" @scroll="scrollEvent">
                         <div style="overflow: hidden">
@@ -93,10 +98,9 @@
                     </scroll>
                 </div>
                 <div class="theme-footer-button">
-                    <div @click="">立即沟通</div>
+                    <div @click="communicate">立即沟通</div>
                 </div>
             </div>
-            <div v-else></div>
         </div>
     </transition>
 </template>
@@ -105,6 +109,7 @@
   import scroll from 'Base/scroll/scroll'
   import { lazyAMapApiLoaderInstance } from 'vue-amap'
   import {job} from 'Api/job'
+  import {createdChat} from 'Api/communicate'
 
   export default {
     props: {
@@ -188,7 +193,19 @@
             }
           })
         })
-      }
+      },
+      communicate() {
+        createdChat({'user_id': this.jobDetail.user.data.id, 'job_id': this.jobDetail.id}).then(response => {
+          this.$router.push({name: 'meschatDetail', params: {'chat_uuid': response.data.uuid}})
+          let data = {
+            'name': this.jobDetail.user.data.name,
+            'avatar': this.jobDetail.user.data.avatar,
+            'pos_name': this.jobDetail.user.data.pos_name,
+            'company_name': this.jobDetail.company.data.abbreviation
+          }
+          this.$store.commit({type: 'SET_CONTACT', data})
+        })
+      },
     },
     components: {
       scroll
@@ -335,5 +352,7 @@
         height: 45px
         line-height: 45px
         text-align: center
+        .loading-all
+            z-index: 50
 
 </style>

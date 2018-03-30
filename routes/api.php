@@ -49,6 +49,7 @@ Route::namespace('Api')->group(function () {
     Route::patch('user/advantage', 'UsersController@updateAdvantage');
     Route::patch('user/homepages', 'UsersController@updateHomepage');
     Route::patch('user/role', 'UsersController@updateRole');
+    Route::get('users/contacts', 'UsersController@contacts');
 
     Route::get('me/education_info', 'EducationInfoController@currentUserFirstEducation');
     Route::get('me/education_infos', 'EducationInfoController@currentUserAllEducation');
@@ -89,5 +90,15 @@ Route::namespace('Api')->group(function () {
         ->name('api.jobs.index');
     Route::get('jobs/{job}', 'JobController@show')
         ->name('api.jobs.show');
+    
+    Route::post('chats', 'ChatsController@store')
+        ->name('api.chats.store');
+    Route::get('chats/{uuid}', 'ChatsController@show')
+        ->name('api.chats.show');
+    Route::post('chats/{uuid}/messages', 'ChatsController@storeMessages')
+        ->name('api.chats.messages.store');
+
+//    Route::get('contacts/{uuid}', 'ContactsController@show')
+//        ->name('api.contacts.show');
 });
 

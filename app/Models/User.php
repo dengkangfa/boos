@@ -11,7 +11,7 @@ use Laravel\Passport\HasApiTokens;
 use phpseclib\Crypt\Hash;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 
-class User extends Authenticatable implements JWTSubject
+class User extends Authenticatable
 {
     use HasApiTokens, Notifiable, HasRoles, LastActivedAtHelper;
 
@@ -68,6 +68,12 @@ class User extends Authenticatable implements JWTSubject
         return $this->hasMany(Job::class);
     }
 
+    // 联系人
+    public function contacts()
+    {
+        return $this->belongsToMany($this, 'contacts', 'user_id', 'contact_id')->withPivot('chat_uuid')->withTimestamps();
+    }
+
     public function isAuthorOf($model)
     {
         var_dump($model->user_id);
@@ -120,25 +126,5 @@ class User extends Authenticatable implements JWTSubject
         }
         return true;
         return Hash::check($password, $this->getAuthPassword());
-    }
-
-    /**
-     * Get the identifier that will be stored in the subject claim of the JWT.
-     *
-     * @return mixed
-     */
-    public function getJWTIdentifier()
-    {
-        return $this->getKey();
-    }
-
-    /**
-     * Return a key value array, containing any custom claims to be added to the JWT.
-     *
-     * @return array
-     */
-    public function getJWTCustomClaims()
-    {
-        return [];
     }
 }

@@ -1,5 +1,7 @@
 require('./bootstrap')
 
+window.Pusher = require('pusher-js')
+
 import Vue from 'vue'
 import axios from 'axios'
 import App from './App.vue'
@@ -7,6 +9,7 @@ import router from './router'
 import store from './store/index'
 import fastclick from 'fastclick'
 import jwtToken from './helpers/jwt'
+import Echo from 'laravel-echo'
 
 import { Picker, Switch, Spinner } from 'mint-ui'
 import 'mint-ui/lib/style.css'
@@ -29,6 +32,13 @@ VMap.initAMapApiLoader({
 })
 
 fastclick.attach(document.body)
+
+window.echo = new Echo({
+  broadcaster: 'pusher',
+  key: 'a22b95e60164be5a4e00',
+  cluster: 'ap1',
+  encrypted: true
+})
 
 axios.interceptors.request.use(config => {
   if (jwtToken.getToken()) {

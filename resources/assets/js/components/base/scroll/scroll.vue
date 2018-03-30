@@ -42,6 +42,10 @@
         type: Boolean,
         default: false
       },
+      scrollToEndFlag: {
+        type: Boolean,
+        default: false
+      },
       refreshDelay: {
         type: Number,
         default: 20
@@ -49,7 +53,7 @@
     },
     mounted() {
       this.$nextTick(
-          this._initScroll()
+        this._initScroll()
       )
     },
     methods: {
@@ -79,13 +83,17 @@
           })
         }
 
-        // 滚动至底部
+        // 滚动至底部事件
         if (this.pullUp) {
           this.scroll.on('scrollEnd', () => {
             if (this.scroll.y <= this.scroll.maxScrollY + 250) {
               this.$emit('scrollToEnd')
             }
           })
+        }
+
+        if(this.scrollToEndFlag) {
+          this.scroll.scrollTo(0,this.scroll.maxScrollY)
         }
 
         if (this.beforeScroll) {
@@ -115,6 +123,9 @@
         // 文档渲染时间一般在18毫秒，存在一些动画延迟的情况，所以将动态设置一个delay
         setTimeout(() => {
           this.refresh()
+          if (this.scrollToEndFlag) {
+            this.scroll.scrollTo(0, this.scroll.maxScrollY)
+          }
         }, this.refreshDelay)
 //        this.$nextTick(() => {
 //          this.refresh()
