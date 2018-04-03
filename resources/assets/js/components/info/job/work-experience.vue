@@ -262,7 +262,7 @@
         this.$refs.positionSkillCheckbox.show()
       },
       savePositionSkill(value) {
-        this.workEmphasisArr = value
+        this.workEmphasisArr = value.name
       },
       responsibilityOnValueChange(value) {
         this.workExperienceData.responsibility = value

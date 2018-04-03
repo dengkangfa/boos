@@ -18,10 +18,13 @@ class ChatMessageWasReceived implements ShouldBroadcast
 
     public $user;
 
-    public function __construct($chatMessage, $user)
+    protected $user_id;
+
+    public function __construct($chatMessage, $user, $user_id)
     {
         $this->chatMessage = $chatMessage;
         $this->user = $user;
+        $this->user_id = $user_id;
     }
 
 //    public function broadcastAs()
@@ -32,7 +35,8 @@ class ChatMessageWasReceived implements ShouldBroadcast
     public function broadcastOn()
     {
         return [
-            "chat-room.1"
+            'user.'.$this->user_id,
+            'chat-room.'.$this->chatMessage->chat_uuid
         ];
     }
 

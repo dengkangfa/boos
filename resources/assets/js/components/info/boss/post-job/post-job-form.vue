@@ -175,6 +175,7 @@
           this.spinnerShowFlag = true
           createJob(this.company.id, this.positionData).then(response => {
             this.spinnerShowFlag = false
+            this.$router.push({'name': 'joblist'})
           })
         }
       },

@@ -14,7 +14,7 @@
                                 <p class="resume"><span>查看并修改个人微简历</span><i class="icon-right"></i></p>
                             </div>
                             <div class="avatar">
-                                <img :src="user.avatar" width="50">
+                                <img :src="user.avatar" width="50" height="50">
                             </div>
                         </div>
                     </div>

@@ -33,7 +33,7 @@
                             <div v-if="jobDetail.name">
                                 <div class="boss-info box">
                                     <div class="media">
-                                        <img class="media-figure" src="images/default.png" width="40" alt="">
+                                        <img class="media-figure" style="border-radius: 50%;" :src="jobDetail.user.data.avatar ? jobDetail.user.data.avatar : 'images/default.png'" width="40" alt="">
                                         <div class="media-body">
                                             <div class="user-info">
                                                 <p class="name">{{jobDetail.user.data.name}} <span class="active-period">{{jobDetail.user.data.last_actived_at}}</span></p>
@@ -159,6 +159,9 @@
       }
     },
     methods: {
+      jump() {
+        console.log(1)
+      },
       scrollEvent(pos) {
         if (pos.y >= 0) {
           this.$refs.topName.style.opacity = 0
@@ -332,6 +335,15 @@
                 font-size: .4rem
                 line-height: .7rem
                 color: $color-text-l
+                .content
+                    isplay: -webkit-box //必须结合的属性 ，将对象作为弹性伸缩盒子模型显示 。
+                    -webkit-box-orient //必须结合的属性 ，设置或检索伸缩盒对象的子元素的排列方式 。
+                    text-overflow: ellipsis //可以用来多行文本的情况下，用省略号“…”隐藏超出范围的文本 。
+                    overflow: hidden
+                    text-overflow: ellipsis
+                    display: -webkit-box
+                    -webkit-line-clamp: 2
+                    -webkit-box-orient: vertical
         .company-info
             .company-pic
                 border: 1px solid #eeeeee

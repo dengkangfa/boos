@@ -12,17 +12,17 @@
                         <ul class="cell">
                             <li @click="showSchoolInput">
                                 <div class="cell-title"><span>学校</span></div>
-                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.school}">{{ educationData.school ? educationData.school : '中央美术学院' }}</span></div>
+                                <div class="cell-value is-link" :class="{'placeholder' : !educationData.school}"><span>{{ educationData.school ? educationData.school : '中央美术学院' }}</span></div>
                                 <i class="icon icon-right"></i>
                             </li>
                             <li @click="showMajorInput">
                                 <div class="cell-title"><span>专业</span></div>
-                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.major}">{{ educationData.major ? educationData.major : '产品设计'}}</span></div>
+                                <div class="cell-value is-link" :class="{'placeholder' : !educationData.major}"><span>{{ educationData.major ? educationData.major : '产品设计'}}</span></div>
                                 <i class="icon icon-right"></i>
                             </li>
                             <li @click="showDegreePicker">
                                 <div class="cell-title"><span>学历</span></div>
-                                <div class="cell-value is-link"><span :class="{'placeholder' : !educationData.degree}">{{ educationData.degree ? educationData.degree : '本科' }}</span></div>
+                                <div class="cell-value is-link" :class="{'placeholder' : !educationData.degree}"><span>{{ educationData.degree ? educationData.degree : '本科' }}</span></div>
                                 <i class="icon icon-right"></i>
                             </li>
                             <li @click="showPeriodPicker">

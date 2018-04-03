@@ -70,7 +70,7 @@
           this.$store.dispatch('loginRequest', data).then(res => {
             this.spinning = false
             if (res.code === ERR_OK) {
-              this.$router.push({'name': 'index'})
+              this.$router.push({'name': 'joblist'})
             } else if (res.code === ERR_REGISTER_CODE) {
               // 该用户为新用户注册
               this.$router.push({'name': 'select-identity'})

@@ -1,55 +1,60 @@
 <template>
-    <div class="message-wrapper">
-        <div class="head">
-            <switches @switch="switchItem" :currentIndex="currentIndex" :switches="switches"></switches>
-        </div>
-        <main>
-            <div class="message-show">
-                <!-- 消息列表 -->
-                <div class="meschat" v-show="currentIndex === 0">
-                    <h4 class="title">联系人<span>查看新开聊(0)</span></h4>
-                    <div class="chatlist">
-                        <div v-show="loading" class="mint-spinner">
-                            <mint-spinner color="#53CAC3" type="triple-bounce"></mint-spinner>
-                        </div>
-                        <ul v-show="contactList.length">
-                            <router-link tag="li" v-for="contact in contactList" @click.native="currentContact = contact" :key="contact.chat_uuid" :to="{name: 'meschatDetail', params: {'chat_uuid': contact.chat_uuid}}" class="meschat-item">
-                                <div class="info-left">
-                                    <img :src="contact.avatar" width="45" height="45">
-                                </div>
-                                <div class="info-right">
-                                    <p class="user-name"><span class="name">{{ contact.name }}</span><span class="time">昨天</span></p>
-                                    <p class="company-info"><span>{{ contact.company.data.abbreviation }}</span> | <span>{{ contact.pos_name }}</span></p>
-                                    <p class="last-message">显示最后一条消息内容</p>
-                                </div>
-                            </router-link>
-                        </ul>
-                    </div>
-                    <!--<keep-alive>-->
-                        <router-view :currentContact="currentContact"></router-view>
-                    <!--</keep-alive>-->
-                </div>
-                <div class="info-list" v-show="currentIndex === 1">
-                    <div class="inter-header">
-                        <ul class="inter-bar">
-                            <li v-for="item in listBar"
-                                :class="{ isHad:item.isHad }"
-                                @click="toggleTab(item)">{{ item.title }}</li>
-                        </ul>
-                    </div>
-                </div>
+    <div>
+        <div class="_effect message-wrapper" :class="{'_effect--30': decline}">
+            <div class="head">
+                <switches @switch="switchItem" :currentIndex="currentIndex" :switches="switches"></switches>
             </div>
-        </main>
+            <main>
+                <div class="message-show">
+                    <!-- 消息列表 -->
+                    <div class="meschat" v-show="currentIndex === 0">
+                        <h4 class="title">联系人<span>查看新开聊(0)</span></h4>
+                        <div class="chatlist">
+                            <div v-show="loading" class="mint-spinner">
+                                <mint-spinner color="#53CAC3" type="triple-bounce"></mint-spinner>
+                            </div>
+                            <ul v-show="contactList.length">
+                                <router-link tag="li" v-for="contact in contactList" @click.native="currentContact = contact, contact.new_message_count = 0" :key="contact.chat_uuid" :to="{name: 'meschatDetail', params: {'chat_uuid': contact.chat_uuid}}" class="meschat-item">
+                                    <div class="info-left">
+                                        <img :src="contact.avatar" width="45" height="45">
+                                    </div>
+                                    <div class="info-right">
+                                        <p class="user-name"><span class="name">{{ contact.name }}</span><span class="time">昨天</span></p>
+                                        <p class="company-info"><span>{{ contact.company.data.abbreviation }}</span> | <span>{{ contact.pos_name }}</span></p>
+                                        <p class="last-message"><span :class="{'read': !contact.read_at}" v-if="contact.last_message && !contact.new_message_count && contact.last_message.user_id === user.id">{{ !contact.read_at ? '已读' : '送达' }}</span>{{ contact.last_message ? contact.last_message.message : systemMessages[0].message }}</p>
+                                        <span v-show="contact.new_message_count" class="new-message-count">{{ contact.new_message_count }}</span>
+                                    </div>
+                                </router-link>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="info-list" v-show="currentIndex === 1">
+                        <div class="inter-header">
+                            <ul class="inter-bar">
+                                <li v-for="item in listBar"
+                                    :class="{ isHad:item.isHad }"
+                                    @click="toggleTab(item)">{{ item.title }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <!--<keep-alive>-->
+            <!--</keep-alive>-->
+        </div>
+        <router-view  @routePipe="routePipe" :currentContact="currentContact"></router-view>
     </div>
 </template>
 
 <script type="text/ecmascript-6">
   import switches from 'Base/switches/switches'
   import {contactList} from 'Api/communicate'
+  import {mapState} from 'vuex'
 
   export default {
     data() {
       return {
+        decline: false,
         switches: [{'name': '聊天'}, {'name': '互动'}],
         // 2、互动切换
         listBar: [
@@ -66,20 +71,41 @@
             isHad: false
           }
         ],
-        contactList: [],
+        systemMessages: [
+          {
+            message: 'BOSS直聘温馨提示: 与陌生Boss沟通时，请提高防范意识，谨防招聘欺骗。点击链接，获取详细防骗指南。(<a href="">点击查看防骗指南</a>)'
+          },
+          {
+            message: '了解自己在当前职位求职者中是综合排名，点击查看<a href="">个人竞争力分享</a>'
+          }
+        ],
         currentContact: null,
         currentIndex: 0,
         loading: false
       }
     },
-    created() {
+    mounted() {
       this.loading = true
-      contactList().then(response => {
+
+      let data = this.user.roles.indexOf('recruiter') === -1 ? 'company' : ''
+      this.$store.dispatch('contactList', data).then(response => {
         this.loading = false
-        this.contactList = response.data
+      })
+//      contactList().then(response => {
+//        this.loading = false
+//        this.contactList = response.data
+//      })
+    },
+    computed: {
+      ...mapState({
+        contactList: state => state.ContactList.contact_list,
+        user: state => state.AuthUser
       })
     },
     methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+      },
       switchItem(index) {
         this.currentIndex = index
       },
@@ -132,18 +158,20 @@
                     line-height: normal
             .chatlist
                 ul
-                    padding: 15px
+                    padding: 0 15px
                     background: #FFFFFF
                     li:not(:last-child)
                         @include border-bottom-1px($color-text-d)
                     .meschat-item
                         display: flex
                         align-items: center
+                        padding: 10px 0
                         .info-left
                             margin-right: 15px
                             img
                                 border-radius: 50%
                         .info-right
+                            position: relative
                             width: 100%
                             line-height: .6rem
                             .user-name
@@ -157,7 +185,32 @@
                                 font-size: .35rem
                                 color: $color-text-l
                             .last-message
+                                width: 200px
                                 color: $color-text-d
+                                overflow: hidden
+                                text-overflow: ellipsis
+                                white-space: nowrap
+                                span
+                                    font-size: .2rem
+                                    color: $color-text
+                                    background: #738cde
+                                    border-radius: .3rem
+                                    padding: 5px
+                                    margin-right: 5px
+                                    &.read
+                                        background: $color-theme
+                            .new-message-count
+                                position: absolute
+                                right: 0
+                                bottom: 20%
+                                color: #fff
+                                padding: 2px
+                                background: #e4393c
+                                border-radius: 50%
+                                width: 15px
+                                height: 15px
+                                text-align: center
+                                line-height: 15px
                 .mint-spinner
                     height: 45px
                     line-height: 45px

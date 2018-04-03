@@ -111,7 +111,7 @@
         this.$store.dispatch('loginRequest', data).then(response => {
           this.spinning = false
           avatar.removeAvatar(this.userules.mobile)
-          this.$router.push({'name': 'joblist'})
+          this.$router.push({'name': 'select-identity'})
         }).catch(error => {
           this.spinning = false
           if (error.response.data.success === false) {

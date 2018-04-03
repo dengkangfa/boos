@@ -9,7 +9,6 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|max:12',
             'gender' => 'in:male,female',
-            'job_date' => 'date',
             'birth_date' => 'date',
             'company_id' => 'exists:companies,id',
             'pos_name' => 'max:12',

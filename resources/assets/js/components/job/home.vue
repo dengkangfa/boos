@@ -30,8 +30,14 @@
     },
     created() {
       if (!this.user.authenticated) {
+        let self = this
         this.$store.dispatch('setAuthUser').then(response => {
           echo.channel(`user.${this.user.id}`)
+            .listen('ChatMessageWasReceived', function (response) {
+              console.log(response)
+              console.log('ChatMessageWasReceived')
+              self.$store.commit('NEW_MESSAGE', response)
+            })
             .listen('newContacts', function (response) {
               console.log(response)
             })

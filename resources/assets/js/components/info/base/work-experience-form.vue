@@ -307,7 +307,7 @@
         }
       },
       selectedIndustry(value) {
-        this.workExperienceData.industry = value[0]
+        this.workExperienceData.industry = value[0].name
       },
       saveSubordinate(value) {
         this.workExperienceData.subordinate = value

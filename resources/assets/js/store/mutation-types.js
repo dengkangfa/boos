@@ -13,3 +13,4 @@ export const JOIN_COMPANY = 'JOIN_COMPANY'
 
 export const SET_CONTACT = 'SET_CONTACT'
 export const SET_CONTACT_LIST = 'SET_CONTACT_LIST'
+export const NEW_MESSAGE = 'NEW_MESSAGE'

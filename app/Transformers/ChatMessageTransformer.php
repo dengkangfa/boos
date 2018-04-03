@@ -23,7 +23,7 @@ class ChatMessageTransformer extends TransformerAbstract
             'type' => $chatMessage->type,
             'message' => $chatMessage->message,
             'read_at' => $chatMessage->read_at,
-            'created_at' => $chatMessage->created_at->diffForHumans()
+            'created_at' => $chatMessage->created_at->toDateTimeString()
         ];
     }
 

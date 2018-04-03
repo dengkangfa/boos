@@ -166,6 +166,6 @@ class UsersController extends ApiController
     public function contacts()
     {
         $user = \Auth::user();
-        return $this->respondWithCollection($user->contacts, new UserTransformer(true));
+        return $this->respondWithCollection($user->contacts()->with('company')->get(), new UserTransformer(true));
     }
 }

@@ -60,6 +60,7 @@
   import {createdExpectPosition} from 'Api/expect-position'
   import spinner from 'Base/spinner/spinner'
   import message from 'Base/message/message'
+  import { lazyAMapApiLoaderInstance } from 'vue-amap'
 
   const applyStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗']
 
@@ -87,6 +88,29 @@
     },
     beforeDestroy() {
       this.$emit('routePipe', false)
+    },
+    created() {
+      // 定位当前位置
+      let self = this
+      lazyAMapApiLoaderInstance.load().then(() => {
+        new AMap.Geolocation().getCurrentPosition((status, result) => {
+          if (result && result.position) {
+            var geocoder = new AMap.Geocoder({
+              radius: 1000,
+              extensions: 'all'
+            })
+            geocoder.getAddress([result.position.lng, result.position.lat], function (status, result) {
+              if (status === 'complete' && result.info === 'OK') {
+                if (result && result.regeocode) {
+                  self.province = result.regeocode.addressComponent.province
+                  self.city = result.regeocode.addressComponent.city
+                  self.area = result.regeocode.addressComponent.district
+                }
+              }
+            })
+          }
+        })
+      })
     },
     methods: {
       showApplyStatusSelector() {
@@ -131,7 +155,7 @@
         this.spinnerShowFlag = true
         createdExpectPosition(this.expectPositionData).then(response => {
           this.spinnerShowFlag = false
-          this.$router.push({'name': 'host'})
+          this.$router.push({'name': 'joblist'})
         }).catch(error => {
           this.spinnerShowFlag = false
         })

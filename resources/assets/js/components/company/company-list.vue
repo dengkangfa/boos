@@ -20,7 +20,7 @@
                     <router-link tag="li" v-for="item in companies" :key="item.id" :to="{path : /comdetail/+item.id}">
                         <div class="company-info-wrapper">
                             <div class="media">
-                                <img class="media-figure" src="images/company.jpg" width="40" alt="">
+                                <img class="media-figure" :src="item.pic ? item.pic : 'images/company.jpg'" width="40" height="40" alt="">
                                 <div class="media-body">
                                     <div class="company">
                                         <span class="name">{{item.name}}</span>

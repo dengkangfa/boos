@@ -13,6 +13,7 @@ use App\Transformers\ChatMessageTransformer;
 use App\Transformers\ChatTransformer;
 use Illuminate\Http\Request;
 use Ramsey\Uuid\Uuid;
+use Carbon\Carbon;
 
 class ChatsController extends ApiController
 {
@@ -42,6 +43,7 @@ class ChatsController extends ApiController
         if (!$chat) {
             return $this->errorNotFound();
         }
+        $chat->messages()->where('user_id', '!=', \Auth::id())->update(['read_at' => Carbon::now()]);
 
         return $this->respondWithItem($chat, new ChatTransformer());
     }
@@ -57,9 +59,10 @@ class ChatsController extends ApiController
             $contact = Contact::where('chat_uuid', $uuid)->first();
             $user = User::find($contact->contact_id);
             $user->contacts()->attach(\Auth::id(), ['chat_uuid' => $uuid]);
-            event(new newContacts($user, \Auth::user(), $message->chat_uuid));
+            event(new NewContacts($user, \Auth::user(), $message->chat_uuid));
         }
-        broadcast(new ChatMessageWasReceived($message, \Auth::user()))->toOthers();
+        $contact = Contact::where('chat_uuid', $uuid)->where('user_id', \Auth::id())->first();
+        broadcast(new ChatMessageWasReceived($message, \Auth::user(), $contact->contact_id))->toOthers();
         return $this->setStatusCode(201)->respondWithItem($message, new ChatMessageTransformer());
     }
 }

@@ -2,7 +2,7 @@
     <transition name="horizontal-slide">
         <div class="meschat-detail-wrapper">
             <div class="head">
-                <span @click="$router.back()"><i class="icon-left"></i></span>
+                <span @click="$router.push({name: 'message'})"><i class="icon-left"></i></span>
                 <div class="name">
                     <p>{{currentContact ? currentContact.name : contact.name}}</p>
                     <p>{{currentContact? currentContact.company.data.abbreviation : contact.company_name}}</p>
@@ -39,6 +39,9 @@
                             </div>
                         </div>
                         <div class="message-main">
+                            <div class="system-hint">
+                                <p v-for="item in systemMessages" v-html="item.message"></p>
+                            </div>
                             <div v-for="item in messageList" class="message-item-wrapper" ref="messageItemWrapper">
                                 <div class="message-time">{{item.created_at}}</div>
                                 <div class="message-item" v-if="item.user.data.id !== user.id">
@@ -86,18 +89,33 @@
         job: {},
         company: {},
         messageList: [],
-        message: ''
+        message: '',
+        channelsName: '',
+        systemMessages: [
+          {
+            message: 'BOSS直聘温馨提示: 与陌生Boss沟通时，请提高防范意识，谨防招聘欺骗。点击链接，获取详细防骗指南。(<a href="">点击查看防骗指南</a>)'
+          },
+          {
+            message: '了解自己在当前职位求职者中是综合排名，点击查看<a href="">个人竞争力分享</a>'
+          }
+        ]
       }
     },
+    beforeMount() {
+      this.$emit('routePipe', true)
+    },
+    beforeDestroy() {
+      this.$emit('routePipe', false)
+    },
     created() {
+      this.channelsName = 'chat-room.' + this.$route.params.chat_uuid
       messageDetail(this.$route.params.chat_uuid).then(response => {
         this.job = response.data.job.data
         this.company = response.data.job.data.company.data
         this.messageList = response.data.message.data
-        console.log(response.data)
       })
       let self = this
-      echo.channel('chat-room.1')
+      echo.channel(this.channelsName)
         .listen('ChatMessageWasReceived', function (response) {
           response.chatMessage.user = {data: response.user}
           self.messageList = self.messageList.concat(response.chatMessage)
@@ -119,6 +137,10 @@
         let bfscrolltop = document.body.scrollTop
         clearInterval(this.interval) // 清除计时器
         document.body.scrollTop = bfscrolltop // 将软键盘唤起前的浏览器滚动部分高度重新赋给改变后的高度
+      },
+      back() {
+        echo.leave(this.channelsName)
+        this.$router.back()
       },
       sendMessage() {
         let message = this.message
@@ -226,6 +248,19 @@
                                 margin: 0 8px
                 .message-main
                     padding: 0 10px
+                    .system-hint
+                        width: 80%
+                        color: $color-text-d
+                        margin: auto
+                        p
+                            background: #e6e3e3
+                            font-size: .38rem
+                            border-radius: .1rem
+                            line-height: .5rem
+                            padding: 5px
+                            margin-bottom: 20px
+                            a
+                                color: #738cde
                     .message-item-wrapper
                         padding-bottom: 15px
                         .message-time
