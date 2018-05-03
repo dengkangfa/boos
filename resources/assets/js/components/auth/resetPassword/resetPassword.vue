@@ -11,18 +11,24 @@
             <div class="reset">
                 <form action="" class="info-reset">
                     <ul>
-                        <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile"
+                        <li class="input-warp mobile-input"><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile"
                                                                             pattern="[0-9]*" placeholder="请输入您的手机号"
                                                                             @input="mobileInputEvent"
                                                                             @blur="mobileInputBlur"
                                                                             @focus="closeIconShow = true"><i
                                 class="icon-circle-with-cross" @click.prevent="close"
                                 v-show="closeIconShow && userules.mobile"></i></li>
-                        <li><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'"
+                        <li class="input-warp password-input"><i class="icon-lock"></i><input :type="passwordShow ? 'text' : 'password'"
                                                             v-model="userules.password" placeholder="新密码"><i
                                 class="password-show-icon" :class="passwordShow ? 'icon-eye-view' : 'icon-eye-blocked'"
                                 @click="passwordShowLogger"></i></li>
-                        <li><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode"
+                        <li class="input-warp captcha-input" v-if="showCaptcha"><i class="icon-lock"></i><input type="text" v-model="captcha_code" id="captcha" placeholder="请输入图片验证码" ref="captcha">
+                            <div class="captcha-image">
+                                <img :src="captchaImageContent" width="45">
+                            </div>
+                            <i class="icon-spinner" @click="refreshCaptcha"></i>
+                        </li>
+                        <li class="input-warp verify-code-input"><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode"
                                                                   pattern="[0-9]*"
                                                                   oninput="if(value.length>6)value=value.slice(0,6)"
                                                                   placeholder="验证码" ref="verifyCodeInput">
@@ -30,7 +36,7 @@
                         </li>
                         <li class="voice-verify"><p>长时间收不到验证码，可尝试<br><a @click.prevent="sendVoiceVerify">语音接听验证码</a></p>
                         </li>
-                        <li><input type="submit" value="重置密码" class="reset-submit" @click.prevent="submit"></li>
+                        <li class="submit-warp"><input type="submit" value="重置密码" class="reset-submit" @click.prevent="submit"></li>
                     </ul>
                 </form>
             </div>
@@ -68,7 +74,8 @@
         mobileRule: 'mobile_exists',
         route: '',
         triangleWidth: '',
-        avatar: ''
+        avatar: '',
+        captcha_code: ''
       }
     },
     created() {
@@ -81,6 +88,16 @@
       this.triangleWidth = document.body.clientWidth / 2
     },
     methods: {
+      refreshCaptcha() {
+        let formData = new FormData()
+        formData.append('mobile', this.mobile)
+        axios.post('/api/captchas', formData).then(response => {
+          this.captchaImageContent = response.data.captcha_image_content
+          this.captcha_key = response.data.captcha_key
+          this.showCaptcha = true;
+          this.$refs.captcha.focus();
+        })
+      },
       passwordShowLogger() {
         this.passwordShow = !this.passwordShow
       },
@@ -220,9 +237,7 @@
                         -webkit-appearance: none
                         &:focus
                             border-color: $color-theme
-                li:nth-child(1):before,
-                li:nth-child(2):before,
-                li:nth-child(3):before
+                li.input-warp:before
                     display: table
                     content: ""
                     position: absolute
@@ -233,21 +248,21 @@
                     left: 1.6rem
                     transform: scaleY(0.3) translateY(-50%)
                     transform-origin: 0 0
-                li:nth-child(1) b
+                li.mobile-input b
                     @include ct()
                     // 垂直局中
                     display: block
                     color: $color-theme
                     font-weight: 100
                     padding-left: .4rem
-                li:nth-child(1) .icon-circle-with-cross
+                li.mobile-input .icon-circle-with-cross
                     @include ct()
                     // 垂直局中
                     font-size: .45rem
                     right: .1rem
                     color: $color-text-d
                     padding: 8px
-                li:nth-child(2)
+                li.password-input
                     .icon-lock
                         @include ct()
                         // 垂直局中
@@ -263,7 +278,31 @@
                         right: .1rem
                         color: $color-text-d
                         padding: 8px
-                li:nth-child(3)
+                li.captcha-input
+                    position: relative
+                    .icon-lock
+                        @include ct()
+                        // 垂直局中
+                        display: block
+                        color: $color-text-d
+                        font-weight: 100
+                        left: .4rem
+                        padding-left: .1rem
+                        font-size: .5rem
+                    .captcha-image
+                        height: 21px
+                        @include ct()
+                        right: 1rem
+                        img
+                            display: block
+                            height: 100%
+                    .icon-spinner
+                        @include ct()
+                        right: .1rem
+                        color: $color-text-d
+                        font-size: .45rem
+                        padding: 8px
+                li.verify-code-input
                     .icon-smartphone
                         @include ct()
                         // 垂直局中

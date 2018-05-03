@@ -56,7 +56,7 @@ export const verifycodeMixin = {
       disabledVoiceVerify: false, // 语音验证码服务是否可用
       captchaImageContent: null,
       captcha_key: null,
-      showCaptcha: true
+      showCaptcha: false
     }
   },
   methods: {
@@ -97,7 +97,6 @@ export const verifycodeMixin = {
               this.captchaImageContent = response.captcha_image_content
               this.captcha_key = response.captcha_key
               this.showCaptcha = true
-              this.$refs.captcha.focus()
               return
             } else if (response.code === 10006) {
               this.captchaImageContent = response.captcha_image_content

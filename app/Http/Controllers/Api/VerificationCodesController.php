@@ -13,15 +13,17 @@ class VerificationCodesController extends ApiController
 {
     protected $manager;
 
-    protected $builder;
-
-    public function __construct(SmsManager $manager, CaptchaBuilder $builder)
+    public function __construct(SmsManager $manager)
     {
         $this->manager = $manager;
-
-        $this->builder = $builder;
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     *
+     * 短信验证码
+     */
     public function store(Request $request)
     {
         if ($request->captcha_code) {

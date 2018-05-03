@@ -13230,7 +13230,7 @@ var verifycodeMixin = {
       disabledVoiceVerify: false, // 语音验证码服务是否可用
       captchaImageContent: null,
       captcha_key: null,
-      showCaptcha: true
+      showCaptcha: false
     };
   },
 
@@ -13275,7 +13275,6 @@ var verifycodeMixin = {
               _this.captchaImageContent = response.captcha_image_content;
               _this.captcha_key = response.captcha_key;
               _this.showCaptcha = true;
-              _this.$refs.captcha.focus();
               return;
             } else if (response.code === 10006) {
               _this.captchaImageContent = response.captcha_image_content;
@@ -46402,7 +46401,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.login-footer[data-v-06699dc8] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-06699dc8] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-06699dc8] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-06699dc8] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-06699dc8] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-06699dc8] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-06699dc8] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-06699dc8] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-06699dc8] {\n      background: url(" + __webpack_require__(92) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.login-bg[data-v-06699dc8] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-06699dc8] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-06699dc8] {\n    height: 2.2rem;\n    font-weight: bold;\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-06699dc8] {\n      background: url(" + __webpack_require__(93) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.input-warp[data-v-06699dc8] {\n  margin-top: .6rem;\n}\n.info-login li.voice-verify-warp[data-v-06699dc8] {\n  text-align: center;\n  color: #fff;\n}\n.info-login li.submit-warp[data-v-06699dc8] {\n  margin-top: 1rem;\n}\n.info-login li[data-v-06699dc8] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-06699dc8] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-06699dc8] {\n    font-size: 0.35rem;\n    color: #fff;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-06699dc8], .info-login li input[type=number][data-v-06699dc8], .info-login li input[type=password][data-v-06699dc8] {\n    width: 100%;\n    padding: 0.4rem 1rem 0.4rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-06699dc8]::-webkit-input-placeholder, .info-login li input[type=number][data-v-06699dc8]::-webkit-input-placeholder, .info-login li input[type=password][data-v-06699dc8]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]:-ms-input-placeholder, .info-login li input[type=number][data-v-06699dc8]:-ms-input-placeholder, .info-login li input[type=password][data-v-06699dc8]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]::-ms-input-placeholder, .info-login li input[type=number][data-v-06699dc8]::-ms-input-placeholder, .info-login li input[type=password][data-v-06699dc8]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]::placeholder, .info-login li input[type=number][data-v-06699dc8]::placeholder, .info-login li input[type=password][data-v-06699dc8]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]:focus, .info-login li input[type=number][data-v-06699dc8]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-06699dc8], .info-login li input[type=button][data-v-06699dc8] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-06699dc8]:hover, .info-login li input[type=button][data-v-06699dc8]:hover {\n    background-color: #53CAC3;\n}\n.mobile-input b[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li.mobile-input .icon-circle-with-cross[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.input-warp[data-v-06699dc8]:before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n          transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n          transform-origin: 0 0;\n}\n.captcha-input .icon-lock[data-v-06699dc8],\n.verify-code-input .icon-smartphone[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  left: .4rem;\n  padding-left: .1rem;\n  font-size: .5rem;\n}\n.captcha-input[data-v-06699dc8] {\n  position: relative;\n}\n.captcha-input .captcha-image[data-v-06699dc8] {\n    height: 21px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    right: 50px;\n}\n.captcha-input .captcha-image img[data-v-06699dc8] {\n      display: block;\n      height: 100%;\n}\n.captcha-input .icon-spinner[data-v-06699dc8] {\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    right: 20px;\n    color: #fff;\n    font-size: .4rem;\n    padding: 5px;\n}\n.info-login li.verify-code-input button[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-06699dc8] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-06699dc8] {\n    margin-top: .5rem;\n}\n#login .info-login li.submit-warp[data-v-06699dc8] {\n      margin-top: .5rem;\n}\n}\n", ""]);
+exports.push([module.i, "\n.login-footer[data-v-06699dc8] {\n  position: fixed;\n  width: 100%;\n  left: 0;\n  bottom: 0;\n}\n.login-footer.flex_parent[data-v-06699dc8] {\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n}\n.login-footer .or[data-v-06699dc8] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    width: 100%;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    color: #42b983;\n    -webkit-transform: translateY(50%);\n            transform: translateY(50%);\n    opacity: 0.5;\n}\n.login-footer .or .line[data-v-06699dc8] {\n      position: relative;\n      -webkit-box-flex: 1;\n          -ms-flex: 1;\n              flex: 1;\n      border-top: 1px solid #42b983;\n}\n@media screen and (-webkit-min-device-pixel-ratio: 2) {\n.login-footer .or .line[data-v-06699dc8] {\n          border-top: 0.5px solid #42b983;\n}\n}\n@media screen and (-webkit-min-device-pixel-ratio: 3) {\n.login-footer .or .line[data-v-06699dc8] {\n          border-top: 0.33333px solid #42b983;\n}\n}\n.login-footer .or .text[data-v-06699dc8] {\n      padding: 0 12px;\n      font-weight: bold;\n      font-size: 14px;\n}\n.login-footer a[data-v-06699dc8] {\n    line-height: 1.8rem;\n    color: #fff;\n    display: block;\n    text-align: center;\n    font-size: .35rem;\n    width: 50%;\n}\n.login-footer a.protocol span[data-v-06699dc8] {\n      background: url(" + __webpack_require__(92) + ") no-repeat;\n      background-size: .40rem;\n      padding-left: 20px;\n}\n.login-bg[data-v-06699dc8] {\n  position: fixed;\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-pack: center;\n      -ms-flex-pack: center;\n          justify-content: center;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  width: 100%;\n  height: 100%;\n  overflow: auto;\n  background: -webkit-gradient(linear, left top, left bottom, from(#A46E92), to(#27455D));\n  background: linear-gradient(to bottom, #A46E92 0%, #27455D 100%);\n}\n#login[data-v-06699dc8] {\n  width: 90%;\n  height: 10rem;\n  margin-top: 1.5rem;\n  -webkit-box-sizing: border-box;\n          box-sizing: border-box;\n}\n#login h3[data-v-06699dc8] {\n    height: 2.2rem;\n    font-weight: bold;\n    text-align: center;\n    margin-bottom: 1.2rem;\n    font-size: 1.2rem;\n    color: #fff;\n}\n#login h3 span[data-v-06699dc8] {\n      background: url(" + __webpack_require__(93) + ") no-repeat;\n      background-size: 4rem;\n      display: block;\n      height: 0.6rem;\n      margin: auto;\n      width: 150px;\n}\n.input-warp[data-v-06699dc8] {\n  margin-top: .6rem;\n}\n.info-login li.voice-verify-warp[data-v-06699dc8] {\n  text-align: center;\n  color: #fff;\n}\n.info-login li.submit-warp[data-v-06699dc8] {\n  margin-top: 1rem;\n}\n.info-login li.submit-warp.captcha-reduce-margin[data-v-06699dc8] {\n    margin-top: .3rem;\n}\n.info-login li[data-v-06699dc8] {\n  height: 1.2rem;\n  line-height: 1.2rem;\n  position: relative;\n}\n.info-login li label[data-v-06699dc8] {\n    font-size: 0.3rem;\n    color: #999;\n}\n.info-login li input[data-v-06699dc8] {\n    font-size: 0.35rem;\n    color: #fff;\n    -webkit-transition: all .3s;\n    transition: all .3s;\n    background: rgba(154, 165, 181, 0.3);\n}\n.info-login li input[type=text][data-v-06699dc8], .info-login li input[type=number][data-v-06699dc8], .info-login li input[type=password][data-v-06699dc8] {\n    width: 100%;\n    padding: 0.4rem 1rem 0.4rem 2rem;\n    border-radius: .8rem;\n}\n.info-login li input[type=text][data-v-06699dc8]::-webkit-input-placeholder, .info-login li input[type=number][data-v-06699dc8]::-webkit-input-placeholder, .info-login li input[type=password][data-v-06699dc8]::-webkit-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]:-ms-input-placeholder, .info-login li input[type=number][data-v-06699dc8]:-ms-input-placeholder, .info-login li input[type=password][data-v-06699dc8]:-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]::-ms-input-placeholder, .info-login li input[type=number][data-v-06699dc8]::-ms-input-placeholder, .info-login li input[type=password][data-v-06699dc8]::-ms-input-placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]::placeholder, .info-login li input[type=number][data-v-06699dc8]::placeholder, .info-login li input[type=password][data-v-06699dc8]::placeholder {\n      color: #fff;\n}\n.info-login li input[type=text][data-v-06699dc8]:focus, .info-login li input[type=number][data-v-06699dc8]:focus {\n    border-color: #53CAC3;\n}\n.info-login li input[type=submit][data-v-06699dc8], .info-login li input[type=button][data-v-06699dc8] {\n    width: 100%;\n    height: 100%;\n    cursor: pointer;\n    background-color: #53CAC3;\n    border: 1px solid #53CAC3;\n    border-radius: .8rem;\n    -webkit-appearance: none;\n    white-space: nowrap;\n}\n.info-login li input[type=submit][data-v-06699dc8]:hover, .info-login li input[type=button][data-v-06699dc8]:hover {\n    background-color: #53CAC3;\n}\n.mobile-input b[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  /*left: .4rem*/\n  padding-left: .4rem;\n}\n.info-login li.mobile-input .icon-circle-with-cross[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  font-size: .45rem;\n  right: .1rem;\n  color: #605e5e;\n  padding: 8px;\n}\n.input-warp[data-v-06699dc8]:before {\n  display: table;\n  content: \"\";\n  position: absolute;\n  background: #fff;\n  width: 1px;\n  height: 100%;\n  top: 50%;\n  left: 1.6rem;\n  -webkit-transform: scaleY(0.3) translateY(-50%);\n          transform: scaleY(0.3) translateY(-50%);\n  -webkit-transform-origin: 0 0;\n          transform-origin: 0 0;\n}\n.captcha-input .icon-lock[data-v-06699dc8],\n.verify-code-input .icon-smartphone[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  display: block;\n  color: #fff;\n  font-weight: 100;\n  left: .4rem;\n  padding-left: .1rem;\n  font-size: .5rem;\n}\n.captcha-input[data-v-06699dc8] {\n  position: relative;\n}\n.captcha-input .captcha-image[data-v-06699dc8] {\n    height: 21px;\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    right: 50px;\n}\n.captcha-input .captcha-image img[data-v-06699dc8] {\n      display: block;\n      height: 100%;\n}\n.captcha-input .icon-spinner[data-v-06699dc8] {\n    position: absolute;\n    top: 50%;\n    -webkit-transform: translateY(-50%);\n            transform: translateY(-50%);\n    right: 20px;\n    color: #fff;\n    font-size: .4rem;\n    padding: 5px;\n}\n.info-login li.verify-code-input button[data-v-06699dc8] {\n  position: absolute;\n  top: 50%;\n  -webkit-transform: translateY(-50%);\n          transform: translateY(-50%);\n  right: .4rem;\n  z-index: 10;\n}\n@media screen and (max-height: 505px) {\n#login[data-v-06699dc8] {\n    margin-top: 1rem;\n}\n}\n@media screen and (max-height: 480px) {\n#login[data-v-06699dc8] {\n    margin-top: .5rem;\n}\n#login .info-login li.submit-warp[data-v-06699dc8] {\n      margin-top: .5rem;\n}\n}\n", ""]);
 
 // exports
 
@@ -47508,17 +47507,24 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("li", { staticClass: "submit-warp" }, [
-              _c("input", {
-                attrs: { type: "submit", value: "进入" },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    _vm.submit($event)
+            _c(
+              "li",
+              {
+                staticClass: "submit-warp",
+                class: { "captcha-reduce-margin": _vm.showCaptcha }
+              },
+              [
+                _c("input", {
+                  attrs: { type: "submit", value: "进入" },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      _vm.submit($event)
+                    }
                   }
-                }
-              })
-            ])
+                })
+              ]
+            )
           ])
         ])
       ]),
@@ -48210,7 +48216,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.reset-wrapper[data-v-431a9e4a] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 200;\n  background-color: #eeeeee;\n}\n.reset-wrapper .sider[data-v-431a9e4a] {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100%;\n    height: 27%;\n    background-color: #A46E92;\n}\n.reset-wrapper .sider .avatar[data-v-431a9e4a] {\n      -webkit-box-sizing: border-box;\n              box-sizing: border-box;\n      border: 5px solid rgba(170, 170, 170, 0.5);\n      border-radius: 100%;\n      width: 75px;\n      height: 75px;\n      margin-top: 15px;\n}\n.reset-wrapper .sider .left-triangle[data-v-431a9e4a] {\n      position: absolute;\n      left: 0;\n      bottom: 0;\n      width: 0;\n      height: 0;\n      border-bottom: 25px solid #eee;\n      border-right: 160px solid transparent;\n}\n.reset-wrapper .sider .right-triangle[data-v-431a9e4a] {\n      position: absolute;\n      right: 0;\n      bottom: 0;\n      width: 0;\n      height: 0;\n      border-bottom: 25px solid #eee;\n      border-left: 160px solid transparent;\n}\n.reset-wrapper .reset[data-v-431a9e4a] {\n    width: 85%;\n    margin: 1.2rem auto 0px;\n}\n.reset-wrapper .reset .info-reset li[data-v-431a9e4a] {\n      position: relative;\n      height: 1.2rem;\n      line-height: 1.2rem;\n      margin-top: 15px;\n}\n.reset-wrapper .reset .info-reset li input[type=text][data-v-431a9e4a], .reset-wrapper .reset .info-reset li input[type=password][data-v-431a9e4a], .reset-wrapper .reset .info-reset li input[type=number][data-v-431a9e4a] {\n        width: 100%;\n        border-radius: 0.1rem;\n        padding: 0.4rem 1rem 0.4rem 2rem;\n}\n.reset-wrapper .reset .info-reset li input.reset-submit[data-v-431a9e4a] {\n        width: 100%;\n        height: 100%;\n        cursor: pointer;\n        color: #FFFFFF;\n        text-align: center;\n        font-weight: bold;\n        background-color: #53CAC3;\n        border: 1px solid #53CAC3;\n        border-radius: 0.1rem;\n        white-space: nowrap;\n        -webkit-appearance: none;\n}\n.reset-wrapper .reset .info-reset li input.reset-submit[data-v-431a9e4a]:focus {\n          border-color: #53CAC3;\n}\n.reset-wrapper .reset .info-reset li[data-v-431a9e4a]:nth-child(1):before,\n    .reset-wrapper .reset .info-reset li[data-v-431a9e4a]:nth-child(2):before,\n    .reset-wrapper .reset .info-reset li[data-v-431a9e4a]:nth-child(3):before {\n      display: table;\n      content: \"\";\n      position: absolute;\n      background: rgba(0, 0, 0, 0.3);\n      width: 1px;\n      height: 100%;\n      top: 50%;\n      left: 1.6rem;\n      -webkit-transform: scaleY(0.3) translateY(-50%);\n              transform: scaleY(0.3) translateY(-50%);\n      -webkit-transform-origin: 0 0;\n              transform-origin: 0 0;\n}\n.reset-wrapper .reset .info-reset li:nth-child(1) b[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #53CAC3;\n      font-weight: 100;\n      padding-left: .4rem;\n}\n.reset-wrapper .reset .info-reset li:nth-child(1) .icon-circle-with-cross[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: rgba(0, 0, 0, 0.3);\n      padding: 8px;\n}\n.reset-wrapper .reset .info-reset li:nth-child(2) .icon-lock[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: rgba(0, 0, 0, 0.3);\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.reset-wrapper .reset .info-reset li:nth-child(2) .password-show-icon[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: rgba(0, 0, 0, 0.3);\n      padding: 8px;\n}\n.reset-wrapper .reset .info-reset li:nth-child(3) .icon-smartphone[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: rgba(0, 0, 0, 0.3);\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.reset-wrapper .reset .info-reset li:nth-child(3) button[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      right: .4rem;\n      z-index: 10;\n}\n.reset-wrapper .reset .info-reset .voice-verify[data-v-431a9e4a] {\n      text-align: center;\n      font-size: 0.4rem;\n      line-height: 0.6rem;\n      color: rgba(0, 0, 0, 0.3);\n}\n.reset-wrapper .reset .info-reset .voice-verify a[data-v-431a9e4a] {\n        color: #53CAC3;\n}\n.reset-wrapper .back[data-v-431a9e4a] {\n    position: absolute;\n    top: 14px;\n    left: 6px;\n    z-index: 200;\n}\n.reset-wrapper .back .icon-left[data-v-431a9e4a] {\n      display: block;\n      padding: 10px;\n      font-size: 0.5rem;\n      color: #fff;\n}\n.side-enter-active[data-v-431a9e4a], .side-leave-active[data-v-431a9e4a] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.side-enter[data-v-431a9e4a], .side-leave-to[data-v-431a9e4a] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n", ""]);
+exports.push([module.i, "\n.reset-wrapper[data-v-431a9e4a] {\n  position: fixed;\n  top: 0;\n  right: 0;\n  left: 0;\n  bottom: 0;\n  z-index: 200;\n  background-color: #eeeeee;\n}\n.reset-wrapper .sider[data-v-431a9e4a] {\n    position: relative;\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-pack: center;\n        -ms-flex-pack: center;\n            justify-content: center;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n    width: 100%;\n    height: 27%;\n    background-color: #A46E92;\n}\n.reset-wrapper .sider .avatar[data-v-431a9e4a] {\n      -webkit-box-sizing: border-box;\n              box-sizing: border-box;\n      border: 5px solid rgba(170, 170, 170, 0.5);\n      border-radius: 100%;\n      width: 75px;\n      height: 75px;\n      margin-top: 15px;\n}\n.reset-wrapper .sider .left-triangle[data-v-431a9e4a] {\n      position: absolute;\n      left: 0;\n      bottom: 0;\n      width: 0;\n      height: 0;\n      border-bottom: 25px solid #eee;\n      border-right: 160px solid transparent;\n}\n.reset-wrapper .sider .right-triangle[data-v-431a9e4a] {\n      position: absolute;\n      right: 0;\n      bottom: 0;\n      width: 0;\n      height: 0;\n      border-bottom: 25px solid #eee;\n      border-left: 160px solid transparent;\n}\n.reset-wrapper .reset[data-v-431a9e4a] {\n    width: 85%;\n    margin: 1.2rem auto 0px;\n}\n.reset-wrapper .reset .info-reset li[data-v-431a9e4a] {\n      position: relative;\n      height: 1.2rem;\n      line-height: 1.2rem;\n      margin-top: 15px;\n}\n.reset-wrapper .reset .info-reset li input[type=text][data-v-431a9e4a], .reset-wrapper .reset .info-reset li input[type=password][data-v-431a9e4a], .reset-wrapper .reset .info-reset li input[type=number][data-v-431a9e4a] {\n        width: 100%;\n        border-radius: 0.1rem;\n        padding: 0.4rem 1rem 0.4rem 2rem;\n}\n.reset-wrapper .reset .info-reset li input.reset-submit[data-v-431a9e4a] {\n        width: 100%;\n        height: 100%;\n        cursor: pointer;\n        color: #FFFFFF;\n        text-align: center;\n        font-weight: bold;\n        background-color: #53CAC3;\n        border: 1px solid #53CAC3;\n        border-radius: 0.1rem;\n        white-space: nowrap;\n        -webkit-appearance: none;\n}\n.reset-wrapper .reset .info-reset li input.reset-submit[data-v-431a9e4a]:focus {\n          border-color: #53CAC3;\n}\n.reset-wrapper .reset .info-reset li.input-warp[data-v-431a9e4a]:before {\n      display: table;\n      content: \"\";\n      position: absolute;\n      background: rgba(0, 0, 0, 0.3);\n      width: 1px;\n      height: 100%;\n      top: 50%;\n      left: 1.6rem;\n      -webkit-transform: scaleY(0.3) translateY(-50%);\n              transform: scaleY(0.3) translateY(-50%);\n      -webkit-transform-origin: 0 0;\n              transform-origin: 0 0;\n}\n.reset-wrapper .reset .info-reset li.mobile-input b[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: #53CAC3;\n      font-weight: 100;\n      padding-left: .4rem;\n}\n.reset-wrapper .reset .info-reset li.mobile-input .icon-circle-with-cross[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: rgba(0, 0, 0, 0.3);\n      padding: 8px;\n}\n.reset-wrapper .reset .info-reset li.password-input .icon-lock[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: rgba(0, 0, 0, 0.3);\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.reset-wrapper .reset .info-reset li.password-input .password-show-icon[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      font-size: .45rem;\n      right: .1rem;\n      color: rgba(0, 0, 0, 0.3);\n      padding: 8px;\n}\n.reset-wrapper .reset .info-reset li.captcha-input[data-v-431a9e4a] {\n      position: relative;\n}\n.reset-wrapper .reset .info-reset li.captcha-input .icon-lock[data-v-431a9e4a] {\n        position: absolute;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        display: block;\n        color: rgba(0, 0, 0, 0.3);\n        font-weight: 100;\n        left: .4rem;\n        padding-left: .1rem;\n        font-size: .5rem;\n}\n.reset-wrapper .reset .info-reset li.captcha-input .captcha-image[data-v-431a9e4a] {\n        height: 21px;\n        position: absolute;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        right: 1rem;\n}\n.reset-wrapper .reset .info-reset li.captcha-input .captcha-image img[data-v-431a9e4a] {\n          display: block;\n          height: 100%;\n}\n.reset-wrapper .reset .info-reset li.captcha-input .icon-spinner[data-v-431a9e4a] {\n        position: absolute;\n        top: 50%;\n        -webkit-transform: translateY(-50%);\n                transform: translateY(-50%);\n        right: .1rem;\n        color: rgba(0, 0, 0, 0.3);\n        font-size: .45rem;\n        padding: 8px;\n}\n.reset-wrapper .reset .info-reset li.verify-code-input .icon-smartphone[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      display: block;\n      color: rgba(0, 0, 0, 0.3);\n      font-weight: 100;\n      left: .4rem;\n      padding-left: .1rem;\n      font-size: .5rem;\n}\n.reset-wrapper .reset .info-reset li.verify-code-input button[data-v-431a9e4a] {\n      position: absolute;\n      top: 50%;\n      -webkit-transform: translateY(-50%);\n              transform: translateY(-50%);\n      right: .4rem;\n      z-index: 10;\n}\n.reset-wrapper .reset .info-reset .voice-verify[data-v-431a9e4a] {\n      text-align: center;\n      font-size: 0.4rem;\n      line-height: 0.6rem;\n      color: rgba(0, 0, 0, 0.3);\n}\n.reset-wrapper .reset .info-reset .voice-verify a[data-v-431a9e4a] {\n        color: #53CAC3;\n}\n.reset-wrapper .back[data-v-431a9e4a] {\n    position: absolute;\n    top: 14px;\n    left: 6px;\n    z-index: 200;\n}\n.reset-wrapper .back .icon-left[data-v-431a9e4a] {\n      display: block;\n      padding: 10px;\n      font-size: 0.5rem;\n      color: #fff;\n}\n.side-enter-active[data-v-431a9e4a], .side-leave-active[data-v-431a9e4a] {\n  -webkit-transition: all 0.3s;\n  transition: all 0.3s;\n}\n.side-enter[data-v-431a9e4a], .side-leave-to[data-v-431a9e4a] {\n  -webkit-transform: translate3d(100%, 0, 0);\n          transform: translate3d(100%, 0, 0);\n}\n", ""]);
 
 // exports
 
@@ -48232,6 +48238,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Api_config_js__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Api_user__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Helpers_avatar__ = __webpack_require__(40);
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -48302,7 +48314,8 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       mobileRule: 'mobile_exists',
       route: '',
       triangleWidth: '',
-      avatar: ''
+      avatar: '',
+      captcha_code: ''
     };
   },
   created: function created() {
@@ -48316,6 +48329,18 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
   },
 
   methods: {
+    refreshCaptcha: function refreshCaptcha() {
+      var _this = this;
+
+      var formData = new FormData();
+      formData.append('mobile', this.mobile);
+      axios.post('/api/captchas', formData).then(function (response) {
+        _this.captchaImageContent = response.data.captcha_image_content;
+        _this.captcha_key = response.data.captcha_key;
+        _this.showCaptcha = true;
+        _this.$refs.captcha.focus();
+      });
+    },
     passwordShowLogger: function passwordShowLogger() {
       this.passwordShow = !this.passwordShow;
     },
@@ -48334,27 +48359,27 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       return true;
     },
     submit: function submit() {
-      var _this = this;
+      var _this2 = this;
 
       if (this.checkMobileRegex() && this.checkPassword() && this.checkVerifyCode()) {
         this.spinnerText = '正在重置密码';
         this.spinning = true;
         Object(__WEBPACK_IMPORTED_MODULE_4_Api_user_js__["b" /* resetPassword */])(this.userules).then(function (response) {
-          _this.spinning = false;
+          _this2.spinning = false;
           if (response.success && response.code === __WEBPACK_IMPORTED_MODULE_5_Api_config_js__["a" /* ERR_OK */]) {
-            _this.message = response.message;
-            _this.$refs.message.show();
-            _this.route = '/login';
+            _this2.message = response.message;
+            _this2.$refs.message.show();
+            _this2.route = '/login';
           }
         }).catch(function (error) {
-          _this.spinning = false;
+          _this2.spinning = false;
           if (error.success === false && error.code === __WEBPACK_IMPORTED_MODULE_5_Api_config_js__["c" /* ERR_UNPROCESSABLE_ENTITY */]) {
-            _this.message = error.message;
-            _this.$refs.message.show();
+            _this2.message = error.message;
+            _this2.$refs.message.show();
           } else {
             // 不可预知的错误
-            _this.message = '服务繁忙请稍后再试';
-            _this.$refs.message.show();
+            _this2.message = '服务繁忙请稍后再试';
+            _this2.$refs.message.show();
           }
         });
       }
@@ -48372,14 +48397,14 @@ var phoneRegex = /^1(3[\d]|4[57]|5[0-35-9]|7[01678]|8[\d])[\d]{8}$/;
       this.avatar = null;
     },
     setAvatar: function setAvatar() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.avatar = __WEBPACK_IMPORTED_MODULE_7_Helpers_avatar__["a" /* default */].getAvatar(this.userules.mobile);
       if (!this.avatar) {
         Object(__WEBPACK_IMPORTED_MODULE_6_Api_user__["a" /* getAvatar */])(this.userules.mobile).then(function (response) {
-          _this2.avatar = response.avatar;
-          if (_this2.avatar) {
-            __WEBPACK_IMPORTED_MODULE_7_Helpers_avatar__["a" /* default */].setAvatar(_this2.userules.mobile, response.avatar);
+          _this3.avatar = response.avatar;
+          if (_this3.avatar) {
+            __WEBPACK_IMPORTED_MODULE_7_Helpers_avatar__["a" /* default */].setAvatar(_this3.userules.mobile, response.avatar);
           }
         });
       }
@@ -48427,7 +48452,7 @@ var render = function() {
         _c("div", { staticClass: "reset" }, [
           _c("form", { staticClass: "info-reset", attrs: { action: "" } }, [
             _c("ul", [
-              _c("li", [
+              _c("li", { staticClass: "input-warp mobile-input" }, [
                 _c("b", [
                   _vm._v(_vm._s(_vm.lable)),
                   _c("i", { staticClass: "icon-down" })
@@ -48482,7 +48507,7 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("li", [
+              _c("li", { staticClass: "input-warp password-input" }, [
                 _c("i", { staticClass: "icon-lock" }),
                 (_vm.passwordShow ? "text" : "password") === "checkbox"
                   ? _c("input", {
@@ -48579,8 +48604,51 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
+              _vm.showCaptcha
+                ? _c("li", { staticClass: "input-warp captcha-input" }, [
+                    _c("i", { staticClass: "icon-lock" }),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.captcha_code,
+                          expression: "captcha_code"
+                        }
+                      ],
+                      ref: "captcha",
+                      attrs: {
+                        type: "text",
+                        id: "captcha",
+                        placeholder: "请输入图片验证码"
+                      },
+                      domProps: { value: _vm.captcha_code },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.captcha_code = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "captcha-image" }, [
+                      _c("img", {
+                        attrs: { src: _vm.captchaImageContent, width: "45" }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c("i", {
+                      staticClass: "icon-spinner",
+                      on: { click: _vm.refreshCaptcha }
+                    })
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "li",
+                { staticClass: "input-warp verify-code-input" },
                 [
                   _c("i", { staticClass: "icon-smartphone" }),
                   _c("input", {
@@ -48642,7 +48710,7 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _c("li", [
+              _c("li", { staticClass: "submit-warp" }, [
                 _c("input", {
                   staticClass: "reset-submit",
                   attrs: { type: "submit", value: "重置密码" },

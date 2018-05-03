@@ -13,7 +13,7 @@
             </li>
             <li class="input-warp verify-code-input"><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
             <li class="voice-verify-warp"><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
-            <li class="submit-warp"><input @click.prevent="submit" type="submit" value="进入"></li>
+            <li class="submit-warp" :class="{'captcha-reduce-margin': showCaptcha}"><input @click.prevent="submit" type="submit" value="进入"></li>
           </ul>
         </form>
       </div>
@@ -164,6 +164,8 @@
     color: #fff
   .info-login li.submit-warp
     margin-top: 1rem
+    &.captcha-reduce-margin
+        margin-top: .3rem
   .info-login li
     height: 1.2rem
     line-height: 1.2rem
