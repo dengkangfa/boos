@@ -1,11 +1,11 @@
 import axios from 'axios'
 
 export function sendVerifyCode(requestData) {
-  const url = '/laravel-sms/verify-code'
+  const url = '/api/verify-code'
 
   return axios.post(url, requestData, {
     headers: {
-      'access-token': requestData.mobile
+      'access-token': requestData.get('mobile')
     }
   }).then(res => {
     return Promise.resolve(res.data)

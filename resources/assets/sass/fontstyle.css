@@ -187,6 +187,9 @@
 .icon-star-empty:before {
   content: "\e9d7";
 }
+.icon-spinner:before {
+  content: "\e984";
+}
 .icon-sina-weibo:before {
   content: "\ea9a";
   color: #ffffff;

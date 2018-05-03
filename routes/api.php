@@ -51,6 +51,9 @@ Route::namespace('Api')->group(function () {
     Route::patch('user/role', 'UsersController@updateRole');
     Route::get('users/contacts', 'UsersController@contacts');
 
+    Route::post('verify-code', 'VerificationCodesController@store');
+    Route::post('captchas', 'VerificationCodesController@generateCaptcha');
+
     Route::get('me/education_info', 'EducationInfoController@currentUserFirstEducation');
     Route::get('me/education_infos', 'EducationInfoController@currentUserAllEducation');
     Route::post('education_infos', 'EducationInfoController@store');

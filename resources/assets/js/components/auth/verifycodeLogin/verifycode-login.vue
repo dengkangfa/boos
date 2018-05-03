@@ -4,10 +4,16 @@
         <form action="">
           <h3>BOSS直聘<span></span></h3>
           <ul class="info-login">
-            <li><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
-            <li><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
-            <li><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
-            <li><input @click.prevent="submit" type="submit" value="进入"></li>
+            <li class="input-warp mobile-input"><b>{{lable}}<i class="icon-down"></i></b><input type="text" v-model="userules.mobile" pattern="[0-9]*" placeholder="请输入您的手机号" ref="mobile" @blur="closeIconShow = false" @focus="closeIconShow = true"><i class="icon-circle-with-cross" @click.prevent="close" v-show="closeIconShow && userules.mobile"></i></li>
+            <li class="input-warp captcha-input" v-if="showCaptcha"><i class="icon-lock"></i><input type="text" v-model="captcha_code" id="captcha" placeholder="请输入图片验证码" ref="captcha">
+                <div class="captcha-image">
+                    <img :src="captchaImageContent" width="45">
+                </div>
+                <i class="icon-spinner" @click="refreshCaptcha"></i>
+            </li>
+            <li class="input-warp verify-code-input"><i class="icon-smartphone"></i><input type="number" v-model="userules.verifyCode" pattern="[0-9]*" oninput="if(value.length>6)value=value.slice(0,6)" placeholder="验证码" ref="verifyCodeInput"><timer-btn @run="sendVerifyCode" @end="end" ref="timer"></timer-btn></li>
+            <li class="voice-verify-warp"><p>长时间收不到验证码，可尝试 <a style="text-decoration: underline;color: #42b983" @click.prevent="sendVoiceVerify">语音接听验证码</a></p></li>
+            <li class="submit-warp"><input @click.prevent="submit" type="submit" value="进入"></li>
           </ul>
         </form>
       </div>
@@ -43,7 +49,8 @@
         spinning: false, // 是否显示loading
         message: '', // 提示消息
         lable: '+86',
-        spinnerText: ''
+        spinnerText: '',
+        captcha_code: ''
       }
     },
     mounted() {
@@ -59,6 +66,16 @@
       }
     },
     methods: {
+      refreshCaptcha() {
+        let formData = new FormData()
+        formData.append('mobile', this.mobile)
+        axios.post('/api/captchas', formData).then(response => {
+          this.captchaImageContent = response.data.captcha_image_content
+          this.captcha_key = response.data.captcha_key
+          this.showCaptcha = true;
+          this.$refs.captcha.focus();
+        })
+      },
       submit() {
         if (this.checkMobileRegex() && this.checkVerifyCode()) {
           this.spinnerText = '正在登录中'
@@ -140,13 +157,12 @@
         height: 0.6rem
         margin: auto
         width: 150px
-  .info-login li:nth-child(1),
-  .info-login li:nth-child(2)
+  .input-warp
     margin-top: .6rem
-  .info-login li:nth-child(3)
+  .info-login li.voice-verify-warp
     text-align: center
     color: #fff
-  .info-login li:nth-child(4)
+  .info-login li.submit-warp
     margin-top: 1rem
   .info-login li
     height: 1.2rem
@@ -177,21 +193,20 @@
       white-space: nowrap
     & input[type=submit]:hover,input[type=button]:hover
       background-color: $color-theme
-  .info-login li:nth-child(1) b
+  .mobile-input b
     @include ct() // 垂直局中
     display: block
     color: #fff
     font-weight: 100
     /*left: .4rem*/
     padding-left: .4rem
-  .info-login li:nth-child(1) .icon-circle-with-cross
+  .info-login li.mobile-input .icon-circle-with-cross
     @include ct() // 垂直局中
     font-size: .45rem
     right: .1rem
     color: #605e5e
     padding: 8px
-  .info-login li:nth-child(1):before,
-  .info-login li:nth-child(2):before
+  .input-warp:before
     display: table
     content: ""
     position: absolute
@@ -202,7 +217,8 @@
     left: 1.6rem
     transform: scaleY(0.3) translateY(-50%)
     transform-origin: 0 0
-  .info-login li:nth-child(2) .icon-smartphone
+  .captcha-input .icon-lock,
+  .verify-code-input .icon-smartphone
     @include ct() // 垂直局中
     display: block
     color: $color-text
@@ -210,7 +226,22 @@
     left: .4rem
     padding-left: .1rem
     font-size: .5rem
-  .info-login li:nth-child(2) button
+  .captcha-input
+      position: relative
+      .captcha-image
+          height: 21px
+          @include ct()
+          right: 50px
+          img
+              display: block
+              height: 100%
+      .icon-spinner
+          @include ct()
+          right: 20px
+          color: #fff
+          font-size: .4rem
+          padding: 5px
+  .info-login li.verify-code-input button
     @include ct() // 垂直局中
     right: .4rem
     z-index: 10
@@ -221,6 +252,6 @@
   @media screen and (max-height: 480px)
     #login
         margin-top: .5rem
-        .info-login li:nth-child(4)
+        .info-login li.submit-warp
           margin-top: .5rem
 </style>

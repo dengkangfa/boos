@@ -53,7 +53,10 @@ export const verifycodeMixin = {
       userules: {
         verifyCode: ''
       },
-      disabledVoiceVerify: false // 语音验证码服务是否可用
+      disabledVoiceVerify: false, // 语音验证码服务是否可用
+      captchaImageContent: null,
+      captcha_key: null,
+      showCaptcha: true
     }
   },
   methods: {
@@ -65,29 +68,60 @@ export const verifycodeMixin = {
       }
       return true
     },
+    checkCaptcha() {
+      if (this.showCaptcha && this.captcha_code.length !== 4) {
+        this.message = '请输入正确的图片验证码'
+        this.$refs.message.show()
+        return false
+      }
+      return true
+    },
     // 发送短信验证
     sendVerifyCode() {
-      if (this.checkMobileRegex()) {
+      if (this.checkMobileRegex() && this.checkCaptcha()) {
         this.disabledVoiceVerify = true // 禁止获取语音验证码发送服务
         this.spinnerText = '正在发送中'
         this.spinning = true // 显示正在发送的loading
-        sendVerifyCode({'mobile': this.userules.mobile, 'mobile_rule': this.mobileRule}).then(response => {
+        let formData = new FormData()
+        formData.append('mobile', this.userules.mobile)
+        formData.append('mobile_rule', this.mobileRule)
+        if (this.showCaptcha) {
+          formData.append('captcha_key', this.captcha_key)
+          formData.append('captcha_code', this.captcha_code)
+        }
+        sendVerifyCode(formData).then(response => {
           this.spinning = false // 隐藏正在发送的loading
           // 数据格式有误
           if (response.success === false) {
-            this.disabledVoiceVerify = false
-            this.message = response.message
-            this.$refs.message.show()
-            return
+            if (response.code === 10005) {
+              this.captchaImageContent = response.captcha_image_content
+              this.captcha_key = response.captcha_key
+              this.showCaptcha = true
+              this.$refs.captcha.focus()
+              return
+            } else if (response.code === 10006) {
+              this.captchaImageContent = response.captcha_image_content
+              this.captcha_key = response.captcha_key
+              this.captcha_code = ''
+              this.showCaptcha = true;
+              this.message = '请输入正确的图片验证码'
+              this.$refs.message.show()
+              return
+            } else {
+              this.disabledVoiceVerify = false
+              this.message = response.message
+              this.$refs.message.show()
+              return
+            }
           }
           this.$refs.timer.start() // 可重复获取验证码按钮进入倒计时
           this.userules.verifyCode = ''
           this.$refs.verifyCodeInput.focus() // 让验证码输入框获取焦点(提高用户体验)
-        }).catch(() => {
+        }).catch((error) => {
           this.spinning = false // 隐藏正在发送的loading
           this.disabledVoiceVerify = false
           // 不可预知的错误
-          this.message = '服务繁忙请稍后再试~'
+          this.message = error.message ? error.message : '服务繁忙请稍后再试~'
           this.$refs.message.show()
         })
       }

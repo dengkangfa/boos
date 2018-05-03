@@ -147,6 +147,7 @@
         this.message = ''
         this.messageList = this.messageList.concat({'message': message, 'created_at': new Date().toLocaleString(), user:{ data:{ id: this.user.id}}})
         seedMessage(this.$route.params.chat_uuid, {'message': message}).then(response => {
+
         })
       }
     },

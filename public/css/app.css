@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icomoon';
-  src:  url(/fonts/icomoon.eot?5846b18bd68b995845a64f271fa852db);
-  src:  url(/fonts/icomoon.eot?5846b18bd68b995845a64f271fa852db#iefix) format('embedded-opentype'),
-    url(/fonts/icomoon.ttf?d0212fe8325b26045d42173f324bdd58) format('truetype'),
-    url(/fonts/icomoon.woff?6666f7ef7c28135999a252c021043b4f) format('woff'),
-    url(/fonts/icomoon.svg?aefae5f68b289802b3199c6f73c64090#icomoon) format('svg');
+  src:  url(/fonts/icomoon.eot?5dcd660338ab84fad92bd2b0ba9eb60f);
+  src:  url(/fonts/icomoon.eot?5dcd660338ab84fad92bd2b0ba9eb60f#iefix) format('embedded-opentype'),
+    url(/fonts/icomoon.ttf?07fe7289b69b9733c58da02a8c9206a9) format('truetype'),
+    url(/fonts/icomoon.woff?bb4e4676143189649ca66597c9086fd2) format('woff'),
+    url(/fonts/icomoon.svg?1997f49a74de50323cf8b7c7d135c412#icomoon) format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -186,6 +186,9 @@
 }
 .icon-star-empty:before {
   content: "\E9D7";
+}
+.icon-spinner:before {
+  content: "\E984";
 }
 .icon-sina-weibo:before {
   content: "\EA9A";
@@ -435,6 +438,10 @@ input[type="reset"] {
 
 textarea {
   -webkit-appearance: none;
+}
+
+.margin-top-0.6 {
+  margin-top: 0.6rem;
 }
 
 .horizontal-slide-enter-active,

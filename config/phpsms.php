@@ -22,7 +22,7 @@ return [
      *
      */
     'scheme' => [
-        'Ucpaas',
+        'Log',
     ],
 
     /*
