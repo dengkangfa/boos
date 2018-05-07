@@ -5,13 +5,17 @@
                 <div slot="left" @click="hide"><i class="icon-left" style="padding: 0.3rem;"></i></div>
             </dkf-header>
             <div class="main">
-                <el-amap vid="amap" :center="location" :zooms="zooms">
-                    <el-amap-marker  :position="location"></el-amap-marker>
+                <el-amap vid="amap" :center="locationArr" :zooms="zooms" v-if="locationArr.length === 2">
+                    <el-amap-marker  :position="locationArr"></el-amap-marker>
                 </el-amap>
             </div>
             <div class="map-footer">
-                <p class="prompt">地图由高德地图提供，暂不可修改</p>
-                <div class="address"><span>{{ address }}</span></div>
+                <p class="prompt">{{ edit ? '当前地址' : '地图由高德地图提供，暂不可修改' }}</p>
+                <div class="address" :class="{'edit': edit}"><span>{{ address }}</span></div>
+                <div class="button-group" v-if="edit">
+                    <div class="edit-button">编辑</div>
+                    <div class="update-button" @click="jobPlaceShowFlag = true">更换</div>
+                </div>
             </div>
         </div>
     </transition>
@@ -19,6 +23,7 @@
 
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
+  import jobPlace from './job-place'
 
   export default {
     props: {
@@ -28,14 +33,19 @@
       },
       location: {
         type: Array,
-        default: null,
-        required: true
+        default: null
+      },
+      edit: {
+        type: Boolean,
+        default: false
       }
     },
     data() {
       return {
         showFlag: false,
-        zooms: [12, 18]
+        zooms: [12, 18],
+        locationArr: [],
+        jobPlaceShowFlag: false
       }
     },
     methods: {
@@ -48,6 +58,28 @@
     },
     components: {
       dkfHeader
+    },
+    watch: {
+      location(newValue) {
+        this.locationArr = newValue
+      },
+      showFlag(newValue) {
+        if (newValue && this.edit) {
+          let self = this
+          var geocoder = new AMap.Geocoder({
+            radius: 1000,
+            extensions: 'all'
+          })
+          geocoder.getLocation(this.address, function(status, result) {
+            if (status === 'complete' && result.info === 'OK') {
+              let locationTemp = result.geocodes[0].location
+              self.locationArr = [locationTemp.lng, locationTemp.lat]
+            } else {
+              self.locationArr = []
+            }
+          })
+        }
+      }
     }
   }
 </script>
@@ -83,4 +115,27 @@
                 border-radius: .1rem
                 padding: 10px
                 margin-top: 20px
+                &.edit
+                    padding: 20px 10px
+            .button-group
+                display: flex
+                justify-content: space-between
+                div
+                    flex: 1
+                    height: 40px
+                    line-height: 40px
+                    font-size: 0.45rem
+                    text-align: center
+                    background: $color-theme
+                    border-radius: 0.15rem
+                    color: $color-text
+                    margin-top: 10px
+                    box-sizing: border-box
+                    &:first-child
+                        margin-right: 10px
+                .edit-button
+                    background: $color-text
+                    color: $color-theme
+                    border: 1px solid $color-theme
+
 </style>

@@ -69,7 +69,8 @@
           abbreviation: '',
           industry_str: '',
           industry_code: -1,
-          people: -1
+          people: -1,
+          boss_count: 0
         }
       }
     },

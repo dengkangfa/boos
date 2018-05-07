@@ -19,15 +19,17 @@ class JobTransformer extends TransformerAbstract
 
     public function transform(Job $job)
     {
-        $matches = [];
-
         if ($this->simple) {
             return [
                 'id' => $job->id,
                 'name' => $job->name,
                 'low_salary' => (int) $job->low_salary,
                 'high_salary' => (int) $job->high_salary,
-                'place' => $job->place,
+                'province' => $job->province,
+                'city' => $job->city,
+                'area' => $job->area,
+                'street' => $job->street,
+                'doorplate' => $job->doorplate,
                 'seniority' => $job->seniority,
                 'education' => $job->education
             ];
@@ -39,7 +41,11 @@ class JobTransformer extends TransformerAbstract
                 'type_str' => $job->type_str,
                 'type_code' => $job->type_code,
                 'name' => $job->name,
-                'place' => $job->place,
+                'province' => $job->province,
+                'city' => $job->city,
+                'area' => $job->area,
+                'street' => $job->street,
+                'doorplate' => $job->doorplate,
                 'nature' => $job->nature,
                 'work_emphasis' => array_slice(explode('・', $job->work_emphasis), 0, 3),
                 'low_salary' => (int) $job->low_salary,

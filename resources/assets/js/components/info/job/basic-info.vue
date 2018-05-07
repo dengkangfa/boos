@@ -3,7 +3,7 @@
         <div class="basic-info">
             <div class="_effect" :class="{'_effect--30': decline}" style="height: 100%;">
                 <dkf-header title="个人信息">
-                    <div slot="left" @click="back"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                    <div slot="left" @click="$router.push({'name': 'select-identity'})"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                     <div slot="right" @click="next">下一步</div>
                 </dkf-header>
                 <div class="avatar-wrapper active" @click="showAvatarDriver">
@@ -115,9 +115,6 @@
         this.userData.gender = this.user.gender
         this.userData.job_date = this.user.job_date
         this.userData.birth_date = this.user.birth_date
-      },
-      back() {
-        this.$router.back()
       },
       next() {
         // 验证数据合法性

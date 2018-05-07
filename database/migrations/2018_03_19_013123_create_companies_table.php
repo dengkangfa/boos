@@ -16,7 +16,7 @@ class CreateCompaniesTable extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name')->index();
-            $table->string('pic')->nullable();
+            $table->text('pic')->nullable();
             $table->string('abbreviation')->index();
             $table->string('industry_str');
             $table->string('industry_code')->index();

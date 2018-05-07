@@ -48,6 +48,12 @@
         return districts
       },
       onValuesChange(picker, values) {
+        values = values.map(item => {
+          if (typeof(item) === 'undefined') {
+            return ''
+          }
+          return item
+        })
         this.values = values
         picker.setSlotValues(1, this.getDistricts(this.getAreaCode(values[0])))
         if (this.depth === 3) {

@@ -27,9 +27,9 @@
                             <div class="cell-value is-link" :class="{'theme-color': !positionData.name}"><span>{{ positionData.name ? positionData.name : '请填写' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li @click="jobPlaceShowFlag = true">
+                        <li @click="address ? $refs.map.show() : jobPlaceShowFlag = true ">
                             <div class="cell-title"><span>工作地点</span></div>
-                            <div class="cell-value is-link" :class="{'theme-color': !positionData.place}"><span>{{ positionData.place ? positionData.place : '请填写' }}</span></div>
+                            <div class="cell-value is-link" :class="{'theme-color': !address}"><span>{{ address ? address : '请填写' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                     </ul>
@@ -81,7 +81,8 @@
             </div>
             <position-type-select v-model="positionData.type" @selected="positionSelected" ref="positionTypeSelect"></position-type-select>
             <position-skill-checkbox @save="workEmphasisArr = arguments[0]" v-model="workEmphasisArr" :data="positionSkills" ref="positionSkillCheckbox"></position-skill-checkbox>
-            <job-place ref="jobPlace" v-if="jobPlaceShowFlag" @save="positionData.place = arguments[0], jobPlaceShowFlag = false" @hide="jobPlaceShowFlag = false"></job-place>
+            <job-place ref="jobPlace" v-if="jobPlaceShowFlag" @save="positionData = Object.assign({}, positionData, arguments[0]), jobPlaceShowFlag = false" @hide="jobPlaceShowFlag = false"></job-place>
+            <vMap :address="address" edit ref="map"></vMap>
             <full-screen-input :maxLength="12" v-model="positionData.name" @saveValue="positionData.name = arguments[0]" title="职位名称" ref="positionNameInput"></full-screen-input>
             <picker title="工作性质" :slots="natureSlots" @confirm="positionData.nature = arguments[0][0]" ref="naturePicker"></picker>
             <picker title="经验要求" :slots="senioritySlots" @confirm="positionData.seniority = arguments[0][0]" ref="seniorityPicker"></picker>
@@ -100,6 +101,7 @@
   import positionTypeSelect from '../../base/position-type-select'
   import positionSkillCheckbox from '../../base/position-skill-checkbox'
   import jobPlace from './job-place'
+  import vMap from './map'
   import fullScreenInput from '../../base/full-screen-input'
   import fullScreentTextarea from '../../base/full-screen-textarea'
   import salaryPicker from 'Base/picker/salary-picker'
@@ -121,6 +123,7 @@
         workEmphasisArr: [],
         positionSkills: [],
         jobPlaceShowFlag: false,
+        vMapShowFlag: false,
         spinnerShowFlag: false,
         natureSlots: [{values: ['全职', '兼职', '实习']}],
         senioritySlots: [{values: ['不限', '应届生', '一年以内', '1-3年', '3-5年', '5-10年', '10年以上'], defaultIndex: 2}],
@@ -129,7 +132,10 @@
           type_str: '', // 职位类型
           type_code: '', // 职位类型 code
           name: '', // 职位名称
-          place: '', // 工作地点
+          city: '', // 工作地点
+          area: '', // 工作地点
+          street: '', // 工作地点
+          doorplate: '', // 工作地点
           nature: '全职', // 工作性质
           work_emphasis: '', // 技能要求
           low_salary: '',
@@ -146,6 +152,9 @@
       }),
       descriptionValue() {
         return this.positionData.description ? '<i class="icon icon-correct-filling" style="font-size: .4rem;color: #e9e9e9;margin-right: 7px;"></i>' : '请填写'
+      },
+      address() {
+        return this.positionData.city + this.positionData.area + this.positionData.street + this.positionData.doorplate
       }
     },
     methods: {
@@ -189,7 +198,7 @@
       _checkData() {
         if (!this.positionData.type_str) {
           this.message = '请您选择职位类型'
-        } else if (!this.positionData.place) {
+        } else if (!this.address) {
           this.message = '请您选择工作城市'
         } else if (!this.positionData.work_emphasis) {
           this.message = '请您填写技能要求'
@@ -209,6 +218,7 @@
       positionTypeSelect,
       positionSkillCheckbox,
       jobPlace,
+      vMap,
       fullScreenInput,
       fullScreentTextarea,
       salaryPicker,
@@ -219,6 +229,9 @@
       spinner
     },
     watch: {
+      positionData(newValue) {
+        console.log(newValue)
+      },
       company(newCompany) {
         this.positionData.company_id = newCompany.id
       },

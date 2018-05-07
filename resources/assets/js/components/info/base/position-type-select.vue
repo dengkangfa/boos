@@ -90,7 +90,6 @@
         this.getSkills(index)
       },
       chooseSkill(searchValue, index) {
-        console.log(222)
         this.$emit('selected', {'id': index, 'name': searchValue})
         this.hide()
       },

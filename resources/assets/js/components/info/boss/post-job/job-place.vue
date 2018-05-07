@@ -15,11 +15,11 @@
                             <div class="input-group-wrapper first-input-group">
                                 <label>街道/写字楼</label>
                                 <div class="input-group">
-                                    <input type="text" v-model="front_road" @keyup.13="getCurrentPosition" @input="keyUpSearch" @focus="roadCloseIconShow = true, top = true, roadInputBlur = false" @blur="roadCloseIconShow = false, top = false" placeholder="请输入办公大楼,例:国际大厦" v-blur="roadInputBlur">
-                                    <i @click="front_road = ''" class="icon icon-circle-with-cross" v-show="roadCloseIconShow && front_road"></i>
+                                    <input type="text" v-model="address.street" @keyup.13="getCurrentPosition" @input="keyUpSearch" @focus="roadCloseIconShow = true, top = true, roadInputBlur = false" @blur="roadCloseIconShow = false, top = false" placeholder="请输入办公大楼,例:国际大厦" v-blur="roadInputBlur">
+                                    <i @click="address.street = ''" class="icon icon-circle-with-cross" v-show="roadCloseIconShow && address.street"></i>
                                 </div>
                             </div>
-                            <div class="search-results-wrapper" v-show="front_road && roadCloseIconShow && searchData.length" ref="searchResultsWrapper">
+                            <div class="search-results-wrapper" v-show="address.street && roadCloseIconShow && searchData.length" ref="searchResultsWrapper">
                                 <ul class="search-results">
                                     <li @click="locate(item.location, item.name)" v-for="item in searchData">
                                         <p><i class="icon icon-position"></i><span>{{ item.name }}</span></p>
@@ -31,8 +31,8 @@
                         <div class="input-group-wrapper">
                             <label>门牌(选填)</label>
                             <div class="input-group">
-                                <input type="text" v-model="front_detial" @focus="detialCloseIconShow = true, top = true" @blur="detialCloseIconShow = false, top = false" placeholder="请输入楼号/门牌号等,例:3楼512室">
-                                <i @click="front_detial = ''" class="icon icon-circle-with-cross" v-show="detialCloseIconShow && front_detial"></i>
+                                <input type="text" v-model="address.doorplate" @focus="detialCloseIconShow = true, top = true" @blur="detialCloseIconShow = false, top = false" placeholder="请输入楼号/门牌号等,例:3楼512室">
+                                <i @click="address.doorplate = ''" class="icon icon-circle-with-cross" v-show="detialCloseIconShow && address.doorplate"></i>
                             </div>
                         </div>
                     </div>
@@ -41,15 +41,15 @@
                             <span>你的地址将对牛人展示为:</span>
                             <span class="color-theme" @click="showMap">{{ location_status ? '无法定位' : '地图' }} <i class="icon icon-position"></i></span>
                         </div>
-                        <p class="name">{{ address }}</p>
+                        <p class="name">{{ currentCity + address.street + address.doorplate }}</p>
                     </div>
                 </div>
                 <div @click="confirm" class="dispicker-footer" :class="{'bc-theme': location_status === 0}">
                     <span>确定</span>
                 </div>
             </div>
-            <dist-picker title="请选择该职位的工作城市" :province="province" :city="city" :area="area" @selected="distPickerSelected" :depth="3" ref="distPicker"></dist-picker>
-            <v-map :address="address" :location="location" ref="map"></v-map>
+            <dist-picker title="请选择该职位的工作城市" :province="address.province" :city="address.city" :area="address.area" @selected="distPickerSelected" :depth="3" ref="distPicker"></dist-picker>
+            <v-map :address="this.currentCity + this.address.street + this.address.doorplate" :location="location" ref="map"></v-map>
             <spinner text="加载中" v-show="spinnerShowFlag"></spinner>
             <message message="街道/写字楼不能为空" ref="message"></message>
         </div>
@@ -69,11 +69,13 @@
   export default {
     data() {
       return {
-        province: '',
-        city: '',
-        area: '',
-        front_road: '',
-        front_detial: '',
+        address: {
+          province: '',
+          city: '',
+          area: '',
+          street: '',
+          doorplate: '',
+        },
         currentCity: '',
         top: false,
         searchData: [],
@@ -106,9 +108,9 @@
           geocoder.getAddress([result.position.lng, result.position.lat], function (status, result) {
             if (status === 'complete' && result.info === 'OK') {
               if (result && result.regeocode) {
-                self.province = result.regeocode.addressComponent.province
-                self.city = result.regeocode.addressComponent.city
-                self.area = result.regeocode.addressComponent.district
+                self.address.province = result.regeocode.addressComponent.province.replace(/省|市/, '')
+                self.address.city = result.regeocode.addressComponent.city.replace(/省|市/, '')
+                self.address.area = result.regeocode.addressComponent.district
                 self.$nextTick(() => {
                   self.$refs.distPicker.show()
                 })
@@ -118,17 +120,9 @@
         }
       })
     },
-    computed: {
-      address() {
-        if (this.currentCity && this.front_road) {
-          return this.currentCity + this.front_road + this.front_detial
-        }
-        return ''
-      }
-    },
     methods: {
       showMap() {
-        if (!this.front_road) {
+        if (!this.address.street) {
           this.$refs.message.show()
           return
         }
@@ -137,11 +131,14 @@
         }
       },
       distPickerSelected(values) {
+        this.address.province = values[0]
+        this.address.city = values[1]
+        this.address.area = values[2]
         this.currentCity = values[1] + values[2]
       },
       locate(location, name) {
         this.location = [location.lng, location.lat]
-        this.front_road = name
+        this.address.street = name
         this.location_status = 0
         this.searchData = []
         this.top = false
@@ -156,7 +153,7 @@
           radius: 1000,
           extensions: 'all'
         })
-        geocoder.getLocation(this.front_road, function(status, result) {
+        geocoder.getLocation(this.address.street, function(status, result) {
           self.spinnerShowFlag = false
           if (status === 'complete' && result.info === 'OK') {
             let locationTemp = result.geocodes[0].location
@@ -180,7 +177,7 @@
           let placeSearch = new AMap.PlaceSearch({
             pageSize: 20, pageIndex: 1, city: _this.city, cityLimit: true
           })
-          placeSearch.search(_this.front_road, function (status, result) {
+          placeSearch.search(_this.address.street, function (status, result) {
             if (status == 'complete' && result.info == 'OK') {
               _this.searchData = result.poiList.pois
             }

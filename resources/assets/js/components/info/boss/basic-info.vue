@@ -3,7 +3,7 @@
         <div class="boss-basic-info">
             <div class="_effect" :class="{'_effect--30': decline}" style="height: 100%;">
                 <dkf-header title="Boss个人信息">
-                    <div slot="left" @click="$router.back()"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+                    <div slot="left" @click="$router.push({'name': 'select-identity'})"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                     <div slot="right" @click="complete">完成</div>
                 </dkf-header>
                 <main>

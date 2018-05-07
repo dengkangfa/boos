@@ -20,7 +20,7 @@
                     <i class="icon icon-jiahao"></i><span class="content">创建我的公司</span><i class="color-d icon-right"></i>
                 </div>
             </div>
-            <create-company :companyName="companies[0].name" ref="createCompany"></create-company>
+            <create-company :companyName="companies[0].name" @hide="hide(), $emit('hide')" ref="createCompany"></create-company>
             <join-company :company="currentCompany" @hide="hide(), $emit('hide')" ref="joinCompany"></join-company>
         </div>
     </transition>

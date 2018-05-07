@@ -41,8 +41,8 @@
                                 </h4>
                                 <p class="company-info">{{job.company.data.abbreviation}} 不需要融资</p>
                                 <p class="claim">
-                                    <span>广州 天河区</span>
-                                    <span>{{job.seniority}}</span>
+                                    <span>{{ job.city + ' ' + job.area }}  </span>
+                                    <span>{{job.seniority}}  </span>
                                     <span>{{job.education}}</span>
                                 </p>
                                 <p class='title'>
@@ -316,7 +316,7 @@
                                         color: $color-text-d
                                         padding: .15rem 0
                                         span
-                                            margin-right: 
+                                            margin-right: 20px
                                     &.title
                                         display: flex
                                         span

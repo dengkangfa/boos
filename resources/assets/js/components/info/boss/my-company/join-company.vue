@@ -9,7 +9,7 @@
                     <p>你即将加入公司</p>
                 </div>
                 <div class="media">
-                    <img src="./company.jpg" width="70">
+                    <img :src="company.pic ? company.pic : 'images/company.jpg'" width="70">
                     <div class="media-body">
                         <h3>{{ company.abbreviation }} | {{ company.industry_str }}</h3>
                         <p class="company-name">{{ company.name }}</p>
@@ -48,21 +48,18 @@
         this.showFlag = false
       },
       submit() {
+        let dispatch = undefined;
         if (this.company.id) {
-          this.spinnerShowFlag = true
-          this.$store.dispatch('joinCompany', this.company.id).then(response => {
-            this.spinnerShowFlag = false
-            this.hide()
-            this.$emit('hide')
-          })
+          dispatch = this.$store.dispatch('joinCompany', this.company.id)
         } else {
-          this.spinnerShowFlag = true
-          this.$store.dispatch('createCompany', this.company).then(response => {
-            this.spinnerShowFlag = false
-            this.hide()
-            this.$emit('hide')
-          })
+          dispatch = this.$store.dispatch('createCompany', this.company)
         }
+        this.spinnerShowFlag = true
+        dispatch.then(response => {
+          this.spinnerShowFlag = false
+          this.hide()
+          this.$emit('hide')
+        })
       }
     },
     components: {

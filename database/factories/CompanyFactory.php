@@ -36,11 +36,14 @@ $factory->define(App\Models\Company::class, function ($faker) {
     ];
     $industry_code = rand(100001, 100026);
 
+    $people = rand(0, 5);
+
     return [
         'name' => $faker->name,
         'abbreviation' => $faker->name,
         'pic' =>  $identicon->getImageDataUri('dkf', 80),
         'industry_code' => $industry_code,
-        'industry_str' => $industry_str[$industry_code]
+        'industry_str' => $industry_str[$industry_code],
+        'people' => $people
     ];
 });
