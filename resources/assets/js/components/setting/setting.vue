@@ -1,8 +1,8 @@
 <template>
     <transition name="horizontal-slide">
-        <div class="setting-wrapper" v-show="showFlag">
-            <dkf-header title="设置" class="_effect" :class="{'_effect--50': decline}" fixed>
-                <div slot="left" @click="hide()"><i class="icon-left" style="padding: 0.3rem;"></i></div>
+        <div class="setting-wrapper">
+            <dkf-header title="设置" fixed>
+                <div slot="left" @click="$router.back()"><i class="icon-left" style="padding: 0.3rem;"></i></div>
             </dkf-header>
             <div class="main">
                 <ul>
@@ -54,12 +54,6 @@
   import curRole from './cur-role'
 
   export default {
-    data() {
-      return {
-        decline: false,
-        showFlag: false
-      }
-    },
     computed: {
       ...mapState({
         user: state => state.AuthUser
@@ -69,12 +63,6 @@
       }
     },
     methods: {
-      show() {
-        this.showFlag = true
-      },
-      hide() {
-        this.showFlag = false
-      },
       logout() {
         this.$store.dispatch('logoutRequest').then(response => {
           sessionStorage.setItem('logout-message', '已退出登录')

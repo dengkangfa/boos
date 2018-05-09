@@ -25,6 +25,7 @@ import companyList from '../components/company/company-list'
 import myInfo from '../components/aboutme/myinfo'
 import message from '../components/message/message'
 import meschatDetail from '../components/message/meschat-detail'
+import setting from '../components/setting/setting'
 
 Vue.use(VueRouter)
 
@@ -75,6 +76,12 @@ let routes = [
         meta: { requiresAuth: true }
       }
     ]
+  },
+  {
+    path: '/setting',
+    name: 'setting',
+    component: setting,
+    meta: { requiresAuth: true }
   },
   {
     path: '/login',

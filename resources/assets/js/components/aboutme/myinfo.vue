@@ -2,7 +2,7 @@
     <div class="my-info-wrapper">
         <div class="top-tool">
             <span><i class="icon-saomiao"></i></span>
-            <span @click="$refs.setting.show()"><i class="icon-shezhi"></i></span>
+            <span @click="$router.push({name: 'setting'})"><i class="icon-shezhi"></i></span>
         </div>
         <scroll class="my-info">
             <main>
@@ -85,7 +85,7 @@
                 </div>
             </main>
         </scroll>
-        <setting ref="setting"></setting>
+        <!--<setting ref="setting"></setting>-->
     </div>
 </template>
 

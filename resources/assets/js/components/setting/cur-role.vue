@@ -5,7 +5,7 @@
                 <div class="footer">
                     <span class="current-role">您当前的身份是“{{role}}”</span>
                     <div class="theme-button cur" @click="cur">转换成为“{{role == '牛人' ? 'Boss' : '牛人'}}”身份</div>
-                    <div class="theme-button back" @click="$router.back()">返回</div>
+                    <div class="theme-button back" @click="showFlag = false">返回</div>
                 </div>
             </div>
             <spinner text="身份切换中" v-show="spinnerShowFalg"></spinner>

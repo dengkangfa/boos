@@ -17,6 +17,7 @@
                     <div class="update-button" @click="jobPlaceShowFlag = true">更换</div>
                 </div>
             </div>
+            <job-place v-if="jobPlaceShowFlag"></job-place>
         </div>
     </transition>
 </template>
@@ -57,7 +58,8 @@
       }
     },
     components: {
-      dkfHeader
+      dkfHeader,
+      jobPlace
     },
     watch: {
       location(newValue) {

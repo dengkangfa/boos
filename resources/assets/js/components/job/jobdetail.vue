@@ -135,7 +135,7 @@
     created() {
       job(this.$route.params.id).then(response => {
         this.jobDetail = response.data
-        this.getCurrentPosition(response.data.place)
+        this.getCurrentPosition(response.data.city + response.data.area + response.data.street)
       }).catch(error => {
         console.log(error)
       })
@@ -143,7 +143,7 @@
     computed: {
       topName() {
         if (this.jobDetail.name) {
-          this.jobDetail.name.substr(0, 2) + '...' + this.jobDetail.name.substr(-2, 2)
+          return this.jobDetail.name.substr(0, 2) + '...' + this.jobDetail.name.substr(-2, 2)
         }
       },
       salary() {
