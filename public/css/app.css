@@ -571,6 +571,15 @@ textarea {
   float: right;
 }
 
+.color-theme {
+  color: #53CAC3 !important;
+}
+
+._scroll {
+  height: 100%;
+  overflow: hidden;
+}
+
 ._effect {
   opacity: 1;
   -webkit-transition: .3s all ease;

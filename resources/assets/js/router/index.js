@@ -26,6 +26,7 @@ import myInfo from '../components/aboutme/myinfo'
 import message from '../components/message/message'
 import meschatDetail from '../components/message/meschat-detail'
 import setting from '../components/setting/setting'
+import myResume from '../components/aboutme/my-resume'
 
 Vue.use(VueRouter)
 
@@ -82,6 +83,12 @@ let routes = [
     name: 'setting',
     component: setting,
     meta: { requiresAuth: true }
+  },
+  {
+    path: '/myResume',
+    name: 'myresume',
+    component: myResume,
+    meta: { requiresAuth: true}
   },
   {
     path: '/login',
