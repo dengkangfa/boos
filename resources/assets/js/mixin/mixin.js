@@ -1,4 +1,5 @@
 import {sendVerifyCode, sendVoiceVerify} from 'Api/sms.js'
+import avatar from './avatarMixin.js'
 
 export const loginFooterMixin = {
   mounted() {
@@ -157,3 +158,8 @@ export const verifycodeMixin = {
     }
   }
 }
+
+export const avatarMixin = avatar
+
+// export const avatarMixin = require('./avatarMixin')
+

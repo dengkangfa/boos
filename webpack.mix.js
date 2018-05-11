@@ -17,7 +17,8 @@ mix.webpackConfig({
       Mixin: path.resolve(__dirname, 'resources/assets/js/mixin'),
       Base: path.resolve(__dirname, 'resources/assets/js/components/base'),
       Helpers: path.resolve(__dirname, 'resources/assets/js/helpers'),
-      Components: path.resolve(__dirname, 'resources/assets/js/components')
+      Components: path.resolve(__dirname, 'resources/assets/js/components'),
+      InfoBase: path.resolve(__dirname, 'resources/assets/js/components/info/base')
     }
   },
   module: {

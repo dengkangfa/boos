@@ -22,7 +22,7 @@ import home from '../components/job/home'
 import jobList from '../components/job/joblist'
 import jobDetail from '../components/job/jobdetail'
 import companyList from '../components/company/company-list'
-import myInfo from '../components/aboutme/myinfo'
+import myInfo from '../components/aboutme/my-info'
 import message from '../components/message/message'
 import meschatDetail from '../components/message/meschat-detail'
 import setting from '../components/setting/setting'
@@ -85,8 +85,8 @@ let routes = [
     meta: { requiresAuth: true }
   },
   {
-    path: '/myResume',
-    name: 'myresume',
+    path: '/myresume',
+    name: 'my-resume',
     component: myResume,
     meta: { requiresAuth: true}
   },

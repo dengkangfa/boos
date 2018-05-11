@@ -8,7 +8,7 @@
             <main>
                 <div class="head">
                     <div class="head-t">
-                        <div class="user-info" @click="$router.push({name: 'myresume'})">
+                        <div class="user-info" @click="$router.push({name: 'my-resume'})">
                             <div class="name">
                                 <h3>{{ user.name }}</h3>
                                 <p class="resume"><span>查看并修改个人微简历</span><i class="icon-right"></i></p>

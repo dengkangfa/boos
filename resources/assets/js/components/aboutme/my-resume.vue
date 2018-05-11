@@ -1,14 +1,14 @@
 <template>
     <transition name="horizontal-slide">
         <div class="my-resume-wrapper">
-            <dkf-header title="我的简历" fixed>
+            <dkf-header title="我的简历" class="header _effect" :class="{'_effect--30': decline}" fixed>
                 <div slot="left" @click="$router.back()"><i class="icon-left" style="padding: 0.3rem;"></i></div>
                 <div slot="right"><i class="icon-saomiao"></i></div>
             </dkf-header>
-            <scroll class="_scroll">
+            <scroll class="main-wrapper _effect" :class="{'_effect--30': decline}">
                 <main>
                     <ul class="cell">
-                        <li>
+                        <li @click="$refs.personalInfo.show()">
                             <div class="user-info">
                                 <img :src="user.avatar" width="50" height="50">
                                 <div class="info">
@@ -60,11 +60,12 @@
                     <div class="occupy"></div>
                 </main>
             </scroll>
-            <div class="theme-footer-button">
+            <div class="theme-footer-button _effect" :class="{'_effect--30': decline}">
                 <div>
                     预览简历
                 </div>
             </div>
+            <personal-info ref="personalInfo" @routePipe="routePipe"></personal-info>
         </div>
     </transition>
 </template>
@@ -73,16 +74,28 @@
   import dkfHeader from 'Base/header/header'
   import scroll from 'Base/scroll/scroll'
   import {mapState} from 'vuex'
+  import personalInfo from './personal-info'
 
   export default {
+    data() {
+      return {
+        decline: false,
+      }
+    },
     computed: {
       ...mapState({
         user: state => state.AuthUser
       })
     },
+    methods: {
+      routePipe(_decline) {
+        this.decline = _decline
+      },
+    },
     components: {
       dkfHeader,
-      scroll
+      scroll,
+      personalInfo
     }
   }
 </script>
@@ -92,13 +105,15 @@
     @import '../../../sass/mixin'
 
     .my-resume-wrapper
-        position: fixed
-        width: 100%
-        left: 0
-        top: 50px
-        bottom: 55px
+        @include allCover
         background: $bc
-        main
+        .header
+            z-index: 10
+        .main-wrapper
+            position: absolute
+            top: 50px
+            bottom: 55px
+            width: 100%
             .occupy
                 height: 1px
                 &::before
