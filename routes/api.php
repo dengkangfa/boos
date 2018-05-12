@@ -49,6 +49,7 @@ Route::namespace('Api')->group(function () {
     Route::patch('user/advantage', 'UsersController@updateAdvantage');
     Route::patch('user/homepages', 'UsersController@updateHomepage');
     Route::patch('user/role', 'UsersController@updateRole');
+    Route::patch('me/user', 'UsersController@updateField');
     Route::get('users/contacts', 'UsersController@contacts');
 
     Route::post('verify-code', 'VerificationCodesController@store');

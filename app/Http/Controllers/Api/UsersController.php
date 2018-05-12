@@ -42,6 +42,13 @@ class UsersController extends ApiController
         return $this->respondWithItem($user, new UserTransformer);
     }
 
+    public function updateField(Request $request)
+    {
+        $result = $this->user->update(Auth::id(), $request->all());
+
+        return $this->respondWithItem($result, new UserTransformer);
+    }
+
     /**
      * 通过手机号码查找该手机号码用户的头像
      *

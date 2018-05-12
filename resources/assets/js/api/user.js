@@ -1,5 +1,9 @@
 import axios from 'axios'
 
+export function updateField() {
+
+}
+
 export function resetPassword(requestData) {
   const url = 'api/password/reset'
 

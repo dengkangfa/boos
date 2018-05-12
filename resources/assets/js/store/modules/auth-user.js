@@ -10,6 +10,7 @@ export default {
     avatar: '',
     email: '',
     gender: '',
+    wechat: '',
     advantage: '',
     pos_name: '',
     company_id: '',
@@ -26,6 +27,7 @@ export default {
       state.email = payload.user.email
       state.name = payload.user.name
       state.gender = payload.user.gender
+      state.wechat = payload.user.wechat
       state.advantage = payload.user.advantage
       state.company_id = payload.user.company_id
       state.pos_name = payload.user.pos_name
@@ -79,6 +81,14 @@ export default {
         dispatch('setMyCompany', response.data.data.company.data)
       }).catch(() => {
         dispatch('refreshToken')
+      })
+    },
+    updateField({commit}, data) {
+      return axios.patch('api/me/user', data).then(response => {
+        commit({
+          type: types.SET_AUTH_USER,
+          user: response.data.data
+        })
       })
     },
     cutRole({commit}, data) {

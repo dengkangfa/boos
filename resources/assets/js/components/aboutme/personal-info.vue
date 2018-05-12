@@ -26,9 +26,9 @@
                             <div class="cell-value is-link"><span>{{ user.job_date }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li>
+                        <li @click="$refs.wechatInput.show()">
                             <div class="cell-title"><span>微信号</span></div>
-                            <div class="cell-value is_link"><span>{{ user.wechat ? '' : '选填' }}</span></div>
+                            <div class="cell-value is_link"><span>{{ user.wechat ? user.wechat : '选填' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
                         <li class="active" @click="$refs.birthDatePicker.show()">
@@ -42,9 +42,11 @@
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="$refs.avatarDefault.show()" ref="avatarDriver"></avatar-driver>
             <avatar-cropper :image="cropImage" @cancel="cropperShowFlag = false"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
             <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>
-            <name-input title="姓名" :maxLength="12" v-model="user.name" @saveValue="saveName" ref="nameInput"></name-input>
+            <full-screen-input title="姓名" :maxLength="12" v-model="user.name" @saveValue="saveName" ref="nameInput"></full-screen-input>
+            <full-screen-input title="微信号" :maxLength="50" v-model="user.wechat" @saveValue="saveWechat" ref="wechatInput"></full-screen-input>
             <job-date-picker v-model="user.job_date" @select="jobDateHandleSelect" ref="jobDatePicker"></job-date-picker>
             <birth-date-picker v-model="user.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
+            <spinner text="正在保存中" v-show="spinnerShowFlag"></spinner>
         </div>
     </transition>
 </template>
@@ -53,16 +55,18 @@
   import dkfHeader from 'Base/header/header'
   import scroll from 'Base/scroll/scroll'
   import {avatarMixin} from 'Mixin/mixin.js'
-  import nameInput from 'InfoBase/full-screen-input'
+  import fullScreenInput from 'InfoBase/full-screen-input'
   import sexRadio from 'Base/radio/sex-radio'
   import jobDatePicker from 'Base/picker/job-date-picker'
   import birthDatePicker from 'Base/picker/birth-date-picker'
+  import spinner from 'Base/spinner/spinner'
 
   export default {
     mixins: [avatarMixin],
     data() {
       return {
-        showFlag: false
+        showFlag: false,
+        spinnerShowFlag: false
       }
     },
     methods: {
@@ -72,26 +76,36 @@
       hide() {
         this.showFlag = false
       },
-      saveName() {
-
+      saveName(name) {
+        this.save({name})
+      },
+      saveWechat(wechat) {
+        this.save({wechat})
       },
       genderChange(gender) {
-
+        this.save({gender})
       },
-      jobDateHandleSelect()  {
-
+      jobDateHandleSelect(job_date)  {
+        this.save({job_date})
       },
-      birthDateHandleSelect() {
-
+      birthDateHandleSelect(birth_date) {
+        this.save({birth_date})
+      },
+      save(data) {
+        this.spinnerShowFlag = true
+        this.$store.dispatch('updateField', data).then(response => {
+          this.spinnerShowFlag = false
+        })
       }
     },
     components: {
       dkfHeader,
       scroll,
-      nameInput,
+      fullScreenInput,
       sexRadio,
       jobDatePicker,
-      birthDatePicker
+      birthDatePicker,
+      spinner
     },
     watch: {
       showFlag(newValue) {

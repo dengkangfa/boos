@@ -45,6 +45,7 @@ class UserTransformer extends TransformerAbstract
                 'name'       => $user->name,
                 'mobile'     => $user->mobile,
                 'gender'     => $user->gender,
+                'wechat'     => $user->wechat,
                 'advantage'  => $user->advantage ?? '',
                 'company_id' => $user->company_id,
                 'pos_name'   => $user->pos_name,

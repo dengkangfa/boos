@@ -13504,11 +13504,14 @@ module.exports = Component.exports
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export updateField */
 /* harmony export (immutable) */ __webpack_exports__["b"] = resetPassword;
 /* harmony export (immutable) */ __webpack_exports__["a"] = getAvatar;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
+
+function updateField() {}
 
 function resetPassword(requestData) {
   var url = 'api/password/reset';
@@ -46339,6 +46342,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     avatar: '',
     email: '',
     gender: '',
+    wechat: '',
     advantage: '',
     pos_name: '',
     company_id: '',
@@ -46354,6 +46358,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     state.email = payload.user.email;
     state.name = payload.user.name;
     state.gender = payload.user.gender;
+    state.wechat = payload.user.wechat;
     state.advantage = payload.user.advantage;
     state.company_id = payload.user.company_id;
     state.pos_name = payload.user.pos_name;
@@ -46407,8 +46412,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         dispatch('refreshToken');
       });
     },
-    cutRole: function cutRole(_ref3, data) {
+    updateField: function updateField(_ref3, data) {
       var commit = _ref3.commit;
+
+      return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/me/user', data).then(function (response) {
+        commit({
+          type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["b" /* SET_AUTH_USER */],
+          user: response.data.data
+        });
+      });
+    },
+    cutRole: function cutRole(_ref4, data) {
+      var commit = _ref4.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/role', data).then(function (response) {
         commit({
@@ -46417,8 +46432,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    uploadAvatar: function uploadAvatar(_ref4, data) {
-      var commit = _ref4.commit;
+    uploadAvatar: function uploadAvatar(_ref5, data) {
+      var commit = _ref5.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/user/crop/avatar', data).then(function (response) {
         commit({
@@ -46427,8 +46442,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateDefaultAvatar: function updateDefaultAvatar(_ref5, data) {
-      var commit = _ref5.commit;
+    updateDefaultAvatar: function updateDefaultAvatar(_ref6, data) {
+      var commit = _ref6.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/api/user/avatar', data).then(function (response) {
         commit({
@@ -46437,8 +46452,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateProflie: function updateProflie(_ref6, data) {
-      var commit = _ref6.commit;
+    updateProflie: function updateProflie(_ref7, data) {
+      var commit = _ref7.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('/api/user/profile', data).then(function (response) {
         commit({
@@ -46449,8 +46464,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         return Promise.reject(error.response.data);
       });
     },
-    updateAdvantage: function updateAdvantage(_ref7, data) {
-      var commit = _ref7.commit;
+    updateAdvantage: function updateAdvantage(_ref8, data) {
+      var commit = _ref8.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/advantage', data).then(function (response) {
         commit({
@@ -46459,8 +46474,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    updateHomepages: function updateHomepages(_ref8, data) {
-      var commit = _ref8.commit;
+    updateHomepages: function updateHomepages(_ref9, data) {
+      var commit = _ref9.commit;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.patch('api/user/homepages', data).then(function (response) {
         commit({
@@ -46469,16 +46484,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
       });
     },
-    unsetAuthUser: function unsetAuthUser(_ref9) {
-      var commit = _ref9.commit;
+    unsetAuthUser: function unsetAuthUser(_ref10) {
+      var commit = _ref10.commit;
 
       commit({
         type: __WEBPACK_IMPORTED_MODULE_1__mutation_types__["j" /* UNSET_AUTH_USER */]
       });
     },
-    refreshToken: function refreshToken(_ref10) {
-      var commit = _ref10.commit,
-          dispatch = _ref10.dispatch;
+    refreshToken: function refreshToken(_ref11) {
+      var commit = _ref11.commit,
+          dispatch = _ref11.dispatch;
 
       return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post('/api/token/refresh').then(function (response) {
         dispatch('loginSuccess', response.data);
@@ -79488,6 +79503,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner__);
 //
 //
 //
@@ -79539,6 +79556,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+
 
 
 
@@ -79552,7 +79572,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   mixins: [__WEBPACK_IMPORTED_MODULE_2_Mixin_mixin_js__["a" /* avatarMixin */]],
   data: function data() {
     return {
-      showFlag: false
+      showFlag: false,
+      spinnerShowFlag: false
     };
   },
 
@@ -79563,18 +79584,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     hide: function hide() {
       this.showFlag = false;
     },
-    saveName: function saveName() {},
-    genderChange: function genderChange(gender) {},
-    jobDateHandleSelect: function jobDateHandleSelect() {},
-    birthDateHandleSelect: function birthDateHandleSelect() {}
+    saveName: function saveName(name) {
+      this.save({ name: name });
+    },
+    saveWechat: function saveWechat(wechat) {
+      this.save({ wechat: wechat });
+    },
+    genderChange: function genderChange(gender) {
+      this.save({ gender: gender });
+    },
+    jobDateHandleSelect: function jobDateHandleSelect(job_date) {
+      this.save({ job_date: job_date });
+    },
+    birthDateHandleSelect: function birthDateHandleSelect(birth_date) {
+      this.save({ birth_date: birth_date });
+    },
+    save: function save(data) {
+      var _this = this;
+
+      this.spinnerShowFlag = true;
+      this.$store.dispatch('updateField', data).then(function (response) {
+        _this.spinnerShowFlag = false;
+      });
+    }
   },
   components: {
     dkfHeader: __WEBPACK_IMPORTED_MODULE_0_Base_header_header___default.a,
     scroll: __WEBPACK_IMPORTED_MODULE_1_Base_scroll_scroll___default.a,
-    nameInput: __WEBPACK_IMPORTED_MODULE_3_InfoBase_full_screen_input___default.a,
+    fullScreenInput: __WEBPACK_IMPORTED_MODULE_3_InfoBase_full_screen_input___default.a,
     sexRadio: __WEBPACK_IMPORTED_MODULE_4_Base_radio_sex_radio___default.a,
     jobDatePicker: __WEBPACK_IMPORTED_MODULE_5_Base_picker_job_date_picker___default.a,
-    birthDatePicker: __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker___default.a
+    birthDatePicker: __WEBPACK_IMPORTED_MODULE_6_Base_picker_birth_date_picker___default.a,
+    spinner: __WEBPACK_IMPORTED_MODULE_7_Base_spinner_spinner___default.a
   },
   watch: {
     showFlag: function showFlag(newValue) {
@@ -79717,19 +79758,31 @@ var render = function() {
                     ]
                   ),
                   _vm._v(" "),
-                  _c("li", [
-                    _c("div", { staticClass: "cell-title" }, [
-                      _c("span", [_vm._v("微信号")])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "cell-value is_link" }, [
-                      _c("span", [
-                        _vm._v(_vm._s(_vm.user.wechat ? "" : "选填"))
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("i", { staticClass: "icon icon-right" })
-                  ]),
+                  _c(
+                    "li",
+                    {
+                      on: {
+                        click: function($event) {
+                          _vm.$refs.wechatInput.show()
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "cell-title" }, [
+                        _c("span", [_vm._v("微信号")])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "cell-value is_link" }, [
+                        _c("span", [
+                          _vm._v(
+                            _vm._s(_vm.user.wechat ? _vm.user.wechat : "选填")
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("i", { staticClass: "icon icon-right" })
+                    ]
+                  ),
                   _vm._v(" "),
                   _c(
                     "li",
@@ -79789,7 +79842,7 @@ var render = function() {
               on: { selectDefaultAvatar: _vm.selectDefaultAvatar }
             }),
             _vm._v(" "),
-            _c("name-input", {
+            _c("full-screen-input", {
               ref: "nameInput",
               attrs: { title: "姓名", maxLength: 12 },
               on: { saveValue: _vm.saveName },
@@ -79799,6 +79852,19 @@ var render = function() {
                   _vm.$set(_vm.user, "name", $$v)
                 },
                 expression: "user.name"
+              }
+            }),
+            _vm._v(" "),
+            _c("full-screen-input", {
+              ref: "wechatInput",
+              attrs: { title: "微信号", maxLength: 50 },
+              on: { saveValue: _vm.saveWechat },
+              model: {
+                value: _vm.user.wechat,
+                callback: function($$v) {
+                  _vm.$set(_vm.user, "wechat", $$v)
+                },
+                expression: "user.wechat"
               }
             }),
             _vm._v(" "),
@@ -79824,6 +79890,18 @@ var render = function() {
                 },
                 expression: "user.birth_date"
               }
+            }),
+            _vm._v(" "),
+            _c("spinner", {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.spinnerShowFlag,
+                  expression: "spinnerShowFlag"
+                }
+              ],
+              attrs: { text: "正在保存中" }
             })
           ],
           1
