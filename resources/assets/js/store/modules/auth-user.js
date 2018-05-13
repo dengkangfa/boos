@@ -12,6 +12,7 @@ export default {
     gender: '',
     wechat: '',
     advantage: '',
+    job_status: 0,
     pos_name: '',
     company_id: '',
     job_date: '',
@@ -29,6 +30,7 @@ export default {
       state.gender = payload.user.gender
       state.wechat = payload.user.wechat
       state.advantage = payload.user.advantage
+      state.job_status = payload.user.job_status
       state.company_id = payload.user.company_id
       state.pos_name = payload.user.pos_name
       state.job_date = payload.user.job_date

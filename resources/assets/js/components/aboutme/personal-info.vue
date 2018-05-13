@@ -4,41 +4,39 @@
             <dkf-header title="个人信息">
                 <div slot="left" @click="hide()"><i class="icon-left"></i></div>
             </dkf-header>
-            <scroll>
-                <div class="main">
-                    <ul class="cell">
-                        <li @click="$refs.avatarDriver.show()">
-                            <div class="cell-title"><span>头像</span></div>
-                            <div class="cell-value is-link img-wrapper"><img :src="user.avatar ? user.avatar : 'images/default.png'"></div>
-                            <i class="icon icon-right"></i>
-                        </li>
-                        <li @click="$refs.nameInput.show()">
-                            <div class="cell-title"><span>姓名</span></div>
-                            <div class="cell-value is_link"><span>{{ user.name }}</span></div>
-                            <i class="icon icon-right"></i>
-                        </li>
-                        <li>
-                            <div class="cell-title"><span>姓别</span></div>
-                            <div class="radio-group"><sex-radio v-model="user.gender" @change="genderChange"></sex-radio></div>
-                        </li>
-                        <li class="active" @click="$refs.jobDatePicker.show()">
-                            <div class="cell-title"><span>参加工作时间</span></div>
-                            <div class="cell-value is-link"><span>{{ user.job_date }}</span></div>
-                            <i class="icon icon-right"></i>
-                        </li>
-                        <li @click="$refs.wechatInput.show()">
-                            <div class="cell-title"><span>微信号</span></div>
-                            <div class="cell-value is_link"><span>{{ user.wechat ? user.wechat : '选填' }}</span></div>
-                            <i class="icon icon-right"></i>
-                        </li>
-                        <li class="active" @click="$refs.birthDatePicker.show()">
-                            <div class="cell-title"><span>出生年月</span></div>
-                            <div class="cell-value is-link"><span>{{ user.birth_date }}</span></div>
-                            <i class="icon icon-right"></i>
-                        </li>
-                    </ul>
-                </div>
-            </scroll>
+            <div class="main">
+                <ul class="cell">
+                    <li @click="$refs.avatarDriver.show()">
+                        <div class="cell-title"><span>头像</span></div>
+                        <div class="cell-value is-link img-wrapper"><img :src="user.avatar ? user.avatar : 'images/default.png'"></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li @click="$refs.nameInput.show()">
+                        <div class="cell-title"><span>姓名</span></div>
+                        <div class="cell-value is-link"><span>{{ user.name }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li>
+                        <div class="cell-title"><span>姓别</span></div>
+                        <div class="radio-group"><sex-radio v-model="user.gender" @change="genderChange"></sex-radio></div>
+                    </li>
+                    <li class="active" @click="$refs.jobDatePicker.show()">
+                        <div class="cell-title"><span>参加工作时间</span></div>
+                        <div class="cell-value is-link"><span>{{ user.job_date }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li @click="$refs.wechatInput.show()">
+                        <div class="cell-title"><span>微信号</span></div>
+                        <div class="cell-value is-link"><span>{{ user.wechat ? user.wechat : '选填' }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                    <li class="active" @click="$refs.birthDatePicker.show()">
+                        <div class="cell-title"><span>出生年月</span></div>
+                        <div class="cell-value is-link"><span>{{ user.birth_date }}</span></div>
+                        <i class="icon icon-right"></i>
+                    </li>
+                </ul>
+            </div>
             <avatar-driver @succeed="avatarDriverSucceed" @showDefaultAvatarDriver="$refs.avatarDefault.show()" ref="avatarDriver"></avatar-driver>
             <avatar-cropper :image="cropImage" @cancel="cropperShowFlag = false"  @save="upload" v-if="cropperShowFlag" ref="avatarCropper"></avatar-cropper>
             <avatar-default :type="defaultAvatarType" :currentAvatar="user.avatar" @selectDefaultAvatar="selectDefaultAvatar" ref="avatarDefault"></avatar-default>

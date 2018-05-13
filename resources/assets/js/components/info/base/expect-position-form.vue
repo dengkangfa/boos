@@ -1,11 +1,13 @@
 <template>
     <transition name="horizontal-slide">
         <div class="expect-position-wrapper">
-            <dkf-header title="求职意向"></dkf-header>
+            <dkf-header title="求职意向">
+                <div slot="left" @click="$emit('hide')" v-if="showHeaderLeftBtn"><i class="icon icon-left"></i></div>
+            </dkf-header>
             <main>
                 <div>
                     <ul class="cell">
-                        <li @click="showjobStatusSelector">
+                        <li @click="showjobStatusSelector" v-if="jobStatusField">
                             <div class="cell-title"><span>求职状态</span></div>
                             <div class="cell-value is-link"><span>{{ jobStatusDisplayName }}</span></div>
                             <i class="icon icon-right"></i>
@@ -32,7 +34,7 @@
                         </li>
                     </ul>
                 </div>
-                <div class="expect-position-remind">
+                <div class="expect-position-remind" v-if="remind">
                     <div class="text">362个Boss正在路上，<br>填好求职意向，开始直接沟通</div>
                 </div>
                 <div class="expect-position-footer">
@@ -42,7 +44,7 @@
             <job-search-status-select @select="updatejobStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
             <distpicker title="工作城市" :province="province" :city="city" @selected="distPickerSelected" ref="distpicker"></distpicker>
-            <industry-select type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
+            <industry-select v-model="industryArr" type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
             <salary-picker @selected="selectedSalary" ref="salaryPicker"></salary-picker>
             <spinner :text="spinnerText" v-show="spinnerShowFlag"></spinner>
             <message :message="message" ref="message"></message>
@@ -66,11 +68,26 @@
   const jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机会', '在职-月内到岗']
 
   export default {
+    props: {
+      value: {},
+      showHeaderLeftBtn: {
+        type: Boolean,
+        default: false
+      },
+      jobStatusField: {
+        type: Boolean,
+        default: false
+      },
+      remind: {
+        type: Boolean,
+        default: false
+      }
+    },
     data() {
       return {
-        industryArr: '',
-        province: '广东',
-        city: '广州',
+        industryArr: [],
+        province: '',
+        city: '',
         spinnerShowFlag: false,
         spinnerText: '提交中',
         message: '',
@@ -78,7 +95,7 @@
           position_type: '',
           position_name: '',
           industry: '',
-          location_name: '广州',
+          location_name: '',
           low_salary: '',
           high_salary: ''
         }
@@ -91,29 +108,34 @@
       this.$emit('routePipe', false)
     },
     created() {
-      // 定位当前位置
-      let self = this
-      lazyAMapApiLoaderInstance.load().then(() => {
-        new AMap.Geolocation().getCurrentPosition((status, result) => {
-          if (result && result.position) {
-            var geocoder = new AMap.Geocoder({
-              radius: 1000,
-              extensions: 'all'
-            })
-            geocoder.getAddress([result.position.lng, result.position.lat], function (status, result) {
-              if (status === 'complete' && result.info === 'OK') {
-                if (result && result.regeocode) {
-                  self.province = result.regeocode.addressComponent.province
-                  self.city = result.regeocode.addressComponent.city
-                  self.area = result.regeocode.addressComponent.district
-                }
-              }
-            })
-          }
-        })
-      })
+      if (!this.value) {
+        this.getCurrentPosition()
+      }
     },
     methods: {
+      getCurrentPosition() {
+        // 定位当前位置
+        let self = this
+        lazyAMapApiLoaderInstance.load().then(() => {
+          new AMap.Geolocation().getCurrentPosition((status, result) => {
+            if (result && result.position) {
+              var geocoder = new AMap.Geocoder({
+                radius: 1000,
+                extensions: 'all'
+              })
+              geocoder.getAddress([result.position.lng, result.position.lat], function (status, result) {
+                if (status === 'complete' && result.info === 'OK') {
+                  if (result && result.regeocode) {
+                    self.province = result.regeocode.addressComponent.province
+                    self.city = result.regeocode.addressComponent.city
+                    self.area = result.regeocode.addressComponent.district
+                  }
+                }
+              })
+            }
+          })
+        })
+      },
       showjobStatusSelector() {
         this.$refs.jobSearchStatusSelector.show()
       },
@@ -189,6 +211,11 @@
       }
     },
     watch: {
+      value(newValue) {
+        this.expectPositionData = newValue
+        this.industryArr = newValue.industry.split('・')
+        this.city = newValue.location_name
+      },
       industryArr(value) {
         this.expectPositionData.industry = value.join('・')
       }

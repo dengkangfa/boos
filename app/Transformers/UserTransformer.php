@@ -50,6 +50,7 @@ class UserTransformer extends TransformerAbstract
                 'company_id' => $user->company_id,
                 'pos_name'   => $user->pos_name,
                 'job_date'   => $user->job_date ? ($user->job_date->format('Y-m') !== '1989-11' ? $user->job_date->format('Y-m') : '1990年以前') : '应届生',
+                'job_status' => $user->job_status,
                 'birth_date' => $user->birth_date ? $user->birth_date->format('Y-m') : '',
                 'homepages'  => $user->homepages ? array_slice(explode('・', $user->homepages), 0, 3) : [],
                 'roles' => $user->getRoleNames(),

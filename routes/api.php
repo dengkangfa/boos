@@ -69,6 +69,7 @@ Route::namespace('Api')->group(function () {
 
     Route::get('industry', 'IndustryController@index');
 
+    Route::get('me/expect_positions', 'ExpectPositionController@currentUserAllExpectPosition');
     Route::post('expect_positions', 'ExpectPositionController@store');
 
     Route::post('project_experiences', 'ProjectExperiencesController@store');

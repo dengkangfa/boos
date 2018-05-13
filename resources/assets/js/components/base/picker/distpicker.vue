@@ -12,7 +12,7 @@
 
   export default {
     props: {
-      province: { type: [String, Number], default: '北京市' },
+      province: { type: [String, Number], default: '北京' },
       city: { type: [String, Number], default: '' },
       area: { type: [String, Number], default: '' },
       depth: { type: Number, default: 2 },
@@ -103,6 +103,11 @@
     watch: {
       province() {
         this.districtsSlots = this.formatDistricts()
+      },
+      city(newValue) {
+        if (!this.currentProvince && newValue) {
+
+        }
       }
     }
   }

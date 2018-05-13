@@ -19,11 +19,11 @@ class JobController extends ApiController
     public function index(Request $request, Job $job)
     {
         $user = \Auth::user();
-        $expectPosition = $user->expectPosition;
+        $type_codes = $user->expectPositions->pluck('position_type');
         $query = $job->query();
 
-        if ($type_code = $expectPosition->position_type) {
-            $query->where('type_code', $type_code);
+        if ($type_codes) {
+            $query->whereIn('type_code', $type_codes);
         }
 
         $jobs = $query->take($request->page)->limit($request->prepage)->paginate(10);

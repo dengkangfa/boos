@@ -22,7 +22,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'mobile', 'gender', 'wechat', 'advantage', 'company_id',
-        'pos_name', 'job_date', 'birth_date', 'homepages', 'last_actived_at'
+        'pos_name', 'job_date', 'job_status', 'birth_date', 'homepages', 'last_actived_at'
     ];
 
     protected $dates = ['created_at', 'updated_at', 'last_actived_at', 'disabled_at', 'job_date', 'birth_date'];
@@ -53,9 +53,9 @@ class User extends Authenticatable
         return $this->hasMany(projectExperience::class);
     }
 
-    public function expectPosition()
+    public function expectPositions()
     {
-        return $this->hasOne(ExpectPosition::class);
+        return $this->hasMany(ExpectPosition::class);
     }
 
     public function company()

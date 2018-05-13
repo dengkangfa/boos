@@ -44,6 +44,10 @@
 
   export default {
     props: {
+      value: {
+        type: Array,
+        default: []
+      },
       type: {
         type: String,
         default: 'checkbox'
@@ -99,6 +103,11 @@
       dkfHeader,
       scroll,
       message
+    },
+    watch: {
+      value(newValue) {
+        this.selectedIndustry = newValue
+      }
     }
   }
 </script>

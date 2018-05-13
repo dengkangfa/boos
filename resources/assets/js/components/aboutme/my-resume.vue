@@ -18,7 +18,7 @@
                             </div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li>
+                        <li @click="$refs.expectPositionManage.show()">
                             <div class="cell-title">管理求职意向</div>
                             <i class="icon icon-right"></i>
                         </li>
@@ -66,6 +66,7 @@
                 </div>
             </div>
             <personal-info ref="personalInfo" @routePipe="routePipe"></personal-info>
+            <expect-position-manage ref="expectPositionManage" @routePipe="routePipe"></expect-position-manage>
         </div>
     </transition>
 </template>
@@ -75,6 +76,7 @@
   import scroll from 'Base/scroll/scroll'
   import {mapState} from 'vuex'
   import personalInfo from './personal-info'
+  import expectPositionManage from './expect-position-manage'
 
   export default {
     data() {
@@ -95,7 +97,8 @@
     components: {
       dkfHeader,
       scroll,
-      personalInfo
+      personalInfo,
+      expectPositionManage
     }
   }
 </script>
