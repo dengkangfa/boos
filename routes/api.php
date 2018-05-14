@@ -71,6 +71,7 @@ Route::namespace('Api')->group(function () {
 
     Route::get('me/expect_positions', 'ExpectPositionController@currentUserAllExpectPosition');
     Route::post('expect_positions', 'ExpectPositionController@store');
+    Route::put('expect_positions/{expectPosition}', 'ExpectPositionController@update');
 
     Route::post('project_experiences', 'ProjectExperiencesController@store');
     Route::put('project_experiences/{id}', 'ProjectExperiencesController@update');

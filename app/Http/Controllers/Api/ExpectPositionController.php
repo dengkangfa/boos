@@ -22,6 +22,13 @@ class ExpectPositionController extends ApiController
         return $this->setStatusCode(201)->respondWithItem($expectPosition, new ExpectPositionsTransformer());
     }
 
+    public function update(ExpectPositionRequest $request, ExpectPosition $expectPosition)
+    {
+        $expectPosition->update($request->all());
+
+        return $this->respondWithItem($expectPosition, new ExpectPositionsTransformer());
+    }
+
     public function currentUserAllExpectPosition()
     {
         $expectPositions = \Auth::user()->expectPositions;

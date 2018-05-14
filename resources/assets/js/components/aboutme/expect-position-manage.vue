@@ -20,11 +20,11 @@
                 </ul>
             </div>
             <div class="theme-footer-button">
-                <div>
+                <div @click="currentExpectPosition = expectPositionData;expectPositionFormShowFlag = true">
                     添加期望职位
                 </div>
             </div>
-            <expect-position-form v-model="currentExpectPosition" showHeaderLeftBtn @hide="expectPositionFormShowFlag = false" v-show="expectPositionFormShowFlag"></expect-position-form>
+            <expect-position-form v-model="currentExpectPosition" showHeaderLeftBtn @complete="complete" v-show="expectPositionFormShowFlag"></expect-position-form>
         </div>
     </transition>
 </template>
@@ -41,6 +41,14 @@
         expectPositions: [],
         currentExpectPosition: {},
         expectPositionFormShowFlag: false,
+        expectPositionData: {
+          position_type: '',
+          position_name: '',
+          industry: '',
+          location_name: '',
+          low_salary: '',
+          high_salary: ''
+        }
       }
     },
     created() {
@@ -63,7 +71,20 @@
       editExpectPosition(data) {
         this.currentExpectPosition = data
         this.expectPositionFormShowFlag = true
-      }
+      },
+      complete(expectPosition) {
+        this.expectPositions = this.expectPositions.filter((value) => {
+          if (value.id === expectPosition.id) {
+            return false
+          }
+          return true
+        })
+        this.expectPositions.push(expectPosition)
+        this.expectPositions.sort((a, b) => {
+          return a.id > b.id
+        })
+        this.expectPositionFormShowFlag = false
+      },
     },
     components: {
       dkfHeader,

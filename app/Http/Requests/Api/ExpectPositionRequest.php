@@ -7,8 +7,8 @@ class ExpectPositionRequest extends FormRequest
     public function rules()
     {
         return [
-            'apply_status'     => 'required|numeric|in:0,1,2,3',
             'position_type'      => 'required|exists:position_types,id',
+            'position_name'      => 'required|exists:position_types,name',
             'location_name'     => 'required',
             'low_salary' => 'required|numeric',
             'high_salary' => 'required|numeric',

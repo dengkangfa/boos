@@ -11,7 +11,6 @@ class ExpectPositionsTransformer extends TransformerAbstract
     {
         return [
             'id' => $expectPosition->id,
-            'apply_status' => (int) $expectPosition->apply_status,
             'position_type' => $expectPosition->position_type,
             'position_name' => $expectPosition->position_name,
             'industry' => $expectPosition->industry,

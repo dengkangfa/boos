@@ -38,12 +38,12 @@
       formatDistricts(code = DEFAULT_CODE) {
         let districts = []
         let provinces = this.getDistricts(code)
-        districts.push({flex: 1, values: provinces, defaultIndex: provinces.indexOf(this.determineType(this.province))})
-        let citys = this.getDistricts(this.getAreaCode(this.determineType(this.province)))
-        districts.push({flex: 1, values: citys, defaultIndex: citys.indexOf(this.determineType(this.city))})
+        districts.push({flex: 1, values: provinces, defaultIndex: provinces.indexOf(this.determineType(this.currentProvince))})
+        let citys = this.getDistricts(this.getAreaCode(this.determineType(this.currentProvince)))
+        districts.push({flex: 1, values: citys, defaultIndex: citys.indexOf(this.determineType(this.currentCity))})
         if (this.depth === 3) {
-          let areas = this.getDistricts(this.getAreaCode(this.determineType(this.city)))
-          districts.push({flex: 1, values: areas, defaultIndex: areas.indexOf(this.determineType(this.area))})
+          let areas = this.getDistricts(this.getAreaCode(this.determineType(this.currentCity)))
+          districts.push({flex: 1, values: areas, defaultIndex: areas.indexOf(this.determineType(this.currentArea))})
         }
         return districts
       },
@@ -83,8 +83,17 @@
       getCodeValue(code) {
         for (let x in DISTRICTS) {
           for (let y in DISTRICTS[x]) {
-            if (code === parseInt(y)) {
+            if (code == parseInt(y)) {
               return DISTRICTS[x][y]
+            }
+          }
+        }
+      },
+      getParentCode(code) {
+        for (let x in DISTRICTS) {
+          for (let y in DISTRICTS[x]) {
+            if (code === y) {
+              return x
             }
           }
         }
@@ -104,9 +113,17 @@
       province() {
         this.districtsSlots = this.formatDistricts()
       },
+      currentProvince() {
+        this.districtsSlots = this.formatDistricts()
+      },
       city(newValue) {
-        if (!this.currentProvince && newValue) {
-
+        const municipalities = ['重庆']
+        if (!this.province && newValue) {
+          if (municipalities.indexOf(newValue) >= 0) {
+            this.currentProvince = newValue
+            return
+          }
+          this.currentProvince = this.getCodeValue(this.getParentCode(this.getAreaCode(newValue)))
         }
       }
     }

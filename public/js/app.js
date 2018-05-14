@@ -61885,12 +61885,12 @@ var DEFAULT_CODE = 100000;
 
       var districts = [];
       var provinces = this.getDistricts(code);
-      districts.push({ flex: 1, values: provinces, defaultIndex: provinces.indexOf(this.determineType(this.province)) });
-      var citys = this.getDistricts(this.getAreaCode(this.determineType(this.province)));
-      districts.push({ flex: 1, values: citys, defaultIndex: citys.indexOf(this.determineType(this.city)) });
+      districts.push({ flex: 1, values: provinces, defaultIndex: provinces.indexOf(this.determineType(this.currentProvince)) });
+      var citys = this.getDistricts(this.getAreaCode(this.determineType(this.currentProvince)));
+      districts.push({ flex: 1, values: citys, defaultIndex: citys.indexOf(this.determineType(this.currentCity)) });
       if (this.depth === 3) {
-        var areas = this.getDistricts(this.getAreaCode(this.determineType(this.city)));
-        districts.push({ flex: 1, values: areas, defaultIndex: areas.indexOf(this.determineType(this.area)) });
+        var areas = this.getDistricts(this.getAreaCode(this.determineType(this.currentCity)));
+        districts.push({ flex: 1, values: areas, defaultIndex: areas.indexOf(this.determineType(this.currentArea)) });
       }
       return districts;
     },
@@ -61932,8 +61932,17 @@ var DEFAULT_CODE = 100000;
     getCodeValue: function getCodeValue(code) {
       for (var x in __WEBPACK_IMPORTED_MODULE_1__districts__["a" /* default */]) {
         for (var y in __WEBPACK_IMPORTED_MODULE_1__districts__["a" /* default */][x]) {
-          if (code === parseInt(y)) {
+          if (code == parseInt(y)) {
             return __WEBPACK_IMPORTED_MODULE_1__districts__["a" /* default */][x][y];
+          }
+        }
+      }
+    },
+    getParentCode: function getParentCode(code) {
+      for (var x in __WEBPACK_IMPORTED_MODULE_1__districts__["a" /* default */]) {
+        for (var y in __WEBPACK_IMPORTED_MODULE_1__districts__["a" /* default */][x]) {
+          if (code === y) {
+            return x;
           }
         }
       }
@@ -61953,8 +61962,18 @@ var DEFAULT_CODE = 100000;
     province: function province() {
       this.districtsSlots = this.formatDistricts();
     },
+    currentProvince: function currentProvince() {
+      this.districtsSlots = this.formatDistricts();
+    },
     city: function city(newValue) {
-      if (!this.currentProvince && newValue) {}
+      var municipalities = ['重庆'];
+      if (!this.province && newValue) {
+        if (municipalities.indexOf(newValue) >= 0) {
+          this.currentProvince = newValue;
+          return;
+        }
+        this.currentProvince = this.getCodeValue(this.getParentCode(this.getAreaCode(newValue)));
+      }
     }
   }
 });
@@ -66596,6 +66615,7 @@ if (false) {
 
 "use strict";
 /* harmony export (immutable) */ __webpack_exports__["a"] = createdExpectPosition;
+/* harmony export (immutable) */ __webpack_exports__["b"] = updateExpectPosition;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_axios___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_axios__);
 
@@ -66604,6 +66624,16 @@ function createdExpectPosition(requestData) {
   var url = 'api/expect_positions';
 
   return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.post(url, requestData).then(function (response) {
+    return Promise.resolve(response.data);
+  }).catch(function (error) {
+    return Promise.reject(error.response.data);
+  });
+}
+
+function updateExpectPosition(requestData) {
+  var url = 'api/expect_positions/' + requestData.id;
+
+  return __WEBPACK_IMPORTED_MODULE_0_axios___default.a.put(url, requestData).then(function (response) {
     return Promise.resolve(response.data);
   }).catch(function (error) {
     return Promise.reject(error.response.data);
@@ -80053,7 +80083,15 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
       showFlag: false,
       expectPositions: [],
       currentExpectPosition: {},
-      expectPositionFormShowFlag: false
+      expectPositionFormShowFlag: false,
+      expectPositionData: {
+        position_type: '',
+        position_name: '',
+        industry: '',
+        location_name: '',
+        low_salary: '',
+        high_salary: ''
+      }
     };
   },
   created: function created() {
@@ -80079,6 +80117,19 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
     editExpectPosition: function editExpectPosition(data) {
       this.currentExpectPosition = data;
       this.expectPositionFormShowFlag = true;
+    },
+    complete: function complete(expectPosition) {
+      this.expectPositions = this.expectPositions.filter(function (value) {
+        if (value.id === expectPosition.id) {
+          return false;
+        }
+        return true;
+      });
+      this.expectPositions.push(expectPosition);
+      this.expectPositions.sort(function (a, b) {
+        return a.id > b.id;
+      });
+      this.expectPositionFormShowFlag = false;
     }
   },
   components: {
@@ -80198,9 +80249,18 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "theme-footer-button" }, [
-              _c("div", [
-                _vm._v("\n                添加期望职位\n            ")
-              ])
+              _c(
+                "div",
+                {
+                  on: {
+                    click: function($event) {
+                      _vm.currentExpectPosition = _vm.expectPositionData
+                      _vm.expectPositionFormShowFlag = true
+                    }
+                  }
+                },
+                [_vm._v("\n                添加期望职位\n            ")]
+              )
             ]),
             _vm._v(" "),
             _c("expect-position-form", {
@@ -80213,11 +80273,7 @@ var render = function() {
                 }
               ],
               attrs: { showHeaderLeftBtn: "" },
-              on: {
-                hide: function($event) {
-                  _vm.expectPositionFormShowFlag = false
-                }
-              },
+              on: { complete: _vm.complete },
               model: {
                 value: _vm.currentExpectPosition,
                 callback: function($$v) {
@@ -92358,7 +92414,10 @@ var jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    value: {},
+    value: {
+      type: Object,
+      default: function _default() {}
+    },
     showHeaderLeftBtn: {
       type: Boolean,
       default: false
@@ -92441,7 +92500,7 @@ var jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机
     showSalaryPicker: function showSalaryPicker() {
       this.$refs.salaryPicker.show();
     },
-    updatejobStatus: function updatejobStatus(job_status) {
+    updateJobStatus: function updateJobStatus(job_status) {
       var _this = this;
 
       this.spinnerText = '正在保存中';
@@ -92457,6 +92516,7 @@ var jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机
     },
     distPickerSelected: function distPickerSelected(value) {
       this.expectPositionData.location_name = value[1];
+      console.log(this.expectPositionData.location_name);
     },
     selectedIndustry: function selectedIndustry(industry) {
       this.industryArr = industry;
@@ -92475,9 +92535,15 @@ var jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机
       var _this2 = this;
 
       this.spinnerShowFlag = true;
-      Object(__WEBPACK_IMPORTED_MODULE_6_Api_expect_position__["a" /* createdExpectPosition */])(this.expectPositionData).then(function (response) {
+      var handle = void 0;
+      if (this.expectPositionData.id) {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_6_Api_expect_position__["b" /* updateExpectPosition */])(this.expectPositionData);
+      } else {
+        handle = Object(__WEBPACK_IMPORTED_MODULE_6_Api_expect_position__["a" /* createdExpectPosition */])(this.expectPositionData);
+      }
+      handle.then(function (response) {
         _this2.spinnerShowFlag = false;
-        _this2.$router.push({ 'name': 'joblist' });
+        _this2.$emit('complete', response.data);
       }).catch(function (error) {
         _this2.spinnerShowFlag = false;
       });
@@ -92508,7 +92574,8 @@ var jobStatus = ['离职-随时到岗', '在职-暂不考虑', '在职-考虑机
   watch: {
     value: function value(newValue) {
       this.expectPositionData = newValue;
-      this.industryArr = newValue.industry.split('・');
+      console.log(newValue);
+      this.industryArr = newValue.industry ? newValue.industry.split('・') : [];
       this.city = newValue.location_name;
     },
     industryArr: function industryArr(value) {
@@ -92540,23 +92607,31 @@ var render = function() {
       "div",
       { staticClass: "expect-position-wrapper" },
       [
-        _c("dkf-header", { attrs: { title: "求职意向" } }, [
-          _vm.showHeaderLeftBtn
-            ? _c(
-                "div",
-                {
-                  attrs: { slot: "left" },
-                  on: {
-                    click: function($event) {
-                      _vm.$emit("hide")
-                    }
+        _c(
+          "dkf-header",
+          {
+            attrs: {
+              title: _vm.expectPositionData.id ? "编辑求职意向" : "添加求职意向"
+            }
+          },
+          [
+            _vm.showHeaderLeftBtn
+              ? _c(
+                  "div",
+                  {
+                    attrs: { slot: "left" },
+                    on: {
+                      click: function($event) {
+                        _vm.$emit("hide")
+                      }
+                    },
+                    slot: "left"
                   },
-                  slot: "left"
-                },
-                [_c("i", { staticClass: "icon icon-left" })]
-              )
-            : _vm._e()
-        ]),
+                  [_c("i", { staticClass: "icon icon-left" })]
+                )
+              : _vm._e()
+          ]
+        ),
         _vm._v(" "),
         _c("main", [
           _c("div", [
@@ -92671,7 +92746,7 @@ var render = function() {
         _vm._v(" "),
         _c("job-search-status-select", {
           ref: "jobSearchStatusSelector",
-          on: { select: _vm.updatejobStatus }
+          on: { select: _vm.updateJobStatus }
         }),
         _vm._v(" "),
         _c("position-type-select", {

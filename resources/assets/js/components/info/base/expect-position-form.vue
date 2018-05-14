@@ -1,7 +1,7 @@
 <template>
     <transition name="horizontal-slide">
         <div class="expect-position-wrapper">
-            <dkf-header title="求职意向">
+            <dkf-header :title="expectPositionData.id ? '编辑求职意向' : '添加求职意向'">
                 <div slot="left" @click="$emit('hide')" v-if="showHeaderLeftBtn"><i class="icon icon-left"></i></div>
             </dkf-header>
             <main>
@@ -41,7 +41,7 @@
                     <div class="submit-btn" @click="complete">完成</div>
                 </div>
             </main>
-            <job-search-status-select @select="updatejobStatus" ref="jobSearchStatusSelector"></job-search-status-select>
+            <job-search-status-select @select="updateJobStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
             <distpicker title="工作城市" :province="province" :city="city" @selected="distPickerSelected" ref="distpicker"></distpicker>
             <industry-select v-model="industryArr" type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
@@ -59,7 +59,7 @@
   import distpicker from 'Base/picker/distpicker'
   import industrySelect from '../base/industry-select'
   import salaryPicker from 'Base/picker/salary-picker'
-  import {createdExpectPosition} from 'Api/expect-position'
+  import {createdExpectPosition, updateExpectPosition} from 'Api/expect-position'
   import spinner from 'Base/spinner/spinner'
   import message from 'Base/message/message'
   import { lazyAMapApiLoaderInstance } from 'vue-amap'
@@ -69,7 +69,10 @@
 
   export default {
     props: {
-      value: {},
+      value: {
+        type: Object,
+        default: () => {}
+      },
       showHeaderLeftBtn: {
         type: Boolean,
         default: false
@@ -151,7 +154,7 @@
       showSalaryPicker() {
         this.$refs.salaryPicker.show()
       },
-      updatejobStatus(job_status) {
+      updateJobStatus(job_status) {
         this.spinnerText = '正在保存中'
         this.spinnerShowFlag = true
         this.$store.dispatch('updateField',{job_status}).then(response => {
@@ -165,6 +168,7 @@
       },
       distPickerSelected(value) {
         this.expectPositionData.location_name = value[1]
+        console.log(this.expectPositionData.location_name)
       },
       selectedIndustry(industry) {
         this.industryArr = industry
@@ -181,9 +185,15 @@
       },
       submit() {
         this.spinnerShowFlag = true
-        createdExpectPosition(this.expectPositionData).then(response => {
+        let handle
+        if (this.expectPositionData.id) {
+          handle = updateExpectPosition(this.expectPositionData)
+        } else {
+          handle = createdExpectPosition(this.expectPositionData)
+        }
+        handle.then(response => {
           this.spinnerShowFlag = false
-          this.$router.push({'name': 'joblist'})
+          this.$emit('complete', response.data)
         }).catch(error => {
           this.spinnerShowFlag = false
         })
@@ -213,7 +223,8 @@
     watch: {
       value(newValue) {
         this.expectPositionData = newValue
-        this.industryArr = newValue.industry.split('・')
+        console.log(newValue)
+        this.industryArr = newValue.industry ? newValue.industry.split('・') : []
         this.city = newValue.location_name
       },
       industryArr(value) {
