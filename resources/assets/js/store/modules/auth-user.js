@@ -17,7 +17,8 @@ export default {
     company_id: '',
     job_date: '',
     birth_date: '',
-    homepages: []
+    homepages: [],
+    work_experiences: []
   },
   mutations: {
     [types.SET_AUTH_USER](state, payload) {

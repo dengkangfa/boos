@@ -116,8 +116,12 @@
       currentProvince() {
         this.districtsSlots = this.formatDistricts()
       },
+      currentCity() {
+        this.districtsSlots = this.formatDistricts()
+      },
       city(newValue) {
         const municipalities = ['重庆']
+        this.currentCity = newValue
         if (!this.province && newValue) {
           if (municipalities.indexOf(newValue) >= 0) {
             this.currentProvince = newValue

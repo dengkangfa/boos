@@ -45,6 +45,8 @@
             <job-date-picker v-model="user.job_date" @select="jobDateHandleSelect" ref="jobDatePicker"></job-date-picker>
             <birth-date-picker v-model="user.birth_date" @select="birthDateHandleSelect" ref="birthDatePicker"></birth-date-picker>
             <spinner text="正在保存中" v-show="spinnerShowFlag"></spinner>
+            <message-box message="直聘君建议:" description="请尽快添加工作经历，以免错过高薪职位" :showConfirmButton="true" cancelButtonText="先看看" confirmButtonText="立即补充" @confirm="workExperienceFormShowFlag = true" ref="messageBox"></message-box>
+            <work-experience-form :title="workExperienceAlias" @abandon="workExperienceFormShowFlag = false" @complete="completeHandle" v-if="workExperienceFormShowFlag"></work-experience-form>
         </div>
     </transition>
 </template>
@@ -58,13 +60,26 @@
   import jobDatePicker from 'Base/picker/job-date-picker'
   import birthDatePicker from 'Base/picker/birth-date-picker'
   import spinner from 'Base/spinner/spinner'
+  import messageBox from 'Base/message/message-box'
+  import workExperienceForm from 'InfoBase/work-experience-form'
+  import {mapState} from 'vuex'
 
   export default {
     mixins: [avatarMixin],
     data() {
       return {
         showFlag: false,
-        spinnerShowFlag: false
+        spinnerShowFlag: false,
+        workExperienceFormShowFlag: false,
+        completeHandle: () => {}
+      }
+    },
+    computed: {
+      ...mapState({
+        user: state => state.AuthUser
+      }),
+      workExperienceAlias() {
+        return this.user.job_date === '应届生' ? '实习经历' : '工作经历'
       }
     },
     methods: {
@@ -83,7 +98,20 @@
       genderChange(gender) {
         this.save({gender})
       },
+      editJobDateEvent() {
+      },
       jobDateHandleSelect(job_date)  {
+        if (this.user.job_date === job_date) {
+          return
+        }
+        if (job_date !== '应届生' && this.user.work_experiences.length === 0) {
+          this.completeHandle = () => {
+            this.workExperienceFormShowFlag = false
+            this.$store.dispatch('updateField', {job_date})
+          }
+          this.$refs.messageBox.show()
+          return
+        }
         this.save({job_date})
       },
       birthDateHandleSelect(birth_date) {
@@ -103,7 +131,9 @@
       sexRadio,
       jobDatePicker,
       birthDatePicker,
-      spinner
+      spinner,
+      messageBox,
+      workExperienceForm
     },
     watch: {
       showFlag(newValue) {

@@ -6,6 +6,9 @@
             </dkf-header>
             <main>
                 <div>
+                    <div class="dkf-caveat" v-if="!expectPositionData.id">
+                        您的多个意向都会被Boss看到，请认真填写
+                    </div>
                     <ul class="cell">
                         <li @click="showjobStatusSelector" v-if="jobStatusField">
                             <div class="cell-title"><span>求职状态</span></div>
@@ -37,7 +40,8 @@
                 <div class="expect-position-remind" v-if="remind">
                     <div class="text">362个Boss正在路上，<br>填好求职意向，开始直接沟通</div>
                 </div>
-                <div class="expect-position-footer">
+                <div class="theme-footer-button">
+                    <div class="delete-btn no-theme" @click="deleteEvent" v-if="showDeleteBtn">删除本条</div>
                     <div class="submit-btn" @click="complete">完成</div>
                 </div>
             </main>
@@ -54,12 +58,12 @@
 
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
-  import jobSearchStatusSelect from '../base/apply-status-select'
+  import jobSearchStatusSelect from './job-status-select'
   import positionTypeSelect from '../base/position-type-select'
   import distpicker from 'Base/picker/distpicker'
   import industrySelect from '../base/industry-select'
   import salaryPicker from 'Base/picker/salary-picker'
-  import {createdExpectPosition, updateExpectPosition} from 'Api/expect-position'
+  import {createdExpectPosition, updateExpectPosition, deleteExpectPosition, whetherToRepeat} from 'Api/expect-position'
   import spinner from 'Base/spinner/spinner'
   import message from 'Base/message/message'
   import { lazyAMapApiLoaderInstance } from 'vue-amap'
@@ -74,6 +78,10 @@
         default: () => {}
       },
       showHeaderLeftBtn: {
+        type: Boolean,
+        default: false
+      },
+      showDeleteBtn: {
         type: Boolean,
         default: false
       },
@@ -184,18 +192,34 @@
         }
       },
       submit() {
+        whetherToRepeat(this.expectPositionData).then(response => {
+          if (response.exists) {
+            this.message = '求职意向重复'
+            this.$refs.message.show()
+            return
+          } else {
+            this.spinnerShowFlag = true
+            let handle
+            if (this.expectPositionData.id) {
+              handle = updateExpectPosition(this.expectPositionData)
+            } else {
+              handle = createdExpectPosition(this.expectPositionData)
+            }
+            handle.then(response => {
+              this.spinnerShowFlag = false
+              this.$emit('complete', response.data)
+            }).catch(error => {
+              this.spinnerShowFlag = false
+            })
+          }
+        })
+      },
+      deleteEvent() {
+        this.spinnerText = '删除中'
         this.spinnerShowFlag = true
-        let handle
-        if (this.expectPositionData.id) {
-          handle = updateExpectPosition(this.expectPositionData)
-        } else {
-          handle = createdExpectPosition(this.expectPositionData)
-        }
-        handle.then(response => {
+        deleteExpectPosition(this.expectPositionData.id).then(response => {
           this.spinnerShowFlag = false
-          this.$emit('complete', response.data)
-        }).catch(error => {
-          this.spinnerShowFlag = false
+          this.$emit('delete', this.expectPositionData.id)
         })
       },
       _checkData() {
@@ -223,7 +247,6 @@
     watch: {
       value(newValue) {
         this.expectPositionData = newValue
-        console.log(newValue)
         this.industryArr = newValue.industry ? newValue.industry.split('・') : []
         this.city = newValue.location_name
       },

@@ -109,7 +109,7 @@ class ApiController extends Controller
 
     public function respondWithArray(array $array, array $header = [])
     {
-        return response()->json($array, $this->statusCode, $header);
+        return response()->json(array_merge($array, ['success' => true, 'code' => $this->code]), $this->statusCode, $header);
     }
 
     /**

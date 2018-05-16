@@ -29,10 +29,26 @@ class ExpectPositionController extends ApiController
         return $this->respondWithItem($expectPosition, new ExpectPositionsTransformer());
     }
 
+    public function destroy(ExpectPosition $expectPosition)
+    {
+        $expectPosition->delete();
+
+        return $this->noContent();
+    }
+
     public function currentUserAllExpectPosition()
     {
         $expectPositions = \Auth::user()->expectPositions;
 
         return $this->respondWithCollection($expectPositions, new ExpectPositionsTransformer());
+    }
+
+    public function whetherToRepeat(ExpectPosition $expectPosition)
+    {
+        $where[] = ['position_name', request('position_name')];
+        $where[] = ['location_name', request('location_name')];
+        $where[] = ['id', '!=', request('id')];
+
+        return $this->respondWithArray(['exists' => \Auth::user()->expectPositions()->where($where)->exists()]);
     }
 }

@@ -46,7 +46,7 @@
     props: {
       value: {
         type: Array,
-        default: []
+        default: () => []
       },
       type: {
         type: String,

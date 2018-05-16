@@ -70,8 +70,10 @@ Route::namespace('Api')->group(function () {
     Route::get('industry', 'IndustryController@index');
 
     Route::get('me/expect_positions', 'ExpectPositionController@currentUserAllExpectPosition');
+    Route::get('me/expect_positions/whether_to_repeat', 'ExpectPositionController@whetherToRepeat');
     Route::post('expect_positions', 'ExpectPositionController@store');
     Route::put('expect_positions/{expectPosition}', 'ExpectPositionController@update');
+    Route::delete('expect_positions/{expectPosition}', 'ExpectPositionController@destroy');
 
     Route::post('project_experiences', 'ProjectExperiencesController@store');
     Route::put('project_experiences/{id}', 'ProjectExperiencesController@update');

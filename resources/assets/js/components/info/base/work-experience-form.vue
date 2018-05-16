@@ -151,7 +151,7 @@
       }
     },
     created() {
-      if (JSON.stringify(this.value) !== '{}') {
+      if (typeof this.value === undefined && JSON.stringify(this.value) !== '{}') {
         this.workExperienceData = Object.assign({}, this.value)
         this.originalValue = this.workExperienceData
         // 获取职位code对应的职位名称

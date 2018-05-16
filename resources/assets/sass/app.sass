@@ -66,6 +66,7 @@
 
 .theme-footer-button
   position: fixed
+  display: flex
   left: 0
   right: 0
   bottom: 0
@@ -74,13 +75,27 @@
   padding: 10px
   box-sizing: border-box
   div
+    flex: 1
     height: 35px
     line-height: 35px
     color: #ffffff
     text-align: center
     border-radius: .1rem
     background: $color-theme
+    &.no-theme
+      color: $color-theme
+      background: #FFFFFF
+      border: 1px solid $color-theme
+      box-sizing: border-box
+    &:nth-child(2)
+      margin-left: 10px
 
+.dkf-caveat
+  color: #d6bd7c
+  background: #fff4c7
+  font-size: .35rem
+  text-align: center
+  padding: 15px 5px
 
 .right-float
   float: right
@@ -88,9 +103,9 @@
 .color-theme
   color: $color-theme !important
 
-//._scroll
-//  height: 100%
-//  overflow: hidden
+._scroll
+  height: 100%
+  overflow: hidden
 
 ._effect
   opacity: 1

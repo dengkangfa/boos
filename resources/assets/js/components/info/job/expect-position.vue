@@ -5,27 +5,27 @@
             <main>
                 <div>
                     <ul class="cell">
-                        <li @click="showjobStatusSelector">
+                        <li @click="$refs.jobSearchStatusSelector.show()">
                             <div class="cell-title"><span>求职状态</span></div>
                             <div class="cell-value is-link"><span>{{ jobStatusDisplayName }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li @click="showPositionTypeSelector">
+                        <li @click="$refs.positionTypeSelector.show()">
                             <div class="cell-title"><span>期望职位</span></div>
                             <div class="cell-value is-link"><span>{{ expectPositionData.position_name }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li @click="showIndustrySelect">
+                        <li @click="$refs.industryCheckbox.show()">
                             <div class="cell-title"><span>期望行业</span></div>
                             <div class="cell-value is-link"><span>{{ industryArr.length ? industryArr.length + '个标签' : '不限' }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li @click="showDistpicker">
+                        <li @click="$refs.distpicker.show()">
                             <div class="cell-title"><span>工作城市</span></div>
                             <div class="cell-value is-link"><span>{{ expectPositionData.location_name }}</span></div>
                             <i class="icon icon-right"></i>
                         </li>
-                        <li @click="showSalaryPicker">
+                        <li @click="$refs.salaryPicker.show()">
                             <div class="cell-title"><span>薪资要求</span></div>
                             <div class="cell-value is-link"><span>{{ expectPositionData.low_salary ? expectPositionData.low_salary === -1 ? '面议' : expectPositionData.low_salary + 'k-' + expectPositionData.high_salary + 'k' : '' }}</span></div>
                             <i class="icon icon-right"></i>
@@ -39,7 +39,7 @@
                     <div class="submit-btn" @click="complete">完成</div>
                 </div>
             </main>
-            <job-search-status-select @select="updatejobStatus" ref="jobSearchStatusSelector"></job-search-status-select>
+            <job-search-status-select @select="updateJobStatus" ref="jobSearchStatusSelector"></job-search-status-select>
             <position-type-select @selected="positionSelected" ref="positionTypeSelector"></position-type-select>
             <distpicker title="工作城市" :province="province" :city="city" @selected="distPickerSelected" ref="distpicker"></distpicker>
             <industry-select type="checkbox" @checked="selectedIndustry" ref="industryCheckbox"></industry-select>
@@ -52,7 +52,7 @@
 
 <script type="text/ecmascript-6">
   import dkfHeader from 'Base/header/header'
-  import jobSearchStatusSelect from '../base/apply-status-select'
+  import jobSearchStatusSelect from '../base/job-status-select'
   import positionTypeSelect from '../base/position-type-select'
   import distpicker from 'Base/picker/distpicker'
   import industrySelect from '../base/industry-select'
@@ -114,22 +114,7 @@
       })
     },
     methods: {
-      showjobStatusSelector() {
-        this.$refs.jobSearchStatusSelector.show()
-      },
-      showPositionTypeSelector() {
-        this.$refs.positionTypeSelector.show()
-      },
-      showDistpicker() {
-        this.$refs.distpicker.show()
-      },
-      showIndustrySelect() {
-        this.$refs.industryCheckbox.show()
-      },
-      showSalaryPicker() {
-        this.$refs.salaryPicker.show()
-      },
-      updatejobStatus(job_status) {
+      updateJobStatus(job_status) {
         this.spinnerText = '正在保存中'
         this.spinnerShowFlag = true
         this.$store.dispatch('updateField',{job_status}).then(response => {
