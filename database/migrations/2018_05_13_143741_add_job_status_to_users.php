@@ -14,7 +14,7 @@ class AddJobStatusToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->tinyInteger('job_status', 2)->default(0)->after('job_date');
+            $table->tinyInteger('job_status')->default(0)->after('job_date');
         });
     }
 

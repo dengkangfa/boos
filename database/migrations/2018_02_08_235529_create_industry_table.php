@@ -18,7 +18,8 @@ class CreateIndustryTable extends Migration
             $table->integer('code')->index();
             $table->string('name')->index();
             $table->integer('parent_code')->unsigned()->nullable();
-            $table->timestamps()->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('created_at')->default(\DB::raw('CURRENT_TIMESTAMP'));
+            $table->timestamp('updated_at')->nullable();
         });
     }
 
